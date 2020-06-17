@@ -147,7 +147,7 @@ gulp.task('go', function () {
     .pipe(gulp.dest('./dest'));
 
     //css/sass move + translate + concat
-    return gulp.src(['./dev/sass/*.scss'])
+    return gulp.src(['./dev/sass/**/*.scss'])
     .pipe(sass().on('error', sass.logError))//轉譯
     .pipe(concat('main.css'))
     .pipe(gulp.dest('dest/css'));
@@ -176,6 +176,6 @@ gulp.task('live',function(){
     });
     gulp.watch(['./dev/*.html' ,'./dev/**/*.html','./dev/css/*.css'], ['go']).on('change',reload);
     gulp.watch('./dev/js/*.js',['gojs']).on('change',reload);
-    gulp.watch('./dev/sass/*.scss',['go']).on('change',reload);
+    gulp.watch('./dev/sass/**/*.scss',['go']).on('change',reload);
     
 })

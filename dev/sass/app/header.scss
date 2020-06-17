@@ -1,6 +1,6 @@
-@import 'inmix/fontStyle';
-@import 'inmix/varColor';
-@import 'inmix/breakpoint';
+@import '../base/_var.scss';
+@import '../mixin/_fontStyle.scss';
+@import '../mixin/_breakpoint.scss';
 
 * {
     margin: 0;
@@ -204,7 +204,7 @@ body {
     // border: 1px solid red;
     width: 100vw;
     height: 100vh;
-    position: relative;
+    position: fixed;
     top: 0;
     left: -100%;
     display: flex;

@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@200;300;400;500;600;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap');
+
+
+//color
+$red:#7F0020;
+$rose:#8D0015;
+$tomato:#883030;
+$navy:#01041B;
+$greyNavy:#2C3342;
+$white:#efefef;
+$grey1:#afafaf;
+$grey2:#787878;
+$grey3:#565656;
+$grey4:#383838;
+$grey5:#292929;
+$milkt:#C0A57C;
+$cofe:#99825E;
+$opacityCofe:rgba(232, 169, 112, .5);
+$skin:#935C4D;
+$grape:#473243;
+$greyGrape:#493F46;
+$lightGold:#E1D0A1;
+$gold:#EAC669;
+$darkGold:#C6B26E;
+$pink:#FFCBCC;
+$grass:#848484;
+$lightGrass:#DEEDCF;
+$wood:#3B3333;
+
+//fontstyle
+$notoSerif: 'Noto Serif TC', serif;
+$notoSans: 'Noto Sans TC', sans-serif;
+$CG:'Cormorant Garamond', serif;
+$default-color:$white;
+$default-fweight:400;
+
+
+//breakpoint
+$pc:1200px;
+$l-pad:1024px;
+$m-pad:996px;
+$s-pad:768px;
+$l-phone:576px;
+$s-phone:400px;
