@@ -151,12 +151,14 @@ gulp.task('go', function () {
     .pipe(sass().on('error', sass.logError))//轉譯
     .pipe(concat('main.css'))
     .pipe(gulp.dest('dest/css'));
+    
+
 });
 
 gulp.task('gojs', function () {
     //js move
     return gulp.src('./dev/js/*.js')//來源打包
-    .pipe(concat('main.js'))
+     .pipe(concat('main.js'))
     .pipe(gulp.dest('dest/js'));//目的地
 });
 
@@ -174,6 +176,13 @@ gulp.task('live',function(){
             index:'index.html'
         }
     });
+    gulp.watch(['./dev/*.html' ,'./dev/**/*.html','./dev/css/*.css'], ['go']).on('change',reload);
+    gulp.watch('./dev/js/*.js',['gojs']).on('change',reload);
+    gulp.watch('./dev/sass/**/*.scss',['go']).on('change',reload);
+    
+})
+
+gulp.task('watch',function(){
     gulp.watch(['./dev/*.html' ,'./dev/**/*.html','./dev/css/*.css'], ['go']).on('change',reload);
     gulp.watch('./dev/js/*.js',['gojs']).on('change',reload);
     gulp.watch('./dev/sass/**/*.scss',['go']).on('change',reload);

@@ -4,6 +4,295 @@
 @import url("https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@200;300;400;500;600;700;900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap");
+@media all and (min-width: 1200px) {
+  .xxlfont {
+    font-size: 40px; } }
+
+@media all and (max-width: 1200px) {
+  .xxlfont {
+    font-size: 35px !important; } }
+
+@media all and (max-width: 1024px) {
+  .xxlfont {
+    font-size: 35px !important; } }
+
+@media all and (max-width: 996px) {
+  .xxlfont {
+    font-size: 30px !important; } }
+
+@media all and (max-width: 768px) {
+  .xxlfont {
+    font-size: 25px !important; } }
+
+@media all and (max-width: 576px) {
+  .xxlfont {
+    font-size: 20px !important; } }
+
+@media all and (max-width: 400px) {
+  .xxlfont {
+    font-size: 18px !important; } }
+
+@media all and (min-width: 1200px) {
+  .xlfont {
+    font-size: 35px; } }
+
+@media all and (max-width: 1200px) {
+  .xlfont {
+    font-size: 35px !important; } }
+
+@media all and (max-width: 1024px) {
+  .xlfont {
+    font-size: 30px !important; } }
+
+@media all and (max-width: 996px) {
+  .xlfont {
+    font-size: 28px !important; } }
+
+@media all and (max-width: 768px) {
+  .xlfont {
+    font-size: 24px !important; } }
+
+@media all and (max-width: 576px) {
+  .xlfont {
+    font-size: 18px !important; } }
+
+@media all and (max-width: 400px) {
+  .xlfont {
+    font-size: 16px !important; } }
+
+@media all and (min-width: 1200px) {
+  .lfont {
+    font-size: 30px; } }
+
+@media all and (max-width: 1200px) {
+  .lfont {
+    font-size: 30px !important; } }
+
+@media all and (max-width: 1024px) {
+  .lfont {
+    font-size: 28px !important; } }
+
+@media all and (max-width: 996px) {
+  .lfont {
+    font-size: 25px !important; } }
+
+@media all and (max-width: 768px) {
+  .lfont {
+    font-size: 20px !important; } }
+
+@media all and (max-width: 576px) {
+  .lfont {
+    font-size: 18px !important; } }
+
+@media all and (max-width: 400px) {
+  .lfont {
+    font-size: 16px !important; } }
+
+@media all and (min-width: 1200px) {
+  .mfont {
+    font-size: 24px; } }
+
+@media all and (max-width: 1200px) {
+  .mfont {
+    font-size: 20px !important; } }
+
+@media all and (max-width: 1024px) {
+  .mfont {
+    font-size: 20px !important; } }
+
+@media all and (max-width: 996px) {
+  .mfont {
+    font-size: 18px !important; } }
+
+@media all and (max-width: 768px) {
+  .mfont {
+    font-size: 16px !important; } }
+
+@media all and (max-width: 576px) {
+  .mfont {
+    font-size: 14px !important; } }
+
+@media all and (max-width: 400px) {
+  .mfont {
+    font-size: 14px !important; } }
+
+@media all and (min-width: 1200px) {
+  .sfont {
+    font-size: 18px; } }
+
+@media all and (max-width: 1200px) {
+  .sfont {
+    font-size: 18px !important; } }
+
+@media all and (max-width: 1024px) {
+  .sfont {
+    font-size: 16px !important; } }
+
+@media all and (max-width: 996px) {
+  .sfont {
+    font-size: 16px !important; } }
+
+@media all and (max-width: 768px) {
+  .sfont {
+    font-size: 14px !important; } }
+
+@media all and (max-width: 576px) {
+  .sfont {
+    font-size: 12px !important; } }
+
+@media all and (max-width: 400px) {
+  .sfont {
+    font-size: 12px !important; } }
+
+@media all and (min-width: 1200px) {
+  .xsfont {
+    font-size: 16px; } }
+
+@media all and (max-width: 1200px) {
+  .xsfont {
+    font-size: 16px !important; } }
+
+@media all and (max-width: 1024px) {
+  .xsfont {
+    font-size: 14px !important; } }
+
+@media all and (max-width: 996px) {
+  .xsfont {
+    font-size: 14px !important; } }
+
+@media all and (max-width: 768px) {
+  .xsfont {
+    font-size: 12px !important; } }
+
+@media all and (max-width: 576px) {
+  .xsfont {
+    font-size: 10px !important; } }
+
+@media all and (max-width: 400px) {
+  .xsfont {
+    font-size: 10px !important; } }
+
+.xxlfont,
+.xlfont,
+.lfont,
+.mfont,
+.sfont,
+.xsfont {
+  letter-spacing: 1px;
+  word-spacing: 3px; }
+
+* {
+  margin: 0;
+  box-sizing: border-box;
+  font-size: 0;
+  padding: 0; }
+
+body,
+html {
+  height: 100%;
+  padding: 0;
+  margin: 0; }
+
+.open-btn {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 40vw;
+  height: 20vw;
+  min-width: 300px;
+  min-height: 200px;
+  background-color: rgba(255, 255, 255, 0.705);
+  z-index: 3; }
+  .open-btn .title {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%); }
+    .open-btn .title h2 {
+      color: black;
+      border-bottom: 1px solid black; }
+  .open-btn .lip-btn {
+    height: 100%;
+    width: 50%;
+    display: inline-flex;
+    align-items: center;
+    flex-direction: column-reverse; }
+    .open-btn .lip-btn h4 {
+      margin-bottom: 30%;
+      color: black;
+      border-bottom: 1px solid black; }
+  .open-btn .care-btn {
+    height: 100%;
+    width: 50%;
+    display: inline-flex;
+    align-items: center;
+    flex-direction: column-reverse; }
+    .open-btn .care-btn h4 {
+      margin-bottom: 30%;
+      color: black;
+      border-bottom: 1px solid black; }
+
+.open {
+  height: 100%;
+  width: 100%;
+  display: flex; }
+  .open a {
+    height: 100%;
+    width: 100%; }
+    .open a .door1 {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(325deg, #5f4a4a 0, #bd8383 75%);
+      display: flex;
+      align-items: center;
+      justify-content: flex-end; }
+      .open a .door1 .lips {
+        height: 75%;
+        width: 75%;
+        background: linear-gradient(325deg, #493F46 0, #7e6d79 75%);
+        position: relative; }
+        .open a .door1 .lips span {
+          white-space: nowrap;
+          position: absolute;
+          top: -5%;
+          left: -5%; }
+    .open a .door2 {
+      height: 100%;
+      width: 100%;
+      background: linear-gradient(325deg, #797459 0, #dde290 75%);
+      display: flex;
+      align-items: center;
+      justify-content: flex-start; }
+      .open a .door2 .care {
+        height: 75%;
+        width: 75%;
+        background: rgba(232, 169, 112, 0.5);
+        z-index: 1;
+        position: relative; }
+        .open a .door2 .care span {
+          white-space: nowrap;
+          position: absolute;
+          bottom: -5%;
+          right: -5%;
+          text-align: end; }
+
+@media screen and (max-width: 767px) {
+  .open {
+    flex-direction: column; }
+    .open a .door1 {
+      align-items: flex-end;
+      justify-content: center; }
+    .open a .door2 {
+      align-items: flex-start;
+      justify-content: center; } }
+
+@import url("https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@200;300;400;500;600;700;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@200;300;400;500;600;700;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@200;300;400;500;600;700;900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap");
@@ -337,7 +626,8 @@ body {
   left: -100%;
   display: flex;
   flex-flow: row;
-  background-color: #383838; }
+  background-color: #383838;
+  z-index: 97; }
   #menu .menuLeft {
     font-size: 100px;
     font-family: "Noto Sans TC", sans-serif;
