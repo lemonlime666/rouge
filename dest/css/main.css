@@ -267,7 +267,7 @@ html {
       .open a .door2 .care {
         height: 75%;
         width: 75%;
-        background: linear-gradient(325deg, #a19865 0, #878875 75%);
+        background: rgba(232, 169, 112, 0.5);
         z-index: 1;
         position: relative; }
         .open a .door2 .care span {
