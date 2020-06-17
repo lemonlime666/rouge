@@ -1,0 +1,49 @@
+$pc:1200px;
+$l-pad:1024px;
+$m-pad:996px;
+$s-pad:768px;
+$l-phone:576px;
+$s-phone:400px;
+
+
+//電腦 小於等於1200px
+@mixin pc() {
+    @media all and (max-width: $pc) {
+        @content;
+    }
+}
+
+//大平板 小於等於1024px
+@mixin l-pad() {
+    @media all and (max-width: $l-pad) {
+        @content;
+    }
+}
+
+//中平板 小於等於996px
+@mixin m-pad() {
+    @media all and (max-width: $m-pad) {
+        @content;
+    }
+}
+
+//小平板 小於等於768px
+@mixin s-pad() {
+    @media all and (max-width: $s-pad) {
+        @content;
+    }
+}
+
+//大手機 小於等於576px
+@mixin l-phone() {
+    @media all and (max-width: $l-phone)  {
+        @content;
+    }
+}
+
+//中手機 小於等於400px
+@mixin s-phone() {
+    @media all and (max-width: $s-phone)  {
+        @content;
+    }
+}
