@@ -1,0 +1,168 @@
+@import "./mixin/fontStyle";
+*{
+    margin: 0;
+    box-sizing: border-box;
+    font-size: 0;
+    padding: 0;
+}
+
+
+
+body,
+html {
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  
+}
+.open-btn{
+    position: fixed;
+    top:50%;
+    left:50%;
+    transform: translate(-50%, -50%);
+    width:40vw;
+    height: 20vw;
+    min-width: 300px;
+    min-height: 200px;
+    background-color: rgba(255, 255, 255, 0.705);
+    z-index: 3;
+    
+    
+    .title{
+        position: absolute;
+        top:30%;
+        left:50%;
+        transform: translate(-50%, -50%);
+        
+        h2{
+            
+            color: black;
+            border-bottom: 1px solid black;
+        }
+        
+
+    }
+    .lip-btn{
+        height:100%;
+        width:50%;
+        //border: 1px solid black;
+        display: inline-flex;
+        align-items: center;
+        
+        flex-direction: column-reverse;
+        h4{
+            margin-bottom: 30%;
+            color: black;
+            
+            border-bottom: 1px solid black;
+        }
+
+        
+    }
+    .care-btn{
+        height:100%;
+        width:50%;
+        //border: 1px solid black;
+        display: inline-flex;
+        align-items: center;
+        
+        flex-direction: column-reverse;
+        h4{
+            margin-bottom: 30%;
+            color: black;
+            
+            border-bottom: 1px solid black;
+        }
+    }
+}
+
+.open{
+    height: 100%;
+    width: 100%;
+    display: flex;
+
+    
+    
+
+    a{
+        height: 100%;
+        width:100%;
+
+    .door1{
+        width:100%;
+        height:100%;
+        
+        background: linear-gradient(325deg,#5f4a4a 0,#bd8383 75%);
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        
+            .lips{
+                height:75%;
+                width:75%;
+                background: linear-gradient(325deg,#493F46 0,#7e6d79 75%);
+                position: relative;
+                span{
+                    white-space: nowrap;
+                    position: absolute;
+                    top:-5%;
+                    left: -5%;
+
+
+                }
+                
+                
+            }
+    }
+    .door2{
+        height:100%;
+        width:100%;
+        
+        background: linear-gradient(325deg,#797459 0,#dde290 75%);
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+            .care{
+                height:75%;
+                width:75%;
+                background: linear-gradient(325deg,#a19865 0,#878875 75%);
+                z-index: 1;
+                position: relative;
+                span{
+                    white-space: nowrap;
+                    position: absolute;
+                    bottom: -5%;
+                    right: -5%;
+                    text-align: end;
+
+
+                }
+
+            }
+
+    }
+}
+}
+
+@media screen and(max-width:767px){
+    .open{
+        flex-direction: column;
+        a{
+            .door1{
+                align-items: flex-end;
+                
+                justify-content: center;
+        
+            }
+            .door2{
+        
+                align-items: flex-start;
+                
+                justify-content: center;
+        
+            }
+        }
+        
+    }
+    
+}
