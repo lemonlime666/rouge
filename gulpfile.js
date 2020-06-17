@@ -158,7 +158,7 @@ gulp.task('go', function () {
 gulp.task('gojs', function () {
     //js move
     return gulp.src('./dev/js/*.js')//來源打包
-     .pipe(concat('main.js'))
+    .pipe(concat('main.js'))
     .pipe(gulp.dest('dest/js'));//目的地
 });
 
@@ -170,12 +170,12 @@ gulp.task('goimg',function(){
 })
 
 gulp.task('live',function(){
-    // browserSync.init({
-    //     server:{
-    //         baseDir:'./dest',
-    //         index:'index.html'
-    //     }
-    // });
+    browserSync.init({
+        server:{
+            baseDir:'./dest',
+            index:'index.html'
+        }
+    });
     gulp.watch(['./dev/*.html' ,'./dev/**/*.html','./dev/css/*.css'], ['go']).on('change',reload);
     gulp.watch('./dev/js/*.js',['gojs']).on('change',reload);
     gulp.watch('./dev/sass/**/*.scss',['go']).on('change',reload);
