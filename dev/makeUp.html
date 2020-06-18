@@ -5,17 +5,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Make UP</title>
-    <link rel="stylesheet" href="./css/makeUp.css">
+    <link rel="stylesheet" href="./css/main.css">
     <link
         href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&family=Noto+Serif+TC:wght@200;300;400;500;600;700;900&display=swap"
         rel="stylesheet">
     <link
         href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Nunito+Sans:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="./css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="./js/main.js"></script>
 </head>
 <body>
+@@include("./app/header.html")
 <section class="M_background">
     <p class="M_bgf">ROUGE</p>
     <div class="M_line"></div>
@@ -26,15 +27,15 @@
                 <button class="M_opt" id="M_lipColor">LIP COLOR</button>
             </div>
             <div class="M_option">
-                <button class="M_btn" id="M_chooseModel"><img src="./images/model/model01-hei-res-non.png" alt=""
+                <button class="M_btn" id="M_chooseModel"><img src="./image/model/model01-hei-res-non.png" alt=""
                         style="width: 60%;"></button>
-                <button class="M_btn" id="M_chooseMode2"><img src="./images/model/model02-hei-res-non.png" alt=""
+                <button class="M_btn" id="M_chooseMode2"><img src="./image/model/model02-hei-res-non.png" alt=""
                         style="width: 60%;"></button>
-                <button class="M_btn" id="M_chooseMode3"><img src="./images/model/model03-hei-res-non.png" alt=""
+                <button class="M_btn" id="M_chooseMode3"><img src="./image/model/model03-hei-res-non.png" alt=""
                         style="width: 60%;"></button>
-                <button class="M_btn" id="M_chooseMode4"><img src="./images/model/model04-hei-res-non.png" alt=""
+                <button class="M_btn" id="M_chooseMode4"><img src="./image/model/model04-hei-res-non.png" alt=""
                         style="width: 60%;"></button>
-                <button class="M_btn" id="M_chooseMode5"><img src="./images/model/model05-hei-res-non.png" alt=""
+                <button class="M_btn" id="M_chooseMode5"><img src="./image/model/model05-hei-res-non.png" alt=""
                         style="width: 60%;"></button>
                 <button class="M_btnSec" id="M_chooseMode6">上傳照片</button>
             </div>
@@ -50,7 +51,7 @@
         </div>
         <div class="M_right">
             <h1 class="M_title">水潤光感系列</h1>
-            <img src="./images/product.gif" alt="" style="width: 65%;">
+            <img src="./image/product.gif" alt="" style="width: 65%;">
             <div class="M_content">
                 <h3 class="M_titleSec">完美持色飽和</h3>
                 <p class="M_detail">全新「超細緻亮彩粒子」打造飽和色彩，維持6小時完美唇色。</p>
