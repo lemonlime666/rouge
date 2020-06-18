@@ -168,6 +168,12 @@ gulp.task('goimg',function(){
     .pipe(imagemin())
     .pipe(gulp.dest('dest/image'))
 })
+////壓下層塗
+gulp.task('goimg2',function(){
+    gulp.src('./dev/image/**/*')
+    .pipe(imagemin())
+    .pipe(gulp.dest('dest/image'))
+})
 
 gulp.task('live',function(){
     browserSync.init({
