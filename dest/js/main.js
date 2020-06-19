@@ -28,9 +28,9 @@ $(document).ready(function () {
 	window.addEventListener('resize', () => {
 		let winWidth = window.innerWidth;
 		let resizeTimer = setTimeout(() => {
-			if ($('#menu .menuMid #sidenav').length > 0 && winWidth > 996) {
+			if ($('#menu .menuMid #sidenav') && winWidth > 996) {
 				$('#menu .menuMid #sidenav').remove();
-			} else if ($('#menu .menuMid #sidenav').length == 0 && winWidth <= 996) {
+			} else if ($('#menu .menuMid #sidenav') && winWidth <= 996) {
 				sideNavPlace();
 			}
 		}, 100);
