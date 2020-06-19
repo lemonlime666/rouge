@@ -7,7 +7,7 @@
 
     
     @include desk{
-        font-size: $desk;
+        font-size: $desk !important;
     }
 
     //電腦版
