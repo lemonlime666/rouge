@@ -5530,7 +5530,6 @@ html {
 
 * {
   margin: 0;
-  
   box-sizing: border-box; }
 
 html, body {
@@ -5599,6 +5598,9 @@ html {
   padding: 0;
   margin: 0;
   background: linear-gradient(325deg, #493F46 0, #aa90a2 75%); }
+
+header {
+  z-index: 998; }
 
 #out {
   width: 100vw;
