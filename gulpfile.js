@@ -147,7 +147,7 @@ gulp.task('go', function () {
     .pipe(gulp.dest('./dest'));
 
     //css/sass move + translate + concat
-    return gulp.src(['./dev/sass/**/*.scss'])
+    return gulp.src(['./dev/sass/*.scss','./dev/sass/**/*.scss'])
     .pipe(sass().on('error', sass.logError))//轉譯
     .pipe(concat('main.css'))
     .pipe(gulp.dest('dest/css'));
@@ -158,7 +158,7 @@ gulp.task('go', function () {
 gulp.task('gojs', function () {
     //js move
     return gulp.src('./dev/js/*.js')//來源打包
-     .pipe(concat('main.js'))
+    .pipe(concat('main.js'))
     .pipe(gulp.dest('dest/js'));//目的地
 });
 

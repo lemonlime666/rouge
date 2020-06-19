@@ -36,6 +36,12 @@
 }
 
 //rwd font class
+
+.hugefont{
+    //裝飾性大標題
+    @include rwd-font(60px, 55px,  50px, 45px, 40px, 35px, 30px);
+}
+
 .xxlfont{
     //大標
     //＠include rwd-font(1200以上, 1200, 1024, 996, 768, 576, 400)   帶入6個font的值
