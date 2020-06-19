@@ -4,7 +4,9 @@ body{
     box-sizing: border-box;
     margin: 0;
 }
-
+// p{
+// margin: 1em;
+// }
 section.M_background {
     width: 100%;
     height: 100vh;
@@ -24,6 +26,7 @@ section.M_background {
         -webkit-text-stroke:2px #dadada;
         color: transparent;
         z-index: 1;
+        margin: 0 1em;
     }
     .M_line{
         width: 1rem;
@@ -146,13 +149,16 @@ main.M_makeup {
         color: #292929;
         letter-spacing: .25rem;
         font-family: 'Noto Serif TC', serif;
+        margin: 1em 0;
     }
     h3.M_titleSec{
         letter-spacing: .25rem;
         font-family: 'Noto Serif TC', serif;
+    margin: 1em 0;
     }
     p.M_detail{
         color: #292929;
+        margin: 1em 0;
     }
     .M_content{
         // border: 1px solid red;
