@@ -4751,6 +4751,63 @@
 
 * {
   margin: 0;
+  box-sizing: border-box; }
+
+a {
+  font-size: 0; }
+
+html, body {
+  height: 100%;
+  width: 100%; }
+  html .ani-main, body .ani-main {
+    height: 100%;
+    width: 100%;
+    z-index: 100;
+    display: none;
+    position: fixed; }
+    html .ani-main .ani-left, body .ani-main .ani-left {
+      height: 100%;
+      width: 100%;
+      background-color: rgba(151, 206, 185, 0.575);
+      transform: scale(1);
+      transform-origin: left;
+      animation-name: ani-left;
+      animation-duration: 1.8s; }
+      html .ani-main .ani-left .ani-one, body .ani-main .ani-left .ani-one {
+        width: 100%;
+        animation-delay: 0.2s; }
+        html .ani-main .ani-left .ani-one .ani-two, body .ani-main .ani-left .ani-one .ani-two {
+          width: 100%;
+          animation-delay: 0.4s;
+          background-color: #97ceb9; }
+    html .ani-main .ani-right, body .ani-main .ani-right {
+      height: 100%;
+      width: 100%;
+      background-color: rgba(174, 182, 219, 0.514);
+      transform-origin: right;
+      transform: scale(1);
+      animation-name: ani-left;
+      animation-duration: 1.8s; }
+      html .ani-main .ani-right .ani-one, body .ani-main .ani-right .ani-one {
+        width: 100%;
+        animation-delay: 0.2s; }
+        html .ani-main .ani-right .ani-one .ani-two, body .ani-main .ani-right .ani-one .ani-two {
+          width: 100%;
+          animation-delay: 0.4s;
+          background-color: #aeb6db; }
+
+@keyframes ani-left {
+  from {
+    transform: scaleX(0); }
+  to {
+    transform: scaleX(1); } }
+
+@media all and (max-width: 767px) {
+  .ani-main {
+    flex-direction: column; } }
+
+* {
+  margin: 0;
   box-sizing: border-box;
   padding: 0; }
 
@@ -4761,7 +4818,7 @@ html {
   margin: 0; }
 
 .open-btn {
-  position: fixed;
+  position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -4770,7 +4827,7 @@ html {
   min-width: 300px;
   min-height: 200px;
   background-color: rgba(255, 255, 255, 0.705);
-  z-index: 3;
+  z-index: 2;
   font-size: 0; }
   .open-btn .title {
     position: absolute;
@@ -4804,7 +4861,8 @@ html {
 .open {
   height: 100%;
   width: 100%;
-  display: flex; }
+  display: flex;
+  cursor: pointer; }
   .open a {
     height: 100%;
     width: 100%; }

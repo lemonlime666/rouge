@@ -1,34 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="./css/main.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="./js/main.js"></script> </script>
+    <script src="./js/main.js"></script>
+    </script>
 </head>
+
 <body>
     @@include("./app/header.html")
-    <div class="open-btn">
-        <div class="title">
-            <h2 class="xxlfont">COLLECTION</h2>
-            
-        </div>
-        <div class="lip-btn">
-            <h4 class="mfont">LIPS</h4>
 
-        </div>
-        <div class="care-btn">
-            <h4 class="mfont">CARE</h4>
-
-        </div>
-
-    </div>
     <div class="open">
-        
 
-        <a href="./light.html">
+        <!--動畫-->
+        <div class="ani-main" id="ani-main">
+
+            <div class="ani-left" id="ani-left">
+                <div class="ani-left ani-one">
+                    <div class="ani-left ani-two"></div>
+                </div>
+
+            </div>
+
+            <div class="ani-right" id="ani-right">
+                <div class="ani-right ani-one">
+                    <div class="ani-right ani-two"></div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!--白板-->
+        <div class="open-btn">
+            <div class="title">
+                <h2 class="xxlfont">COLLECTION</h2>
+
+            </div>
+            <div class="lip-btn" id="lip-btn">
+                <h4 class="mfont">LIPS</h4>
+
+            </div>
+            <div class="care-btn" id="care-btn">
+                <h4 class="mfont">CARE</h4>
+
+            </div>
+
+        </div>
+
+        <!--背景-->
+        <a id="door-lips-open">
             <div class="door1">
                 <div class="lips">
                     <span>
@@ -38,14 +63,14 @@
                         <h2 class="xxlfont">
                             THE POWER OF LIPSTICKS
                         </h2>
-                       
+
                     </span>
 
                 </div>
 
             </div>
         </a>
-        <a href="./light.html">
+        <a id="door-care-open">
             <div class="door2">
                 <div class="care">
                     <span>
@@ -55,13 +80,46 @@
                         <h2 class="xxlfont">
                             THE POWER OF LIPSTICKS
                         </h2>
-                       
+
                     </span>
-                    
+
                 </div>
 
             </div>
         </a>
     </div>
+    <script>
+        window.addEventListener("load", function () {
+            let aniMain = document.getElementById("ani-main");
+            let lipDoor = document.getElementById("door-lips-open");
+            let careDoor = document.getElementById("door-care-open");
+            let lipBtn = document.getElementById("lip-btn");
+            let careBtn = document.getElementById("care-btn");
+
+            function openLipDoor() {
+                aniMain.style.display = "flex";
+                setTimeout(function () {
+                    window.location.href = "./light-lips.html"
+
+                }, 2200)
+
+            }
+            function openCareDoor() {
+                aniMain.style.display = "flex";
+                setTimeout(function () {
+                    window.location.href = "./light-care.html"
+
+                }, 2200)
+
+            }
+            lipDoor.addEventListener("click", openLipDoor);
+            lipBtn.addEventListener("click", openLipDoor);
+            careDoor.addEventListener("click", openCareDoor);
+            careBtn.addEventListener("click", openCareDoor);
+
+
+        })
+    </script>
 </body>
+
 </html>
