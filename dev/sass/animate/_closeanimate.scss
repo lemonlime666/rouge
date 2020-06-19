@@ -1,0 +1,115 @@
+*{
+  margin: 0;
+  
+  box-sizing: border-box;
+}
+@mixin fullscreen {
+  height: 100%;
+  width: 100%;
+}
+
+html,body{
+  @include fullscreen;
+  .clo-main{
+    @include fullscreen;
+    display: flex;
+    position: fixed;
+    z-index: 999;
+    .clo-left{
+      height: 100%;
+      width: 100%;
+      
+      
+      background-color: rgba(151, 206, 185, 0.575);
+      transform: scale(1);
+      transform-origin: left;
+      animation-name: clo-left;
+      animation-duration: 2.2s;
+      
+      animation-delay: 0.4s;
+      animation-fill-mode: forwards;
+      z-index: 1;
+      
+        // &::after{
+        //   content: "";
+          
+        //   @extend .clo-left;
+        //   width:100%;
+        //   animation-delay: 0.5s;
+          
+        //   background-color: rgb(151, 206, 185);
+        // }
+        .clo-one{
+          width:100%;
+          animation-delay: 0.2s;
+          z-index: 2;
+          .clo-two{
+            width:100%;
+            animation-delay: 0s;
+            z-index: 3;
+            background-color: rgb(151, 206, 185);
+
+          }
+        }
+      
+      
+
+    }
+    .clo-right{
+      height: 100%;
+      width: 100%;
+      
+      
+      background-color: rgba(174, 182, 219, 0.514);
+      transform-origin: right;
+      transform: scale(1);
+      animation-name: clo-left;
+      animation-duration: 2.2s;
+      animation-delay: 0.4s;
+      animation-fill-mode: forwards;
+      z-index: 1;
+        // &::after{
+        //   content: "";
+          
+        //   @extend .clo-right;
+        //   width:100%;
+        //   animation-delay: 3s;
+          
+        //   background-color: rgb(174, 182, 219);
+
+        // }
+        .clo-one{
+          width:100%;
+          animation-delay: 0.2s;
+          z-index: 2;
+
+          .clo-two{
+            width:100%;
+            animation-delay: 0s;
+            z-index: 3;
+            background-color: rgb(174, 182, 219);
+
+          }
+        }
+      
+      
+    }
+  
+  }
+}
+
+@keyframes clo-left{
+  from{
+    transform: scaleX(1);
+  }
+  to{
+    transform: scaleX(0);
+    
+  }
+}
+
+@media all and(max-width){
+  .clo-main{
+    flex-direction: column;
+  }
+}

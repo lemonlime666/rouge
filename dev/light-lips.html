@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/main.css">
+
+
+
+</head>
+
+<body>
+
+    <div class="clo-main" id="clo-main">
+    
+        <div class="clo-left" id="clo-left">
+          <div class="clo-left clo-one">
+            <div class="clo-left clo-two"></div>
+          </div>
+        
+        </div>
+        
+        <div class="clo-right" id="clo-right">
+          <div class="clo-right clo-one">
+            <div class="clo-right clo-two"></div>
+          </div>
+        
+        </div>
+        
+      </div>
+
+
+
+    <div id="out">
+        <div class="back-text">
+            <h1>GOGOGOOOOOOOOOOOOOOOO</h1>
+            <h1>GOGOGOOOOOOOOOOOOOOOOOOOOOOOOOOOO</h1>
+
+        </div>
+
+
+
+        <div class="out" id="js-wrapper">
+            <div class="main-out" id="js-slideContainer">
+                <div class="main">
+                    @@include("./app/header.html")
+
+                    <div class="content">
+
+
+                        <div class="intro">
+
+                            <div class="intro-text">
+                                <h2>LIPSTICKS</h2>
+                                <p>口紅超持久顯色、潤澤，彈指間打造炫耀完美紅唇唇妝！多款土色唇膏、裸色唇膏、霧面唇膏，唇彩唇妝首選大膽顯色！</p>
+
+                            </div>
+                            <div class="intro-image">
+                                <span>
+
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <div class="contain">
+                            <div class="contain-in">
+
+                                <div class="adv">
+                                    <div class="adv-card">
+
+                                    </div>
+
+                                </div>
+
+                                <div class="cardouter">
+                                    <div class="card bot">
+                                        <img src="./img/1231.webp" alt="" srcset="">
+
+                                        <span>
+                                            <h2>水潤光感系列</h2>
+                                            <p>ROUGE CREAM - SHEER</p>
+                                            <h4>see more</h4>
+                                        </span>
+
+                                    </div>
+
+                                </div>
+                                <div class="cardouter">
+                                    <div class="card top">
+                                        <span>
+
+                                        </span>
+
+                                    </div>
+                                </div>
+
+                                <div class="cardouter">
+                                    <div class="card bot">
+                                        <span>
+
+                                        </span>
+
+                                    </div>
+
+                                </div>
+                                <div class="cardouter">
+                                    <div class="card top">
+                                        <span>
+
+                                        </span>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+
+
+
+
+
+                </div>
+                <footer>
+
+                </footer>
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        window.addEventListener('load',function(){
+
+            setTimeout(function(){
+                let cloMain = document.getElementById("clo-main");
+                cloMain.style.display = "none";
+
+            },2200);
+
+            var outDiv = document.getElementById('out');
+            outDiv.onwheel = function (event) {
+                //禁止事件默认行为（此处禁止鼠标滚轮行为关联到"屏幕滚动条上下移动"行为）  
+                event.preventDefault();
+                //设置鼠标滚轮滚动时屏幕滚动条的移动步长  
+                var step = 50;
+                if (event.deltaY < 0) {
+                    //向上滚动鼠标滚轮，屏幕滚动条左移  
+                    this.scrollLeft -= step;
+                } else {
+
+                    this.scrollLeft += step;
+                }
+            }
+
+        })
+        
+    </script>
+
+</body>
+
+</html>
