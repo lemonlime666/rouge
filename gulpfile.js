@@ -149,7 +149,7 @@ gulp.task('go', function () {
     //css/sass move + translate + concat
     return gulp.src(['./dev/sass/*.scss','./dev/sass/**/*.scss'])
     .pipe(sass().on('error', sass.logError))//轉譯
-    .pipe(concat('main.css'))
+    // .pipe(concat('main.css'))
     .pipe(gulp.dest('dest/css'));
     
 
