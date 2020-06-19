@@ -4,14 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@200;300;400;500;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pagePiling.js/1.5.6/jquery.pagepiling.min.css">
     <link rel="stylesheet" href="./css/main.css">
-    <!-- <script src="../node_modules/jquery/dist/jquery.min.js"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pagePiling.js/1.5.6/jquery.pagepiling.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tilt.js/1.2.1/tilt.jquery.min.js"></script>
 
     <title>Document</title>
 </head>
 <body>
     @@include('./app/header.html')
+    <main id="pagepiling">
+        <div class="section pg1">
+            <div class='layer'>
+                <span>SCROLL</span>
+                <span></span>
+            </div>
+            <div class='mask tryTilt' data-tilt>
+                <span>BE GORGEOUS INSIDE OUT</span>
+            </div>
+        </div>
+        <div class="section pg2"><h2 class="xxlfont">HOME</h2></div>
+        <div class="section pg3"><h2 class="xxlfont">LIPS</h2></div>
+        <div class="section pg4"><h2 class="xxlfont">MAKEUP</h2></div>
+        <div class="section pg5"><h2 class="xxlfont">CARE</h2></div>
+        <div class="section pg6"><h2 class="xxlfont">STEP</h2></div>
+        <div class="section pg7"><h2 class="xxlfont">CARD</h2></div>
+        <div class="section pg8"><h2 class="xxlfont">VOTE</h2></div>
+    </main>
+
     <script src="./js/main.js"></script>
 </body>
 </html>

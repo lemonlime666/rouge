@@ -1,16 +1,46 @@
-$(document).ready(function(e){
-	$('#ham').click(function(){
+// header
+$(document).ready(function () {
+	$('#ham').click(function () {
 		$(this).toggleClass('open');
-		
-		if($('#menu').css('left') == `${0}px`){
+
+		if ($('#menu').css('left') == `${0}px`) {
 			$('#menu').animate({
-				left:`${-100}%`,
+				left: `${-100}%`,
 			}, 500)
-		}else{
+		} else {
 			$('#menu').animate({
-				left:0,
+				left: 0,
 			}, 500)
 		}
 	});
-	
+
+	function sideNavPlace() {
+		let sideNav = $('#sidenav').clone(true);
+		let winWidth = window.innerWidth;
+		if (winWidth <= 996) {
+			$('#menu .menuMid').append(sideNav);
+			sideNav.removeClass('inCorner');
+			sideNav.addClass('inMenu');
+		}
+	}
+	sideNavPlace();
+
+	window.addEventListener('resize', () => {
+		let winWidth = window.innerWidth;
+		let resizeTimer = setTimeout(() => {
+			if ($('#menu .menuMid #sidenav').length > 0 && winWidth > 996) {
+				$('#menu .menuMid #sidenav').remove();
+			} else if ($('#menu .menuMid #sidenav').length == 0 && winWidth <= 996) {
+				sideNavPlace();
+			}
+		}, 100);
+	})
+
+	window.addEventListener('resize', () => {
+		let winWidth = window.innerWidth;
+		console.log(winWidth);
+	})
+
+
 });
+//header
