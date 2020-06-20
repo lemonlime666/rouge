@@ -1042,24 +1042,29 @@ html {
     height: 100%;
     background-image: url(../image/landIMG.jpg);
     background-repeat: no-repeat;
-    background-size: cover; }
+    background-size: cover;
+    position: relative; }
     #pagepiling .pg2 .backCover .contentBox {
-      border: 1px solid red;
       height: 60%;
       position: absolute;
-      top: 0;
-      right: 0;
+      top: 50%;
+      right: 15%;
       display: flex;
       flex-flow: column;
       justify-content: center;
-      align-items: center; }
+      align-items: center;
+      transform: translateY(-55%); }
       #pagepiling .pg2 .backCover .contentBox .filmBox {
-        border: 1px solid red;
         width: 550px;
         height: 350px;
         flex-shrink: 0;
-        transform: translateX(50%);
         position: relative; }
+        #pagepiling .pg2 .backCover .contentBox .filmBox video {
+          width: 100%;
+          position: absolute;
+          top: 50%;
+          left: 0;
+          transform: translateY(-50%); }
         #pagepiling .pg2 .backCover .contentBox .filmBox p:nth-child(1) {
           font-size: 20px;
           font-family: "Noto Serif TC", serif;
@@ -1086,6 +1091,195 @@ html {
           bottom: 0;
           right: -60px;
           transform: translateY(100%); }
+  #pagepiling .pg2 .advert {
+    width: 100%;
+    height: 100%;
+    background-color: #292929;
+    position: relative;
+    overflow: hidden; }
+    #pagepiling .pg2 .advert::before {
+      content: '';
+      width: 0;
+      height: 120%;
+      border: 2px solid rgba(153, 130, 94, 0.2);
+      border-top: 0;
+      border-bottom: 0;
+      position: absolute;
+      top: 0;
+      left: 10%;
+      transform-origin: 0% 100%;
+      z-index: 1; }
+    #pagepiling .pg2 .advert::after {
+      content: "";
+      width: 200px;
+      height: 150px;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      background: #383838;
+      background: linear-gradient(142deg, rgba(56, 56, 56, 0.534051) 0%, rgba(239, 239, 239, 0.9) 75%, rgba(230, 230, 230, 0.8) 100%);
+      clip-path: polygon(100% 0, 0% 100%, 100% 100%); }
+    #pagepiling .pg2 .advert .decoBackSpan {
+      position: absolute;
+      width: 100%;
+      height: 0;
+      border: 2px solid rgba(153, 130, 94, 0.2);
+      top: 70%;
+      right: 0; }
+      #pagepiling .pg2 .advert .decoBackSpan::before {
+        content: "";
+        border: 2px solid rgba(153, 130, 94, 0.2);
+        width: 100px;
+        height: 100px;
+        border-radius: 100%;
+        position: absolute;
+        left: 8%;
+        bottom: -20px; }
+      #pagepiling .pg2 .advert .decoBackSpan::after {
+        content: "";
+        background-color: rgba(90, 76, 55, 0.1);
+        width: 100px;
+        height: 100px;
+        border-radius: 100%;
+        position: absolute;
+        left: 9%;
+        bottom: -10px; }
+    #pagepiling .pg2 .advert .decoCornerSpan {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 250px;
+      height: 180px;
+      background-color: #202020d6;
+      border-radius: 30px 0 0 0; }
+      #pagepiling .pg2 .advert .decoCornerSpan::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        transform: translateY(-50%);
+        border-radius: 100%;
+        width: 100%;
+        height: 15%;
+        background-color: #292929; }
+      #pagepiling .pg2 .advert .decoCornerSpan::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        transform: translateX(-40%);
+        border-radius: 100%;
+        width: 10%;
+        height: 100%;
+        background-color: #292929; }
+    #pagepiling .pg2 .advert .swiper {
+      width: 60%;
+      height: 100%;
+      margin: 0 auto;
+      display: flex;
+      flex-flow: column;
+      justify-content: center;
+      align-items: center;
+      position: relative; }
+      #pagepiling .pg2 .advert .swiper .swiperBox {
+        width: 100%;
+        height: 60%;
+        position: relative;
+        transform: translateY(-20px);
+        display: flex;
+        justify-content: center;
+        align-items: center; }
+        #pagepiling .pg2 .advert .swiper .swiperBox .innerBtn {
+          border: 1px solid;
+          display: block;
+          width: 100px;
+          height: 100px;
+          position: absolute;
+          top: 50%;
+          background: linear-gradient(327.59deg, #38383854 50%, #292929 85%);
+          border: 3px solid rgba(58, 58, 58, 0.05);
+          box-shadow: 4px 6px 12px rgba(0, 0, 0, 0.24), -4px -4px 8px rgba(230, 230, 230, 0.12);
+          border-radius: 20px;
+          font-size: 15px;
+          font-family: "Cormorant Garamond", serif;
+          color: rgba(225, 208, 161, 0.6);
+          font-weight: 400;
+          letter-spacing: 1px;
+          word-spacing: 3px;
+          outline: 0; }
+          #pagepiling .pg2 .advert .swiper .swiperBox .innerBtn:nth-child(1) {
+            left: 0;
+            transform: translateX(-100%) translateY(-50%); }
+          #pagepiling .pg2 .advert .swiper .swiperBox .innerBtn:nth-child(2) {
+            right: 0;
+            transform: translateX(100%) translateY(-50%); }
+          #pagepiling .pg2 .advert .swiper .swiperBox .innerBtn:hover {
+            color: #EAC669;
+            transition: color .4s; }
+        #pagepiling .pg2 .advert .swiper .swiperBox .swiperimgBox {
+          width: 90%;
+          height: 100%;
+          display: flex;
+          flex-flow: row nowrap;
+          overflow: hidden; }
+          #pagepiling .pg2 .advert .swiper .swiperBox .swiperimgBox::after {
+            content: '';
+            width: 90%;
+            height: 100%;
+            border: 5px double rgba(153, 130, 94, 0.5);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translateY(-50%) translateX(-50%);
+            z-index: 1; }
+          #pagepiling .pg2 .advert .swiper .swiperBox .swiperimgBox .swiperimgContent {
+            width: 100%;
+            height: 100%;
+            flex-shrink: 0;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2; }
+            #pagepiling .pg2 .advert .swiper .swiperBox .swiperimgBox .swiperimgContent .swiperimg {
+              width: 100%;
+              height: auto;
+              opacity: .5; }
+        #pagepiling .pg2 .advert .swiper .swiperBox #swiperPage {
+          height: 60px;
+          position: absolute;
+          bottom: -20px;
+          right: 50%;
+          transform: translateX(50%) translateY(100%);
+          display: flex;
+          flex-flow: row nowrap;
+          justify-content: center;
+          align-items: center; }
+          #pagepiling .pg2 .advert .swiper .swiperBox #swiperPage .swiperPageCount {
+            font-size: 25px;
+            font-family: "Cormorant Garamond", serif;
+            color: rgba(225, 208, 161, 0.6);
+            font-weight: 400;
+            letter-spacing: 1px;
+            word-spacing: 3px;
+            background-color: #292929;
+            width: 40px;
+            height: 40px;
+            border: 0;
+            outline: 0;
+            background: linear-gradient(327.59deg, #38383854 50%, #292929 85%);
+            border: 3px solid rgba(58, 58, 58, 0.05);
+            box-shadow: 4px 6px 12px rgba(0, 0, 0, 0.24), -4px -4px 8px rgba(230, 230, 230, 0.12);
+            border-radius: 100%;
+            margin-right: 10px; }
+            #pagepiling .pg2 .advert .swiper .swiperBox #swiperPage .swiperPageCount:last-child {
+              margin-right: 0; }
+            #pagepiling .pg2 .advert .swiper .swiperBox #swiperPage .swiperPageCount:hover {
+              color: #EAC669;
+              transition: color .4s; }
+  #pagepiling .pg2 .activeAdvert {
+    color: #EAC669 !important;
+    text-shadow: 0px 0px 5px #e1d0a1 !important; }
 
 #pagepiling .pg3 {
   background-color: #000; }
