@@ -452,6 +452,7 @@
 
     .pg3 {
         background-color: $white;
+        position: relative;
 
         .sec3back{
             position: absolute;
@@ -460,6 +461,16 @@
             width: 100%;
             height: 88%;
             background-color: rgba($rose,.7);
+            display: none;
+        }
+
+        .femiModel{
+            border: 1px solid red;
+            position: absolute;
+            top:0;
+            left: 0;
+            height: 30%;
+            width: 30%;
         }
     }
 
