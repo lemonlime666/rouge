@@ -1,10 +1,5 @@
 node_modules
 dest
-<<<<<<< HEAD
 dev/image
 
 
-=======
-.vscode
-dev/image
->>>>>>> wade
