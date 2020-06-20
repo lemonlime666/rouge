@@ -1,4 +1,5 @@
 node_modules
 dest
-.vscode
-dest
+dev/image
+
+

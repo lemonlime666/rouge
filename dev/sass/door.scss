@@ -1,8 +1,8 @@
 @import "./mixin/fontStyle";
+@import "./animate/doonanimate";
 *{
     margin: 0;
     box-sizing: border-box;
-    font-size: 0;
     padding: 0;
 }
 
@@ -16,7 +16,7 @@ html {
   
 }
 .open-btn{
-    position: fixed;
+    position: absolute;
     top:50%;
     left:50%;
     transform: translate(-50%, -50%);
@@ -25,7 +25,8 @@ html {
     min-width: 300px;
     min-height: 200px;
     background-color: rgba(255, 255, 255, 0.705);
-    z-index: 3;
+    z-index: 2;
+    font-size: 0;
     
     
     .title{
@@ -80,6 +81,7 @@ html {
     height: 100%;
     width: 100%;
     display: flex;
+    cursor: pointer;
 
     
     
@@ -118,14 +120,14 @@ html {
         height:100%;
         width:100%;
         
-        background: linear-gradient(325deg,#797459 0,#dde290 75%);
+        background: rgba(232, 169, 112, 0.5);
         display: flex;
         align-items: center;
         justify-content: flex-start;
             .care{
                 height:75%;
                 width:75%;
-                background: rgba(232, 169, 112, 0.5);
+                background: rgba(175, 128, 87, 0.5);
                 z-index: 1;
                 position: relative;
                 span{

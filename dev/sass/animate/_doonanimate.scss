@@ -1,0 +1,105 @@
+*{
+  margin: 0;
+  
+  box-sizing: border-box;
+}
+@mixin fullscreen {
+  height: 100%;
+  width: 100%;
+}
+a{
+  font-size: 0;
+
+}
+html,body{
+  @include fullscreen;
+  .ani-main{
+    @include fullscreen;
+    z-index: 100;
+    display: none;
+    position: fixed;
+    .ani-left{
+      height: 100%;
+      width: 100%;
+      
+      
+      background-color: rgba(151, 206, 185, 0.575);
+      transform: scale(1);
+      transform-origin: left;
+      animation-name: ani-left;
+      animation-duration: 1.8s;
+        // &::after{
+        //   content: "";
+          
+        //   @extend .ani-left;
+        //   width:100%;
+        //   animation-delay: 0.5s;
+          
+        //   background-color: rgb(151, 206, 185);
+        // }
+        .ani-one{
+          width:100%;
+          animation-delay: 0.2s;
+          .ani-two{
+            width:100%;
+            animation-delay: 0.4s;
+            background-color: rgb(151, 206, 185);
+
+          }
+        }
+      
+      
+
+    }
+    .ani-right{
+      height: 100%;
+      width: 100%;
+      
+      
+      background-color: rgba(174, 182, 219, 0.514);
+      transform-origin: right;
+      transform: scale(1);
+      animation-name: ani-left;
+      animation-duration: 1.8s;
+        // &::after{
+        //   content: "";
+          
+        //   @extend .ani-right;
+        //   width:100%;
+        //   animation-delay: 3s;
+          
+        //   background-color: rgb(174, 182, 219);
+
+        // }
+        .ani-one{
+          width:100%;
+          animation-delay: 0.2s;
+
+          .ani-two{
+            width:100%;
+            animation-delay: 0.4s;
+            background-color: rgb(174, 182, 219);
+
+          }
+        }
+      
+      
+    }
+  
+  }
+}
+
+@keyframes ani-left{
+  from{
+    transform: scaleX(0);
+  }
+  to{
+    transform: scaleX(1);
+  }
+}
+
+@media all and(max-width: 767px){
+  .ani-main{
+    flex-direction: column;
+  }
+}

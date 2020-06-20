@@ -149,7 +149,7 @@ gulp.task('go', function () {
     //css/sass move + translate + concat
     return gulp.src(['./dev/sass/*.scss','./dev/sass/**/*.scss'])
     .pipe(sass().on('error', sass.logError))//轉譯
-    .pipe(concat('main.css'))
+    // .pipe(concat('main.css'))
     .pipe(gulp.dest('dest/css'));
     
 
@@ -165,6 +165,12 @@ gulp.task('gojs', function () {
 //壓圖
 gulp.task('goimg',function(){
     gulp.src('./dev/image/*')
+    .pipe(imagemin())
+    .pipe(gulp.dest('dest/image'))
+})
+////壓下層塗
+gulp.task('goimg2',function(){
+    gulp.src('./dev/image/**/*')
     .pipe(imagemin())
     .pipe(gulp.dest('dest/image'))
 })
