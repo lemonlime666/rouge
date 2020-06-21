@@ -5,10 +5,14 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "go":"gulp go",
-    "gojs":"gulp gojs",
-    "goimg":"gulp goimg",
+<<<<<<< HEAD
+    "live": "gulp live",
+    "img":"gulp goimg",
+    "js":"gulp gojs",
+    "go":"gulp go"
+=======
     "live": "gulp live"
+>>>>>>> parent of b4a7d0d... adPage
   },
   "keywords": [],
   "author": "",

@@ -1,5 +1,7 @@
 node_modules
 dest
+.vscode
 dev/image
-
-
+＊.jpg
+*.png
+*.mp4
