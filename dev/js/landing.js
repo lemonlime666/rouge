@@ -160,5 +160,56 @@ window.addEventListener('load', function () {
             }
         }
     }
-    
+
+    //pg4Change1
+    function pg4Change1(){
+        for(i=1; i <= $('.pg4ColorBox1 span').length; i++){
+            $(`.pg4ColorBox1 span:nth-child(${i})`).click(pg4ChangeContent1(i));
+        }
+    }
+    pg4Change1();
+
+    function pg4ChangeContent1(i){
+        return function(){
+            $('.pg4ColorBox1 span').removeClass('stickClick');
+            $('.pg4ColorBox2 span').removeClass('stickClick');
+            $(`.pg4ColorBox1 span:nth-child(${i})`).toggleClass('stickClick');
+
+            if(i==1){
+                $('.pg4LeftOutsdie img').attr('src','image/lipModel1.png');
+            }else if(i==2){
+                $('.pg4LeftOutsdie img').attr('src','image/lipModel2.png');
+            }else if(i==3){
+                $('.pg4LeftOutsdie img').attr('src','image/lipModel3.png');
+            }else if(i==4){
+                $('.pg4LeftOutsdie img').attr('src','image/lipModel4.png');
+            }
+        }
+    }
+
+    //pg4Change2
+    function pg4Change2(){
+        for(i=1; i <= $('.pg4ColorBox2 span').length; i++){
+            $(`.pg4ColorBox2 span:nth-child(${i})`).click(pg4ChangeContent2(i));
+        }
+    }
+    pg4Change2();
+
+    function pg4ChangeContent2(i){
+        return function(){
+            $('.pg4ColorBox1 span').removeClass('stickClick');
+            $('.pg4ColorBox2 span').removeClass('stickClick');
+            $(`.pg4ColorBox2 span:nth-child(${i})`).toggleClass('stickClick');
+
+            if(i==1){
+                $('.pg4LeftOutsdie img').attr('src','image/lipModel1.png');
+            }else if(i==2){
+                $('.pg4LeftOutsdie img').attr('src','image/lipModel2.png');
+            }else if(i==3){
+                $('.pg4LeftOutsdie img').attr('src','image/lipModel3.png');
+            }else if(i==4){
+                $('.pg4LeftOutsdie img').attr('src','image/lipModel4.png');
+            }
+        }
+    }
 });
