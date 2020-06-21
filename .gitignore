@@ -3,5 +3,5 @@ dest
 .vscode
 dev/image
 ＊.jpg
-*.png
-*.mp4
+＊.png
+＊.mp4
