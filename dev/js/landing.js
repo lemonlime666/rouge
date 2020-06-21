@@ -177,12 +177,16 @@ window.addEventListener('load', function () {
 
             if(i==1){
                 $('.pg4LeftOutsdie img').attr('src','image/lipModel1.png');
+                $('.pg4colorGuide img').attr('src', 'image/stick01.png');
             }else if(i==2){
                 $('.pg4LeftOutsdie img').attr('src','image/lipModel2.png');
+                $('.pg4colorGuide img').attr('src', 'image/stick02.png');
             }else if(i==3){
                 $('.pg4LeftOutsdie img').attr('src','image/lipModel3.png');
+                $('.pg4colorGuide img').attr('src', 'image/stick03.png');
             }else if(i==4){
                 $('.pg4LeftOutsdie img').attr('src','image/lipModel4.png');
+                $('.pg4colorGuide img').attr('src', 'image/stick04.png');
             }
         }
     }
@@ -203,13 +207,54 @@ window.addEventListener('load', function () {
 
             if(i==1){
                 $('.pg4LeftOutsdie img').attr('src','image/lipModel1.png');
+                $('.pg4colorGuide img').attr('src', 'image/stick01.png');
             }else if(i==2){
                 $('.pg4LeftOutsdie img').attr('src','image/lipModel2.png');
+                $('.pg4colorGuide img').attr('src', 'image/stick02.png');
             }else if(i==3){
                 $('.pg4LeftOutsdie img').attr('src','image/lipModel3.png');
+                $('.pg4colorGuide img').attr('src', 'image/stick03.png');
             }else if(i==4){
                 $('.pg4LeftOutsdie img').attr('src','image/lipModel4.png');
+                $('.pg4colorGuide img').attr('src', 'image/stick04.png');
             }
         }
     }
+
+    //pg5
+    $('.bookFront1').click(function(e){
+        e.preventDefault;
+        $('.bookRight').css({
+            transform:'rotateY(-180deg)',
+        })
+    })
+    $('.bookBack1').click(function(e){
+        e.preventDefault;
+        $('.bookRight').css({
+            transform:'rotateY(0deg)',
+        })
+    })
+
+    function forBook(){
+        let bookPage = 1;
+    $('#bookPrev').click(function(){
+        if(bookPage>1){
+            $('.bookRight').css({
+                transform:'rotateY(0deg)',
+            })
+            bookPage--;
+            $('#bookPage').text(bookPage);
+        }
+    })
+    $('#bookNext').click(function(){
+        if(bookPage<$('.bookPage').length-1){
+            $('.bookRight').css({
+                transform:'rotateY(-180deg)',
+            })
+            bookPage++;
+            $('#bookPage').text(bookPage);
+        }
+    })
+    }
+    forBook();
 });
