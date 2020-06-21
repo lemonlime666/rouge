@@ -5,10 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "go":"gulp go",
-    "gojs":"gulp gojs",
-    "goimg":"gulp goimg",
-    "live": "gulp live"
+    "live": "gulp live",
+    "img":"gulp goimg",
+    "js":"gulp gojs",
+    "go":"gulp go"
   },
   "keywords": [],
   "author": "",
