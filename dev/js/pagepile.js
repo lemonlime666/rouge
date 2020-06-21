@@ -3,7 +3,7 @@ $(document).ready(function () {
     $('#pagepiling').pagepiling({
         menu: null,
         direction: 'horizontal',
-        scrollingSpeed: 800,
+        scrollingSpeed: 1200,
         loopBottom: true,
         navigation: {
             'textColor': '#efefef',

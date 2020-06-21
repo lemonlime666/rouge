@@ -8,9 +8,10 @@ window.addEventListener('load', function () {
     for (i = 0; i < swiperImg.length; i++) {
         let swiperPage = document.createElement('button');
         swiperPage.className = 'swiperPageCount';
-        $('.swiperPageCount:nth-child(1)').addClass('activeAdvert');
         swiperPage.innerText = i + 1;
         swiperPageBox.appendChild(swiperPage);
+        $('.swiperPageCount:nth-child(1)').addClass('activeAdvert');
+        $(`.swiperPageCount:nth-child(${i+1})`).addClass('mfont');
     }
 
     //changeSwiper
@@ -68,7 +69,7 @@ window.addEventListener('load', function () {
         }
 
         let direction = 0;
-        let autoSwipe = setInterval(autoSwipeCount,5000);
+        let autoSwipe = setInterval(autoSwipeCount,6000);
         function autoSwipeCount(){
             if (direction == 0) { //正走
                 if (counter < $('.swiperimgContent').length) {
