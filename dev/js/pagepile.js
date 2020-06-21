@@ -4,10 +4,14 @@ $(document).ready(function () {
         menu: null,
         direction: 'horizontal',
 <<<<<<< HEAD
+<<<<<<< HEAD
         scrollingSpeed: 1200,
 =======
         scrollingSpeed: 100,
 >>>>>>> parent of b4a7d0d... adPage
+=======
+        scrollingSpeed: 1200,
+>>>>>>> wade
         loopBottom: true,
         navigation: {
             'textColor': '#efefef',
