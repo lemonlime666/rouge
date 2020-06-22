@@ -245,6 +245,7 @@
     flex-flow: row;
     background-color: #1d1d1d;
     z-index: 97;
+    display: none;
 
     .menuLeft {
         @include font-style(60px, $CG, $cofe, 600) {

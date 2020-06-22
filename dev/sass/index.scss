@@ -2,7 +2,7 @@
 
 #pagepiling {
     .pg1 {
-        display: none;
+        // display: none;
 
         .layer {
             position: absolute;
@@ -138,7 +138,6 @@
         background-color: $grey5;
 
         .backCover {
-            // display: none;
             position: relative;
             width: 100%;
             height: 100%;
@@ -161,7 +160,7 @@
 
                 .filmBox {
                     // $vedioH: 350px / 2;
-                    border: 1px solid red;
+                    // border: 1px solid red;
                     width: 550px;
                     height: 350px;
                     flex-shrink: 0;
@@ -190,11 +189,12 @@
                         transform: translateY(100%);
                     }
 
-                    video{
+                    video {
                         position: absolute;
-                        top:50%;
+                        top: 50%;
                         transform: translateY(-50%);
                         width: 100%;
+                        opacity: .9;
                     }
                 }
             }
@@ -385,11 +385,12 @@
                             align-items: center;
                             z-index: 2;
 
-                            a{
-                                &:hover{
-                                    background-color: rgba($lightGold,.2);
+                            a {
+                                &:hover {
+                                    background-color: rgba($lightGold, .2);
                                     transition: background-color .3s;
                                 }
+
                                 .swiperimg {
                                     width: 100%;
                                     height: auto;
@@ -424,7 +425,6 @@
                                 box-shadow: 4px 6px 12px rgba(0, 0, 0, 0.24), -4px -4px 8px rgba(230, 230, 230, 0.1);
                                 border-radius: 100%;
                                 margin-right: 15px;
-                                
 
 
                                 &:last-child {
@@ -450,7 +450,7 @@
     }
 
     .pg3 {
-        // display:none;
+        // display: none;
         background-color: $white;
 
         &::before {
@@ -724,22 +724,17 @@
                         border: 0;
                         border-radius: 8px;
                         padding: 10px 60px;
+
                         @include font-style(16px, $notoSerif) {}
+
                         align-self: start;
                         margin: 60px 0 0 60px;
 
-                        &:hover{
+                        &:hover {
                             cursor: pointer;
-                            background-color: lighten($rose,8);
+                            background-color: lighten($rose, 8);
                             transition: background-color .35s;
                         }
-                        
-                        &:hover{
-                            cursor: pointer;
-                            background-color: lighten($rose,8);
-                            transition: background-color .35s;
-                        }
-                        
                     }
                 }
 
@@ -786,12 +781,13 @@
 
 
     .pg4 {
-        background-color: darken(rgb(20, 32, 56),8);
+        background-color: darken(rgb(20, 32, 56), 8);
+        // display: none;
 
-        .pg4Back{
+        .pg4Back {
             position: absolute;
-            top:0;
-            left:0;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
             border: 1px solid red;
@@ -799,33 +795,601 @@
             opacity: .07;
         }
 
-        .pg4MainBox{
-            border: 1px solid red;
+        .pg4MainBox {
+            border: 6px double rgba($cofe, .2);
             width: 80%;
-            height:70%;
+            height: 70%;
             margin: 0 auto;
             display: flex;
             flex-flow: row nowrap;
 
-            .contentLeft{
-                border: 1px solid gold;
+            .contentLeft {
+                // border: 1px solid gold;
                 width: 50%;
-                height:100%;
+                height: 100%;
+                position: relative;
+
+                .pg4LeftOutsdie {
+                    border: 1px solid rgba($white, .5);
+                    width: 90%;
+                    height: 85%;
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+
+                    .pg4LeftInside {
+                        background-color: rgba($white, .4);
+                        width: 90%;
+                        height: 90%;
+                        position: absolute;
+                        top: 50%;
+                        right: 0;
+                        transform: translateY(-50%);
+                    }
+
+                    img {
+                        position: absolute;
+                        top: 0;
+                        right: 50%;
+                        transform: translateX(50%);
+                        width: auto;
+                        height: 100%;
+                    }
+                }
+
+                button {
+                    border: 4px double rgba($gold, .8);
+                    position: absolute;
+                    bottom: -2%;
+                    right: 5%;
+                    background-color: transparent;
+                    outline: 0;
+
+                    a {
+                        @include font-style() {}
+
+                        text-decoration: none;
+                        display: block;
+                        width: 100%;
+                        height: 100%;
+                        color: $lightGold;
+                        padding: 12px 80px;
+                        position: relative;
+                        overflow: hidden;
+
+                        &::before {
+                            content: '';
+                            // border: 1px solid red;
+                            width: 0%;
+                            height: 100%;
+                            // background-color: lighten(rgba($rose, .4), 20);
+                            position: absolute;
+                            left: 0;
+                            top: 0;
+                            z-index: -1;
+                            background-image: url('../image/btn.png');
+                            background-size: cover;
+                            background-repeat: no-repeat;
+                            background-position: center;
+                        }
+
+                        &:hover {
+                            color: $gold;
+                            transition: color .8s;
+
+                            &::before {
+                                width: 100%;
+                                transition: width .3s;
+                            }
+                        }
+                    }
+                }
             }
-            .contentRight{
-                border: 1px solid gold;
+
+            .contentRight {
+                // border: 1px solid gold;
                 width: 50%;
-                height:100%;
+                height: 100%;
+                position: relative;
+
+                .pg4RightBack {
+                    position: absolute;
+                    top: 40px;
+                    left: 0;
+                    background-color: lighten(rgba($skin, .8), 5);
+                    width: 90%;
+                    height: 100%;
+
+                    p:first-of-type {
+                        @include font-style() {}
+
+                        position: absolute;
+                        top:-30px;
+                        right:120px;
+                        opacity: .7;
+                    }
+
+                    p:nth-of-type(2) {
+                        @include font-style() {
+                            writing-mode: vertical-lr;
+                        }
+
+                        position: absolute;
+                        top:0;
+                        right:40px;
+                        font-weight: 700;
+                        opacity: .8;
+                    }
+
+                    .pg4ColorBox {
+                        // border: 1px solid red;
+                        width: 80%;
+                        height: 35%;
+                        position: absolute;
+                        left: 40px;
+                        bottom: 8%;
+                        display: flex;
+                        flex-flow: column nowrap;
+                        justify-content: center;
+                        align-items: center;
+
+                        div {
+                            width: 90%;
+                            height: 50%;
+                            display: flex;
+                            flex-flow: row nowrap;
+                            justify-content: center;
+                            align-items: center;
+                            position: relative;
+
+                            &:first-of-type {
+                                align-self: flex-start;
+                            }
+
+                            &:nth-of-type(2) {
+                                align-self: flex-end;
+                            }
+
+                            span {
+                                display: inline-block;
+                                // border: 1px solid red;
+                                width: 20%;
+                                height: 100%;
+                                position: relative;
+                                cursor: pointer;
+                                border-bottom: 4px double rgba($cofe, .4);
+
+                                img {
+                                    width: 40%;
+                                    position: absolute;
+                                    top: 50%;
+                                    left: 50%;
+                                    transform: translateX(-50%) translateY(-50%);
+                                }
+
+                            }
+
+                            .stickClick {
+                                border: 4px double rgba($cofe, .4);
+                            }
+                        }
+                    }
+
+                    .pg4colorGuide {
+                        border: 4px dotted rgba($lightGold, .1);
+                        width: 60%;
+                        height: 40%;
+                        position: absolute;
+                        left: 10%;
+                        top: 10%;
+
+                        &::before {
+                            content: '';
+                            position: absolute;
+                            width: 100%;
+                            height: 100%;
+                            top: 10px;
+                            left: 10px;
+                            border: 4px double rgba($cofe, 1);
+                        }
+
+                        img {
+                            width: 100%;
+                            position: absolute;
+                            left: 50%;
+                            top: 50%;
+                            transform: translateX(-50%) translateY(-50%);
+                        }
+                    }
+
+                }
             }
         }
     }
 
     .pg5 {
-        background-color: $milkt;
+        // display: none;
+        background-color: darken($milkt, 8);
+        overflow: hidden;
 
-        h2 {
-            @include font-style() {}
+        &::before{
+            content: '';
+            position: absolute;
+            top:50%;
+            left: 50%;
+            transform:translateX(-50%) translateY(-50%);
+            width: 100%;
+            height: 0;
+            border: 10px double rgba($white, 0.1);
         }
+
+        .pg5back {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('../image/back3.png');
+            background-size: contain;
+            opacity: .1;
+        }
+
+        .pg5main {
+            // border: 1px solid red;
+            width: 100%;
+            height: 80%;
+            position: relative;
+            top: 40px;
+            display: flex;
+            flex-flow: column;
+            justify-content: center;
+            align-items: center;
+
+            .pg5Book {
+                // border: 1px solid gold;
+                width: 75%;
+                height: 85%;
+                position: relative;
+                perspective: 2000px;
+
+                &::before{
+                    content: '';
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translateX(-50%) translateY(-50%);
+                    width: 105%;
+                    height: 105%;
+                    border: 4px double rgba($lightGold, .5);
+                }
+
+                .bookLeft {
+                    // display: none;
+                    width: 50%;
+                    height: 100%;
+                    background-color: $cofe;
+                    box-shadow: 20px 10px 10px rgba($grey3, .4);
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+
+                    h2{
+                        @include font-style(){}
+                        opacity: .8;
+                        border-bottom: 1px solid rgba($white, .8);
+                        width: 90%;
+                        position: absolute;
+                        top: -30px;
+                        right: 0;
+                        z-index: 10;
+                    }
+
+                    .bookLeftImg1{
+                        width: 35%;
+                        height: 45%;
+                        // border: 1px solid red;
+                        position: absolute;
+                        top: 15%;
+                        left: 10%;
+
+                        img{
+                            width: 100%;
+                        }
+                    }
+                    .bookLeftImg2{
+                        width: 45%;
+                        height: 35%;
+                        // border: 1px solid red;
+                        position: absolute;
+                        bottom: 4%;
+                        right: 10%;
+
+                        img{
+                            width: 100%;
+                        }
+                    }
+                    .bookLeftText{
+                        width: 45%;
+                        height: 45%;
+                        // border: 1px solid red;
+                        position: absolute;
+                        top: 10%;
+                        right: 10%;
+
+                        h3{
+                            @include font-style(){}
+                            opacity: .8;
+                            border-bottom: 1px solid rgba($white, .6);
+                            // padding-left: 20px;
+                            text-align: center;
+                        }
+                        p{
+                            @include font-style(){}
+                            opacity: .8;
+                            font-weight: 200;
+                            margin-top: 10px;
+                            padding: 0 20px 0 40px;
+                        }
+                    }
+                }
+
+                .bookRight {
+                    width: 50%;
+                    height: 100%;
+                    background-color: $grey1;
+                    box-shadow: 8px 10px 10px rgba($grey3, .4);
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    z-index: 2;
+                    transform-style: preserve-3d;
+                    transform-origin: 0% 50%;
+                    transition: transform 1.5s;
+                }
+
+                .bookFront1 {
+                    width: 100%;
+                    height: 100%;
+                    background-color: $white;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    transform-style: preserve-3d;
+                    backface-visibility: hidden;
+                    box-shadow: inset 20px 0px 10px rgba($grey3, .2);
+
+                    .bookVid{
+                        // border: 1px solid red;
+                        width: 80%;
+                        height: 50%;
+                        position: absolute;
+                        top:50%;
+                        left: 50%;
+                        transform: translateX(-50%) translateY(-50%);
+
+                        video{
+                            position: absolute;
+                            top: 0;
+                            left: 50%;
+                            transform: translateX(-50%);
+                            width: 100%;
+                            opacity: .8;
+                        }
+                    }
+                }
+
+                .bookBack1 {
+                    width: 100%;
+                    height: 100%;
+                    background-color: $cofe;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    transform-style: preserve-3d;
+                    backface-visibility: hidden;
+                    transform: rotateY(180deg);
+
+                    .rightBackImg1{
+                        width: 35%;
+                        height: 45%;
+                        // border: 1px solid red;
+                        position: absolute;
+                        top: 15%;
+                        left: 10%;
+
+                        img{
+                            position: absolute;
+                            bottom: 0;
+                            right: 0;
+                            height: 100%;
+                        }
+                    }
+                    .rightBackImg2{
+                        width: 45%;
+                        height: 35%;
+                        // border: 1px solid red;
+                        position: absolute;
+                        bottom: 5%;
+                        right: 10%;
+
+                        img{
+                            width: 100%;
+                        }
+                    }
+                    .rightBackText{
+                        width: 45%;
+                        height: 45%;
+                        // border: 1px solid red;
+                        position: absolute;
+                        top: 10%;
+                        right: 10%;
+
+                        h3{
+                            @include font-style(){}
+                            opacity: .8;
+                            border-bottom: 1px solid rgba($white, .6);
+                            text-align: center;
+                        }
+                        p{
+                            @include font-style(){}
+                            opacity: .8;
+                            font-weight: 200;
+                            margin-top: 10px;
+                            padding: 0 20px 0 40px;
+                        }
+                    }
+                }
+
+                .bookLast{
+                    width: 50%;
+                    height: 100%;
+                    background-color: rgba(white, .6);
+                    box-shadow: 8px 10px 10px rgba($grey3, .4);
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    
+                    h2{
+                        @include font-style(){}
+                        color: $cofe;
+                        position: absolute;
+                        top: 30px;
+                        width: 100%;
+                        z-index: 10;
+                        text-align: center;
+                    }
+
+                    .bookVid{
+                        // border: 1px solid red;
+                        width: 80%;
+                        height: 50%;
+                        position: absolute;
+                        top:50%;
+                        left: 50%;
+                        transform: translateX(-50%) translateY(-50%);
+
+                        video{
+                            position: absolute;
+                            top: 0;
+                            left: 50%;
+                            transform: translateX(-50%);
+                            width: 100%;
+                            opacity: .8;
+                        }
+                    }
+                }
+
+                button{
+                    border: 2px solid rgba($lightGold, .5);
+                    position: absolute;
+                    bottom: 50px;
+                    right:25%;
+                    transform: translateX(50%);
+                    z-index: 10;
+                    background-color: transparent;
+
+                    a{
+                        border:2px solid $cofe;
+                        text-decoration: none;
+                        @include font-style(){}
+                        letter-spacing: 3px;
+                        color: $cofe;
+                        display: block;
+                        width: 100%;
+                        height: 100%;
+                        padding: 10px 60px;
+
+                        &:hover{
+                            background-color: $lightGold;
+                            color: white;
+                            transition: all .3s;
+                        }
+                    }
+                }
+            }
+
+            .pg5BookBtn {
+                // border: 1px solid green;
+                width: 60%;
+                height: 10%;
+                position: relative;
+                margin-top: 20px;
+
+                button{
+                    border: 0;
+                    width: 45%;
+                    height: 100%;
+                    background-color: transparent;
+                    cursor: pointer;
+                    outline: 0;
+
+                    &:hover{
+                        background-color: rgba($lightGold, .3);
+                        transition: background-color .3s;
+                    }
+
+                    &::before{
+                        content: '';
+                        position: absolute;
+                        top: 50%;
+                        transform: translateY(-50%);
+                        left: 0;
+                        width: 100%;
+                        height: 0px;
+                        border-bottom: 1px solid rgba($white, .6);
+                    }
+                }
+
+                #bookPrev{
+                    position: absolute;
+                    left: 0;
+
+                    &::after{
+                        content: '';
+                        width: 0px;
+                        height: 20px;
+                        position: absolute;
+                        top:50%;
+                        left: 0;
+                        transform: translateY(-100%) rotateZ(45deg);
+                        transform-origin: 0% 100%;
+                        border-right: 1px solid rgba($white, .6);
+                    }
+                }
+                #bookNext{
+                    position: absolute;
+                    right: 0;
+
+                    &::after{
+                        content: '';
+                        width: 0px;
+                        height: 20px;
+                        position: absolute;
+                        top:50%;
+                        right: 0;
+                        transform: rotateZ(45deg);
+                        transform-origin: 0% 0%;
+                        border-right: 1px solid rgba($white, .6);
+                    }
+                }
+
+                span{
+                    border: 1px solid rgba($white, .6);
+                    border-radius: 100%;
+                    @include font-style(){}
+                    display: inline-block;
+                    width: 50px;
+                    height: 50px;
+                    text-align: center;
+                    line-height: 50px;
+                    position: absolute;
+                    top:50%;
+                    left: 50%;
+                    transform: translateX(-50%) translateY(-50%);
+                }
+            }
+        }
+
     }
 
     .pg6 {

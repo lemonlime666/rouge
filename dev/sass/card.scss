@@ -1,0 +1,313 @@
+@import './app/_header.scss';
+
+*{
+    box-sizing: border-box;
+}
+body{
+            
+    margin: 0;
+    background-color: #efefef;
+}
+.header{
+    margin: 0 auto;
+    width: 90%;
+    height: 100px;
+    border: 1px solid gray;
+}
+
+
+
+.bg{
+    width: 100%;
+    display: flex;
+    justify-content: space-between  ;
+    /* flex-wrap: wrap; */
+    div{
+        h1{
+            color: #292929;
+            text-align: center;
+        }
+    }
+}
+.bg > div:nth-child(1), .bg > div:nth-child(3){
+    border: 1px solid royalblue;
+    width: 25%;
+    height: 100VH;
+}
+
+.bg > div:nth-child(2){
+    border: 1px solid royalblue;
+    width: 618px;
+ 
+    
+    background-color: #efefef;
+
+}
+
+h2{
+    text-align: center;
+    color: #efefef;
+    background-color: #989898;
+    margin: 0;
+    padding: 20px;
+   
+    cursor: pointer;
+}
+
+
+#first{
+    background-color: #292929;
+    box-shadow: 2px 3px 4px rgba(0,0,0,.5);
+        .f1H{
+            color: #efefef;
+        }
+        
+  
+}
+
+.imgBase{
+    width: 80%;
+    transform: translateX(12%);
+    border: 2px solid #efefef;
+    .stickBase{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+       
+   
+        .sB{
+            margin-top: 15px;
+            display: flex;
+            justify-content: space-around;
+            height: 80px;
+            .substrate1{
+                    background-color: #686868;
+                    border-radius: 80px;
+                    z-index: 0;
+                    width: 60px;
+                    height: 60px;
+                img{
+                   position: relative;
+                   left: -10%;
+                   top: -5%;
+                 width: 80px;
+                  height: 80px;
+                  z-index: 2;
+                }
+                &:hover{
+                    background-color: #efefef;
+                }
+            }
+  
+            
+        }
+    }
+    .flowerBase{
+        display: flex;
+        flex-direction: column;
+        display: none;
+        .fB{
+            margin-top: 15px;
+            display: flex;
+            justify-content: space-around;
+            height: 80px;
+            // display: none;
+            .substrate1{
+                background-color: #686868;
+                border-radius: 80px;
+                z-index: 0;
+                width: 60px;
+                height: 60px;
+            img{
+                position: relative;
+                left: -10%;
+                top: -5%;
+                width: 80px;
+                height: 80px;
+                z-index: 2;
+            }
+            &:hover{
+                background-color: #efefef;
+            }
+        }
+            
+        }
+    }
+}
+
+.draw{
+
+    transform: translateX(9%);
+    border: 2px solid #efefef;
+    margin: 10px;
+    width: 80%;
+    #drawButton{
+        .drawbuttonUse{
+            outline: none;
+            font-size: 16px;
+            color: #626262;
+            background: transparent;
+            border: 1px solid #626262;
+            padding: 5px 5px;
+            width: 80px;
+            &:hover{
+                color: #efefef;
+                background-color: #626262;
+                border: 1px solid  #626262;
+                transition: background-color 0.5s , border 0.5s,color 0.5s;
+            }
+        }
+        .drawEraser{
+            outline: none;
+            font-size: 16px;
+            color: #626262;
+            background: transparent;
+            border: 1px solid #626262;
+            padding: 5px 5px;
+            width: 50px;
+            &:hover{
+                color: #efefef;
+                background-color: #626262;
+                border: 1px solid  #626262;
+                transition: background-color 0.5s , border 0.5s,color 0.5s;
+            }
+        }
+        #penPixLabel{
+            color: #efefef;
+           >p{
+               margin-top: 0;
+               margin-bottom: 0;
+               text-align: center;
+           }
+        }
+        #penpix{
+            width: 50px;
+        }
+        #penColor{
+            color: rgb(10,15,102);
+        }
+
+    }
+}
+
+.cv{
+    position: relative;
+    >div{
+        width: 100%;
+        z-index: 10;
+        position: absolute;
+        bottom: 0;
+        border: 1px solid salmon;
+        .imglist{
+            display: flex;
+            justify-content: space-around;
+            font-size: 20px;
+            color: #efefef;
+            background-color: #686868;
+            padding: 10px;
+            
+        }
+        .scroll{
+            overflow-X: scroll;
+            .listSticky{
+                border: 1px solid black;
+                padding: 5px;
+                width: 790px;
+
+                // display: flex;
+                div{
+                    border: 1px soild red;
+                    display:  inline-block;
+                    background-color: #686868;
+                    border-radius: 80px;
+                    z-index: 0;
+                    width: 60px;
+                    height: 60px;
+                    padding: 5px;
+                    margin: 10px;
+                   
+                    img{
+                        display: inline-block;
+                        width: 120%;
+                        height: 80px;
+                        position: relative;
+                        left: -5%;
+                        top: -15%;
+    
+                    }
+                }
+    
+            }
+        }
+
+    }
+
+    
+}
+
+
+
+form{
+    text-align: center;
+    
+    p.M_bgf {
+        position: absolute;
+        right: 7%;
+        top: 15%;
+        writing-mode: vertical-rl;
+        transform: rotate(-180deg);
+        font-family: 'Noto Sans TC', sans-serif;
+        font-weight: 800;
+        letter-spacing: .25rem;
+        font-size: 12rem;
+        -webkit-text-stroke: 2px #dadada;
+        color: transparent;
+        z-index: -1;
+        margin: 0 1em;
+        }
+
+    #cardText{
+        width: 70%;
+        font-size: 20px;
+        height: 300px;
+        z-index: 20;
+    }
+ }
+
+ .ca{
+     width: 100%;
+ }
+ .test{
+     position: absolute;
+     background-color: red;
+     
+ }
+
+#drawButton{
+    margin: 10px 5px;
+    display: flex;
+    justify-content: space-around;
+}
+
+
+.colorbar{
+    display: flex;
+    justify-content: space-around;
+    .input{
+        label{
+            color: #efefef;
+        }
+        input{
+            width: 50%;
+        }
+    }
+   
+}
+
+
+
+.drawbuttonUse{
+
+
+}
+

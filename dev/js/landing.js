@@ -69,8 +69,9 @@ window.addEventListener('load', function () {
         }
 
         let direction = 0;
-        let autoSwipe = setInterval(autoSwipeCount,6000);
-        function autoSwipeCount(){
+        let autoSwipe = setInterval(autoSwipeCount, 6000);
+
+        function autoSwipeCount() {
             if (direction == 0) { //正走
                 if (counter < $('.swiperimgContent').length) {
                     $('.swiperimgContent:nth-child(1)').animate({
@@ -107,14 +108,14 @@ window.addEventListener('load', function () {
             $(`#swiperPage button`).removeClass('activeAdvert');
             $(`.swiperPageCount:nth-child(${counter})`).addClass('activeAdvert');
         }
-        
+
     }
     swipe();
 
     //pg3changBack
 
-    function pg3Change(){
-        for(i=1; i <= $('.pg3BtnBox span').length; i++){
+    function pg3Change() {
+        for (i = 1; i <= $('.pg3BtnBox span').length; i++) {
             $(`.pg3BtnBox span:nth-child(${i})`).click(changeConfirm(i));
         }
     }
@@ -160,5 +161,105 @@ window.addEventListener('load', function () {
             }
         }
     }
-    
+
+    //pg4Change1
+    function pg4Change1() {
+        for (i = 1; i <= $('.pg4ColorBox1 span').length; i++) {
+            $(`.pg4ColorBox1 span:nth-child(${i})`).click(pg4ChangeContent1(i));
+        }
+    }
+    pg4Change1();
+
+    function pg4ChangeContent1(i) {
+        return function () {
+            $('.pg4ColorBox1 span').removeClass('stickClick');
+            $('.pg4ColorBox2 span').removeClass('stickClick');
+            $(`.pg4ColorBox1 span:nth-child(${i})`).toggleClass('stickClick');
+
+            if (i == 1) {
+                $('.pg4LeftOutsdie img').attr('src', 'image/lipModel1.png');
+                $('.pg4colorGuide img').attr('src', 'image/stick01.png');
+            } else if (i == 2) {
+                $('.pg4LeftOutsdie img').attr('src', 'image/lipModel2.png');
+                $('.pg4colorGuide img').attr('src', 'image/stick02.png');
+            } else if (i == 3) {
+                $('.pg4LeftOutsdie img').attr('src', 'image/lipModel3.png');
+                $('.pg4colorGuide img').attr('src', 'image/stick03.png');
+            } else if (i == 4) {
+                $('.pg4LeftOutsdie img').attr('src', 'image/lipModel4.png');
+                $('.pg4colorGuide img').attr('src', 'image/stick04.png');
+            }
+        }
+    }
+
+    //pg4Change2
+    function pg4Change2() {
+        for (i = 1; i <= $('.pg4ColorBox2 span').length; i++) {
+            $(`.pg4ColorBox2 span:nth-child(${i})`).click(pg4ChangeContent2(i));
+        }
+    }
+    pg4Change2();
+
+    function pg4ChangeContent2(i) {
+        return function () {
+            $('.pg4ColorBox1 span').removeClass('stickClick');
+            $('.pg4ColorBox2 span').removeClass('stickClick');
+            $(`.pg4ColorBox2 span:nth-child(${i})`).toggleClass('stickClick');
+
+            if (i == 1) {
+                $('.pg4LeftOutsdie img').attr('src', 'image/lipModel1.png');
+                $('.pg4colorGuide img').attr('src', 'image/stick01.png');
+            } else if (i == 2) {
+                $('.pg4LeftOutsdie img').attr('src', 'image/lipModel2.png');
+                $('.pg4colorGuide img').attr('src', 'image/stick02.png');
+            } else if (i == 3) {
+                $('.pg4LeftOutsdie img').attr('src', 'image/lipModel3.png');
+                $('.pg4colorGuide img').attr('src', 'image/stick03.png');
+            } else if (i == 4) {
+                $('.pg4LeftOutsdie img').attr('src', 'image/lipModel4.png');
+                $('.pg4colorGuide img').attr('src', 'image/stick04.png');
+            }
+        }
+    }
+
+    //pg5
+    function forBook() {
+        let bookPage = 1;
+
+        $('.bookFront1').click(function (e) {
+            e.preventDefault;
+            $('.bookRight').css({
+                transform: 'rotateY(-180deg)',
+            })
+            bookPage++;
+            $('#bookPage').text(bookPage);
+        })
+        $('.bookBack1').click(function (e) {
+            e.preventDefault;
+            $('.bookRight').css({
+                transform: 'rotateY(0deg)',
+            })
+            bookPage--;
+            $('#bookPage').text(bookPage);
+        })
+        $('#bookPrev').click(function () {
+            if (bookPage > 1) {
+                $('.bookRight').css({
+                    transform: 'rotateY(0deg)',
+                })
+                bookPage--;
+                $('#bookPage').text(bookPage);
+            }
+        })
+        $('#bookNext').click(function () {
+            if (bookPage < $('.bookPage').length - 1) {
+                $('.bookRight').css({
+                    transform: 'rotateY(-180deg)',
+                })
+                bookPage++;
+                $('#bookPage').text(bookPage);
+            }
+        })
+    }
+    forBook();
 });
