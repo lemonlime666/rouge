@@ -271,13 +271,10 @@
             });
         // 设置背景
         card.setBackgroundColor('#efefef');
-        card.setBackgroundImage(img, card.renderAll.bind(card));
-        
+        card.setBackgroundImage(img, card.renderAll.bind(card));   
         card.renderAll();
     });
        
-
-
 
     //開啟關閉筆刷
     $(".drawbuttonUse").click(function(){
@@ -299,13 +296,21 @@
         }
         
     });
+
     //橡皮擦
     $(".drawEraser").click(function(){
         card.clear();
-
+        var wdth=$(window).width();
+        let pas =wdth/618
+        let rwd = 0
+        if(wdth<618){
+            rwd = 89*pas
+        }else{
+            rwd=89
+        }
         card.setDimensions({
             width: '100%',
-            height: '89VH'
+            height: `${rwd}VH`
             },{
             cssOnly: true
             });
@@ -546,6 +551,37 @@ $(".listTitle").click(function(e){
     }
 
 });
+//JSRWD
+
+    $(window).resize(function() {
+        var wdth=$(window).width();
+        let pas =wdth/618
+        let rwd = 89*pas
+       if(wdth < 618){
+        card.clear();
+            card.setDimensions({
+                width: '100%',
+                height: `${rwd}vh`
+                },{
+                cssOnly: true
+                });
+
+            fabric.Image.fromURL('./image/model/model02-hei-res-non.png', (img) => {
+                img.set({
+            // 通过scale来设置图片大小，这里设置和画布一样大
+                
+                    scaleX: card.width / img.width,
+                    scaleY: card.height / img.height,
+                });
+            // 设置背景
+            card.setBackgroundColor('#efefef');
+            card.setBackgroundImage(img, card.renderAll.bind(card));
+            card.renderAll();
+            });
+
+       }
+    
+    });
 
 
 </script>
