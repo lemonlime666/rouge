@@ -189,10 +189,16 @@
                         right: -60px;
                         transform: translateY(100%);
                     }
+
+                    video{
+                        position: absolute;
+                        top:50%;
+                        transform: translateY(-50%);
+                        width: 100%;
+                    }
                 }
             }
         }
-
 
         .advert {
             width: 100%;
@@ -721,6 +727,12 @@
                         @include font-style(16px, $notoSerif) {}
                         align-self: start;
                         margin: 60px 0 0 60px;
+
+                        &:hover{
+                            cursor: pointer;
+                            background-color: lighten($rose,8);
+                            transition: background-color .35s;
+                        }
                         
                         &:hover{
                             cursor: pointer;
