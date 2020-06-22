@@ -9,7 +9,9 @@ $(document).ready(function () {
 			}, 500)
 			$('#menu').fadeOut(500);
 		} else {
-			$('#menu').fadeIn(100);
+			$('#menu').css({
+				display:'flex',
+			});
 			$('#menu').animate({
 				left: 0,
 			}, 500)
