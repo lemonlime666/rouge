@@ -1,4 +1,4 @@
-@import './app/_header.scss';
+@import './app/_header_black.scss';
 
 *{
     box-sizing: border-box;
@@ -356,8 +356,6 @@ h2{
 
 
 
-
-
 form{
     text-align: center;
     
@@ -379,7 +377,7 @@ form{
 
     #cardText{
         width: 70%;
-        font-size: 20px;
+        font-size: 30px;
         height: 300px;
         z-index: 20;
     }
@@ -416,9 +414,36 @@ form{
 }
 
 
+@media screen  and (min-width: 1356px){
+    .listTitle{
+        display: none;
+    }
+}
 
-.drawbuttonUse{
 
+@media screen  and (max-width: 1356px){
+#first{
+    display: none;
+}
+#third{
+    width: 30%;
+}
+}
+@media screen and (max-width: 992px){
 
+}
+@media screen and (max-width: 768px){
+    #third{
+        display: none;
+    }
+    .bg > div:nth-child(2){
+        
+        width: 618px;
+     
+        margin: 0 auto;
+       
+    
+    }
+    
 }
 
