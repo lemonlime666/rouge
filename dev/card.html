@@ -6,6 +6,7 @@
     <title>Card</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" ></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/4.0.0-beta.12/fabric.min.js"></script>
+    <link rel="stylesheet" href="./css/dingli.css">
     <link rel="stylesheet" href="./css/card.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
     <script src="./js/main.js"></script>
@@ -224,15 +225,19 @@
         </div>
         
         <div id="third">
- 
-
-            <div class="fabocHead"  style="height: 11VH; z-index: -1;"></div>
+            <div class="fabocHead"  style="height: 30vh; z-index: -1;"></div>
             <h1>輸入文字</h1>
             <form action="get">
                 <p class="M_bgf">ROUGE</p>
                 <textarea name="" id="cardText"></textarea>
             </form>
-            <h2 id="saveCard" style="color: #292929;background-color: transparent;">儲存明信片</h2>
+            <h2 id="inVote">儲存明信片</h2>
+            <div class="C_social">
+                 <button class="M_social"><i class="fab fa-facebook fa-4x"></i></button>
+                <button class="M_social"><i class="fab fa-line fa-4x"></i></button>
+                <div id="saveCard" style="color: #292929;background-color: transparent;" ><i class="fas fa-file-download fa-4x"></i></div>
+            </div>
+  
         </div>
     </div>
    
@@ -271,13 +276,10 @@
             });
         // 设置背景
         card.setBackgroundColor('#efefef');
-        card.setBackgroundImage(img, card.renderAll.bind(card));
-        
+        card.setBackgroundImage(img, card.renderAll.bind(card));   
         card.renderAll();
     });
        
-
-
 
     //開啟關閉筆刷
     $(".drawbuttonUse").click(function(){
@@ -299,13 +301,21 @@
         }
         
     });
+
     //橡皮擦
     $(".drawEraser").click(function(){
         card.clear();
-
+        var wdth=$(window).width();
+        let pas =wdth/618
+        let rwd = 0
+        if(wdth<618){
+            rwd = 89*pas
+        }else{
+            rwd=89
+        }
         card.setDimensions({
             width: '100%',
-            height: '89VH'
+            height: `${rwd}VH`
             },{
             cssOnly: true
             });
@@ -546,6 +556,43 @@ $(".listTitle").click(function(e){
     }
 
 });
+//JSRWD
+
+    $(window).resize(function() {
+        var wdth=$(window).width();
+
+        let pas =wdth/618
+        let rwd = 0
+        if(wdth<618){
+            rwd = 89*pas
+        }else{
+            // alert('msg');
+            rwd=89
+        }
+        card.clear();
+            card.setDimensions({
+                width: '100%',
+                height: `${rwd}vh`
+                },{
+                cssOnly: true
+                });
+
+            fabric.Image.fromURL('./image/model/model02-hei-res-non.png', (img) => {
+                img.set({
+            // 通过scale来设置图片大小，这里设置和画布一样大
+                
+                    scaleX: card.width / img.width,
+                    scaleY: card.height / img.height,
+                });
+            // 设置背景
+            card.setBackgroundColor('#efefef');
+            card.setBackgroundImage(img, card.renderAll.bind(card));
+            card.renderAll();
+            });
+
+   
+    
+    });
 
 
 </script>
