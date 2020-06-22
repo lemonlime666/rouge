@@ -7,7 +7,9 @@ $(document).ready(function () {
 			$('#menu').animate({
 				left: `${-100}%`,
 			}, 500)
+			$('#menu').fadeOut(500);
 		} else {
+			$('#menu').fadeIn(100);
 			$('#menu').animate({
 				left: 0,
 			}, 500)

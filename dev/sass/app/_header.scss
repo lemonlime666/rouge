@@ -538,6 +538,7 @@
 
 @include s-phone() {
     #menu {
+        display: none;
         .menuLeft {
             width: 12%;
         }

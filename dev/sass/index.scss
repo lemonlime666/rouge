@@ -2,7 +2,7 @@
 
 #pagepiling {
     .pg1 {
-        // display: none;
+        display: none;
 
         .layer {
             position: absolute;
@@ -197,6 +197,7 @@
                         top: 50%;
                         transform: translateY(-50%);
                         width: 100%;
+                        opacity: .9;
                     }
                 }
             }
