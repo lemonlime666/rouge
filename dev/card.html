@@ -6,6 +6,7 @@
     <title>Card</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" ></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/4.0.0-beta.12/fabric.min.js"></script>
+    <link rel="stylesheet" href="./css/dingli.css">
     <link rel="stylesheet" href="./css/card.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
     <script src="./js/main.js"></script>
@@ -224,15 +225,19 @@
         </div>
         
         <div id="third">
- 
-
-            <div class="fabocHead"  style="height: 11VH; z-index: -1;"></div>
+            <div class="fabocHead"  style="height: 30vh; z-index: -1;"></div>
             <h1>輸入文字</h1>
             <form action="get">
                 <p class="M_bgf">ROUGE</p>
                 <textarea name="" id="cardText"></textarea>
             </form>
-            <h2 id="saveCard" style="color: #292929;background-color: transparent;">儲存明信片</h2>
+            <h2 id="inVote">儲存明信片</h2>
+            <div class="C_social">
+                 <button class="M_social"><i class="fab fa-facebook fa-4x"></i></button>
+                <button class="M_social"><i class="fab fa-line fa-4x"></i></button>
+                <div id="saveCard" style="color: #292929;background-color: transparent;" ><i class="fas fa-file-download fa-4x"></i></div>
+            </div>
+  
         </div>
     </div>
    
@@ -555,9 +560,15 @@ $(".listTitle").click(function(e){
 
     $(window).resize(function() {
         var wdth=$(window).width();
+
         let pas =wdth/618
-        let rwd = 89*pas
-       if(wdth < 618){
+        let rwd = 0
+        if(wdth<618){
+            rwd = 89*pas
+        }else{
+            // alert('msg');
+            rwd=89
+        }
         card.clear();
             card.setDimensions({
                 width: '100%',
@@ -579,7 +590,7 @@ $(".listTitle").click(function(e){
             card.renderAll();
             });
 
-       }
+   
     
     });
 
