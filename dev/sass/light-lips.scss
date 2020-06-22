@@ -1,4 +1,5 @@
 @import "./mixin/fontStyle";
+@import "./app/header";
 @import "./animate/closeanimate";
 body,
 html {
@@ -6,7 +7,7 @@ html {
   padding: 0;
   margin: 0;
   //background: linear-gradient(135deg,#493F46 60%,#493F46 00%);
-  background: linear-gradient(325deg,#493F46 0,#aa90a2 75%);
+  
   
 }
 
@@ -17,14 +18,18 @@ header{
 #out{
     width:100vw;
     height: 100%;
+    
+    
     .back-text{
         position: fixed;
-        border:1px solid white;
-        opacity: 0.3;
+        /*border:1px solid white;*/
+        color: #EFEFEF;
+        opacity: 0.1;
         transform: translate(15%, 100%);
 
         h1{
             margin-bottom: 30px;
+            font-family: Cormorant Garamond;
         }
         
         
@@ -44,6 +49,7 @@ header{
     display: flex;
     float: left;
     height: 100%;
+    background: #493F46;
 }
 footer{
     height: 100%;
@@ -56,12 +62,7 @@ footer{
     height:100%;
     display: flex;
     flex-direction: column;
-    header{
-        position: fixed;
-        width:100vw;
-        border: 1px solid yellow;
-        height: 60px;
-    }
+    
     
     
 
@@ -72,6 +73,7 @@ footer{
     .content{
         height: calc(100% - 60px);
         display: flex;
+        padding-right: 100px;
         
     }
     
@@ -79,24 +81,27 @@ footer{
     
     
     .intro{
-        border: 1px solid blue;
+        //border: 1px solid blue;
         width:35vw;
-        min-width: 350px;
+        min-width: 450px;
         height:100%;
         
        .intro-text{
            width:100%;
            height:40%;
-           border: 1px solid red;
+           //border: 1px solid red;
            display: flex;
            align-items: center;
            justify-content: center;
            flex-direction: column;
            h2{
                margin-bottom: 20px;
+               color: #EFEFEF;
            }
            p{
                width:350px;
+               color: #EFEFEF;
+               line-height: 1.5;
            }
 
 
@@ -105,7 +110,7 @@ footer{
         }
         .intro-image{
             height:60%;
-           border: 1px solid rgb(66, 163, 47);
+           //border: 1px solid rgb(66, 163, 47);
            position: relative;
            span{
 
@@ -113,9 +118,54 @@ footer{
                 top:50%;
                 left:50%;
                 transform: translate(-50%, -50%);
-                border: 1px solid rgb(66, 163, 47);
+                //border: 1px solid rgb(66, 163, 47);
                 width:50%;
-                height:60%;
+                height:80%;
+                .img-1{
+                    position: absolute;
+                    top:0;
+                    left:0;
+                    width:50%;
+                    overflow: hidden;
+                    //border: 1px solid white;
+                    .img-1-b{
+                        
+                        display: block;
+                        padding-top: 100%;
+                        overflow: hidden;
+                        img{
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            width: 200%;
+                            height: 100%;
+                            object-fit: fill;
+                        }
+                    }
+
+                }
+                .img-2{
+                    position: absolute;
+                    top:5%;
+                    right:0;
+                    width:60%;
+                    overflow: hidden;
+                    //border: 1px solid white;
+                    .img-2-b{
+                        overflow: hidden;
+                        display: block;
+                        padding-top: 150%;
+                        img{
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            width: 200%;
+                            height: 100%;
+                            object-fit: fill;
+                        }
+                    }
+
+                }
                
            }
 
@@ -135,7 +185,7 @@ footer{
     }
 
     .adv{
-        border: 1px solid black;
+        //border: 1px solid black;
         width:30vw;
         min-width: 350px;
         height:100%;
@@ -150,7 +200,7 @@ footer{
                 min-width: 180px;
                 background: linear-gradient(135deg, #4ab9e1 0, #b9e0e6 60%);
             
-            border: 1px solid green;
+            //border: 1px solid green;
             position: relative;
 
         }
@@ -159,7 +209,7 @@ footer{
     }
 
     .cardouter {
-        border: 1px solid black;
+        //border: 1px solid black;
         width:30vw;
         min-width: 350px;
         height:100%;
@@ -172,14 +222,23 @@ footer{
 
         
         .card {
-            height: 35vh;
-            min-height: 200px;
-            width:30vh;
-                min-width: 180px;
-                background: linear-gradient(135deg, #4ab9e1 0, #b9e0e6 60%);
+            height: 40vh;
+            min-height: 280px;
+            width: 35vh;
+            min-width: 220px;
+            background: linear-gradient(135deg, #4ab9e1 0, #b9e0e6 60%);
             z-index: 1;
-            border: 1px solid green;
+            //border: 1px solid green;
             position: relative;
+            left: 10%;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            
+            
+
 
             &::after{
                 content: "";
@@ -189,6 +248,18 @@ footer{
                 width:100%;
                 height: 100%;
                 background-color: #493f4683;
+                
+                transition: 2s;
+               
+
+                
+            }
+
+            &:hover::after{
+                
+                opacity: 0;
+                
+
             }
 
             img{
@@ -203,20 +274,25 @@ footer{
             
 
             span {
-                border: 1px solid black;
-                z-index: 1;
+                //border: 1px solid black;
+                z-index: 3;
 
                 position: absolute;
                 top:50%;
                 left:50%;
                 
-                transform: translate(-75%, 25%);
+                transform: translate(-110%, 30%);
 
                 white-space:nowrap;
+                h2{
+                    color: #FFCBCC;
+                }
                 p{
                     margin-bottom: 16px;
+                    color: #FFCBCC;
                 }
                 h4{
+                    color: #FFCBCC;
                     text-align: center;
                 }
                 
@@ -226,12 +302,65 @@ footer{
     
 }
 
+/*以下為滑鼠動畫*/
+.mouse {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background: #bd83838f;
+    display: none;
+    transform: translate(-50%, -50%);
+    border-radius: 50px;
+    
 
+}
+
+.mouse-block {
+    width: 100%;
+    height: 100%;
+    top:0;
+    left: 0;
+    position: absolute;
+    //border: 1px solid #ccc;
+    z-index: 10;
+    
+    overflow: hidden;
+}
+.bigAni {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform: scale(0.5);
+    animation-duration: 2.5s;
+    animation-name: bigfull;
+    animation-fill-mode : forwards;
+    border-radius: 50px;
+    background: linear-gradient(325deg, #5f4a4a 0, #bd8383 75%);
+    
+
+
+}
+
+@keyframes bigfull {
+    from {
+        
+        left: 0;
+    }
+
+    to {
+        transform: scale(50);
+    }
+}
+
+/*以下為RWD*/
 @media screen and (min-width:767px){
 
     .cardouter:nth-child(2n){
         .card{
-            bottom:10%;
+            bottom:5%;
         position: relative;
 
         }
@@ -247,7 +376,7 @@ footer{
         .select{
             width:60px;
             height: 100%;
-            border: 1px solid green;
+            //border: 1px solid green;
 
         }
         .adv{
@@ -257,15 +386,17 @@ footer{
         
     }
     #out{
-        width:100vw;
+        width:100%;
         height: 100%;
         
-        overflow-y: hidden;
+        
         
     }
     .content{
-        margin-top: 60px;
+        margin-top: 100px;
     }
+
+
     
 }
 
@@ -276,11 +407,14 @@ footer{
         header{
             position: fixed;
         }
+        .adv{
+            display: none;
+        }
         .intro{
             width:100%;
             position: fixed;
             height:150px;
-            margin-top: 60px;
+            margin-top: 90px;
             
             
             .intro-text{
@@ -299,7 +433,7 @@ footer{
             display: flex;
             flex-direction: column-reverse;
             .contain-in{
-                height:calc(100% - 210px);
+                height:calc(100% - 190px);
 
             }
            
@@ -311,10 +445,14 @@ footer{
 
     #out{
         width:100vw;
-        height: 100vh;
-        overflow-y: hidden;
         
         
         
+        
+    }
+    
+
+    .main .cardouter .card{
+        left:25%;
     }
 }

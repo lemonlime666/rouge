@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Card</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/4.0.0-beta.12/fabric.min.js"></script>
+    <link rel="stylesheet" href="./css/dingli.css">
+    <link rel="stylesheet" href="./css/card.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+    <script src="./js/main.js"></script>
+  
+</head>
+<body>
+ 
+    <!-- <header>
+        <div class="header">
+
+        </div>
+    </header> -->
+    @@include("./app/header_black.html")
+    <div class="bg">
+        <div id="first">
+            <div class="fabocHead " style="height: 11VH;"></div>
+            <h1 class="f1H">貼圖圖庫</h1>
+            <div class="imgBase">
+                <div class="stick">
+                    <div class="stickH"><h2>普普風</h2></div>
+                    <div class="stickBase">
+                        <div class="sB">
+                            <div class="substrate1"> <img src="./image/cardStiker/s1.png"></div>
+                            <div class="substrate1"><img src="./image/cardStiker/s2.png"></div>
+                            <div class="substrate1"><img src="./image/cardStiker/s3.png"></div>
+                        </div>
+                        <div class="sB">
+                            <div class="substrate1"> <img src="./image/cardStiker/s4.png"></div>
+                            <div class="substrate1"><img src="./image/cardStiker/s5.png"></div>
+                            <div class="substrate1"><img src="./image/cardStiker/s6.png"></div>
+                        </div>
+                        <div class="sB">
+                            <div class="substrate1"> <img src="./image/cardStiker/s7.png"></div>
+                            <div class="substrate1"><img src="./image/cardStiker/s8.png"></div>
+                            <div class="substrate1"><img src="./image/cardStiker/s9.png"></div>
+                        </div>
+                        <!-- <div class="sB">
+                            <div class="substrate1"> <img src="./img/cardStiker/s10.png"></div>
+                            <div class="substrate1"><img src="./img/cardStiker/s11.png"></div>
+                            <div class="substrate1"><img src="./img/cardStiker/s12.png"></div>
+                        </div> -->
+                    </div>
+                </div>
+                <div class="flower">
+                    <div class="flowerH"><h2>花系列</h2></div>
+                    <div class="flowerBase">
+                        <div class="fB">
+                            <div class="substrate1"> <img src="./image/cardFlower/f1.png"></div>
+                            <div class="substrate1"><img src="./image/cardFlower/f2.png"></div>
+                            <div class="substrate1"><img src="./image/cardFlower/f3.png"></div>
+                        </div>
+                        <div class="fB">
+                            <div class="substrate1"> <img src="./image/cardFlower/f4.png"></div>
+                            <div class="substrate1"><img src="./image/cardFlower/f5.png"></div>
+                            <div class="substrate1"><img src="./image/cardFlower/f6.png"></div>
+                        </div>
+                        <div class="fB">
+                            <div class="substrate1"> <img src="./image/cardFlower/f7.png"></div>
+                            <div class="substrate1"><img src="./image/cardFlower/f8.png"></div>
+                            <div class="substrate1"><img src="./image/cardFlower/f9.png"></div>
+                        </div>
+                        <!-- <div class="fB">
+                            <div class="substrate1"> <img src="./img/cardFlower/f10.png"></div>
+                            <div class="substrate1"><img src="./img/cardFlower/f11.png"></div>
+                            <div class="substrate1"><img src="./img/cardFlower/f12.png"></div>
+                        </div> -->
+                    </div>
+                </div>
+
+            </div>
+            <div class="draw">
+             <div class="drawH"><h2>畫筆</h2></div>
+             <div id="drawButton">
+                 <button class="drawbuttonUse" data-on="1">啟動畫筆</button>
+                 <button class="drawEraser">清除</button>
+                 <label id="penPixLabel" for="penpix">Size：<p>10</p></label>
+                 <input id="penpix" 
+                        type="range" 
+                        name="penpix" 
+                        min="0" 
+                        max="100" 
+                        value="10" 
+                        data-unit=""
+                        />
+                <p id="penColor">筆色</p>
+             </div>
+                <div class="colorbar">
+                    <div class="input">
+                        <label for="Red">R：</label>
+                        <input id="Red" 
+                            type="range" 
+                            name="Red" 
+                            min="0" 
+                            max="255" 
+                            value="10" 
+                            data-unit=""
+                            />
+                    </div>
+                    <div class="input">
+                        <label for="Green">G：</label>
+                        <input id="Green" 
+                            type="range" 
+                            name="Green" 
+                            min="0" 
+                            max="255" 
+                            value="15" 
+                            data-unit=""/>
+                    </div>
+                    <div class="input">       
+                        <label for="Blue">B：</label>
+                        <input id="Blue" 
+                            type="range" 
+                            name="Blue" 
+                            min="0" 
+                            max="255" 
+                            value="102" 
+                            data-unit=""/>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div >
+            
+            <div class="fabocHead" style="height: 11VH;"></div>
+            <!-- <div class="test"></div> -->
+            <!-- <img class="ca" src="./img/model/model02-hei-res-non.png" alt=""> -->
+            <!-- <div style="background-color: aqua;  width: 618px; height: 89VH;"></div> -->
+            <div  class="cv" style="display: block;"> 
+                <canvas id="canvas"width="2203" height="2945"></canvas>
+                <div>
+                    <div class="imglist">
+                        <div class="listTitle" data-imglist="1">普普風</div>
+                        <div class="listTitle" data-imglist="2">花系列</div>
+                        <div class="listTitle" data-imglist="3">畫筆</div>
+                    </div>
+                    <div class="scroll">         
+                        <div class="listSticky">      
+                            <div class="substrate1"><img src="./image/cardStiker/s1.png"></div>
+                            <div class="substrate1"><img src="./image/cardStiker/s2.png"></div>
+                            <div class="substrate1"><img src="./image/cardStiker/s3.png"></div>     
+                            <div class="substrate1"><img src="./image/cardStiker/s4.png"></div>
+                            <div class="substrate1"><img src="./image/cardStiker/s5.png"></div>
+                            <div class="substrate1"><img src="./image/cardStiker/s6.png"></div>      
+                            <div class="substrate1"><img src="./image/cardStiker/s7.png"></div>
+                            <div class="substrate1"><img src="./image/cardStiker/s8.png"></div>
+                            <div class="substrate1"><img src="./image/cardStiker/s9.png"></div>                 
+                        </div>
+                        <div class="listFlower">      
+                            <div class="substrate1"><img src="./image/cardFlower/f1.png"></div>
+                            <div class="substrate1"><img src="./image/cardFlower/f2.png"></div>
+                            <div class="substrate1"><img src="./image/cardFlower/f3.png"></div>     
+                            <div class="substrate1"><img src="./image/cardFlower/f4.png"></div>
+                            <div class="substrate1"><img src="./image/cardFlower/f5.png"></div>
+                            <div class="substrate1"><img src="./image/cardFlower/f6.png"></div>      
+                            <div class="substrate1"><img src="./image/cardFlower/f7.png"></div>
+                            <div class="substrate1"><img src="./image/cardFlower/f8.png"></div>
+                            <div class="substrate1"><img src="./image/cardFlower/f9.png"></div>                 
+                    </div>
+                    <div class="paint">
+                        <div id="drawButtonM">
+                            <button class="drawbuttonUse" data-on="1">啟動畫筆</button>
+                            <button class="drawEraser">清除</button>
+                            <label id="penPixLabelM" for="penpixM">Size：<p>10</p></label>
+                            <input id="penpixM" 
+                                   type="range" 
+                                   name="penpix" 
+                                   min="0" 
+                                   max="100" 
+                                   value="10" 
+                                   data-unit=""
+                                   />
+                           <p id="penColorM">筆色</p>
+                        </div>
+                           <div class="colorbar">
+                               <div class="input">
+                                   <label for="RedM">R：</label>
+                                   <input id="RedM" 
+                                       type="range" 
+                                       name="Red" 
+                                       min="0" 
+                                       max="255" 
+                                       value="10" 
+                                       data-unit=""
+                                       />
+                               </div>
+                               <div class="input">
+                                   <label for="GreenM">G：</label>
+                                   <input id="GreenM" 
+                                       type="range" 
+                                       name="Green" 
+                                       min="0" 
+                                       max="255" 
+                                       value="15" 
+                                       data-unit=""/>
+                               </div>
+                               <div class="input">       
+                                   <label for="BlueM">B：</label>
+                                   <input id="BlueM" 
+                                       type="range" 
+                                       name="Blue" 
+                                       min="0" 
+                                       max="255" 
+                                       value="102" 
+                                       data-unit=""/>
+                               </div>
+                           </div>
+                    </div>
+                 </div>  
+                </div>
+
+
+            </div>
+            
+           
+           
+        </div>
+        
+        <div id="third">
+            <div class="fabocHead"  style="height: 30vh; z-index: -1;"></div>
+            <h1>輸入文字</h1>
+            <form action="get">
+                <p class="M_bgf">ROUGE</p>
+                <textarea name="" id="cardText"></textarea>
+            </form>
+            <h2 id="inVote">儲存明信片</h2>
+            <div class="C_social">
+                 <button class="M_social"><i class="fab fa-facebook fa-4x"></i></button>
+                <button class="M_social"><i class="fab fa-line fa-4x"></i></button>
+                <div id="saveCard" style="color: #292929;background-color: transparent;" ><i class="fas fa-file-download fa-4x"></i></div>
+            </div>
+  
+        </div>
+    </div>
+   
+
+    <script>
+        $(function(){
+            $(".stickH").click(function(){
+                $(".sB").slideToggle("slow");
+                $(".flowerBase").slideToggle("slow");
+            });
+        });
+        $(function(){
+            $(".flowerH").click(function(){
+                $(".flowerBase").slideToggle("slow");
+                $(".sB").slideToggle("slow");
+
+            });
+        });
+
+        //RWD可能要用JS重劃高度
+        const card = new fabric.Canvas('canvas')   
+        card.setDimensions({
+            
+            width: '100%',
+            height: '89VH'
+            },{
+            cssOnly: true
+            });
+
+        fabric.Image.fromURL('./image/model/model02-hei-res-non.png', (img) => {
+            img.set({
+   // 通过scale来设置图片大小，这里设置和画布一样大
+            
+                scaleX: card.width / img.width,
+                scaleY: card.height / img.height,
+            });
+        // 设置背景
+        card.setBackgroundColor('#efefef');
+        card.setBackgroundImage(img, card.renderAll.bind(card));   
+        card.renderAll();
+    });
+       
+
+    //開啟關閉筆刷
+    $(".drawbuttonUse").click(function(){
+
+        // console.log($(".drawbuttonUse").data().on);
+        let on = $(".drawbuttonUse").data().on;
+        if(on==1){
+            $(".drawbuttonUse").data().on = 0;
+            $(".drawbuttonUse").html('關閉畫筆');
+            $(".drawbuttonUse").css("backgroundColor",'#626262');
+            $(".drawbuttonUse").css("color",'#efefef');
+            usePen(on);
+        }else{
+            $(".drawbuttonUse").data().on = 1;
+            $(".drawbuttonUse").html('啟動畫筆')
+            $(".drawbuttonUse").css("backgroundColor",'');
+            $(".drawbuttonUse").css("color",'');
+            usePen(on);
+        }
+        
+    });
+
+    //橡皮擦
+    $(".drawEraser").click(function(){
+        card.clear();
+        var wdth=$(window).width();
+        let pas =wdth/618
+        let rwd = 0
+        if(wdth<618){
+            rwd = 89*pas
+        }else{
+            rwd=89
+        }
+        card.setDimensions({
+            width: '100%',
+            height: `${rwd}VH`
+            },{
+            cssOnly: true
+            });
+
+        fabric.Image.fromURL('./image/model/model02-hei-res-non.png', (img) => {
+            img.set({
+   // 通过scale来设置图片大小，这里设置和画布一样大
+            
+                scaleX: card.width / img.width,
+                scaleY: card.height / img.height,
+            });
+        // 设置背景
+        card.setBackgroundColor('#efefef');
+        card.setBackgroundImage(img, card.renderAll.bind(card));
+        card.renderAll();
+    });
+        
+    });
+
+    function usePen(on){
+        if(on == 1){
+            card.isDrawingMode=true;
+            card.freeDrawingBrush.width =$("#penpix").val();
+        }else{
+            card.isDrawingMode=false;
+        }
+       
+    };
+       //筆色設定
+    // 選擇網頁上的色條元素
+  const inputs = document.querySelectorAll('input')
+
+// 當使用者拉動更新元素時設定 CSS 變數值
+    function updateProperty (e) {
+       
+        let red = $("#Red").val();
+        let Green = $("#Green").val();
+        let Blue = $("#Blue").val();
+        let penPix = $("#penpix").val();
+        let rgb =`rgb(${red}, ${Green}, ${Blue})`
+
+        let redM = $("#RedM").val();
+        let GreenM = $("#GreenM").val();
+        let BlueM = $("#BlueM").val();
+        let penPixM = $("#penpixM").val();
+        let rgbM =`rgb(${redM}, ${GreenM}, ${BlueM})`
+
+        $("#penPixLabel p").html(`${penPix}`);
+        $("#penPixLabelM p").html(`${penPixM}`);
+        console.log(rgbM);
+        $("#penColor").css('color',rgb);//筆色設定結果
+        $("#penColorM").css('color',rgbM);//筆色設定結果
+        Drawingset(rgb,penPix)
+        Drawingset(rgbM,penPixM)
+        
+    }
+
+    inputs.forEach(input => {
+        input.addEventListener('input', updateProperty)
+    })
+       //畫筆設定
+    //    freeDrawing();
+       function Drawingset(rgb,penPix){
+        card.freeDrawingBrush.color=rgb; //設定筆色
+        // card.isDrawingMode=true; //開啟筆畫
+        card.freeDrawingBrush.width = parseInt(penPix);//筆刷大小
+       }
+    
+       card.freeDrawingBrush.width =$("#penpix").val();
+    $(".fB img").click(function(e){
+        
+        let src =e.target.getAttribute("src");
+        console.log(e.target.getAttribute("src"));
+        addImg(src)
+
+    });
+
+    $(".sB img").click(function(e){
+        
+        let src =e.target.getAttribute("src");
+        console.log(e.target.getAttribute("src"));
+        addImg(src)
+
+    });
+    
+    $(".scroll .substrate1 img").click(function(e){
+        
+        let src =e.target.getAttribute("src");
+        console.log(e.target.getAttribute("src"));
+        addImg(src)
+
+    });
+
+        
+ function addImg(src){
+
+        //測試添加圖片物件
+        fabric.Image.fromURL(src, (img) => {
+            img.set({
+                scaleX: 0.5, 
+                scaleY: 0.5,
+                top:0,
+                hasControls: true, // 是否开启图层的控件
+                borderColor: 'orange', // 图层控件边框的颜色
+            });
+            // 添加对象后, 如下图
+            card.add(img);
+        });
+ };
+ 
+ ///*儲存圖片
+$(saveCard).click(function(){
+    var canvas = document.getElementById("canvas");
+    // var dataURL = canvas.toDataURL('image/jpeg');
+    // console.log(dataURL);
+    var dataURL = canvas.toDataURL({format: 'jpg', multiplier: 4})
+  download("downloadtest.png", dataURL)
+
+});
+
+var download = function(filename, dataUrl) {
+    var element = document.createElement('a')
+
+    var dataBlob = dataURLtoBlob(dataUrl)
+    element.setAttribute('href', URL.createObjectURL(dataBlob))
+    element.setAttribute('download', filename)
+
+    element.style.display = 'none'
+    document.body.appendChild(element)
+
+    element.click()
+
+    var clickHandler;
+    element.addEventListener('click', clickHandler=function() {
+        requestAnimationFrame(function() {
+            URL.revokeObjectURL(element.href);
+        })
+
+        element.removeAttribute('href')
+        element.removeEventListener('click', clickHandler)
+    })
+
+    document.body.removeChild(element)
+}
+
+var dataURLtoBlob = function(dataurl) {
+    var parts = dataurl.split(','), mime = parts[0].match(/:(.*?);/)[1]
+    if(parts[0].indexOf('base64') !== -1) {
+        var bstr = atob(parts[1]), n = bstr.length, u8arr = new Uint8Array(n)
+        while(n--){
+            u8arr[n] = bstr.charCodeAt(n)
+        }
+
+        return new Blob([u8arr], {type:mime})
+    } else {
+        var raw = decodeURIComponent(parts[1])
+        return new Blob([raw], {type: mime})
+    }
+}
+ //儲存圖片*/
+
+ 
+ //按DEL刪除
+ $('html').keyup(function(e){
+        if(e.keyCode == 46) {
+            deleteSelectedObjectsFromCanvas();
+        }
+});    
+
+function deleteSelectedObjectsFromCanvas(){
+    var selection = card.getActiveObject();
+    if (selection.type === 'activeSelection') {
+        selection.forEachObject(function(element) {
+            console.log(element);
+            card.remove(element);
+        });
+    }
+    else{
+        card.remove(selection);
+    }
+    card.discardActiveObject();
+    card.requestRenderAll();
+}
+let s= 1;
+let f= 1;
+let p= 1;
+//手機板選項切換
+$(".listTitle").click(function(e){
+    e.stopPropagation();
+    
+    let chiose = parseInt(e.target.dataset.imglist);
+ 
+    switch (chiose) {
+    case 1:
+        s = s+1
+        if(s % 2 ==0 ){
+        $(".listSticky").css('display','block')
+        $(".listFlower").css('display','none')
+        $(".paint").css('display','none')
+        f=1
+        p=1
+        }else{
+        $(".listSticky").css('display','none')
+        $(".listFlower").css('display','none')
+        $(".paint").css('display','none')
+        }
+    　break;
+    case 2:
+        f = f+1
+        if(f % 2 ==0 ){
+        $(".listSticky").css('display','none')
+        $(".listFlower").css('display','block')
+        $(".paint").css('display','none')
+        s=1
+        p=1
+        }else{
+        $(".listSticky").css('display','none')
+        $(".listFlower").css('display','none')
+        $(".paint").css('display','none')
+        }
+    　break;
+    case 3:
+         p = p+1
+        if(p % 2 ==0 ){
+        $(".listSticky").css('display','none')
+        $(".listFlower").css('display','none')
+        $(".paint").css('display','block')
+        s=1
+        f=1
+        }else{
+        $(".listSticky").css('display','none')
+        $(".listFlower").css('display','none')
+        $(".paint").css('display','none')
+        }
+    　break;
+    default:
+
+    }
+
+});
+//JSRWD
+
+    $(window).resize(function() {
+        var wdth=$(window).width();
+
+        let pas =wdth/618
+        let rwd = 0
+        if(wdth<618){
+            rwd = 89*pas
+        }else{
+            // alert('msg');
+            rwd=89
+        }
+        card.clear();
+            card.setDimensions({
+                width: '100%',
+                height: `${rwd}vh`
+                },{
+                cssOnly: true
+                });
+
+            fabric.Image.fromURL('./image/model/model02-hei-res-non.png', (img) => {
+                img.set({
+            // 通过scale来设置图片大小，这里设置和画布一样大
+                
+                    scaleX: card.width / img.width,
+                    scaleY: card.height / img.height,
+                });
+            // 设置背景
+            card.setBackgroundColor('#efefef');
+            card.setBackgroundImage(img, card.renderAll.bind(card));
+            card.renderAll();
+            });
+
+   
+    
+    });
+
+
+</script>
+</body>
+</html>

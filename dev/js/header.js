@@ -7,7 +7,11 @@ $(document).ready(function () {
 			$('#menu').animate({
 				left: `${-100}%`,
 			}, 500)
+			$('#menu').fadeOut(500);
 		} else {
+			$('#menu').css({
+				display:'flex',
+			});
 			$('#menu').animate({
 				left: 0,
 			}, 500)

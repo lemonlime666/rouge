@@ -1,0 +1,55 @@
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+
+}
+html,body{
+  
+  width:100%;
+}
+
+.pro-out{
+  z-index: 999;
+  height: 100vh;
+  width: 100%;
+  position: fixed;
+  overflow: hidden;
+}
+/*動畫特效*/
+
+.pro-back{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  bottom: 0;
+  
+  /*background: linear-gradient(180deg, transparent 0,rgb(137, 194, 167) 15%);*/
+  background: linear-gradient(180deg, transparent 0, #493F46 15%);
+  /*background: linear-gradient(135deg, transparent 0,rgb(137, 194, 167) 60%);*/
+
+  //background-image: url(../image/back.png);
+  background-position: top;
+  background-size: contain;
+  
+  
+  
+}
+.pro-back-animate{
+  display: block;
+  animation-name: proback;
+  animation-duration: 2s;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+  
+}
+@keyframes proback {
+  0%{
+      transform: translateY(0%);
+  }
+  100%{
+    transform: translateY(100%);
+      bottom: 0;
+      display: none;
+  }
+}
