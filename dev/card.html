@@ -81,7 +81,7 @@
              <div id="drawButton">
                  <button class="drawbuttonUse" data-on="1">啟動畫筆</button>
                  <button class="drawEraser">清除</button>
-                 <label id="penPixLabel" for="penpix">筆刷大小：<p>10</p></label>
+                 <label id="penPixLabel" for="penpix">Size：<p>10</p></label>
                  <input id="penpix" 
                         type="range" 
                         name="penpix" 
@@ -168,7 +168,7 @@
                         <div id="drawButtonM">
                             <button class="drawbuttonUse" data-on="1">啟動畫筆</button>
                             <button class="drawEraser">清除</button>
-                            <label id="penPixLabelM" for="penpixM">筆刷大小：<p>10</p></label>
+                            <label id="penPixLabelM" for="penpixM">Size：<p>10</p></label>
                             <input id="penpixM" 
                                    type="range" 
                                    name="penpix" 
@@ -226,7 +226,7 @@
         <div id="third">
  
 
-            <div class="fabocHead" style="height: 11VH;"></div>
+            <div class="fabocHead"  style="height: 11VH; z-index: -1;"></div>
             <h1>輸入文字</h1>
             <form action="get">
                 <p class="M_bgf">ROUGE</p>
@@ -339,7 +339,8 @@
   const inputs = document.querySelectorAll('input')
 
 // 當使用者拉動更新元素時設定 CSS 變數值
-    function updateProperty () {
+    function updateProperty (e) {
+       
         let red = $("#Red").val();
         let Green = $("#Green").val();
         let Blue = $("#Blue").val();
@@ -390,7 +391,7 @@
 
     });
     
-    $(".substrate1 img").click(function(e){
+    $(".scroll .substrate1 img").click(function(e){
         
         let src =e.target.getAttribute("src");
         console.log(e.target.getAttribute("src"));
