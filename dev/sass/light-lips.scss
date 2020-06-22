@@ -83,7 +83,7 @@ footer{
     .intro{
         //border: 1px solid blue;
         width:35vw;
-        min-width: 350px;
+        min-width: 450px;
         height:100%;
         
        .intro-text{
@@ -101,6 +101,7 @@ footer{
            p{
                width:350px;
                color: #EFEFEF;
+               line-height: 1.5;
            }
 
 
@@ -117,9 +118,54 @@ footer{
                 top:50%;
                 left:50%;
                 transform: translate(-50%, -50%);
-                border: 1px solid rgb(66, 163, 47);
+                //border: 1px solid rgb(66, 163, 47);
                 width:50%;
-                height:60%;
+                height:80%;
+                .img-1{
+                    position: absolute;
+                    top:0;
+                    left:0;
+                    width:50%;
+                    overflow: hidden;
+                    //border: 1px solid white;
+                    .img-1-b{
+                        
+                        display: block;
+                        padding-top: 100%;
+                        overflow: hidden;
+                        img{
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            width: 200%;
+                            height: 100%;
+                            object-fit: fill;
+                        }
+                    }
+
+                }
+                .img-2{
+                    position: absolute;
+                    top:5%;
+                    right:0;
+                    width:60%;
+                    overflow: hidden;
+                    //border: 1px solid white;
+                    .img-2-b{
+                        overflow: hidden;
+                        display: block;
+                        padding-top: 150%;
+                        img{
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            width: 200%;
+                            height: 100%;
+                            object-fit: fill;
+                        }
+                    }
+
+                }
                
            }
 
@@ -189,6 +235,7 @@ footer{
             display: flex;
             justify-content: center;
             align-items: center;
+            cursor: pointer;
             
             
 
@@ -348,6 +395,8 @@ footer{
     .content{
         margin-top: 100px;
     }
+
+
     
 }
 
@@ -400,5 +449,10 @@ footer{
         
         
         
+    }
+    
+
+    .main .cardouter .card{
+        left:25%;
     }
 }
