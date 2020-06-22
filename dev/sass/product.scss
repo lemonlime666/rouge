@@ -58,7 +58,7 @@ body{
             padding-right: 30px;
             //height: 100%;
             width: 50%;
-            height: 625px;
+            
             
             .pro1_content{
                 background-color: #292929;
@@ -85,7 +85,7 @@ body{
                         align-items: center;
                         padding-bottom: 10%;
                         
-                        //border: 1px solid black;
+                        border: 1px solid white;
                         width: 25%;
                         height: 200px;
                         img{
@@ -106,7 +106,7 @@ body{
             //height: 100%;
             padding-right: 60px;
             padding-left: 30px;
-            height: 625px;
+            
             
             .pro2_content{
                 display: flex;
@@ -239,9 +239,16 @@ body{
 
         .content .pro1 .pro1_content .pro_pic{
             padding: 15px;
+            
         }
-        .box_img{
-            padding-top: 80%;
+        .content .pro2 .pro2_content .box .box_img{
+            padding-top: 85%;
+        }
+        .content .pro1{
+            padding-left: 30px;
+        }
+        .content .pro2 .pro2_content .box{
+            min-width: 400px;
         }
 
     }
@@ -255,19 +262,19 @@ body{
             
             .pro1{
             
-                padding-left: 30px;
-                padding-right: 30px;
+                padding-left: 10px;
+                padding-right: 10px;
                 width: 100%;
                 height: auto!important;
 
             }
-            .pro1_content{
-                height: auto!important;
+            .pro2_content{
+                padding-top: 50px;
             }
             .pro2{
                 width: 100%;
-                padding-left: 30px;
-                padding-right: 30px;
+                padding-left: 10px;
+                padding-right: 10px;
                 .pro2_content{
                     background-color: #292929;
                     .box{
