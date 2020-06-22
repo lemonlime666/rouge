@@ -488,7 +488,9 @@ function deleteSelectedObjectsFromCanvas(){
     card.discardActiveObject();
     card.requestRenderAll();
 }
-
+let s= 1;
+let f= 1;
+let p= 1;
 //手機板選項切換
 $(".listTitle").click(function(e){
     e.stopPropagation();
@@ -497,27 +499,53 @@ $(".listTitle").click(function(e){
  
     switch (chiose) {
     case 1:
+        s = s+1
+        if(s % 2 ==0 ){
         $(".listSticky").css('display','block')
         $(".listFlower").css('display','none')
         $(".paint").css('display','none')
+        f=1
+        p=1
+        }else{
+        $(".listSticky").css('display','none')
+        $(".listFlower").css('display','none')
+        $(".paint").css('display','none')
+        }
     　break;
     case 2:
-    　  $(".listSticky").css('display','none')
+        f = f+1
+        if(f % 2 ==0 ){
+        $(".listSticky").css('display','none')
         $(".listFlower").css('display','block')
         $(".paint").css('display','none')
-    　break;
-    case 3:
-    　  $(".listSticky").css('display','none')
-        $(".listFlower").css('display','none')
-        $(".paint").css('display','block')
-    　break;
-    default:
-    　 $(".listSticky").css('display','none')
+        s=1
+        p=1
+        }else{
+        $(".listSticky").css('display','none')
         $(".listFlower").css('display','none')
         $(".paint").css('display','none')
+        }
+    　break;
+    case 3:
+         p = p+1
+        if(p % 2 ==0 ){
+        $(".listSticky").css('display','none')
+        $(".listFlower").css('display','none')
+        $(".paint").css('display','block')
+        s=1
+        f=1
+        }else{
+        $(".listSticky").css('display','none')
+        $(".listFlower").css('display','none')
+        $(".paint").css('display','none')
+        }
+    　break;
+    default:
+
     }
 
 });
+
 
 </script>
 </body>
