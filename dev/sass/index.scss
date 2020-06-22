@@ -103,7 +103,7 @@
         }
 
         .mask {
-            border: 1px solid rgba($lightGold, .3);
+            border:1px solid rgba($lightGold, .3);
             width: 50%;
             height: 51%;
             margin: 0 auto;
@@ -169,7 +169,6 @@
 
                     p:nth-child(1) {
                         @include font-style() {}
-
                         // border: 1px solid red;
                         letter-spacing: 2px;
                         opacity: .9;
@@ -180,10 +179,8 @@
                     }
 
                     p:nth-child(2) {
-
                         // border: 1px solid red;
                         @include font-style() {}
-
                         letter-spacing: 2px;
                         opacity: .9;
                         position: absolute;
@@ -207,6 +204,7 @@
             height: 105%;
             background-color: $grey5;
             position: relative;
+            // top:100vh;
             overflow: hidden;
 
 
@@ -426,7 +424,6 @@
                                 box-shadow: 4px 6px 12px rgba(0, 0, 0, 0.24), -4px -4px 8px rgba(230, 230, 230, 0.1);
                                 border-radius: 100%;
                                 margin-right: 15px;
-
 
 
                                 &:last-child {
@@ -698,7 +695,6 @@
 
                         p {
                             @include font-style() {}
-
                             display: inline-block;
                             // border: 1px solid red;
                             border-bottom: 1px solid $white;
