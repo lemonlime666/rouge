@@ -207,29 +207,39 @@ h2{
             padding: 10px;
             
         }
-        .listSticky{
-            padding: 5px;
-            div{
-                border: 1px soild red;
-                display:  inline-block;
-                background-color: #686868;
-                border-radius: 80px;
-                z-index: 0;
-                width: 60px;
-                height: 60px;
+        .scroll{
+            overflow-X: scroll;
+            .listSticky{
+                border: 1px solid black;
                 padding: 5px;
-                img{
-                    display: inline-block;
-                    width: 80px;
-                    height: 80px;
-                    position: relative;
-                    left: 1%;
-                    top: -25%;
+                width: 790px;
 
+                // display: flex;
+                div{
+                    border: 1px soild red;
+                    display:  inline-block;
+                    background-color: #686868;
+                    border-radius: 80px;
+                    z-index: 0;
+                    width: 60px;
+                    height: 60px;
+                    padding: 5px;
+                    margin: 10px;
+                   
+                    img{
+                        display: inline-block;
+                        width: 120%;
+                        height: 80px;
+                        position: relative;
+                        left: -5%;
+                        top: -15%;
+    
+                    }
                 }
+    
             }
-
         }
+
     }
 
     
@@ -301,9 +311,3 @@ form{
 
 }
 
-.bg > div:nth-child(3){
-    border: 1px solid royalblue;
-    width: 25%;
-    height: 100VH;
-    // display: none;
-}

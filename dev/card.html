@@ -141,11 +141,19 @@
                         <div class="listTitle">花系列</div>
                         <div class="listTitle">畫筆</div>
                     </div>
-                    <div class="listSticky">                 
-                        <div class="substrate1"><img src="./image/cardFlower/f1.png"></div>
-                        <div class="substrate1"><img src="./image/cardFlower/f2.png"></div>
-                        <div class="substrate1"><img src="./image/cardFlower/f3.png"></div>                
-                </div>
+                    <div class="scroll">         
+                        <div class="listSticky">      
+                            <div class="substrate1"><img src="./image/cardFlower/f1.png"></div>
+                            <div class="substrate1"><img src="./image/cardFlower/f2.png"></div>
+                            <div class="substrate1"><img src="./image/cardFlower/f3.png"></div>     
+                            <div class="substrate1"><img src="./image/cardFlower/f4.png"></div>
+                            <div class="substrate1"><img src="./image/cardFlower/f5.png"></div>
+                            <div class="substrate1"><img src="./image/cardFlower/f6.png"></div>      
+                            <div class="substrate1"><img src="./image/cardFlower/f7.png"></div>
+                            <div class="substrate1"><img src="./image/cardFlower/f8.png"></div>
+                            <div class="substrate1"><img src="./image/cardFlower/f9.png"></div>                 
+                    </div>
+                 </div>  
                 </div>
 
 
@@ -306,6 +314,14 @@
     });
 
     $(".sB img").click(function(e){
+        
+        let src =e.target.getAttribute("src");
+        console.log(e.target.getAttribute("src"));
+        addImg(src)
+
+    });
+    
+    $(".substrate1 img").click(function(e){
         
         let src =e.target.getAttribute("src");
         console.log(e.target.getAttribute("src"));
