@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "go":"gulp go",
-    "gojs":"gulp gojs",
-    "goimg":"gulp goimg",
+    "go": "gulp go",
+    "gojs": "gulp gojs",
+    "goimg": "gulp goimg",
     "live": "gulp live"
   },
   "keywords": [],
