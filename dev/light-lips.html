@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="./css/light-lips.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="./js/main.js"></script>
 
@@ -16,22 +16,22 @@
 <body>
 
     <div class="clo-main" id="clo-main">
-    
+
         <div class="clo-left" id="clo-left">
-          <div class="clo-left clo-one">
-            <div class="clo-left clo-two"></div>
-          </div>
-        
+            <div class="clo-left clo-one">
+                <div class="clo-left clo-two"></div>
+            </div>
+
         </div>
-        
+
         <div class="clo-right" id="clo-right">
-          <div class="clo-right clo-one">
-            <div class="clo-right clo-two"></div>
-          </div>
-        
+            <div class="clo-right clo-one">
+                <div class="clo-right clo-two"></div>
+            </div>
+
         </div>
-        
-      </div>
+
+    </div>
 
 
 
@@ -72,16 +72,27 @@
 
                         <div class="contain">
                             <div class="contain-in">
-
+                                <!--廣告欄位-->
                                 <div class="adv">
                                     <div class="adv-card">
 
                                     </div>
 
                                 </div>
-
+                                <!--商品欄位-->
                                 <div class="cardouter">
-                                    <div class="card bot">
+                                    <div class="card">
+                                        <!--滑鼠-->
+                                        <div class="mouse-block">
+                                            <div id="mouse" class="mouse">
+                                                <div class="bigAni">
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <!--圖片-->
+
                                         <img src="./img/1231.webp" alt="" srcset="">
 
                                         <span>
@@ -94,27 +105,72 @@
 
                                 </div>
                                 <div class="cardouter">
-                                    <div class="card top">
-                                        <span>
+                                    <div class="card">
+                                        <!--滑鼠-->
+                                        <div class="mouse-block">
+                                            <div id="mouse" class="mouse">
+                                                <div class="bigAni">
 
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <!--圖片-->
+
+                                        <img src="./img/1231.webp" alt="" srcset="">
+
+                                        <span>
+                                            <h2>水潤光感系列</h2>
+                                            <p>ROUGE CREAM - SHEER</p>
+                                            <h4>see more</h4>
                                         </span>
 
                                     </div>
                                 </div>
 
                                 <div class="cardouter">
-                                    <div class="card bot">
-                                        <span>
+                                    <div class="card">
+                                        <!--滑鼠-->
+                                        <div class="mouse-block">
+                                            <div id="mouse" class="mouse">
+                                                <div class="bigAni">
 
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <!--圖片-->
+
+                                        <img src="./img/1231.webp" alt="" srcset="">
+
+                                        <span>
+                                            <h2>水潤光感系列</h2>
+                                            <p>ROUGE CREAM - SHEER</p>
+                                            <h4>see more</h4>
                                         </span>
 
                                     </div>
 
                                 </div>
                                 <div class="cardouter">
-                                    <div class="card top">
-                                        <span>
+                                    <div class="card">
+                                        <!--滑鼠-->
+                                        <div class="mouse-block">
+                                            <div id="mouse" class="mouse">
+                                                <div class="bigAni">
 
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <!--圖片-->
+
+                                        <img src="./img/1231.webp" alt="" srcset="">
+
+                                        <span>
+                                            <h2>水潤光感系列</h2>
+                                            <p>ROUGE CREAM - SHEER</p>
+                                            <h4>see more</h4>
                                         </span>
 
                                     </div>
@@ -140,31 +196,87 @@
     </div>
 
     <script>
-        window.addEventListener('load',function(){
+        window.addEventListener('load', function () {
 
-            setTimeout(function(){
+            setTimeout(function () {
                 let cloMain = document.getElementById("clo-main");
                 cloMain.style.display = "none";
 
-            },2200);
+            }, 2200);
 
-            var outDiv = document.getElementById('out');
-            outDiv.onwheel = function (event) {
-                //禁止事件默认行为（此处禁止鼠标滚轮行为关联到"屏幕滚动条上下移动"行为）  
-                event.preventDefault();
-                //设置鼠标滚轮滚动时屏幕滚动条的移动步长  
-                var step = 50;
-                if (event.deltaY < 0) {
-                    //向上滚动鼠标滚轮，屏幕滚动条左移  
-                    this.scrollLeft -= step;
+            window.onwheel = function(event){
+        
+        let step = 50;
+        if (event.deltaY > 0) {
+                    document.documentElement.scrollLeft += step
                 } else {
 
-                    this.scrollLeft += step;
+                  document.documentElement.scrollLeft -= step
                 }
+      }
+
+
+            
+
+        })
+        window.addEventListener("load",function(){
+
+            //以下為滑鼠動畫
+            let block = document.querySelectorAll(".card");
+
+
+            for (let i = 0; i < block.length; i++) {
+                let mouseDiv = block[i].querySelector(".mouse");
+                block[i].addEventListener('mouseover', function () {
+
+
+                    mouseDiv.style.display = 'block';
+
+
+                });
+                block[i].addEventListener('mouseout', function () {
+                    mouseDiv.style.display = 'none';
+                });
+
+                block[i].addEventListener('mousemove', function (e) {
+                    var x = e.pageX - this.offsetLeft;
+                    var y = e.pageY - this.offsetTop;
+                    mouseDiv.style.left = x + 'px';
+                    mouseDiv.style.top = y + 'px';
+
+
+                });
+                block[i].addEventListener('click', function () {
+                    setTimeout(function () {
+                        window.location.href = "product.html";
+
+                    }, 1500)
+                    let over = block[i].querySelector(".mouse-block");
+                    let big = block[i].querySelector(".bigAni");
+                    over.style.overflow = "visible";
+                    this.style.zIndex = "9999"
+                    over.style.zIndex = "9999";
+                    big.style.display = "block";
+
+                    document.body.style.overflow = "hidden";
+
+
+
+
+
+
+
+                });
+
+
+
+
             }
 
         })
-        
+
+
+
     </script>
 
 </body>
