@@ -221,7 +221,7 @@ h2{
         }
         .scroll{
             background-color: #292929;
-            overflow-X: scroll;
+            // overflow-X: scroll;
             .listSticky{
                 border: 1px solid black;
                 padding: 5px;
@@ -413,17 +413,26 @@ form{
    
 }
 
+.C_social{
+    display: flex;
+    justify-content: space-between;
+    margin: 20px;
+}
 
 @media screen  and (min-width: 1356px){
     .listTitle{
         display: none;
     }
+  
 }
 
 
 @media screen  and (max-width: 1356px){
 #first{
     display: none;
+}
+.scroll{
+    overflow-x: scroll;
 }
 #third{
     width: 30%;
