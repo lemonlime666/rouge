@@ -15,7 +15,9 @@ body{
     border: 1px solid gray;
 }
 
-
+input{
+    outline: none;
+}
 
 .bg{
     width: 100%;
@@ -86,6 +88,7 @@ h2{
                     z-index: 0;
                     width: 60px;
                     height: 60px;
+                    cursor: pointer;
                 img{
                    position: relative;
                    left: -10%;
@@ -118,6 +121,7 @@ h2{
                 z-index: 0;
                 width: 60px;
                 height: 60px;
+                cursor: pointer;
             img{
                 position: relative;
                 left: -10%;
@@ -136,11 +140,11 @@ h2{
 }
 
 .draw{
-
-    transform: translateX(9%);
+    
     border: 2px solid #efefef;
-    margin: 10px;
+    margin: 10px auto;
     width: 80%;
+    text-align: center;
     #drawButton{
         .drawbuttonUse{
             outline: none;
@@ -201,20 +205,29 @@ h2{
         .imglist{
             display: flex;
             justify-content: space-around;
-            font-size: 20px;
             color: #efefef;
             background-color: #686868;
-            padding: 10px;
-            
+            .listTitle{     
+                font-size: 20px;
+                width: 33%;
+                padding: 10px;
+                text-align: center;
+                &:hover{
+                    color: #292929;
+                    background-color: #efefef;
+                    cursor: pointer;
+                }
+            }
         }
         .scroll{
+            background-color: #292929;
             overflow-X: scroll;
             .listSticky{
                 border: 1px solid black;
                 padding: 5px;
                 width: 790px;
-
-                // display: flex;
+                background-color: #292929;
+                // display: none;
                 div{
                     border: 1px soild red;
                     display:  inline-block;
@@ -225,6 +238,7 @@ h2{
                     height: 60px;
                     padding: 5px;
                     margin: 10px;
+                    cursor: pointer;
                    
                     img{
                         display: inline-block;
@@ -235,15 +249,112 @@ h2{
                         top: -15%;
     
                     }
+                    &:hover{
+                        background-color: #efefef;
+                    }
                 }
     
             }
+            .listFlower{
+                border: 1px solid black;
+                padding: 5px;
+                width: 790px;
+                background-color: #292929;
+                display: none;
+                div{
+                    border: 1px soild red;
+                    display:  inline-block;
+                    background-color: #686868;
+                    border-radius: 80px;
+                    z-index: 0;
+                    width: 60px;
+                    height: 60px;
+                    padding: 5px;
+                    margin: 10px;
+                    cursor: pointer;
+                   
+                    img{
+                        display: inline-block;
+                        width: 120%;
+                        height: 80px;
+                        position: relative;
+                        left: -5%;
+                        top: -15%;
+    
+                    }
+                    &:hover{
+                        background-color: #efefef;
+                    }
+                }
+    
+            }
+           
+                .paint{
+                    margin: 10px;
+                    // border: 2px solid #efefef;
+                    background-color: #292929;
+                    text-align: center;
+                    display: none;
+                   
+                    #drawButtonM{
+                        display: flex;
+                        justify-content: space-around;
+                        .drawbuttonUse{
+                            outline: none;
+                            font-size: 16px;
+                            color: #626262;
+                            background: transparent;
+                            border: 1px solid #626262;
+                            padding: 5px 5px;
+                            width: 80px;
+                            &:hover{
+                                color: #efefef;
+                                background-color: #626262;
+                                border: 1px solid  #626262;
+                                transition: background-color 0.5s , border 0.5s,color 0.5s;
+                            }
+                        }
+                        .drawEraser{
+                            outline: none;
+                            font-size: 16px;
+                            color: #626262;
+                            background: transparent;
+                            border: 1px solid #626262;
+                            padding: 5px 5px;
+                            width: 50px;
+                            &:hover{
+                                color: #efefef;
+                                background-color: #626262;
+                                border: 1px solid  #626262;
+                                transition: background-color 0.5s , border 0.5s,color 0.5s;
+                            }
+                        }
+                        #penPixLabelM{
+                            color: #efefef;
+                           >p{
+                               margin-top: 0;
+                               margin-bottom: 0;
+                               text-align: center;
+                           }
+                        }
+                        #penpixM{
+                            width: 50px;
+                        }
+                        #penColorM{
+                            color: rgb(10,15,102);
+                        }
+                
+                    }
+                }
+            
         }
 
     }
 
     
 }
+
+
 
 
 
