@@ -121,46 +121,38 @@ window.addEventListener('load', function () {
     }
     pg3Change();
 
-    function changeConfirm(i) {
-        return function () {
+    function changeConfirm(i){
+        return function(){
             $('.pg3BtnBox span').removeClass('itemCheck');
             $(`.pg3BtnBox span:nth-child(${i})`).toggleClass('itemCheck');
 
-            if (i == 1) {
-                $('.sec3back ').css({
-                    backgroundColor: 'rgba(141, 0, 21, 0.75)',
-                });
-                $('.femiModel img').attr('src', 'image/model1.png');
+            if(i==1){
+                $('.sec3back ').css({backgroundColor:'rgba(141, 0, 21, 0.75)',});
+                $('.femiModel img').attr('src','image/model1.png');
                 $('.pg3ItemTitle div img').attr('src', 'image/lip1.png');
                 $('.itemClass').text('鑽石閃耀水潤光感潤色唇膏');
                 $('#pg3BackText1').text('SHEER');
                 $('#pg3BackText2').text('LIPSTICKS');
                 $('.pg3ItemTitle p').text('水潤光感系列');
-            } else if (i == 2) {
-                $('.sec3back ').css({
-                    backgroundColor: 'rgba(44, 51, 66, .75)',
-                });
-                $('.femiModel img').attr('src', 'image/model4.png');
+            }else if(i==2){
+                $('.sec3back ').css({backgroundColor:'rgba(44, 51, 66, .75)',});
+                $('.femiModel img').attr('src','image/model4.png');
                 $('.pg3ItemTitle div img').attr('src', 'image/lip2.png');
                 $('.itemClass').text('絕對完美迷霧絲絨霧感唇膏');
                 $('#pg3BackText1').text('MATTE');
                 $('#pg3BackText2').text('LIPSTICKS');
                 $('.pg3ItemTitle p').text('絲絨霧感系列');
-            } else if (i == 3) {
-                $('.sec3back ').css({
-                    backgroundColor: 'rgba(153, 130, 94, .75)',
-                });
-                $('.femiModel img').attr('src', 'image/model3.png');
+            }else if(i==3){
+                $('.sec3back ').css({backgroundColor:'rgba(153, 130, 94, .75)',});
+                $('.femiModel img').attr('src','image/model3.png');
                 $('.pg3ItemTitle div img').attr('src', 'image/lip3.png');
                 $('.itemClass').text('絕對完美奢華光潤霜感唇膏');
                 $('#pg3BackText1').text('CREAM');
                 $('#pg3BackText2').text('LIPSTICKS');
                 $('.pg3ItemTitle p').text('奢華霜感系列');
-            } else if (i == 4) {
-                $('.sec3back ').css({
-                    backgroundColor: 'rgba(113,133,189,.6)',
-                });
-                $('.femiModel img').attr('src', 'image/model2.png');
+            }else if(i==4){
+                $('.sec3back ').css({backgroundColor:'rgba(113,133,189,.6)',});
+                $('.femiModel img').attr('src','image/model2.png');
                 $('.pg3ItemTitle div img').attr('src', 'image/lip4.png');
                 $('.itemClass').text('鑽石閃耀水蜜修護光潤唇膏');
                 $('#pg3BackText1').text('SHEER');
