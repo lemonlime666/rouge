@@ -9,7 +9,7 @@ $(document).ready(function () {
             'textColor': '#efefef',
             'bulletsColor': '#efefef',
             'position': 'right',
-            'tooltips': ['','HOME', 'LIPS', 'MAKEUP', 'CARE', 'STEP', 'CARD', 'VOTE']
+            'tooltips': ['','ROUGE', 'LIPS', 'MAKEUP', 'CARE', 'CARD']
         },
         //normalScrollElements: '.scrollbox',
     });
