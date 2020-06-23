@@ -1,8 +1,9 @@
 @import './app/_header.scss';
-body{
-    font-family: 'Noto Sans TC', sans-serif;
+body {
+    font-family: "Noto Sans TC", sans-serif;
     box-sizing: border-box;
     margin: 0;
+    padding: 0;
 }
 
 section.M_background {
@@ -16,17 +17,17 @@ section.M_background {
         top: 15%;
         writing-mode: vertical-rl;
         transform: rotate(-180deg);
-        font-family: 'Noto Sans TC', sans-serif;
+        font-family: "Noto Sans TC", sans-serif;
         font-weight: 800;
-        letter-spacing: .25rem;
+        letter-spacing: 0.25rem;
         font-size: 12rem;
         z-index: 1;
-        -webkit-text-stroke:2px #dadada;
+        -webkit-text-stroke: 2px #dadada;
         color: transparent;
         z-index: 1;
         margin: 0 1em;
     }
-    .M_line{
+    .M_line {
         width: 1rem;
         height: 70vh;
         right: 26%;
@@ -42,13 +43,12 @@ main.M_makeup {
     align-items: center;
 }
 
-
 .M_left {
     /*border: 1px solid red;*/
     width: 25%;
     height: 100vh;
     @extend main.M_makeup;
-    .M_catalog{
+    .M_catalog {
         /*border: 1px solid black;*/
         width: 65%;
         height: 100vh;
@@ -56,21 +56,21 @@ main.M_makeup {
         display: flex;
         flex-direction: column;
         justify-content: center;
-        button.M_opt{
+        button.M_opt {
             margin: 10% 0 10% 0;
             background-color: transparent;
             border: none;
             outline: none;
             cursor: pointer;
             font-size: 2rem;
-            padding: 10% ;
-            font-family: 'Noto Serif TC', serif;
+            padding: 10%;
+            font-family: "Noto Serif TC", serif;
             font-weight: 800;
             color: #ffffff;
             position: relative;
             z-index: 1;
-            &::after{
-                content: '';
+            &::after {
+                content: "";
                 width: 0;
                 height: 3rem;
                 z-index: -1;
@@ -78,44 +78,82 @@ main.M_makeup {
                 position: absolute;
                 transition: width 500ms ease-in-out;
             }
-            &::after{
+            &::after {
                 right: 0;
                 bottom: 0;
             }
-            &:hover::after{
+            &:hover::after {
                 width: 80%;
             }
         }
     }
-    
-    .M_option{
-        /*border: 1px solid green;*/
+
+    .M_option {
+        // border: 1px solid green;
+        overflow: hidden;
         width: 35%;
         height: 100vh;
         background: #141414;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-evenly;
-        align-items: center;
-        button.M_btn{
-            background: transparent;
-            outline: none;
-            border: none;
-            cursor: pointer;
-            filter: brightness(.65);
-            transition: 500ms ease-in-out;
-            &:hover{
-                filter: brightness(1);
+        // #M_cpModel{
+        //     transform: translateX(0px);
+        // }
+        .M_optionGroup {
+            // border: 1px solid blue;
+            // transform: translateX(100%);
+            transition: .5s;
+            transition-delay: .5s;
+            background: #141414;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            align-items: center;
+            button.M_btn {
+                background: transparent;
+                outline: none;
+                border: none;
+                cursor: pointer;
+                filter: brightness(0.65);
+                transition: 500ms ease-in-out;
+                &:hover {
+                    filter: brightness(1);
+                }
+            }
+            .M_pcColor {
+                // border: 1px solid blueviolet;
+                border: 2px solid #ffffffd2;
+                border-radius: 50%;
+                cursor: pointer;
+                width: 75px;
+                height: 75px;
+                margin: 0.8%;
+            }
+            .M_pcdarkpink {
+                background-color: #9d3333;
+            }
+            .M_pcred {
+                background-color: #cd201f;
+            }
+            .M_pcorange {
+                background-color: #f55d3e;
+            }
+            .M_pcnone {
+                color: #dadada;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background-color: transparent;
             }
         }
-        button.M_btnSec{
+        button.M_btnSec {
             @extend button.M_btn;
-            width: 60%; 
-            // border: 1px solid red; 
-            color: white; 
+            // width: 60%;
+            // border: 1px solid red;
+            color: white;
             font-size: 1.2rem;
-            letter-spacing: .1rem;
-            font-family: 'Noto Serif TC', serif;
+            letter-spacing: 0.1rem;
+            font-family: "Noto Serif TC", serif;
         }
     }
 }
@@ -129,9 +167,9 @@ main.M_makeup {
     align-items: flex-end;
     justify-content: center;
     z-index: 1;
-    .M_img{
+    .M_img {
         // border: 1px solid red;
-        width:65%;
+        width: 65%;
         margin-bottom: 1.5%;
     }
 }
@@ -143,29 +181,29 @@ main.M_makeup {
     display: flex;
     flex-direction: column;
     align-items: center;
-    h1.M_title{
+    h1.M_title {
         color: #292929;
-        letter-spacing: .25rem;
-        font-family: 'Noto Serif TC', serif;
+        letter-spacing: 0.25rem;
+        font-family: "Noto Serif TC", serif;
         margin: 1em 0;
     }
-    h3.M_titleSec{
-        letter-spacing: .25rem;
-        font-family: 'Noto Serif TC', serif;
-    margin: 1em 0;
+    h3.M_titleSec {
+        letter-spacing: 0.25rem;
+        font-family: "Noto Serif TC", serif;
+        margin: 1em 0;
     }
-    p.M_detail{
+    p.M_detail {
         color: #292929;
         margin: 1em 0;
     }
-    .M_content{
+    .M_content {
         // border: 1px solid red;
         padding: 0 6.5% 0 6.5%;
     }
-    .M_contentbtn{
-        width: 40%;
-        font-family: 'Noto Serif TC', serif;
-        letter-spacing: .25rem;
+    .M_contentbtn {
+        // width: 40%;
+        font-family: "Noto Serif TC", serif;
+        letter-spacing: 0.25rem;
         background: transparent;
         outline: none;
         border: 2px solid #626262;
@@ -173,24 +211,311 @@ main.M_makeup {
         font-size: 1.5rem;
         padding: 2%;
     }
-    .M_group{
+    .M_group {
         width: 100%;
         margin: 3% 0 3% 0;
         // border: 1px solid green;
         display: flex;
         justify-content: space-evenly;
-        button.M_social{
+        button.M_social {
             background: transparent;
             outline: none;
             border: none;
             cursor: pointer;
             color: #626262;
             transition: 500ms ease-in-out;
-            &:hover{
+            &:hover {
                 color: #989898;
             }
         }
     }
 }
+section.M_phoneVersion {
+    display: none;
+}
 
+@media (min-width: 1537px) and(max-width: 1536px) {
+    .M_middle {
+        .M_img {
+            // border: 1px solid red;
+            width: 60%;
+            margin-bottom: 1.5%;
+        }
+    }
+    .M_left .M_option button.M_btnSec {
+        width: 100%;
+        padding: 0;
+    }
+    .M_right .M_contentbtn {
+        width: 45%;
+        padding: 2% 0;
+        font-size: 1.2rem;
+    }
+    section.M_background {
+        p.M_bgf {
+            right: 15%;
+            top: 5%;
+            letter-spacing: 0.25rem;
+            font-size: 10.5rem;
+        }
+        .M_right .M_group button.M_social {
+            font-size: 10px;
+        }
 
+        .M_right h3.M_titleSec {
+            letter-spacing: 0.25rem;
+            margin: 0.5rem 0;
+        }
+    }
+    .M_right .M_group {
+        margin: 2% 0 2% 0;
+    }
+    .M_right p.M_detail {
+        margin: 0.5rem 0;
+    }
+}
+
+@media (max-width: 1200px) {
+    button.M_btnSec {
+        width: 100%;
+        padding: 0;
+    }
+    .M_right .M_contentbtn {
+        width: 45%;
+        padding: 2% 0;
+    }
+
+    .M_left .M_option button.M_btnSec {
+        font-size: 1.2rem;
+        width: 100%;
+        padding: 0;
+    }
+    section.M_background {
+        p.M_bgf {
+            right: 16%;
+            top: 10%;
+            font-size: 8rem;
+        }
+    }
+    .M_left .M_catalog button.M_opt {
+        font-size: 1.5rem;
+        padding: 8%;
+        margin: 10% 0 10% 0;
+        padding: 10%;
+        &::after {
+            height: 2rem;
+        }
+    }
+}
+
+@media (max-width: 1024px) {
+    .M_middle {
+        .M_img {
+            width: 75%;
+        }
+    }
+    button.M_btnSec {
+        width: 100%;
+        padding: 0;
+    }
+    .M_right .M_contentbtn {
+        font-size: 1rem;
+        width: 45%;
+        padding: 2% 0;
+    }
+
+    .M_left .M_option button.M_btnSec {
+        font-size: 1rem;
+    }
+    section.M_background {
+        p.M_bgf {
+            right: 16%;
+            top: 10%;
+            font-size: 7.5rem;
+        }
+    }
+    .M_left .M_catalog button.M_opt {
+        font-size: 1.5rem;
+        padding: 8%;
+        margin: 10% 0 10% 0;
+        padding: 3%;
+        &::after {
+            height: 2rem;
+        }
+    }
+    .M_right h1.M_title {
+        margin: 0.5rem 0;
+    }
+}
+
+@media (max-width: 768px) {
+    // p.M_bgfphone{
+    //     border: 1px solid blue;
+    //     overflow-x: hidden;
+    //     // z-index: -9999;
+    //     z-index: 1;
+    //     position: absolute;
+    //     top: 0%;
+    //     left: 0;
+    //     font-family: "Noto Sans TC", sans-serif;
+    //     font-weight: 800;
+    //     letter-spacing: 0.25rem;
+    //     font-size: 12rem;
+    //     -webkit-text-stroke: 2px #dadada;
+    //     color: transparent;
+    // }
+    section.M_background {
+        display: none;
+    }
+    section.M_phoneVersion {
+        overflow: hidden;
+        display: block;
+        background-color: #efefef;
+        height: 100vh;
+        width: 100vw;
+        // border: 1px solid green;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .M_rightgroup {
+        width: 60px;
+        height: 100px;
+        position: absolute;
+        top: 150px;
+        right: 0;
+        // border: 1px sol  id red;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        .M_shoppingBag {
+            color: #292929;
+            background: transparent;
+            border: none;
+            outline: none;
+            cursor: pointer;
+        }
+    }
+
+    .M_middle {
+        // border: 1px solid purple;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: flex-end;
+        justify-content: center;
+        z-index: 1;
+        .M_img {
+            // border: 1px solid red;
+            width: 52%;
+            margin-bottom: 1%;
+        }
+    }
+
+    .M_catalog {
+        // border: 1px solid blue;
+        width: 100%;
+        height: 10vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #292929;
+        button.M_tablink {
+            background-color: transparent;
+            border: none;
+            outline: none;
+            padding: 1.5%;
+            // margin: 0 5%;
+            width: 200px;
+            color: #ffffff;
+            letter-spacing: 0.25rem;
+            font-family: "Noto Serif TC", serif;
+        }
+    }
+    .M_phoneContent {
+        // border: 1px solid red;
+        background-color: #141414;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .buttonGroup {
+            // margin-top: .6%;
+            height: 15vh;
+            width: 100vw;
+            // border: 1px solid white;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+        }
+        #skin {
+            display: block;
+        }
+        .M_colorGroup {
+            width: 100vw;
+            height: 15vh;
+            // border: 1px solid yellow;
+            background: #141414;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            .M_color {
+                // border: 1px solid blueviolet;
+                border: 2px solid #ffffffd2;
+                border-radius: 50%;
+                width: 70px;
+                height: 70px;
+                margin: 0.8%;
+            }
+            .M_darkpink {
+                background-color: #9d3333;
+            }
+            .M_red {
+                background-color: #cd201f;
+            }
+            .M_orange {
+                background-color: #f55d3e;
+            }
+            .M_none {
+                color: #dadada;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background-color: transparent;
+            }
+        }
+        .M_detail {
+            display: none;
+            height: 15vh;
+            button.M_btnPhone {
+                // border: 1px solid yellow;
+                width: 11.5%;
+                // margin: auto;
+                text-align: center;
+                border: none;
+                outline: none;
+                background-color: transparent;
+            }
+            button.M_btnSec {
+                width: 8%;
+                // border: 1px solid red;
+                border: none;
+                outline: none;
+                background-color: transparent;
+                color: white;
+                font-size: 1.2rem;
+                letter-spacing: 0.1rem;
+                font-family: "Noto Serif TC", serif;
+            }
+            button.M_social {
+                color: #dadada;
+                padding: 0;
+                background: transparent;
+                border: none;
+                outline: none;
+            }
+        }
+    }
+}
