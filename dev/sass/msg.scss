@@ -113,8 +113,40 @@
             letter-spacing: 1px;
             
         }
+        
     }
+    
 
+}
+.lag-type{
+        padding: 5px;
+        width:90%;
+        margin: auto;
+        border: 1px solid #EFEFEF;
+        background-color: #292929;
+        display: block;
+        .lag-type-content{
+            width: calc(100% - 80px);
+            height: auto;
+            line-height: 2;
+            padding: 5px;
+        }
+        .lag-type-btn{
+            margin-left: 8px;
+            width: 70px;
+            height: auto;
+            line-height: 2;
+            padding: 5px;
+            background-color: #883030;
+            color: #EFEFEF;
+            cursor: pointer;
+            border: none;
+            transition: 0.5s;
+            outline: none;
+            &:hover{
+            background-color: #C2AA6C;
+            }
+        }
 }
 @media all and(max-width: 767px){
     .lag-content{
