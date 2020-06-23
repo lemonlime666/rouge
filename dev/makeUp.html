@@ -24,30 +24,34 @@
     <main class="M_makeup">
         <div class="M_left">
             <div class="M_catalog">
-                <button class="M_opt" id="M_model">MODEL</button>
-                <button class="M_opt" id="M_lipColor">LIP COLOR</button>
+                <button class="M_opt" id="M_btn1">MODEL</button>
+                <button class="M_opt" id="M_btn2">LIP COLOR</button>
             </div>
-            <div class="M_option">
-                <button class="M_btn" id="M_chooseModel"><img src="./image/model/model01-hei-res-non.png" alt=""
-                        style="width: 60%;"></button>
-                <button class="M_btn" id="M_chooseMode2"><img src="./image/model/model02-hei-res-non.png" alt=""
-                        style="width: 60%;"></button>
-                <button class="M_btn" id="M_chooseMode3"><img src="./image/model/model03-hei-res-non.png" alt=""
-                        style="width: 60%;"></button>
-                <button class="M_btn" id="M_chooseMode4"><img src="./image/model/model04-hei-res-non.png" alt=""
-                        style="width: 60%;"></button>
-                <button class="M_btn" id="M_chooseMode5"><img src="./image/model/model05-hei-res-non.png" alt=""
-                        style="width: 60%;"></button>
-                <button class="M_btnSec" id="M_chooseMode6">上傳照片</button>
+            <div class="M_option" id="M_mainOption">
+                <div class="M_optionGroup" id="M_cpModel">
+                    <button class="M_btn" id="M_chooseModel"><img src="./image/model/model01-hei-res-non.png"
+                            alt="" style="width: 60%;"></button>
+                    <button class="M_btn" id="M_chooseMode2"><img src="./image/model/model02-hei-res-non.png"
+                            alt="" style="width: 60%;"></button>
+                    <button class="M_btn" id="M_chooseMode3"><img src="./image/model/model03-hei-res-non.png"
+                            alt="" style="width: 60%;"></button>
+                    <button class="M_btn" id="M_chooseMode4"><img src="./image/model/model04-hei-res-non.png"
+                            alt="" style="width: 60%;"></button>
+                    <button class="M_btn" id="M_chooseMode5"><img src="./image/model/model05-hei-res-non.png"
+                            alt="" style="width: 60%;"></button>
+                    <button class="M_btnSec" id="M_chooseMode6">上傳照片</button>
+                </div>
+                <div class="M_optionGroup" id="M_cpLipColor">
+                    <div class="M_pcColor M_pcdarkpink"></div>
+                    <div class="M_pcColor M_pcred"></div>
+                    <div class="M_pcColor M_pcorange"></div>
+                    <div class="M_pcColor M_pcnone"><i class="fas fa-ban fa-4x"></i></div>    
+                </div>
             </div>
-            <!-- <div class="M_lipC">
-                <button></button>
-                <button></button>
-            </div> -->
         </div>
         <div class="M_middle">
 
-                <img class="M_img" src="./image/model/model02-hei-res-non.png" alt="">
+            <img class="M_img" src="./image/model/model02-hei-res-non.png" alt="">
 
         </div>
         <div class="M_right">
@@ -68,10 +72,93 @@
                 <button class="M_social"><i class="fab fa-line fa-4x"></i></button>
                 <button class="M_social"><i class="fas fa-file-download fa-4x"></i></button>
             </div>
-
         </div>
     </main>
 </section>
+
+
+<!-- PHONE -->
+
+<section class="M_phoneVersion">
+    <!-- <p class="M_bgfphone">ROUGE</p> -->
+    <div class="M_rightgroup">
+        <button class="M_shoppingBag"><i class="fas fa-shopping-bag fa-3x"></i></button>
+        <button class="M_shoppingBag"><i class="far fa-address-card fa-3x"></i></button>
+    </div>
+    <div class="M_middle">
+        <img class="M_img" src="./image/model/model02-hei-res-non.png" alt="">
+    </div>
+    <div class="M_catalog">
+        <button class="M_tablink" id="M_skin" onclick="openSkin()">SKIN</button>
+        <button class="M_tablink" id="M_color" onclick="openColor()">COLOR</button>
+        <button class="M_tablink" id="M_social" onclick="openSocial()">SHARE</button>
+    </div>
+    <div class="M_phoneContent">
+        <div class="M_detail" id="skin">
+            <div class="buttonGroup">
+                <button class="M_btnPhone" id="M_chooseModel"><img src="./image/model/model01-hei-res-non.png"
+                        alt="" style="width: 100%;"></button>
+                <button class="M_btnPhone" id="M_chooseMode2"><img src="./image/model/model02-hei-res-non.png"
+                        alt="" style="width: 100%;"></button>
+                <button class="M_btnPhone" id="M_chooseMode3"><img src="./image/model/model03-hei-res-non.png"
+                        alt="" style="width: 100%;"></button>
+                <button class="M_btnPhone" id="M_chooseMode4"><img src="./image/model/model04-hei-res-non.png"
+                        alt="" style="width: 100%;"></button>
+                <button class="M_btnPhone" id="M_chooseMode5"><img src="./image/model/model05-hei-res-non.png"
+                        alt="" style="width: 100%;"></button>
+                <button class="M_btnSec" id="M_chooseMode6">上傳照片</button>
+            </div>
+        </div>
+        <div class="M_detail" id="color">
+            <div class="M_colorGroup">
+                <div class="M_color M_darkpink"></div>
+                <div class="M_color M_red"></div>
+                <div class="M_color M_orange"></div>
+                <div class="M_color M_none"><i class="fas fa-ban fa-4x"></i></div>
+            </div>
+        </div>
+        <div class="M_detail" id="social">
+            <div class="buttonGroup">
+                <button class="M_social"><i class="fab fa-facebook fa-4x"></i></button>
+                <button class="M_social"><i class="fab fa-line fa-4x"></i></button>
+                <button class="M_social"><i class="fas fa-file-download fa-4x"></i></button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script src="./js/makeUp.js"></script>
+<script>
+// $("#M_btn1").click(function(){
+//     $("#M_cpModel").slideUp("slow");
+//     $("#M_cpLipColor").show();
+// })
+
+    var skin = document.getElementById("skin");
+    var color = document.getElementById("color");
+    var social = document.getElementById("social");
+    var M_skin = document.getElementById("M_skin");
+    var M_color = document.getElementById("M_color");
+    var M_social = document.getElementById("M_social");
+
+
+    function openSkin() {
+        skin.style.display = "block";
+        color.style.display = "none";
+        social.style.display = "none";
+    }
+    function openColor() {
+        skin.style.display = "none";
+        color.style.display = "block";
+        social.style.display = "none";
+    }
+    function openSocial() {
+        skin.style.display = "none";
+        color.style.display = "none";
+        social.style.display = "block";
+    }
+</script>
+
 </body>
 
 </html>
