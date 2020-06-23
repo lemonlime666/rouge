@@ -1,4 +1,4 @@
-@import './app/_header.scss';
+@import './app/_header_black.scss';
 
 *{
     box-sizing: border-box;
@@ -15,7 +15,9 @@ body{
     border: 1px solid gray;
 }
 
-
+input{
+    outline: none;
+}
 
 .bg{
     width: 100%;
@@ -86,6 +88,7 @@ h2{
                     z-index: 0;
                     width: 60px;
                     height: 60px;
+                    cursor: pointer;
                 img{
                    position: relative;
                    left: -10%;
@@ -118,6 +121,7 @@ h2{
                 z-index: 0;
                 width: 60px;
                 height: 60px;
+                cursor: pointer;
             img{
                 position: relative;
                 left: -10%;
@@ -136,11 +140,11 @@ h2{
 }
 
 .draw{
-
-    transform: translateX(9%);
+    
     border: 2px solid #efefef;
-    margin: 10px;
+    margin: 10px auto;
     width: 80%;
+    text-align: center;
     #drawButton{
         .drawbuttonUse{
             outline: none;
@@ -201,35 +205,150 @@ h2{
         .imglist{
             display: flex;
             justify-content: space-around;
-            font-size: 20px;
             color: #efefef;
             background-color: #686868;
-            padding: 10px;
-            
-        }
-        .listSticky{
-            padding: 5px;
-            div{
-                border: 1px soild red;
-                display:  inline-block;
-                background-color: #686868;
-                border-radius: 80px;
-                z-index: 0;
-                width: 60px;
-                height: 60px;
-                padding: 5px;
-                img{
-                    display: inline-block;
-                    width: 80px;
-                    height: 80px;
-                    position: relative;
-                    left: 1%;
-                    top: -25%;
-
+            .listTitle{     
+                font-size: 20px;
+                width: 33%;
+                padding: 10px;
+                text-align: center;
+                &:hover{
+                    color: #292929;
+                    background-color: #efefef;
+                    cursor: pointer;
                 }
             }
-
         }
+        .scroll{
+            background-color: #292929;
+            // overflow-X: scroll;
+            .listSticky{
+                border: 1px solid black;
+                padding: 5px;
+                width: 790px;
+                background-color: #292929;
+                display: none;
+                div{
+                    border: 1px soild red;
+                    display:  inline-block;
+                    background-color: #686868;
+                    border-radius: 80px;
+                    z-index: 0;
+                    width: 60px;
+                    height: 60px;
+                    padding: 5px;
+                    margin: 10px;
+                    cursor: pointer;
+                   
+                    img{
+                        display: inline-block;
+                        width: 120%;
+                        height: 80px;
+                        position: relative;
+                        left: -5%;
+                        top: -15%;
+    
+                    }
+                    &:hover{
+                        background-color: #efefef;
+                    }
+                }
+    
+            }
+            .listFlower{
+                border: 1px solid black;
+                padding: 5px;
+                width: 790px;
+                background-color: #292929;
+                display: none;
+                div{
+                    border: 1px soild red;
+                    display:  inline-block;
+                    background-color: #686868;
+                    border-radius: 80px;
+                    z-index: 0;
+                    width: 60px;
+                    height: 60px;
+                    padding: 5px;
+                    margin: 10px;
+                    cursor: pointer;
+                   
+                    img{
+                        display: inline-block;
+                        width: 120%;
+                        height: 80px;
+                        position: relative;
+                        left: -5%;
+                        top: -15%;
+    
+                    }
+                    &:hover{
+                        background-color: #efefef;
+                    }
+                }
+    
+            }
+           
+                .paint{
+                    margin: 10px;
+                    // border: 2px solid #efefef;
+                    background-color: #292929;
+                    text-align: center;
+                    display: none;
+                   
+                    #drawButtonM{
+                        display: flex;
+                        justify-content: space-around;
+                        .drawbuttonUse{
+                            outline: none;
+                            font-size: 16px;
+                            color: #626262;
+                            background: transparent;
+                            border: 1px solid #626262;
+                            padding: 5px 5px;
+                            width: 80px;
+                            &:hover{
+                                color: #efefef;
+                                background-color: #626262;
+                                border: 1px solid  #626262;
+                                transition: background-color 0.5s , border 0.5s,color 0.5s;
+                            }
+                        }
+                        .drawEraser{
+                            outline: none;
+                            font-size: 16px;
+                            color: #626262;
+                            background: transparent;
+                            border: 1px solid #626262;
+                            padding: 5px 5px;
+                            width: 50px;
+                            &:hover{
+                                color: #efefef;
+                                background-color: #626262;
+                                border: 1px solid  #626262;
+                                transition: background-color 0.5s , border 0.5s,color 0.5s;
+                            }
+                        }
+                        #penPixLabelM{
+                            color: #efefef;
+                           >p{
+                               margin-top: 0;
+                               margin-bottom: 0;
+                               text-align: center;
+                           }
+                        }
+                        #penpixM{
+                            width: 50px;
+                        }
+                        #penColorM{
+                            color: rgb(10,15,102);
+                        }
+                
+                    }
+                }
+            
+        }
+
     }
 
     
@@ -258,7 +377,7 @@ form{
 
     #cardText{
         width: 70%;
-        font-size: 20px;
+        font-size: 30px;
         height: 300px;
         z-index: 20;
     }
@@ -294,16 +413,172 @@ form{
    
 }
 
+.C_social{
+    display: flex;
+    justify-content: space-between;
+    margin: 20px;
+}
 
 
-.drawbuttonUse{
+.container {
+    position: relative;
+    padding: 16px;
+    height: 30VH;
+    z-index: 1;
+    background-color: #292929;
+    h1{
+        color: #efefef;
+        margin: 10px;
+    }
+    p{
+        color: #efefef;
+        margin: 50px;
+    }
+    >div{
+        .btn2-1 {
+            margin: 10px;
+            outline: none;
+            position: relative;
+            font-size: 16px;
+            color: #626262;
+            background: transparent;
+            border: 1px solid #626262;
+            padding: 10px 15px;
+            z-index: 20;
+            &:hover{//:hover:after才對
+                color: #efefef;
+                &:after{
+                    background-color: #626262;
+                    border: 1px solid #626262;
+                    width: 99%;
+                    -webkit-transition: width 0.5s;
+                    transition: width 0.5s;
+                }
+            }
+            &:after{
+                position: absolute;
+                left: 0;
+                top: 0;
+                content: "";
+                z-index: -1;
+                background-color: #626262;
+                width: 0%;
+                height: 100%;
+    
+            }
+        }
+
+        .btn3-1 {
+            outline: none;
+            margin: 10px;
+            position: relative;
+            font-size: 16px;
+            color: #883030;
+            background: transparent;
+            border: 1px solid #883030;
+            padding: 10px 15px;
+            z-index: 20;
+            &:hover{//:hover:after才對
+                color: #efefef;
+                &:after{
+                    background-color: #883030;
+                    border: 1px solid #883030;
+                    width: 99%;
+                    -webkit-transition: width 0.5s;
+                    transition: width 0.5s;
+                }
+            }
+            &:after{
+                position: absolute;
+                left: 0;
+                top: 0;
+                content: "";
+                z-index: -1;
+                background-color: #883030;
+                width: 0%;
+                height: 100%;
+    
+            }
+        }
+    }
+}
+
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 99; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  padding-top: 60px;
 
 
 }
 
-.bg > div:nth-child(3){
-    border: 1px solid royalblue;
-    width: 25%;
-    height: 100VH;
-    // display: none;
+.modal-content {
+    background-color: #efefef;
+    margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+    border: 1px solid #989898;
+    width:25%; /* Could be more or less, depending on screen size */
+  }
+
+/* Add Zoom Animation */
+.animate {
+    -webkit-animation: animatezoom 0.6s;
+    animation: animatezoom 0.6s
+  }
+  
+  @-webkit-keyframes animatezoom {
+    from {-webkit-transform: scale(0)} 
+    to {-webkit-transform: scale(1)}
+  }
+    
+  @keyframes animatezoom {
+    from {transform: scale(0)} 
+    to {transform: scale(1)}
+  }
+
+
+@media screen  and (min-width: 1356px){
+    .listTitle{
+        display: none;
+    }
+  
 }
+
+
+@media screen  and (max-width: 1356px){
+#first{
+    display: none;
+}
+.scroll{
+    overflow-x: scroll;
+}
+#third{
+    width: 30%;
+}
+}
+@media screen and (max-width: 992px){
+
+}
+@media screen and (max-width: 768px){
+    #third{
+        display: none;
+    }
+    .bg > div:nth-child(2){
+        
+        width: 618px;
+     
+        margin: 0 auto;
+       
+    
+    }
+    
+}
+
