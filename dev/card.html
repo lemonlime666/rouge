@@ -114,11 +114,7 @@
                             min="0" 
                             max="255" 
                             value="10" 
-<<<<<<< HEAD
-                            data-unit=""
-=======
                             data-unit="0"
->>>>>>> dev
                             />
                     </div>
                     <div class="input">
@@ -129,11 +125,7 @@
                             min="0" 
                             max="255" 
                             value="15" 
-<<<<<<< HEAD
-                            data-unit=""/>
-=======
                             data-unit="0"/>
->>>>>>> dev
                     </div>
                     <div class="input">       
                         <label for="Blue">B：</label>
@@ -143,11 +135,7 @@
                             min="0" 
                             max="255" 
                             value="102" 
-<<<<<<< HEAD
-                            data-unit=""/>
-=======
                             data-unit="0"/>
->>>>>>> dev
                     </div>
                 </div>
             </div>
@@ -200,11 +188,7 @@
                                    min="0" 
                                    max="100" 
                                    value="10" 
-<<<<<<< HEAD
-                                   data-unit=""
-=======
                                    data-unit="1"
->>>>>>> dev
                                    />
                            <p id="penColorM">筆色</p>
                         </div>
@@ -217,11 +201,7 @@
                                        min="0" 
                                        max="255" 
                                        value="10" 
-<<<<<<< HEAD
-                                       data-unit=""
-=======
                                        data-unit="1"
->>>>>>> dev
                                        />
                                </div>
                                <div class="input">
@@ -232,11 +212,7 @@
                                        min="0" 
                                        max="255" 
                                        value="15" 
-<<<<<<< HEAD
-                                       data-unit=""/>
-=======
                                        data-unit="1"/>
->>>>>>> dev
                                </div>
                                <div class="input">       
                                    <label for="BlueM">B：</label>
@@ -246,11 +222,7 @@
                                        min="0" 
                                        max="255" 
                                        value="102" 
-<<<<<<< HEAD
-                                       data-unit=""/>
-=======
                                        data-unit="1"/>
->>>>>>> dev
                                </div>
                            </div>
                     </div>
@@ -408,10 +380,6 @@
         console.log(rgbM);
         $("#penColor").css('color',rgb);//筆色設定結果
         $("#penColorM").css('color',rgbM);//筆色設定結果
-<<<<<<< HEAD
-        Drawingset(rgb,penPix)
-        Drawingset(rgbM,penPixM)
-=======
         if(e.target.dataset.unit ==0){
             Drawingset(rgb,penPix)
         }else{
@@ -419,7 +387,6 @@
         }
      
       
->>>>>>> dev
         
     }
 
@@ -610,7 +577,6 @@ $(".listTitle").click(function(e){
 
     $(window).resize(function() {
         var wdth=$(window).width();
-<<<<<<< HEAD
 
         let pas =wdth/618
         let rwd = 0
@@ -641,38 +607,6 @@ $(".listTitle").click(function(e){
             card.renderAll();
             });
 
-=======
-
-        let pas =wdth/618
-        let rwd = 0
-        if(wdth<618){
-            rwd = 89*pas
-        }else{
-            // alert('msg');
-            rwd=89
-        }
-        card.clear();
-            card.setDimensions({
-                width: '100%',
-                height: `${rwd}vh`
-                },{
-                cssOnly: true
-                });
-
-            fabric.Image.fromURL('./image/model/model02-hei-res-non.png', (img) => {
-                img.set({
-            // 通过scale来设置图片大小，这里设置和画布一样大
-                
-                    scaleX: card.width / img.width,
-                    scaleY: card.height / img.height,
-                });
-            // 设置背景
-            card.setBackgroundColor('#efefef');
-            card.setBackgroundImage(img, card.renderAll.bind(card));
-            card.renderAll();
-            });
-
->>>>>>> dev
    
     
     });
