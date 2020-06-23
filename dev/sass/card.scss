@@ -423,7 +423,7 @@ form{
 .container {
     position: relative;
     padding: 16px;
-    height: 30VH;
+    height: 40VH;
     z-index: 1;
     background-color: #292929;
     h1{
@@ -432,7 +432,7 @@ form{
     }
     p{
         color: #efefef;
-        margin: 50px;
+        margin: 20px 10px 20px 10px ;
     }
     >div{
         .btn2-1 {
@@ -525,7 +525,7 @@ form{
     background-color: #efefef;
     margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
     border: 1px solid #989898;
-    width:25%; /* Could be more or less, depending on screen size */
+    width:350px; /* Could be more or less, depending on screen size */
   }
 
 /* Add Zoom Animation */
