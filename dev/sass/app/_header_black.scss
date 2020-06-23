@@ -189,7 +189,11 @@
         margin-bottom: 18px;
 
         a {
+<<<<<<< HEAD
             @include font-style(14px, $CG, $white, 500) {
+=======
+            @include font-style(14px, $CG, $grey2, 500) {
+>>>>>>> dev
                 // font-size: 14px;
                 display: block;
                 text-decoration: none;
