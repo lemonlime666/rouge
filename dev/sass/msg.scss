@@ -1,0 +1,110 @@
+*{
+    margin: 0;
+    padding: 0;
+    // font-size: 0;
+    box-sizing: border-box;
+}
+.lag-content{
+    max-width: 1200px;
+    margin: auto;
+    margin-top: 5%;
+    height: 300px;
+    
+    border: 1px solid black;
+    .lag-pic{
+        float: left;
+        border: 1px solid red;
+        
+        height: 100%;
+        width: 200px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .lag-pic-img{
+            width: 80%;
+            span{
+                display: block;
+                padding-top: 100%;
+                overflow: hidden;
+                position: relative;
+                img{
+                    position: absolute;
+                    top:0;
+                    left:0;
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+
+                }
+            }
+
+        }
+        
+
+    }
+    .lag-val{
+        float: right;
+        width: calc(100% - 200px);
+        height: 15%;
+        border: 1px solid green;
+        display: flex;
+        flex-direction: row;
+        .lag-id{
+            height: 100%;
+            width: 150px;
+            font-size: 16px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .lag-time{
+            height: 100%;
+            width: 150px;
+            font-size: 16px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+       
+
+    }
+    .lag-ent{
+        float: right;
+        width: calc(100% - 200px);
+        height: 85%;
+        border: 1px solid rgb(55, 54, 126);
+    }
+
+}
+@media all and(max-width: 767px){
+    .lag-content{
+        height: auto;
+        max-width:550px;
+        .lag-pic{
+            width: 50%;
+            min-height: 200px;
+        }
+        .lag-val{
+            width: 50%;
+            height: 100px;
+            min-height: 200px;
+            flex-direction: column-reverse;
+            .lag-id{
+                width:100%;
+                height: 50px;
+            }
+            .lag-time{
+                width:100%;
+                height: 50px;
+            }
+            
+        }
+        .lag-ent{
+            float: left;
+            width: 100%;
+            height: 300px;
+            
+
+        }
+    }
+}
