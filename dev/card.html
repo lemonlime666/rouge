@@ -101,7 +101,7 @@
                         min="0" 
                         max="100" 
                         value="10" 
-                        data-unit=""
+                        data-unit="0"
                         />
                 <p id="penColor">筆色</p>
              </div>
@@ -114,7 +114,7 @@
                             min="0" 
                             max="255" 
                             value="10" 
-                            data-unit=""
+                            data-unit="0"
                             />
                     </div>
                     <div class="input">
@@ -125,7 +125,7 @@
                             min="0" 
                             max="255" 
                             value="15" 
-                            data-unit=""/>
+                            data-unit="0"/>
                     </div>
                     <div class="input">       
                         <label for="Blue">B：</label>
@@ -135,7 +135,7 @@
                             min="0" 
                             max="255" 
                             value="102" 
-                            data-unit=""/>
+                            data-unit="0"/>
                     </div>
                 </div>
             </div>
@@ -188,7 +188,7 @@
                                    min="0" 
                                    max="100" 
                                    value="10" 
-                                   data-unit=""
+                                   data-unit="1"
                                    />
                            <p id="penColorM">筆色</p>
                         </div>
@@ -201,7 +201,7 @@
                                        min="0" 
                                        max="255" 
                                        value="10" 
-                                       data-unit=""
+                                       data-unit="1"
                                        />
                                </div>
                                <div class="input">
@@ -212,7 +212,7 @@
                                        min="0" 
                                        max="255" 
                                        value="15" 
-                                       data-unit=""/>
+                                       data-unit="1"/>
                                </div>
                                <div class="input">       
                                    <label for="BlueM">B：</label>
@@ -222,7 +222,7 @@
                                        min="0" 
                                        max="255" 
                                        value="102" 
-                                       data-unit=""/>
+                                       data-unit="1"/>
                                </div>
                            </div>
                     </div>
@@ -380,8 +380,13 @@
         console.log(rgbM);
         $("#penColor").css('color',rgb);//筆色設定結果
         $("#penColorM").css('color',rgbM);//筆色設定結果
-        Drawingset(rgb,penPix)
-        Drawingset(rgbM,penPixM)
+        if(e.target.dataset ==0){
+            Drawingset(rgb,penPix)
+        }else{
+            Drawingset(rgbM,penPixM)
+        }
+     
+      
         
     }
 
