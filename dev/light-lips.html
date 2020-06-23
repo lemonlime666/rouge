@@ -5,6 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&family=Noto+Serif+TC:wght@200;300;400;500;600;700;900&display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Nunito+Sans:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="./css/light-lips.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="./js/main.js"></script>
@@ -37,17 +43,18 @@
 
     <div id="out">
         <div class="back-text">
-            <h1>GOGOGOOOOOOOOOOOOOOOO</h1>
-            <h1>GOGOGOOOOOOOOOOOOOOOOOOOOOOOOOOOO</h1>
+            <h1 class="hugefont">A MIRACLE FOR BEAUTY</h1>
+            <h1 class="hugefont">THE POWER OF LIPSTICKS</h1>
 
         </div>
 
 
 
         <div class="out" id="js-wrapper">
+            @@include("./app/header.html")
             <div class="main-out" id="js-slideContainer">
                 <div class="main">
-                    @@include("./app/header.html")
+                    
 
                     <div class="content">
 
@@ -55,14 +62,29 @@
                         <div class="intro">
 
                             <div class="intro-text">
-                                <h2>LIPSTICKS</h2>
-                                <p>口紅超持久顯色、潤澤，彈指間打造炫耀完美紅唇唇妝！多款土色唇膏、裸色唇膏、霧面唇膏，唇彩唇妝首選大膽顯色！</p>
+                                <h2 class="xxlfont">LIPSTICKS</h2>
+                                <p class="sfont">口紅超持久顯色、潤澤，彈指間打造炫耀完美紅唇唇妝！多款土色唇膏、裸色唇膏、霧面唇膏，唇彩唇妝首選大膽顯色！</p>
 
                             </div>
                             <div class="intro-image">
                                 <span>
+                                    <div class="img-1">
+                                        <div class="img-1-b">
+                                            <img src="./image/bg02_04.jpg">
+
+                                        </div>
+
+                                    </div>
+                                    <div class="img-2">
+                                        <div class="img-2-b">
+                                            <img src="./image/bg02_02.jpg">
+
+                                        </div>
+
+                                    </div>
 
                                 </span>
+                                
 
                             </div>
 
@@ -93,12 +115,12 @@
                                         </div>
                                         <!--圖片-->
 
-                                        <img src="./img/1231.webp" alt="" srcset="">
+                                        <img src="./image/light-lip-01.jpg" alt="" srcset="">
 
                                         <span>
-                                            <h2>水潤光感系列</h2>
-                                            <p>ROUGE CREAM - SHEER</p>
-                                            <h4>see more</h4>
+                                            <h2 class="lfont">水潤光感系列</h2>
+                                            <p class="mfont">ROUGE CREAM - SHEER</p>
+                                            <h4 class="sfont">see more</h4>
                                         </span>
 
                                     </div>
@@ -117,12 +139,12 @@
                                         </div>
                                         <!--圖片-->
 
-                                        <img src="./img/1231.webp" alt="" srcset="">
+                                        <img src="./image/light-lip-02.jpg" alt="" srcset="">
 
                                         <span>
-                                            <h2>水潤光感系列</h2>
-                                            <p>ROUGE CREAM - SHEER</p>
-                                            <h4>see more</h4>
+                                            <h2 class="lfont">水潤光感系列</h2>
+                                            <p class="mfont">ROUGE CREAM - SHEER</p>
+                                            <h4 class="sfont">see more</h4>
                                         </span>
 
                                     </div>
@@ -141,12 +163,12 @@
                                         </div>
                                         <!--圖片-->
 
-                                        <img src="./img/1231.webp" alt="" srcset="">
+                                        <img src="./image/light-lip-03.jpg" alt="" srcset="">
 
                                         <span>
-                                            <h2>水潤光感系列</h2>
-                                            <p>ROUGE CREAM - SHEER</p>
-                                            <h4>see more</h4>
+                                            <h2 class="lfont">水潤光感系列</h2>
+                                            <p class="mfont">ROUGE CREAM - SHEER</p>
+                                            <h4 class="sfont">see more</h4>
                                         </span>
 
                                     </div>
@@ -165,12 +187,12 @@
                                         </div>
                                         <!--圖片-->
 
-                                        <img src="./img/1231.webp" alt="" srcset="">
+                                        <img src="./image/light-lip-04.jpg" alt="" srcset="">
 
                                         <span>
-                                            <h2>水潤光感系列</h2>
-                                            <p>ROUGE CREAM - SHEER</p>
-                                            <h4>see more</h4>
+                                            <h2 class="lfont">水潤光感系列</h2>
+                                            <p class="mfont">ROUGE CREAM - SHEER</p>
+                                            <h4 class="sfont">see more</h4>
                                         </span>
 
                                     </div>
@@ -196,18 +218,20 @@
     </div>
 
     <script>
+        
+        
         window.addEventListener('load', function () {
 
-            setTimeout(function () {
-                let cloMain = document.getElementById("clo-main");
-                cloMain.style.display = "none";
+            // setTimeout(function () {
+            //     let cloMain = document.getElementById("clo-main");
+            //     cloMain.style.display = "none";
 
-            }, 2200);
+            // }, 2200);
 
             window.onwheel = function(event){
-        
-        let step = 50;
-        if (event.deltaY > 0) {
+            //event.preventDefault();
+            let step = 50;
+            if (event.deltaY > 0) {
                     document.documentElement.scrollLeft += step
                 } else {
 
@@ -224,7 +248,7 @@
             //以下為滑鼠動畫
             let block = document.querySelectorAll(".card");
 
-
+            
             for (let i = 0; i < block.length; i++) {
                 let mouseDiv = block[i].querySelector(".mouse");
                 block[i].addEventListener('mouseover', function () {
@@ -273,6 +297,21 @@
 
             }
 
+            //以下為偵測滑動事件
+            function isMobile() {
+
+            try{ document.createEvent("TouchEvent"); return true; }
+
+            catch(e){ return false;}
+
+            }
+            if(isMobile()){
+                let out = document.querySelector(".out");
+                out.style.overflowY = "auto"
+
+            }else{
+                out.style.overflowY = "visible"
+            }
         })
 
 

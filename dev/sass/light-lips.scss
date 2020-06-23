@@ -22,12 +22,14 @@ header{
     
     .back-text{
         position: fixed;
-        border:1px solid white;
-        opacity: 0.3;
+        /*border:1px solid white;*/
+        color: #EFEFEF;
+        opacity: 0.1;
         transform: translate(15%, 100%);
 
         h1{
             margin-bottom: 30px;
+            font-family: Cormorant Garamond;
         }
         
         
@@ -47,7 +49,7 @@ header{
     display: flex;
     float: left;
     height: 100%;
-    background: linear-gradient(325deg, #5f4a4a 0, #bd8383 75%);
+    background: #493F46;
 }
 footer{
     height: 100%;
@@ -71,6 +73,7 @@ footer{
     .content{
         height: calc(100% - 60px);
         display: flex;
+        padding-right: 100px;
         
     }
     
@@ -78,24 +81,27 @@ footer{
     
     
     .intro{
-        border: 1px solid blue;
+        //border: 1px solid blue;
         width:35vw;
-        min-width: 350px;
+        min-width: 450px;
         height:100%;
         
        .intro-text{
            width:100%;
            height:40%;
-           border: 1px solid red;
+           //border: 1px solid red;
            display: flex;
            align-items: center;
            justify-content: center;
            flex-direction: column;
            h2{
                margin-bottom: 20px;
+               color: #EFEFEF;
            }
            p{
                width:350px;
+               color: #EFEFEF;
+               line-height: 1.5;
            }
 
 
@@ -104,7 +110,7 @@ footer{
         }
         .intro-image{
             height:60%;
-           border: 1px solid rgb(66, 163, 47);
+           //border: 1px solid rgb(66, 163, 47);
            position: relative;
            span{
 
@@ -112,9 +118,54 @@ footer{
                 top:50%;
                 left:50%;
                 transform: translate(-50%, -50%);
-                border: 1px solid rgb(66, 163, 47);
+                //border: 1px solid rgb(66, 163, 47);
                 width:50%;
-                height:60%;
+                height:80%;
+                .img-1{
+                    position: absolute;
+                    top:0;
+                    left:0;
+                    width:50%;
+                    overflow: hidden;
+                    //border: 1px solid white;
+                    .img-1-b{
+                        
+                        display: block;
+                        padding-top: 100%;
+                        overflow: hidden;
+                        img{
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            width: 200%;
+                            height: 100%;
+                            object-fit: fill;
+                        }
+                    }
+
+                }
+                .img-2{
+                    position: absolute;
+                    top:5%;
+                    right:0;
+                    width:60%;
+                    overflow: hidden;
+                    //border: 1px solid white;
+                    .img-2-b{
+                        overflow: hidden;
+                        display: block;
+                        padding-top: 150%;
+                        img{
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            width: 200%;
+                            height: 100%;
+                            object-fit: fill;
+                        }
+                    }
+
+                }
                
            }
 
@@ -134,7 +185,7 @@ footer{
     }
 
     .adv{
-        border: 1px solid black;
+        //border: 1px solid black;
         width:30vw;
         min-width: 350px;
         height:100%;
@@ -149,7 +200,7 @@ footer{
                 min-width: 180px;
                 background: linear-gradient(135deg, #4ab9e1 0, #b9e0e6 60%);
             
-            border: 1px solid green;
+            //border: 1px solid green;
             position: relative;
 
         }
@@ -158,7 +209,7 @@ footer{
     }
 
     .cardouter {
-        border: 1px solid black;
+        //border: 1px solid black;
         width:30vw;
         min-width: 350px;
         height:100%;
@@ -171,19 +222,20 @@ footer{
 
         
         .card {
-            height: 35vh;
+            height: 40vh;
             min-height: 280px;
-            width: 30vh;
+            width: 35vh;
             min-width: 220px;
             background: linear-gradient(135deg, #4ab9e1 0, #b9e0e6 60%);
             z-index: 1;
-            border: 1px solid green;
+            //border: 1px solid green;
             position: relative;
-
+            left: 10%;
 
             display: flex;
             justify-content: center;
             align-items: center;
+            cursor: pointer;
             
             
 
@@ -222,20 +274,25 @@ footer{
             
 
             span {
-                border: 1px solid black;
-                z-index: 1;
+                //border: 1px solid black;
+                z-index: 3;
 
                 position: absolute;
                 top:50%;
                 left:50%;
                 
-                transform: translate(-75%, 25%);
+                transform: translate(-110%, 30%);
 
                 white-space:nowrap;
+                h2{
+                    color: #FFCBCC;
+                }
                 p{
                     margin-bottom: 16px;
+                    color: #FFCBCC;
                 }
                 h4{
+                    color: #FFCBCC;
                     text-align: center;
                 }
                 
@@ -264,7 +321,8 @@ footer{
     top:0;
     left: 0;
     position: absolute;
-    border: 1px solid #ccc;
+    //border: 1px solid #ccc;
+    z-index: 10;
     
     overflow: hidden;
 }
@@ -318,7 +376,7 @@ footer{
         .select{
             width:60px;
             height: 100%;
-            border: 1px solid green;
+            //border: 1px solid green;
 
         }
         .adv{
@@ -337,6 +395,8 @@ footer{
     .content{
         margin-top: 100px;
     }
+
+
     
 }
 
@@ -347,11 +407,14 @@ footer{
         header{
             position: fixed;
         }
+        .adv{
+            display: none;
+        }
         .intro{
             width:100%;
             position: fixed;
             height:150px;
-            margin-top: 60px;
+            margin-top: 90px;
             
             
             .intro-text{
@@ -370,7 +433,7 @@ footer{
             display: flex;
             flex-direction: column-reverse;
             .contain-in{
-                height:calc(100% - 210px);
+                height:calc(100% - 190px);
 
             }
            
@@ -382,10 +445,14 @@ footer{
 
     #out{
         width:100vw;
-        height: 100vh;
-        overflow-y: hidden;
         
         
         
+        
+    }
+    
+
+    .main .cardouter .card{
+        left:25%;
     }
 }

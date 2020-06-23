@@ -1,0 +1,162 @@
+@import './app/_header.scss'; 
+
+body{
+    box-sizing: border-box;
+    background-color: #292929;
+    padding: 0;
+    margin: 0;
+}
+
+
+
+.vTH{
+    text-align: center;
+    height: 200px;
+    .vTH1{
+   
+        color: #efefef;
+        display: inline-block;
+        font-weight: 800;
+        font-size: 4.5rem;
+        letter-spacing: .25rem;
+    }
+    .vTH2{
+    
+        display: inline-block;
+        font-weight: 800;
+        font-size: 4.5rem;
+        -webkit-text-stroke: 1px #dadada;
+        color: transparent;
+        letter-spacing: .25rem;
+    }
+}
+
+.vTHA{
+    text-align: center;
+    .vTH3{
+    
+        display: inline-block;
+        font-weight: 800;
+        font-size:10rem;
+        -webkit-text-stroke: 1px #dadada;
+        color: transparent;
+        letter-spacing: .25rem;
+        margin: 0;
+    }
+    .vTH4{
+   
+        color: #efefef;
+        display: inline-block;
+        font-weight: 800;
+        font-size: 4.5rem;
+        letter-spacing: .25rem;
+        margin-bottom: 0;
+    }
+
+}
+
+.Bgi{
+    position: absolute;
+    width: 40%;
+    left: 5%;
+    background-color: transparent;
+   img{
+    position: absolute;
+       font-size: 0;
+       width: 100%;
+       left:10;
+       z-index: 0;
+   }
+
+}
+.top3{
+    background-color: transparent;
+    border: 1px solid red;
+    display: flex;
+    width: 100%;
+    .box{
+        background-color: transparent;
+        width: 50%;
+    }
+    .top{
+        background-color: transparent;
+        display: flex;
+        width: 50%;
+        justify-content: space-around;;
+        align-items: flex-end;
+        .no2{
+            margin: 0 auto;
+            text-align: center;
+            img{
+                width: 80%;
+                height: auto;
+                max-width: 100%;
+                max-height: 100%;
+                
+               
+            }
+        }
+        .no1{
+            text-align: center;
+            img{
+                width: 100%;
+               
+            }
+        }
+        .no3{
+            text-align: center;
+            img{
+                width: 60%;
+                height: auto;
+                max-width: 100%;
+                max-height: 100%;
+            }
+        }
+    }
+}
+.no{
+    color: #efefef;
+    font-size: 2rem;
+    font-weight: 200;
+}
+
+.tno{
+    color: #efefef;
+    font-size: 2rem;
+    font-weight: 400;
+}
+
+.sno1{
+    color: #efefef;
+    font-size: 2.5rem;
+    font-weight: 200;
+}
+
+.tno1{
+    color: #efefef;
+    font-size: 2.5rem;
+    font-weight: 400;
+}
+.Vcocant{
+    text-align: center;
+    img{
+
+        width: 40%;
+    }
+}
+.showCards{
+    display: flex;
+    flex-direction: column;
+    .showCard{
+        display: flex;
+        justify-content: space-around;
+        margin-top: 10VH;
+
+            img{
+                width: 18%;
+                z-index: 20;
+            }
+ 
+    }
+
+}

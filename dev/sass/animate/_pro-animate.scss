@@ -25,8 +25,12 @@ html,body{
   bottom: 0;
   
   /*background: linear-gradient(180deg, transparent 0,rgb(137, 194, 167) 15%);*/
-  background: linear-gradient(180deg, transparent 0, #bd8383 15%);
+  background: linear-gradient(180deg, transparent 0, #493F46 15%);
   /*background: linear-gradient(135deg, transparent 0,rgb(137, 194, 167) 60%);*/
+
+  //background-image: url(../image/back.png);
+  background-position: top;
+  background-size: contain;
   
   
   

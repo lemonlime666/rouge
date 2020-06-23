@@ -1,18 +1,31 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Card</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" ></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/4.0.0-beta.12/fabric.min.js"></script>
+    <link rel="stylesheet" href="./css/dingli.css">
     <link rel="stylesheet" href="./css/card.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
     <script src="./js/main.js"></script>
   
 </head>
 <body>
- 
+    <!-- 燈箱 -->
+    <div id="id01" class="modal">
+        <form class="modal-content animate"  method="post">
+          <div class="container">
+              <h1>明信片儲存成功</h1>
+              <p>趕快參加投票讓大家知道你的美感~~!</p>
+              <div>
+                  <button type="button" onclick="document.getElementById('id01').style.display='none'" class="btn2-1">放棄參加</button>
+                  <button type="button" onclick="document.getElementById('id01').style.display='none'" class="btn3-1">馬上參加</button>
+              </div>
+          </div>
+        </form>
+      </div>
     <!-- <header>
         <div class="header">
 
@@ -81,7 +94,7 @@
              <div id="drawButton">
                  <button class="drawbuttonUse" data-on="1">啟動畫筆</button>
                  <button class="drawEraser">清除</button>
-                 <label id="penPixLabel" for="penpix">筆刷大小：<p>10</p></label>
+                 <label id="penPixLabel" for="penpix">Size：<p>10</p></label>
                  <input id="penpix" 
                         type="range" 
                         name="penpix" 
@@ -92,78 +105,151 @@
                         />
                 <p id="penColor">筆色</p>
              </div>
-            <div class="colorbar">
-             <div class="input">
-                <label for="Red">R：</label>
-                <input id="Red" 
-                       type="range" 
-                       name="Red" 
-                       min="0" 
-                       max="255" 
-                       value="10" 
-                       data-unit=""
-                       />
-              </div>
-              <div class="input">
-                <label for="Green">G：</label>
-                <input id="Green" 
-                       type="range" 
-                       name="Green" 
-                       min="0" 
-                       max="255" 
-                       value="15" 
-                       data-unit=""/>
-              </div>
-              <div class="input">       
-                <label for="Blue">B：</label>
-                <input id="Blue" 
-                       type="range" 
-                       name="Blue" 
-                       min="0" 
-                       max="255" 
-                       value="102" 
-                       data-unit=""/>
-              </div>
-            </div>
+                <div class="colorbar">
+                    <div class="input">
+                        <label for="Red">R：</label>
+                        <input id="Red" 
+                            type="range" 
+                            name="Red" 
+                            min="0" 
+                            max="255" 
+                            value="10" 
+                            data-unit=""
+                            />
+                    </div>
+                    <div class="input">
+                        <label for="Green">G：</label>
+                        <input id="Green" 
+                            type="range" 
+                            name="Green" 
+                            min="0" 
+                            max="255" 
+                            value="15" 
+                            data-unit=""/>
+                    </div>
+                    <div class="input">       
+                        <label for="Blue">B：</label>
+                        <input id="Blue" 
+                            type="range" 
+                            name="Blue" 
+                            min="0" 
+                            max="255" 
+                            value="102" 
+                            data-unit=""/>
+                    </div>
+                </div>
             </div>
         </div>
         <div >
             
             <div class="fabocHead" style="height: 11VH;"></div>
-            <div class="test"></div>
+            <!-- <div class="test"></div> -->
             <!-- <img class="ca" src="./img/model/model02-hei-res-non.png" alt=""> -->
             <!-- <div style="background-color: aqua;  width: 618px; height: 89VH;"></div> -->
             <div  class="cv" style="display: block;"> 
                 <canvas id="canvas"width="2203" height="2945"></canvas>
                 <div>
                     <div class="imglist">
-                        <div class="listTitle">普普風</div>
-                        <div class="listTitle">花系列</div>
-                        <div class="listTitle">畫筆</div>
+                        <div class="listTitle" data-imglist="1">普普風</div>
+                        <div class="listTitle" data-imglist="2">花系列</div>
+                        <div class="listTitle" data-imglist="3">畫筆</div>
                     </div>
-                    <div class="listSticky">                 
-                        <div class="substrate1"><img src="./image/cardFlower/f1.png"></div>
-                        <div class="substrate1"><img src="./image/cardFlower/f2.png"></div>
-                        <div class="substrate1"><img src="./image/cardFlower/f3.png"></div>                
-                </div>
+                    <div class="scroll">         
+                        <div class="listSticky">      
+                            <div class="substrate1"><img src="./image/cardStiker/s1.png"></div>
+                            <div class="substrate1"><img src="./image/cardStiker/s2.png"></div>
+                            <div class="substrate1"><img src="./image/cardStiker/s3.png"></div>     
+                            <div class="substrate1"><img src="./image/cardStiker/s4.png"></div>
+                            <div class="substrate1"><img src="./image/cardStiker/s5.png"></div>
+                            <div class="substrate1"><img src="./image/cardStiker/s6.png"></div>      
+                            <div class="substrate1"><img src="./image/cardStiker/s7.png"></div>
+                            <div class="substrate1"><img src="./image/cardStiker/s8.png"></div>
+                            <div class="substrate1"><img src="./image/cardStiker/s9.png"></div>                 
+                        </div>
+                        <div class="listFlower">      
+                            <div class="substrate1"><img src="./image/cardFlower/f1.png"></div>
+                            <div class="substrate1"><img src="./image/cardFlower/f2.png"></div>
+                            <div class="substrate1"><img src="./image/cardFlower/f3.png"></div>     
+                            <div class="substrate1"><img src="./image/cardFlower/f4.png"></div>
+                            <div class="substrate1"><img src="./image/cardFlower/f5.png"></div>
+                            <div class="substrate1"><img src="./image/cardFlower/f6.png"></div>      
+                            <div class="substrate1"><img src="./image/cardFlower/f7.png"></div>
+                            <div class="substrate1"><img src="./image/cardFlower/f8.png"></div>
+                            <div class="substrate1"><img src="./image/cardFlower/f9.png"></div>                 
+                    </div>
+                    <div class="paint">
+                        <div id="drawButtonM">
+                            <button class="drawbuttonUse" data-on="1">啟動畫筆</button>
+                            <button class="drawEraser">清除</button>
+                            <label id="penPixLabelM" for="penpixM">Size：<p>10</p></label>
+                            <input id="penpixM" 
+                                   type="range" 
+                                   name="penpix" 
+                                   min="0" 
+                                   max="100" 
+                                   value="10" 
+                                   data-unit=""
+                                   />
+                           <p id="penColorM">筆色</p>
+                        </div>
+                           <div class="colorbar">
+                               <div class="input">
+                                   <label for="RedM">R：</label>
+                                   <input id="RedM" 
+                                       type="range" 
+                                       name="Red" 
+                                       min="0" 
+                                       max="255" 
+                                       value="10" 
+                                       data-unit=""
+                                       />
+                               </div>
+                               <div class="input">
+                                   <label for="GreenM">G：</label>
+                                   <input id="GreenM" 
+                                       type="range" 
+                                       name="Green" 
+                                       min="0" 
+                                       max="255" 
+                                       value="15" 
+                                       data-unit=""/>
+                               </div>
+                               <div class="input">       
+                                   <label for="BlueM">B：</label>
+                                   <input id="BlueM" 
+                                       type="range" 
+                                       name="Blue" 
+                                       min="0" 
+                                       max="255" 
+                                       value="102" 
+                                       data-unit=""/>
+                               </div>
+                           </div>
+                    </div>
+                 </div>  
                 </div>
 
 
             </div>
+            
            
            
         </div>
         
         <div id="third">
- 
-
-            <div class="fabocHead" style="height: 11VH;"></div>
+            <div class="fabocHead"  style="height: 30vh; z-index: -1;"></div>
             <h1>輸入文字</h1>
             <form action="get">
                 <p class="M_bgf">ROUGE</p>
                 <textarea name="" id="cardText"></textarea>
             </form>
-            <h2 id="saveCard" style="color: #292929;background-color: transparent;">儲存明信片</h2>
+            <h2 id="inVote" onclick="document.getElementById('id01').style.display='block'">儲存明信片</h2>
+            <div class="C_social">
+                 <button class="M_social"><i class="fab fa-facebook fa-4x"></i></button>
+                <button class="M_social"><i class="fab fa-line fa-4x"></i></button>
+                <div id="saveCard" style="color: #292929;background-color: transparent;" ><i class="fas fa-file-download fa-4x"></i></div>
+            </div>
+  
         </div>
     </div>
    
@@ -202,13 +288,10 @@
             });
         // 设置背景
         card.setBackgroundColor('#efefef');
-        card.setBackgroundImage(img, card.renderAll.bind(card));
-        
+        card.setBackgroundImage(img, card.renderAll.bind(card));   
         card.renderAll();
     });
        
-
-
 
     //開啟關閉筆刷
     $(".drawbuttonUse").click(function(){
@@ -230,13 +313,21 @@
         }
         
     });
+
     //橡皮擦
     $(".drawEraser").click(function(){
         card.clear();
-
+        var wdth=$(window).width();
+        let pas =wdth/618
+        let rwd = 0
+        if(wdth<618){
+            rwd = 89*pas
+        }else{
+            rwd=89
+        }
         card.setDimensions({
             width: '100%',
-            height: '89VH'
+            height: `${rwd}VH`
             },{
             cssOnly: true
             });
@@ -270,18 +361,27 @@
   const inputs = document.querySelectorAll('input')
 
 // 當使用者拉動更新元素時設定 CSS 變數值
-    function updateProperty () {
+    function updateProperty (e) {
+       
         let red = $("#Red").val();
         let Green = $("#Green").val();
         let Blue = $("#Blue").val();
         let penPix = $("#penpix").val();
         let rgb =`rgb(${red}, ${Green}, ${Blue})`
-      
+
+        let redM = $("#RedM").val();
+        let GreenM = $("#GreenM").val();
+        let BlueM = $("#BlueM").val();
+        let penPixM = $("#penpixM").val();
+        let rgbM =`rgb(${redM}, ${GreenM}, ${BlueM})`
 
         $("#penPixLabel p").html(`${penPix}`);
-        console.log(penPix);
+        $("#penPixLabelM p").html(`${penPixM}`);
+        console.log(rgbM);
         $("#penColor").css('color',rgb);//筆色設定結果
+        $("#penColorM").css('color',rgbM);//筆色設定結果
         Drawingset(rgb,penPix)
+        Drawingset(rgbM,penPixM)
         
     }
 
@@ -312,6 +412,14 @@
         addImg(src)
 
     });
+    
+    $(".scroll .substrate1 img").click(function(e){
+        
+        let src =e.target.getAttribute("src");
+        console.log(e.target.getAttribute("src"));
+        addImg(src)
+
+    });
 
         
  function addImg(src){
@@ -330,7 +438,7 @@
         });
  };
  
- //儲存圖片
+ ///*儲存圖片
 $(saveCard).click(function(){
     var canvas = document.getElementById("canvas");
     // var dataURL = canvas.toDataURL('image/jpeg');
@@ -354,7 +462,6 @@ var download = function(filename, dataUrl) {
 
     var clickHandler;
     element.addEventListener('click', clickHandler=function() {
-        // ..and to wait a frame
         requestAnimationFrame(function() {
             URL.revokeObjectURL(element.href);
         })
@@ -366,8 +473,6 @@ var download = function(filename, dataUrl) {
     document.body.removeChild(element)
 }
 
-
-// from Abhinav's answer at  https://stackoverflow.com/questions/37135417/download-canvas-as-png-in-fabric-js-giving-network-error/
 var dataURLtoBlob = function(dataurl) {
     var parts = dataurl.split(','), mime = parts[0].match(/:(.*?);/)[1]
     if(parts[0].indexOf('base64') !== -1) {
@@ -382,7 +487,7 @@ var dataURLtoBlob = function(dataurl) {
         return new Blob([raw], {type: mime})
     }
 }
-
+ //儲存圖片*/
 
  
  //按DEL刪除
@@ -406,7 +511,110 @@ function deleteSelectedObjectsFromCanvas(){
     card.discardActiveObject();
     card.requestRenderAll();
 }
+let s= 1;
+let f= 1;
+let p= 1;
+//手機板選項切換
+$(".listTitle").click(function(e){
+    e.stopPropagation();
+    
+    let chiose = parseInt(e.target.dataset.imglist);
+ 
+    switch (chiose) {
+    case 1:
+        s = s+1
+        if(s % 2 ==0 ){
+        $(".listSticky").css('display','block')
+        $(".listFlower").css('display','none')
+        $(".paint").css('display','none')
+        f=1
+        p=1
+        }else{
+        $(".listSticky").css('display','none')
+        $(".listFlower").css('display','none')
+        $(".paint").css('display','none')
+        }
+    　break;
+    case 2:
+        f = f+1
+        if(f % 2 ==0 ){
+        $(".listSticky").css('display','none')
+        $(".listFlower").css('display','block')
+        $(".paint").css('display','none')
+        s=1
+        p=1
+        }else{
+        $(".listSticky").css('display','none')
+        $(".listFlower").css('display','none')
+        $(".paint").css('display','none')
+        }
+    　break;
+    case 3:
+         p = p+1
+        if(p % 2 ==0 ){
+        $(".listSticky").css('display','none')
+        $(".listFlower").css('display','none')
+        $(".paint").css('display','block')
+        s=1
+        f=1
+        }else{
+        $(".listSticky").css('display','none')
+        $(".listFlower").css('display','none')
+        $(".paint").css('display','none')
+        }
+    　break;
+    default:
 
+    }
+
+});
+//JSRWD
+
+    $(window).resize(function() {
+        var wdth=$(window).width();
+
+        let pas =wdth/618
+        let rwd = 0
+        if(wdth<618){
+            rwd = 89*pas
+        }else{
+            // alert('msg');
+            rwd=89
+        }
+        card.clear();
+            card.setDimensions({
+                width: '100%',
+                height: `${rwd}vh`
+                },{
+                cssOnly: true
+                });
+
+            fabric.Image.fromURL('./image/model/model02-hei-res-non.png', (img) => {
+                img.set({
+            // 通过scale来设置图片大小，这里设置和画布一样大
+                
+                    scaleX: card.width / img.width,
+                    scaleY: card.height / img.height,
+                });
+            // 设置背景
+            card.setBackgroundColor('#efefef');
+            card.setBackgroundImage(img, card.renderAll.bind(card));
+            card.renderAll();
+            });
+
+   
+    
+    });
+
+    // Get the modal
+    var modal = document.getElementById('id01');
+
+// When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
 
 </script>
 </body>
