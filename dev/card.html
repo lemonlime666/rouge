@@ -13,7 +13,20 @@
   
 </head>
 <body>
- 
+    <!-- 燈箱 -->
+    <div id="id01" class="modal">
+        <form class="modal-content animate"  method="post">
+          <div class="container">
+              <h1>明信片儲存成功</h1>
+              <p>趕快參加投票讓大家知道你的美感~~!</p>
+            
+              <div>
+                  <button type="button" onclick="document.getElementById('id01').style.display='none'" class="btn2-1">放棄參加</button>
+                  <button type="button" onclick="document.getElementById('id01').style.display='none'" class="btn3-1">馬上參加</button>
+              </div>
+          </div>
+        </form>
+      </div>
     <!-- <header>
         <div class="header">
 
@@ -231,7 +244,7 @@
                 <p class="M_bgf">ROUGE</p>
                 <textarea name="" id="cardText"></textarea>
             </form>
-            <h2 id="inVote">儲存明信片</h2>
+            <h2 id="inVote" onclick="document.getElementById('id01').style.display='block'">儲存明信片</h2>
             <div class="C_social">
                  <button class="M_social"><i class="fab fa-facebook fa-4x"></i></button>
                 <button class="M_social"><i class="fab fa-line fa-4x"></i></button>
@@ -594,6 +607,15 @@ $(".listTitle").click(function(e){
     
     });
 
+    // Get the modal
+    var modal = document.getElementById('id01');
+
+// When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
 
 </script>
 </body>
