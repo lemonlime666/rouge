@@ -86,7 +86,7 @@ body{
                         align-items: center;
                         //padding-bottom: 10%;
                         
-                        border: 1px solid white;
+                        //border: 1px solid white;
                         width: 25%;
                         height: 200px;
                         img{
@@ -214,6 +214,13 @@ body{
                         margin-right: 5%;
                         color: #EFEFEF;
                         background-color: #883030;
+                        cursor: pointer;
+                        border: none;
+                        outline:none;
+                        &:hover{
+                            background-color: #C2AA6C;
+                        }
+                        
                     }
                     .test_color{
                         width: 20%;
