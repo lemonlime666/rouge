@@ -20,7 +20,7 @@ html,body{
       width: 100%;
       
       
-      background-color: rgba(151, 206, 185, 0.575);
+      background: rgba(181, 87, 87, 0.5);
       transform: scale(1);
       transform-origin: left;
       animation-name: clo-left;
@@ -47,7 +47,7 @@ html,body{
             width:100%;
             animation-delay: 0s;
             z-index: 3;
-            background-color: rgb(151, 206, 185);
+            background: rgb(181, 87, 87);
 
           }
         }
@@ -60,7 +60,7 @@ html,body{
       width: 100%;
       
       
-      background-color: rgba(174, 182, 219, 0.514);
+      background: rgba(232, 169, 112, 0.5);
       transform-origin: right;
       transform: scale(1);
       animation-name: clo-left;
@@ -87,7 +87,7 @@ html,body{
             width:100%;
             animation-delay: 0s;
             z-index: 3;
-            background-color: rgb(174, 182, 219);
+            background: rgb(232, 168, 112);
 
           }
         }
