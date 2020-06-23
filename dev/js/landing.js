@@ -136,6 +136,8 @@ window.addEventListener('load', function () {
                 $('#pg3BackText1').text('SHEER');
                 $('#pg3BackText2').text('LIPSTICKS');
                 $('.pg3ItemTitle p').text('水潤光感系列');
+                $('.pg3ImgBox:nth-child(1) img').attr('src', './image/pg3img2.jpg');
+                $('.pg3ImgBox:nth-child(2) img').attr('src', './image/pg3img1.jpg');
             } else if (i == 2) {
                 $('.sec3back ').css({
                     backgroundColor: 'rgba(44, 51, 66, .75)',
@@ -146,6 +148,8 @@ window.addEventListener('load', function () {
                 $('#pg3BackText1').text('MATTE');
                 $('#pg3BackText2').text('LIPSTICKS');
                 $('.pg3ItemTitle p').text('絲絨霧感系列');
+                $('.pg3ImgBox:nth-child(1) img').attr('src', './image/pg3img9.jpg');
+                $('.pg3ImgBox:nth-child(2) img').attr('src', './image/pg3img4.jpg');
             } else if (i == 3) {
                 $('.sec3back ').css({
                     backgroundColor: 'rgba(153, 130, 94, .75)',
@@ -156,6 +160,8 @@ window.addEventListener('load', function () {
                 $('#pg3BackText1').text('CREAM');
                 $('#pg3BackText2').text('LIPSTICKS');
                 $('.pg3ItemTitle p').text('奢華霜感系列');
+                $('.pg3ImgBox:nth-child(1) img').attr('src', './image/pg3img6.jpg');
+                $('.pg3ImgBox:nth-child(2) img').attr('src', './image/pg3img5.jpg');
             } else if (i == 4) {
                 $('.sec3back ').css({
                     backgroundColor: 'rgba(113,133,189,.6)',
@@ -166,6 +172,8 @@ window.addEventListener('load', function () {
                 $('#pg3BackText1').text('SHEER');
                 $('#pg3BackText2').text('LIPGLOSS');
                 $('.pg3ItemTitle p').text('水感修護系列');
+                $('.pg3ImgBox:nth-child(1) img').attr('src', './image/pg3img7.jpg');
+                $('.pg3ImgBox:nth-child(2) img').attr('src', './image/pg3img8.jpg');
             }
         }
     }
@@ -266,8 +274,111 @@ window.addEventListener('load', function () {
                 })
                 bookPage++;
                 $('#bookPage').text(bookPage);
+
             }
         })
     }
     forBook();
+
+    //canvas draw
+    function draw() {
+        const canvas = document.getElementById("c");
+        const ctx = canvas.getContext("2d");
+
+        // var
+        let painting = false;
+        var varColor = "transparent";
+
+        //forEach getColor();
+        let picker = document.querySelectorAll('.colorPicker');
+        picker.forEach(function (item, index, array) {
+            item.addEventListener('click', function () {
+                let style = window.getComputedStyle(item, null).getPropertyValue('color');
+                varColor = style;
+                $('#c').css({
+                    cursor: 'pointer',
+                })
+            })
+        });
+
+
+        function startPosition(e) {
+            painting = true;
+            draw(e);
+        }
+
+        function endPosition() {
+            painting = false;
+            ctx.beginPath();
+        }
+
+        function draw(e) {
+            if (!painting) return;
+            ctx.lineWidth = 3;
+            ctx.lineCap = "round";
+            ctx.strokeStyle = varColor;
+
+            var rect = canvas.getBoundingClientRect();
+            var scaleX = canvas.width / rect.width;
+            var scaleY = canvas.height / rect.height;
+
+            ctx.lineTo((e.clientX - rect.left) * scaleX, (e.clientY - rect.top) * scaleY);
+            ctx.stroke();
+            ctx.beginPath();
+            ctx.moveTo((e.clientX - rect.left) * scaleX, (e.clientY - rect.top) * scaleY);
+        }
+
+        canvas.addEventListener('mousedown', startPosition);
+        canvas.addEventListener('mouseup', endPosition);
+        canvas.addEventListener('mousemove', draw);
+
+        $('.clearRect').click(function (e) {
+            e.stopPropagation;
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+        })
+    }
+    draw();
+
+    //pg7 card move
+    // function cardMove() {
+
+    //     var cardPageCount = 0;
+
+    //     $('.pg7Others').click(function () {
+
+    //         if (cardPageCount == 0) {
+    //             $('.refCardBox').animate({
+    //                 height: '80%',
+    //             });
+    //             $('.refCardBox span').animate({
+    //                 width: '10%',
+    //                 height: '30%'
+    //             });
+    //             $('.refCardBox span').toggleClass('trytilt');
+    //             $('.pg7ColorBox').fadeOut(500);
+    //             $('.pg7MainCard').fadeOut(500);
+    //             $('.pg7 h1').fadeOut(500);
+    //             $('.pg7DecoSpan').fadeOut(500);
+    //             $('.pg7Others a').text('返回明信片');
+    //             cardPageCount++;
+    //         } else if (cardPageCount == 1) {
+    //             $('.refCardBox').animate({
+    //                 height: '35%',
+    //             });
+    //             $('.refCardBox span').animate({
+    //                 width: '100px',
+    //                 height: '120px'
+    //             });
+    //             $('.refCardBox span').toggleClass('trytilt');
+    //             $('.pg7ColorBox').fadeIn(500);
+    //             $('.pg7MainCard').fadeIn(500);
+    //             $('.pg7 h1').fadeIn(500);
+    //             $('.pg7DecoSpan').fadeIn(500);
+    //             $('.pg7Others a').text('其他作品');
+    //             cardPageCount--;
+    //         }
+    //     })
+    // }
+    // cardMove();
+
 });
