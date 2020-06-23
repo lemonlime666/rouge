@@ -1,0 +1,66 @@
+@import "./mixin/fontStyle";
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  
+
+}
+.sign-model{
+  position: fixed;
+  top:0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(102, 102, 102, 0.418);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  
+  .sign-animate{
+    animation: sign-animate;
+  }
+  
+
+  .sign-main{
+
+    width: 60%;
+    max-width: 800px;
+    min-width: 300px;
+    display: flex;
+    flex-direction: row;
+    
+    height: 60%;
+    border: 1px solid white;
+    
+    .sign-up-block{
+      width:50%;
+      height: 100%;
+      border: 1px solid red;
+      background-color: white;
+
+    }
+    .sign-in-block{
+      width:50%;
+      height: 100%;
+      border: 1px solid red;
+      background-color: rgb(255, 178, 178);
+
+    }
+    
+  }
+
+}
+
+@keyframes sign-alt{
+  0%{
+    display: flex;
+
+  }
+  100%{
+
+  }
+
+}
