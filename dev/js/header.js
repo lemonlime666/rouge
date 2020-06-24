@@ -6,8 +6,8 @@ $(document).ready(function () {
 		if ($('#menu').css('left') == `${0}px`) {
 			$('#menu').animate({
 				left: `${-100}%`,
-			}, 500)
-			$('#menu').fadeOut(500);
+			}, 250)
+			$('#menu').fadeOut(250);
 		} else {
 			$('#menu').css({
 				display:'flex',

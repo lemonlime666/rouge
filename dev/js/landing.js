@@ -338,7 +338,7 @@ window.addEventListener('load', function () {
     }
     draw();
 
-    //pg7 card move
+    // pg7 card move
     // function cardMove() {
 
     //     var cardPageCount = 0;
