@@ -4,6 +4,7 @@
 
     .pg1 {
         // display: none;
+        overflow: hidden;
 
         .layer {
             position: absolute;
@@ -663,7 +664,7 @@
     }
 
     .pg3 {
-        // display: none;
+        display: none;
         background-color: $white;
 
         &::before {
@@ -1252,7 +1253,7 @@
 
     .pg4 {
         background-color: darken(rgb(20, 32, 56), 8);
-        // display: none;
+        display:none;
 
         .pg4Back {
             position: absolute;
@@ -1586,7 +1587,7 @@
     }
 
     .pg5 {
-        // display: none;
+        display: none;
         background-color: darken($milkt, 8);
         overflow: hidden;
 
@@ -2418,7 +2419,7 @@
     // }
 
     .pg7 {
-        // display: none;
+        display: none;
         background-color: $grey4;
         overflow: hidden;
 
