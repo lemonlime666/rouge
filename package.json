@@ -9,6 +9,7 @@
     "img": "gulp goimg",
     "js": "gulp gojs",
     "go": "gulp go"
+
   },
   "keywords": [],
   "author": "",
