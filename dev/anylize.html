@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>保養分析</title>
+    <link rel="stylesheet" href="css/anylize.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="./js/main.js"></script>
+
+</head>
+
+<body>
+
+    @@include("./app/header_black.html")
+    <main class="anyl-main">
+        <section class="anyl-item">
+            <div class="anyl-product anyl-item1">
+                <img src="./image/care.png">
+            </div>
+            <div class="anyl-shadow anyl-text1"></div>
+
+            <div class="anyl-product anyl-item2">
+                <img src="./image/care1.png">
+
+            </div>
+            <div class="anyl-shadow anyl-text2"></div>
+
+            <div class="anyl-product anyl-item3">
+                <img src="./image/mask2.png">
+
+            </div>
+            <div class="anyl-shadow anyl-text3"></div>
+
+            <div class="anyl-product anyl-item4">
+                <img src="./image/care.png">
+
+            </div>
+            <div class="anyl-shadow anyl-text4"></div>
+        </section>
+        <section class="anyl-background">
+            <div class="anyl-pic">
+                <img src="./image/background1.jpg" class="anyl-img">
+            </div>
+            <div class="anyl-right_bottom">
+                <a class="superA" href="memAnylize.html">
+                    <div class="anyl-bottom_word">
+                        <h1>詳細膚質檢測</h1>
+                        <p>anylize skin</p>
+                        <div></div>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <div id="dayTimeBlock">
+
+        </div>
+        <div class="anyl-timeChoose">
+
+            <button class="btn1-2 anyl-button1">日間保養</button>
+            <button class="btn1-2 anyl-button1">夜間保養</button>
+            <button class="btn1-2 anyl-button1">春夏保養</button>
+            <button class="btn1-2 anyl-button1">秋冬保養</button>
+
+        </div>
+    </main>
+
+    <script>
+        window.addEventListener('load', dayTime());
+
+        function dayTime() {
+            let today = new Date();
+            let months = new Array();
+            months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+            // let newDiv = ;
+            let newYear = document.createElement('div');
+            newYear.id = 'dayYear';
+            document.getElementById('dayTimeBlock').appendChild(newYear);
+            document.getElementById('dayYear').innerText = today.getFullYear();
+
+            let newMonth = document.createElement('div');
+            newMonth.id = 'dayMonth';
+            document.getElementById('dayTimeBlock').appendChild(newMonth);
+            document.getElementById('dayMonth').innerText = months[today.getMonth()];
+
+            let newDay = document.createElement('div');
+            newDay.id = 'dayDay';
+            document.getElementById('dayTimeBlock').appendChild(newDay);
+            document.getElementById('dayDay').innerText = today.getDate();
+
+            let newHour = document.createElement('div');
+            newHour.id = 'dayHour';
+            document.getElementById('dayTimeBlock').appendChild(newHour);
+            let uploadHour = today.getHours();
+            if (today.getMinutes() < 10) {
+                let minutes = today.getMinutes();
+                var uploadMinute = `0${minutes}`;
+            } else {
+                var uploadMinute = today.getMinutes();
+            };
+
+            document.getElementById('dayHour').innerText = `${uploadHour} : ${uploadMinute}`;
+
+        };
+
+    </script>
+</body>
+
+</html>
