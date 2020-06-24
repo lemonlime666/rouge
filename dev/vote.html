@@ -11,10 +11,30 @@
    <script src="./js/main.js"></script>
 </head>
 <body>
-    <header >
-        <div style="background-color: #292929; height: 100px;width: 100%;"></div>
-    </header>
+
+   
+  
     @@include("./app/header.html")
+    <div id="id01" class="modal">
+        <form class="modal-content animate"  method="post">
+          <div class="container">
+              <h1>歡迎參加票選大賽</h1>
+              <div class="showImg">
+                <img src="./image/top.jpg" alt="">
+                <div class="imgContext">
+                    <h2>設計理念</h2>
+                     <textarea></textarea>
+                     <div class="btnBox">
+                        <button type="button" onclick="document.getElementById('id01').style.display='none'" class="btn2-1">放棄參加</button>
+                        <button type="button" onclick="document.getElementById('id01').style.display='none'" class="btn3-1">馬上參加</button>
+                    </div>
+                </div>
+ 
+              </div>
+          </div>
+        </form>
+      </div>
+    <div style="background-color: #292929; height: 100px;width: 100%;"></div>
     <body>
         <div class="firstscreen" style="background-color: #292929;">
             <div class="vTH"><p class="vTH1">明信片票選</p><p class="vTH2">TOP3</p></div>
@@ -46,7 +66,7 @@
                                  </div>
                            </div>
                             <div class="invote">
-                                <button class="btn1-1">馬上參加投票</button>
+                                <button class="btn1-1" onclick="document.getElementById('id01').style.display='block'">馬上參加投票</button>
                             </div>
                     </div>
 
@@ -208,6 +228,18 @@
             </div>
 
         </div>
-    </body>
+   <script>
+
+    // Get the modal
+    var modal = document.getElementById('id01');
+
+    // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+   </script>
+
 </body>
 </html>
