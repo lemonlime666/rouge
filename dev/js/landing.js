@@ -25,7 +25,9 @@ window.addEventListener('load', function () {
                 $('.swiperimgContent:nth-child(1)').animate({
                     marginLeft: `${(2-counter)*100}%`,
                 })
+                clearInterval(autoSwipe);
                 counter--;
+                autoSwipe = setInterval(autoSwipeCount, 6000);
             }
             $(this).toggleClass('activeAdvert');
             setTimeout(function () {
@@ -41,7 +43,9 @@ window.addEventListener('load', function () {
                 $('.swiperimgContent:nth-child(1)').animate({
                     marginLeft: `${(counter)*-100}%`,
                 })
+                clearInterval(autoSwipe);
                 counter++;
+                autoSwipe = setInterval(autoSwipeCount, 6000);
             }
             $(this).toggleClass('activeAdvert');
             setTimeout(function () {
@@ -65,6 +69,8 @@ window.addEventListener('load', function () {
                 $(`#swiperPage button`).removeClass('activeAdvert');
                 $(`.swiperPageCount:nth-child(${i})`).addClass('activeAdvert');
                 counter = i;
+                clearInterval(autoSwipe);
+                autoSwipe = setInterval(autoSwipeCount, 6000);
             }
         }
 
