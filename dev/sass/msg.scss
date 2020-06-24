@@ -119,20 +119,29 @@
 
 }
 .lag-type{
-        padding: 5px;
+        padding: 3% 0;
         width:90%;
         margin: auto;
-        border: 1px solid #EFEFEF;
+        // border: 1px solid #EFEFEF;
         background-color: #292929;
         display: block;
         .lag-type-content{
-            width: calc(100% - 80px);
-            height: auto;
+            width: 80%;
+            height: 100px;
+            position: relative;
+            transform: translateX(-50%);
+            left: 50%;
             line-height: 2;
             padding: 5px;
+            resize: none;
         }
         .lag-type-btn{
-            margin-left: 8px;
+            display: block;
+            position: relative;
+            position: relative;
+            left: 90%;
+            transform: translateX(-100%);            
+            margin-top: 8px;
             width: 70px;
             height: auto;
             line-height: 2;
