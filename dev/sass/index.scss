@@ -1,6 +1,9 @@
 @import './app/header';
 
 #pagepiling {
+    // .section{
+    //     overflow: hidden;
+    // }
 
     .pg1 {
         // display: none;
@@ -492,7 +495,7 @@
                         height: 6vw;
                         position: absolute;
                         top: 50%;
-                        // outline: 0;
+                        
                         outline: 0;
 
                         background: linear-gradient(327.59deg, #38383854 50%, #292929 85%);
