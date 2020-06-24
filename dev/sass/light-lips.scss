@@ -326,10 +326,23 @@ footer{
     height: 120px;
     background: #bd83838f;
     display: none;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%) scale(1.5);
     border-radius: 60px;
+    animation-name: mouse-ani;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+   
     
 
+}
+@keyframes mouse-ani{
+    0%{
+        transform: translate(-50%, -50%) scale(1.5);
+    }
+    100%{
+        transform: translate(-50%, -50%) scale(1);
+
+    }
 }
 
 .mouse-block {
