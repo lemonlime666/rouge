@@ -251,7 +251,106 @@ body{
 }
   
 
+//燈箱
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 99; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    padding-top: 60px;
   
+  }
+  
+  .modal-content {
+            background-color: #efefef;
+            margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+            border: 1px solid #989898;
+            width:568px; /* Could be more or less, depending on screen size */
+            .container{
+                width: 100%;
+                height: 50VH;
+                    h1{
+                        text-align: center;
+                    }
+                .showImg{
+                    display: flex;
+                    justify-content: center;
+                    width: 100%;
+                    height: auto;
+                    img{
+                        width: 50%;
+                        // height: auto;
+                    }
+                    .imgContext{
+                        h2{
+                            text-align: center;
+                        }
+                        textarea{
+                            width: 100%;
+                            height: 70%;
+                        }
+
+                    }
+
+                }
+            }
+    }
+
+  /* Add Zoom Animation */
+  .animate {
+      -webkit-animation: animatezoom 0.6s;
+      animation: animatezoom 0.6s
+    }
+    
+    @-webkit-keyframes animatezoom {
+      from {-webkit-transform: scale(0)} 
+      to {-webkit-transform: scale(1)}
+    }
+      
+    @keyframes animatezoom {
+      from {transform: scale(0)} 
+      to {transform: scale(1)}
+    }
+  
+
+    .btn2-1 {
+        margin: 10px;
+        outline: none;
+        position: relative;
+        font-size: 16px;
+        color: #626262;
+        background: transparent;
+        border: 1px solid #626262;
+        padding: 10px 15px;
+        z-index: 20;
+        &:hover{//:hover:after才對
+            color: #efefef;
+            &:after{
+                background-color: #626262;
+                border: 1px solid #626262;
+                width: 99%;
+                -webkit-transition: width 0.5s;
+                transition: width 0.5s;
+            }
+        }
+        &:after{
+            position: absolute;
+            left: 0;
+            top: 0;
+            content: "";
+            z-index: -1;
+            background-color: #626262;
+            width: 0%;
+            height: 100%;
+
+        }
+    }
 
 .btn3-1{
     outline: none;
