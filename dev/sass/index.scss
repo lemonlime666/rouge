@@ -1,9 +1,6 @@
 @import './app/header';
 
 #pagepiling {
-    // .section{
-    //     overflow: hidden;
-    // }
 
     .pg1 {
         // display: none;
@@ -192,7 +189,7 @@
     }
 
     .pg2 {
-        display: none;
+        // display: none;
         background-color: $grey5;
         overflow-x: hidden;
 
@@ -651,7 +648,7 @@
     }
 
     .pg3 {
-        display: none;
+        // display: none;
         background-color: $white;
 
         &::before {
@@ -1240,7 +1237,7 @@
 
     .pg4 {
         background-color: darken(rgb(20, 32, 56), 8);
-        display: none;
+        // display: none;
 
         .pg4Back {
             position: absolute;
@@ -1574,7 +1571,7 @@
     }
 
     .pg5 {
-        display: none;
+        // display: none;
         background-color: darken($milkt, 8);
         overflow: hidden;
 
