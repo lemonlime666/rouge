@@ -3,7 +3,7 @@
 #pagepiling {
 
     .pg1 {
-        // display: none;
+        display: none;
 
         .layer {
             position: absolute;
@@ -220,9 +220,14 @@
                     top: 50%;
                     transform: translateY(-50%);
 
-                    @include s-pad() {
+                    @include l-pad() {
                         right: 50%;
                         transform: translateY(-50%) translateX(50%);
+                        width: 700px;
+                        height: 500px;
+                    }
+
+                    @include s-pad() {
                         width: 500px;
                         height: 300px;
                     }
@@ -242,10 +247,13 @@
                         left: -60px;
                         transform: translateY(-100%);
 
-                        @include s-pad() {
+                        @include l-pad() {
                             width: 100%;
                             text-align: center;
                             left: 50%;
+                            transform: translateX(-50%);
+                        }
+                        @include s-pad() {
                             transform: translateY(-100%) translateX(-50%);
                         }
                     }
@@ -260,10 +268,13 @@
                         right: -60px;
                         transform: translateY(100%);
 
-                        @include s-pad() {
+                        @include l-pad() {
                             width: 100%;
                             text-align: center;
                             right: 50%;
+                            transform: translateX(50%);
+                        }
+                        @include s-pad() {
                             transform: translateY(100%) translateX(50%);
                         }
                     }
