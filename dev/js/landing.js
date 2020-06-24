@@ -136,50 +136,50 @@ window.addEventListener('load', function () {
                 $('.sec3back ').css({
                     backgroundColor: 'rgba(141, 0, 21, 0.75)',
                 });
+                $('.pg3ImgBox:nth-child(1) img').attr('src', './image/pg3img2.jpg');
+                $('.pg3ImgBox:nth-child(2) img').attr('src', './image/pg3img1.jpg');
                 $('.femiModel img').attr('src', 'image/model1.png');
                 $('.pg3ItemTitle div img').attr('src', 'image/lip1.png');
                 $('.itemClass').text('鑽石閃耀水潤光感潤色唇膏');
                 $('#pg3BackText1').text('SHEER');
                 $('#pg3BackText2').text('LIPSTICKS');
                 $('.pg3ItemTitle p').text('水潤光感系列');
-                $('.pg3ImgBox:nth-child(1) img').attr('src', './image/pg3img2.jpg');
-                $('.pg3ImgBox:nth-child(2) img').attr('src', './image/pg3img1.jpg');
             } else if (i == 2) {
                 $('.sec3back ').css({
                     backgroundColor: 'rgba(44, 51, 66, .75)',
                 });
+                $('.pg3ImgBox:nth-child(1) img').attr('src', './image/pg3img9.jpg');
+                $('.pg3ImgBox:nth-child(2) img').attr('src', './image/pg3img4.jpg');
                 $('.femiModel img').attr('src', 'image/model4.png');
                 $('.pg3ItemTitle div img').attr('src', 'image/lip2.png');
                 $('.itemClass').text('絕對完美迷霧絲絨霧感唇膏');
                 $('#pg3BackText1').text('MATTE');
                 $('#pg3BackText2').text('LIPSTICKS');
                 $('.pg3ItemTitle p').text('絲絨霧感系列');
-                $('.pg3ImgBox:nth-child(1) img').attr('src', './image/pg3img9.jpg');
-                $('.pg3ImgBox:nth-child(2) img').attr('src', './image/pg3img4.jpg');
             } else if (i == 3) {
                 $('.sec3back ').css({
                     backgroundColor: 'rgba(153, 130, 94, .75)',
                 });
+                $('.pg3ImgBox:nth-child(1) img').attr('src', './image/pg3img6.jpg');
+                $('.pg3ImgBox:nth-child(2) img').attr('src', './image/pg3img5.jpg');
                 $('.femiModel img').attr('src', 'image/model3.png');
                 $('.pg3ItemTitle div img').attr('src', 'image/lip3.png');
                 $('.itemClass').text('絕對完美奢華光潤霜感唇膏');
                 $('#pg3BackText1').text('CREAM');
                 $('#pg3BackText2').text('LIPSTICKS');
                 $('.pg3ItemTitle p').text('奢華霜感系列');
-                $('.pg3ImgBox:nth-child(1) img').attr('src', './image/pg3img6.jpg');
-                $('.pg3ImgBox:nth-child(2) img').attr('src', './image/pg3img5.jpg');
             } else if (i == 4) {
                 $('.sec3back ').css({
                     backgroundColor: 'rgba(113,133,189,.6)',
                 });
+                $('.pg3ImgBox:nth-child(1) img').attr('src', './image/pg3img7.jpg');
+                $('.pg3ImgBox:nth-child(2) img').attr('src', './image/pg3img8.jpg');
                 $('.femiModel img').attr('src', 'image/model2.png');
                 $('.pg3ItemTitle div img').attr('src', 'image/lip4.png');
                 $('.itemClass').text('鑽石閃耀水蜜修護光潤唇膏');
                 $('#pg3BackText1').text('SHEER');
                 $('#pg3BackText2').text('LIPGLOSS');
                 $('.pg3ItemTitle p').text('水感修護系列');
-                $('.pg3ImgBox:nth-child(1) img').attr('src', './image/pg3img7.jpg');
-                $('.pg3ImgBox:nth-child(2) img').attr('src', './image/pg3img8.jpg');
             }
         }
     }
@@ -385,5 +385,30 @@ window.addEventListener('load', function () {
     //     })
     // }
     // cardMove();
+
+    //lazyload
+    function lazy(){
+        setTimeout(function(){
+            $('.pg3').css({
+                display:'inline-table',
+            })
+        },2000)
+        setTimeout(function(){
+            $('.pg4').css({
+                display:'inline-table',
+            })
+        },4000)
+        setTimeout(function(){
+            $('.pg5').css({
+                display:'inline-table',
+            })
+        },6000)
+        setTimeout(function(){
+            $('.pg7').css({
+                display:'inline-table',
+            })
+        },8000)
+    }
+    lazy();
 
 });
