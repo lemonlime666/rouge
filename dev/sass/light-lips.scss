@@ -236,6 +236,23 @@ footer{
             justify-content: center;
             align-items: center;
             cursor: pointer;
+
+
+            /*折扣*/
+            .pro-discount{
+                
+                color: #b74949;
+                position: absolute;
+                top: 0;
+                right: 0px;
+                z-index: 6;
+                transform: translate(40%, -50%);
+                &::first-letter{
+                    font-size: 1.5em;
+                }
+
+
+            }
             
             
 
@@ -305,12 +322,12 @@ footer{
 /*以下為滑鼠動畫*/
 .mouse {
     position: absolute;
-    width: 150px;
-    height: 150px;
+    width: 120px;
+    height: 120px;
     background: #bd83838f;
     display: none;
     transform: translate(-50%, -50%);
-    border-radius: 75px;
+    border-radius: 60px;
     
 
 }
@@ -337,7 +354,7 @@ footer{
     animation-duration: 2.5s;
     animation-name: bigfull;
     animation-fill-mode : forwards;
-    border-radius: 50px;
+    border-radius: 60px;
     background: #493F46;
     
 
@@ -454,5 +471,6 @@ footer{
 
     .main .cardouter .card{
         left:25%;
+        
     }
 }

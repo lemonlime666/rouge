@@ -446,6 +446,7 @@ form{
             z-index: 20;
             &:hover{//:hover:after才對
                 color: #efefef;
+                cursor: pointer;
                 &:after{
                     background-color: #626262;
                     border: 1px solid #626262;
@@ -479,6 +480,7 @@ form{
             z-index: 20;
             &:hover{//:hover:after才對
                 color: #efefef;
+                cursor: pointer;
                 &:after{
                     background-color: #883030;
                     border: 1px solid #883030;
