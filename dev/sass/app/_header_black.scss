@@ -31,7 +31,7 @@
         position: absolute;
         height: 2px;
         border-radius: 5px;
-        background-color: rgba(239, 239, 239, .9);
+        background-color: $lightGold;
         opacity: 1;
         left: 0;
         -webkit-transform: rotate(0deg);
@@ -189,7 +189,7 @@
         margin-bottom: 18px;
 
         a {
-            @include font-style(14px, $CG, $white, 500) {
+            @include font-style(14px, $CG, $grey2, 500) {
                 // font-size: 14px;
                 display: block;
                 text-decoration: none;

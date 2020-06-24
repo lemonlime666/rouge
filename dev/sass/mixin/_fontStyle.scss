@@ -78,12 +78,19 @@
     @include rwd-font(16px, 16px, 14px, 14px, 12px, 10px, 10px);
 }
 
+.xxsfont{
+    //小內文
+    //＠include rwd-font(1200以上, 1200, 1024, 996, 768, 576, 400)   帶入6個font的值
+    @include rwd-font(14px, 14px, 12px, 12px, 10px, 8px, 8px);
+}
+
 .xxlfont,
 .xlfont,
 .lfont,
 .mfont,
 .sfont,
-.xsfont{
+.xsfont
+.xxsfont{
     letter-spacing: 1px;
     word-spacing: 3px;
 }
