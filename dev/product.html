@@ -28,31 +28,40 @@
               <li><a href="#">水潤光澤系列</a></li>
             </ol>
         </div>
+        <div class="pro-block">
+
+        
         <section class="pro1">
             <div class="pro1_content">
                 <div class="pro_text">
                     <h2 class="lfont">水潤光感系列</h2>
-                    <p class="sfont">滿注獨家研發的「鎖水保濕因子」，搭配頂級抗老成分「普拉絲鏈」，針對唇部肌膚組織有卓越修護功效，提供 8 小時修護效果。天然荷荷巴油能帶給雙唇持久滋潤，不讓乾燥、脫屑等問題找上妳的雙唇。
+                    <p class="xsfont">滿注獨家研發的「鎖水保濕因子」，搭配頂級抗老成分「普拉絲鏈」，針對唇部肌膚組織有卓越修護功效，提供 8 小時修護效果。天然荷荷巴油能帶給雙唇持久滋潤，不讓乾燥、脫屑等問題找上妳的雙唇。
                     </p>
                 </div>
                 <div class="pro_pic">
                     <div class="pro_img">
-                        <img src="" alt="">
+                        <img src="./image/pro_img_1.png" alt="">
                     </div>
                     <div class="pro_img">
-                        <img src="" alt="">
+                        <img src="./image/pro_img_1.png" alt="">
                     </div>
                     <div class="pro_img">
-                        <img src="" alt="">
+                        <img src="./image/pro_img_1.png" alt="">
                     </div>
                     <div class="pro_img">
-                        <img src="" alt="">
+                        <img src="./image/pro_img_1.png" alt="">
                     </div>
                     <div class="pro_img">
-                        <img src="" alt="">
+                        <img src="./image/pro_img_1.png" alt="">
                     </div>
                     <div class="pro_img">
-                        <img src="" alt="">
+                        <img src="./image/pro_img_1.png" alt="">
+                    </div>
+                    <div class="pro_img">
+                        <img src="./image/pro_img_1.png" alt="">
+                    </div>
+                    <div class="pro_img">
+                        <img src="./image/pro_img_1.png" alt="">
                     </div>
                    
                 </div>
@@ -62,7 +71,13 @@
         <section class="pro2">
             <div class="pro2_content">
                 <div class="box">
-
+                    <div class="box_img">
+                        <img src="./image/pro-lip-1.jpg" alt="" id="box_img">
+                    </div>
+                    <div class="pro_btn">
+                        <div class="pro_btn_top pro_btn_c" data-control="last"></div>
+                        <div class="pro_btn_down pro_btn_c" data-control="next"></div>
+                    </div>
                 </div>
                 <div class="pro_top">
                     <form class="pro_color">
@@ -93,9 +108,34 @@
                 
             
         </section>
-        <section class="pro_msg">
-
-        </section>
+        </div>
+        <div class="lag-content">
+            <div class="lag-pic">
+                <div class="lag-pic-img">
+                    <span>
+                        <img src="./menu1.jpg">
+                    </span>
+                </div>
+    
+            </div>
+            <div class="lag-val">
+                <div class="lag-id">丁莉</div>
+                <div class="lag-time">2020-6-23</div>
+    
+            </div>
+            <div class="lag-ent">
+                <div class="ent-content">
+                    測試測試測試測試測試測試測試測試測試測試測試測試測試測試測試測試測試測試測試測試測試測試測試測試
+                </div>
+                
+            </div>
+            
+        </div>
+        <div class="lag-type">
+            <textarea class="lag-type-content" ></textarea>
+            <!-- <input type="text" class="lag-type-content" placeholder="商品留言"> -->
+            <button class="lag-type-btn">留言</button>
+        </div>
     </div>
     <script>
         let proBack = document.querySelector(".pro-out");
@@ -103,6 +143,22 @@
             proBack.style.display = "none";
 
         },2000);
+    </script>
+    <script>
+        var imgs = [
+        'image/S3L-3-214.png',
+        'image/S3L-3-314.png',
+        'image/S3L-3-364.png',
+        ];
+        var index = 0;
+        var len = imgs.length;
+        $('.pro_btn_c').on('click',function(){
+            if($(this).data("control") == "last"){
+                index = Math.max(0,--index);
+                }else
+                    index = Math.min(len-1,++index);
+                    $('#box_img').attr('src',imgs[index]);
+    　　});
     </script>
     
 </body>

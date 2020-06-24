@@ -1,4 +1,4 @@
-@import './app/_header.scss';
+@import './app/_header_black.scss';
 
 *{
     box-sizing: border-box;
@@ -12,7 +12,7 @@ body{
     margin: 0 auto;
     width: 90%;
     height: 100px;
-    border: 1px solid gray;
+    // border: 1px solid gray;
 }
 
 input{
@@ -32,13 +32,13 @@ input{
     }
 }
 .bg > div:nth-child(1), .bg > div:nth-child(3){
-    border: 1px solid royalblue;
+    // border: 1px solid royalblue;
     width: 25%;
     height: 100VH;
 }
 
 .bg > div:nth-child(2){
-    border: 1px solid royalblue;
+    // border: 1px solid royalblue;
     width: 618px;
  
     
@@ -201,7 +201,7 @@ h2{
         z-index: 10;
         position: absolute;
         bottom: 0;
-        border: 1px solid salmon;
+        // border: 1px solid salmon;
         .imglist{
             display: flex;
             justify-content: space-around;
@@ -221,15 +221,15 @@ h2{
         }
         .scroll{
             background-color: #292929;
-            overflow-X: scroll;
+            // overflow-X: scroll;
             .listSticky{
-                border: 1px solid black;
+                // border: 1px solid black;
                 padding: 5px;
                 width: 790px;
                 background-color: #292929;
                 display: none;
                 div{
-                    border: 1px soild red;
+                    // border: 1px soild red;
                     display:  inline-block;
                     background-color: #686868;
                     border-radius: 80px;
@@ -256,13 +256,13 @@ h2{
     
             }
             .listFlower{
-                border: 1px solid black;
+                // border: 1px solid black;
                 padding: 5px;
                 width: 790px;
                 background-color: #292929;
                 display: none;
                 div{
-                    border: 1px soild red;
+                    // border: 1px soild red;
                     display:  inline-block;
                     background-color: #686868;
                     border-radius: 80px;
@@ -356,8 +356,6 @@ h2{
 
 
 
-
-
 form{
     text-align: center;
     
@@ -379,7 +377,7 @@ form{
 
     #cardText{
         width: 70%;
-        font-size: 20px;
+        font-size: 30px;
         height: 300px;
         z-index: 20;
     }
@@ -387,11 +385,6 @@ form{
 
  .ca{
      width: 100%;
- }
- .test{
-     position: absolute;
-     background-color: red;
-     
  }
 
 #drawButton{
@@ -415,10 +408,176 @@ form{
    
 }
 
+.C_social{
+    display: flex;
+    justify-content: space-between;
+    margin: 20px;
+    .M_social{
+        border: none;
+        outline: none;
+    }
+}
 
 
-.drawbuttonUse{
+.container {
+    position: relative;
+    padding: 16px;
+    height: 40VH;
+    z-index: 1;
+    background-color: #292929;
+    h1{
+        color: #efefef;
+        margin: 10px;
+    }
+    p{
+        color: #efefef;
+        margin: 20px 10px 20px 10px ;
+    }
+    >div{
+        .btn2-1 {
+            margin: 10px;
+            outline: none;
+            position: relative;
+            font-size: 16px;
+            color: #626262;
+            background: transparent;
+            border: 1px solid #626262;
+            padding: 10px 15px;
+            z-index: 20;
+            &:hover{//:hover:after才對
+                color: #efefef;
+                &:after{
+                    background-color: #626262;
+                    border: 1px solid #626262;
+                    width: 99%;
+                    -webkit-transition: width 0.5s;
+                    transition: width 0.5s;
+                }
+            }
+            &:after{
+                position: absolute;
+                left: 0;
+                top: 0;
+                content: "";
+                z-index: -1;
+                background-color: #626262;
+                width: 0%;
+                height: 100%;
+    
+            }
+        }
+
+        .btn3-1 {
+            outline: none;
+            margin: 10px;
+            position: relative;
+            font-size: 16px;
+            color: #883030;
+            background: transparent;
+            border: 1px solid #883030;
+            padding: 10px 15px;
+            z-index: 20;
+            &:hover{//:hover:after才對
+                color: #efefef;
+                &:after{
+                    background-color: #883030;
+                    border: 1px solid #883030;
+                    width: 99%;
+                    -webkit-transition: width 0.5s;
+                    transition: width 0.5s;
+                }
+            }
+            &:after{
+                position: absolute;
+                left: 0;
+                top: 0;
+                content: "";
+                z-index: -1;
+                background-color: #883030;
+                width: 0%;
+                height: 100%;
+    
+            }
+        }
+    }
+}
 
 
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 99; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  padding-top: 60px;
+
+
+}
+
+.modal-content {
+    background-color: #efefef;
+    margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+    border: 1px solid #989898;
+    width:350px; /* Could be more or less, depending on screen size */
+  }
+
+/* Add Zoom Animation */
+.animate {
+    -webkit-animation: animatezoom 0.6s;
+    animation: animatezoom 0.6s
+  }
+  
+  @-webkit-keyframes animatezoom {
+    from {-webkit-transform: scale(0)} 
+    to {-webkit-transform: scale(1)}
+  }
+    
+  @keyframes animatezoom {
+    from {transform: scale(0)} 
+    to {transform: scale(1)}
+  }
+
+
+@media screen  and (min-width: 1356px){
+    .listTitle{
+        display: none;
+    }
+  
+}
+
+
+@media screen  and (max-width: 1356px){
+#first{
+    display: none;
+}
+.scroll{
+    overflow-x: scroll;
+}
+#third{
+    width: 30%;
+}
+}
+@media screen and (max-width: 992px){
+
+}
+@media screen and (max-width: 768px){
+    #third{
+        display: none;
+    }
+    .bg > div:nth-child(2){
+        
+        width: 618px;
+     
+        margin: 0 auto;
+       
+    
+    }
+    
 }
 

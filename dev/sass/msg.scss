@@ -1,0 +1,198 @@
+*{
+    margin: 0;
+    padding: 0;
+    // font-size: 0;
+    box-sizing: border-box;
+}
+.lag-content{
+    width: 90%;
+
+    margin: auto;
+    margin-top: 5%;
+    height: 300px;
+    &::after{
+        content: "";
+        clear: both;
+        display: table;
+    }
+    
+    background-color: #292929;
+    .lag-pic{
+        float: left;
+        border: 1px solid #EFEFEF;
+        
+        height: 100%;
+        width: 200px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        &::after{
+            content: "";
+            clear: both;
+            display: table;
+        }
+        .lag-pic-img{
+            width: 80%;
+            span{
+                display: block;
+                padding-top: 100%;
+                overflow: hidden;
+                position: relative;
+                img{
+                    position: absolute;
+                    top:0;
+                    left:0;
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+
+                }
+            }
+
+        }
+        
+
+    }
+    .lag-val{
+        float: right;
+        width: calc(100% - 200px);
+        height: 15%;
+        border: 1px solid #EFEFEF;
+        display: flex;
+        flex-direction: row;
+        &::after{
+            content: "";
+            clear: both;
+            display: table;
+        }
+        
+        .lag-id{
+            height: 100%;
+            width: 150px;
+            font-size: 16px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #EFEFEF;
+            
+        }
+        .lag-time{
+            height: 100%;
+            width: 150px;
+            font-size: 16px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #EFEFEF;
+            
+        }
+       
+
+    }
+    .lag-ent{
+        float: right;
+        width: calc(100% - 200px);
+        height: 85%;
+        //border: 1px solid rgb(55, 54, 126);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        &::after{
+            content: "";
+            clear: both;
+            display: table;
+        }
+        .ent-content{
+            width:90%;
+            height: 80%;
+            outline: none;
+            border: none;
+            padding: 20px 25px;
+            font-size: 16px;
+            color: #EFEFEF;
+            letter-spacing: 1px;
+            
+        }
+        
+    }
+    
+
+}
+.lag-type{
+        padding: 3% 0;
+        width:90%;
+        margin: auto;
+        // border: 1px solid #EFEFEF;
+        background-color: #292929;
+        display: block;
+        .lag-type-content{
+            width: 80%;
+            height: 100px;
+            position: relative;
+            transform: translateX(-50%);
+            left: 50%;
+            line-height: 2;
+            padding: 5px;
+            resize: none;
+        }
+        .lag-type-btn{
+            display: block;
+            position: relative;
+            position: relative;
+            left: 90%;
+            transform: translateX(-100%);            
+            margin-top: 8px;
+            width: 70px;
+            height: auto;
+            line-height: 2;
+            padding: 5px;
+            background-color: #883030;
+            color: #EFEFEF;
+            cursor: pointer;
+            border: none;
+            transition: 0.5s;
+            outline: none;
+            &:hover{
+            background-color: #C2AA6C;
+            }
+        }
+}
+@media all and(max-width: 767px){
+    .lag-content{
+        height: auto;
+        max-width:550px;
+        .lag-pic{
+            width: 50%;
+            min-height: 200px;
+        }
+        .lag-val{
+            width: 50%;
+            height: 100px;
+            min-height: 200px;
+            flex-direction: column-reverse;
+            border: none;
+            .lag-id{
+                width:100%;
+                height: 50px;
+                border: 1px solid #EFEFEF;
+            }
+            .lag-time{
+                width:100%;
+                height: 50px;
+                border: 1px solid #EFEFEF;
+            }
+            
+        }
+        .lag-ent{
+            float: left;
+            width: 100%;
+            height: 300px;
+            .ent-content{
+                border: 1px solid #EFEFEF;
+                
+            }
+            
+
+        }
+    }
+}
