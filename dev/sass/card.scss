@@ -12,7 +12,7 @@ body{
     margin: 0 auto;
     width: 90%;
     height: 100px;
-    border: 1px solid gray;
+    // border: 1px solid gray;
 }
 
 input{
@@ -32,13 +32,13 @@ input{
     }
 }
 .bg > div:nth-child(1), .bg > div:nth-child(3){
-    border: 1px solid royalblue;
+    // border: 1px solid royalblue;
     width: 25%;
     height: 100VH;
 }
 
 .bg > div:nth-child(2){
-    border: 1px solid royalblue;
+    // border: 1px solid royalblue;
     width: 618px;
  
     
@@ -201,7 +201,7 @@ h2{
         z-index: 10;
         position: absolute;
         bottom: 0;
-        border: 1px solid salmon;
+        // border: 1px solid salmon;
         .imglist{
             display: flex;
             justify-content: space-around;
@@ -223,13 +223,13 @@ h2{
             background-color: #292929;
             // overflow-X: scroll;
             .listSticky{
-                border: 1px solid black;
+                // border: 1px solid black;
                 padding: 5px;
                 width: 790px;
                 background-color: #292929;
                 display: none;
                 div{
-                    border: 1px soild red;
+                    // border: 1px soild red;
                     display:  inline-block;
                     background-color: #686868;
                     border-radius: 80px;
@@ -256,13 +256,13 @@ h2{
     
             }
             .listFlower{
-                border: 1px solid black;
+                // border: 1px solid black;
                 padding: 5px;
                 width: 790px;
                 background-color: #292929;
                 display: none;
                 div{
-                    border: 1px soild red;
+                    // border: 1px soild red;
                     display:  inline-block;
                     background-color: #686868;
                     border-radius: 80px;
@@ -386,11 +386,6 @@ form{
  .ca{
      width: 100%;
  }
- .test{
-     position: absolute;
-     background-color: red;
-     
- }
 
 #drawButton{
     margin: 10px 5px;
@@ -417,6 +412,10 @@ form{
     display: flex;
     justify-content: space-between;
     margin: 20px;
+    .M_social{
+        border: none;
+        outline: none;
+    }
 }
 
 
