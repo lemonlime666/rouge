@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>會員保養分析</title>
+    <link rel="stylesheet" href="./css/memAnylize.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<body>
+    @@include('./app/header.html')
+    <section class="memAnyl-background">
+        <div class="memAnyl-pic1">
+
+        </div>
+        <div class="memAnyl-downLine"></div>
+        <div class="memAnyl-leftLine"></div>
+
+        <div class="memAnyl-Rouge">
+            ROUGE
+        </div>
+        <div class="memAnyl-rightLine"></div>
+        <div class="memAnyl-Anylize">
+            ANYLIZE
+        </div>
+
+    </section>
+    <main class="memAnyl-main">
+
+
+
+        <section class="memAnyl-content">
+            <h1>線上膚質測試</h1>
+            <div class="memAnyl-foreword">
+                肌膚適度的清潔勝於保養
+
+                有乾淨、健康的肌膚，後續上保養品時才能事半功倍
+
+                但如何挑選一個合適的清潔保養用品
+
+                前提是必須先了解自己的膚質狀況
+
+                透過本膚質檢測
+
+                快速的帶您了解自己各部位的膚況
+
+                並給予您專業的清潔建議，以達到正確清潔、保養修護
+            </div>
+            <div class="memAnyl-question">
+                <div class="odd">
+                    <p>Q1.肌膚油脂的分泌程度?(包含兩頰T字部位)</p>
+                    <div>
+                        <div>
+                            <input type="radio" name="Q1" id="Q1A1">
+                            <label for="Q1A1">乾燥</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="Q1" id="Q1A2">
+                            <label for="Q1A2">略油</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="Q1" id="Q1A3">
+                            <label for="Q1A3">油膩</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="even">
+                    <p>Q2.清潔完肌膚後,時常感到乾澀或油膩?(15分鐘內肌膚狀態作判斷)</p>
+                    <div>
+                        <div>
+                            <input type="radio" name="Q2" id="Q2A1">
+                            <label for="Q2A1">偏乾燥</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="Q2" id="Q2A2">
+                            <label for="Q2A2">正常</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="Q2" id="Q2A3">
+                            <label for="Q2A3">偏油膩</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="odd">
+                    <p>Q3.日曬後肌膚狀況?</p>
+                    <div>
+                        <div>
+                            <input type="radio" name="Q3" id="Q3A1">
+                            <label for="Q3A1">發癢、泛紅</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="Q3" id="Q3A2">
+                            <label for="Q3A2">正常</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="Q3" id="Q3A3">
+                            <label for="Q3A3">脫屑、反黑</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="even">
+                    <p>Q4.肌膚出汗的程度?</p>
+                    <div>
+                        <div>
+                            <input type="radio" name="Q4" id="Q4A1">
+                            <label for="Q4A1">幾乎不出汗</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="Q4" id="Q4A2">
+                            <label for="Q4A2">普通</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="Q4" id="Q4A3">
+                            <label for="Q4A3">易出汗</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="odd">
+                    <p>Q5.日常中大部分所處的環境為?</p>
+                    <div>
+                        <div>
+                            <input type="radio" name="Q5" id="Q5A1">
+                            <label for="Q5A1">低溫、乾燥</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="Q5" id="Q5A2">
+                            <label for="Q5A2">空調室</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="Q5" id="Q5A3">
+                            <label for="Q5A3">潮濕、悶熱</label>
+                        </div>
+                    </div>
+                </div>
+                <button class="memAnyl-btn" onclick="location.href='memAnylizeResult.html'">分析結果</button>
+        </section>
+    </main>
+
+    <script>
+    </script>
+</body>
+
+</html>
