@@ -2420,7 +2420,10 @@
             top: 26%;
 
             @include l-pad() {
-                top: 85%;
+                top: 90%;
+            }
+            @include l-phone() {
+                top: 88%;
             }
         }
 
@@ -2460,17 +2463,26 @@
                 top: 13%;
                 color: rgba($white, .6);
             }
+
             @include m-pad() {
                 font-size: 50px;
             }
+
             @include s-pad() {
                 left: 40px;
             }
+
             @include l-phone() {
-                left:20px;
+                width: 100%;
+                font-size: 16px;
+                text-align: center;
+                left: 0;
+                top:15%;
+                letter-spacing: 5px;
             }
+
             @include s-phone() {
-                left:0px;
+                font-size: 14px;
             }
         }
 
@@ -2487,25 +2499,27 @@
             z-index: 3;
 
             @include l-pad() {
-                width: 450px;
+                width: 500px;
                 height: 60%;
+                margin-top: -20px;
             }
 
-            // @include m-pad() {
-
-            // }
             @include s-pad() {
                 width: 400px;
                 height: 55%;
                 margin-top: -45px;
             }
+
             @include l-phone() {
-                width: 320px;
-                margin-top: -50px;
-            }
-            @include s-phone() {
                 width: 300px;
-                height: 50%;
+                height: 55%;
+                margin-top: 0;
+            }
+
+            @include s-phone() {
+                width: 260px;
+                height: 55%;
+                margin-top: 0;
             }
 
             img {
@@ -2526,6 +2540,32 @@
                 cursor: default;
             }
 
+            .clearRect {
+                @include font-style(16px) {}
+
+                background-color: transparent;
+                border: 0;
+                border-bottom: 1px solid rgba($white, .8);
+                position: absolute;
+                right: 0;
+                bottom: 10px;
+                outline: 0;
+                cursor: pointer;
+
+                @include l-pad() {
+                    bottom: 90%;
+                    transform: translateX(100%);
+                }
+                @include l-phone() {
+                    transform: none;
+                }
+
+                &:hover {
+                    color: rgba($lightGold, .8);
+                    transition: all .3s;
+                }
+            }
+
         }
 
         .pg7ColorBox {
@@ -2537,36 +2577,42 @@
             height: 300px;
             border-radius: 100%;
             z-index: 3;
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: space-evenly;
+            align-items: center;
 
             @media all and (max-width:1500px) {
                 right: 6%;
             }
 
             @media all and (max-width:1300px) {
+                right: 5%;
+            }
+
+            @media all and (max-width:1100px) {
+                right:3%;
+            }
+
+            @include pc(){
                 width: 250px;
                 height: 250px;
             }
 
-            @media all and (max-width:1100px) {
-                right: 5%;
-            }
-
             @include l-pad() {
-                top: 80%;
+                top: 100%;
                 left: 50%;
-                transform: translateX(-50%);
-                width: 768px;
-                height: 768px;
-            }
-
-            @include s-pad() {
-                width: 576px;
-                height: 576px;
+                transform: translateX(-50%) translateY(-25%);
+                width: 80%;
+                height: 50%;
+                align-items: flex-start;
+                flex-flow: row nowrap;
             }
 
             @include l-phone() {
-                width: 320px;
-                height: 320px;
+                width: 100%;
+                justify-content: center;
+                transform: translateX(-50%) translateY(-28%);
             }
 
             p {
@@ -2574,37 +2620,59 @@
 
                 margin-top: 10px;
                 opacity: .9;
-                // width: 400px;
-                // border: 1px solid red;
                 min-width: 250px;
 
                 @include l-pad() {
                     position: absolute;
                     top: 0;
                     left: 20px;
+                    transform: translateY(-100%);
                 }
 
                 @include l-phone() {
                     left: 50%;
-                    transform: translateX(-50%);
+                    transform: translateX(-50%) translateY(-100%);
+                    font-size: 14px;
+                    text-align: center;
                 }
             }
 
             span {
                 // border: 1px solid red;
-                position: absolute;
+                flex-shrink: 0;
                 width: 40%;
                 height: 90px;
                 cursor: pointer;
 
-                @include l-pad() {
-                    width: 120px;
-                    height: 100px;
+                @include pc(){
+                    width: 100px;
+                    height: 60px;
                 }
 
-                @include s-pad() {
-                    width: 100px;
+                @include l-pad() {
+                    width: 150px;
+                    height: 100px;
+                    margin-top: 3vh;
+                }
+
+                @include m-pad() {
+                    width: 120px;
                     height: 80px;
+                    margin-top: 30px;
+                }
+
+                @include s-pad(){
+                    width: 90px;
+                    height: 60px;
+                }
+
+                @include l-phone(){
+                    width: 65px;
+                    height: 40px;
+                }
+                @include s-phone(){
+                    width: 55px;
+                    height: 35px;
                 }
 
                 &:nth-of-type(1) {
@@ -2615,21 +2683,6 @@
                     top: 20%;
                     left: -10%;
                     color: maroon;
-
-                    @include l-pad() {
-                        top: 5%;
-                        left: 13%;
-                    }
-
-                    @include s-pad() {
-                        top: 8%;
-                        left: 13%;
-                    }
-
-                    @include l-phone() {
-                        top: 12%;
-                        left: 0;
-                    }
                 }
 
                 &:nth-of-type(2) {
@@ -2640,20 +2693,6 @@
                     top: 50%;
                     left: -10%;
                     color: #be6880;
-
-                    @include l-pad() {
-                        top: 12.5%;
-                        left: 28%;
-                    }
-
-                    @include s-pad() {
-                        top: 18%;
-                        left: 25%;
-                    }
-                    @include l-phone() {
-                        top: 32%;
-                        left: 15%;
-                    }
                 }
 
                 &:nth-of-type(3) {
@@ -2664,21 +2703,7 @@
                     top: 70%;
                     left: 30%;
                     color: #884252;
-
-                    @include l-pad() {
-                        top: 3%;
-                        left: 35%;
-                    }
-
-                    @include s-pad() {
-                        top: 8%;
-                        left: 35%;
-                    }
-
-                    @include l-phone() {
-                        top: 16%;
-                        left: 35%;
-                    }
+                    // margin-top: -20px;
                 }
 
                 &:nth-of-type(4) {
@@ -2689,21 +2714,6 @@
                     top: 40%;
                     left: 30%;
                     color: darken($tomato, 10);
-
-                    @include l-pad() {
-                        top: 12%;
-                        left: 48%;
-                    }
-
-                    @include s-pad() {
-                        top: 18%;
-                        left: 48%;
-                    }
-
-                    @include l-phone() {
-                        top: 32%;
-                        left: 55%;
-                    }
                 }
 
                 &:nth-of-type(5) {
@@ -2714,21 +2724,8 @@
                     top: 20%;
                     left: 50%;
                     color: lighten($tomato, 10);
-
-                    @include l-pad() {
-                        top: 3%;
-                        left: 55%;
-                    }
-
-                    @include s-pad() {
-                        top: 8%;
-                        left: 55%;
-                    }
-
-                    @include l-phone() {
-                        top: 10%;
-                        left: 65%;
-                    }
+                    // margin-left: -20px;
+                    // margin-top: -40px;
                 }
 
                 &:nth-of-type(6) {
@@ -2739,45 +2736,7 @@
                     top: 60%;
                     left: 70%;
                     color: $skin;
-
-                    @include l-pad() {
-                        top: 12%;
-                        left: 70%;
-                    }
-
-                    @include s-pad() {
-                        top: 18%;
-                        left: 70%;
-                    }
-
-                    @include l-phone() {
-                        top: 30%;
-                        left: 85%;
-                    }
-                }
-            }
-
-            .clearRect {
-                @include font-style(16px) {}
-
-                background-color: transparent;
-                border: 0;
-                border-bottom: 1px solid rgba($white, .8);
-                position: absolute;
-                right: 0;
-                bottom: 0;
-                outline: 0;
-                cursor: pointer;
-
-                @include l-pad() {
-                    bottom: 101%;
-                    left: 70%;
-                    // border: 0;
-                }
-
-                &:hover {
-                    color: rgba($lightGold, .8);
-                    transition: all .3s;
+                    // margin-bottom: 40px;
                 }
             }
         }
@@ -2794,6 +2753,12 @@
             justify-content: space-evenly;
             align-items: flex-start;
             flex-shrink: 0;
+            overflow: hidden;
+
+            @include l-pad(){
+                bottom: 30%;
+                transform: translateY(50%);
+            }
 
             span {
                 display: flex;
@@ -2806,6 +2771,14 @@
                 &:nth-child(odd) {
                     align-self: center;
                     margin-top: 60px;
+                }
+
+                @include s-pad(){
+                    width: 80px;
+                    height: 100px;
+                }
+                @include l-phone(){
+                    display: none;
                 }
 
             }
@@ -2821,6 +2794,13 @@
             background-color: transparent;
             outline: 0;
 
+            @include l-pad(){
+                right: 10%;
+            }
+            @include s-pad(){
+                top:75%;
+            }
+
             a {
                 border: 2px solid $cofe;
                 text-decoration: none;
@@ -2833,6 +2813,11 @@
                 width: 100%;
                 height: 100%;
                 padding: 10px 60px;
+
+                @include l-phone(){
+                    font-size: 16px;
+                    padding: 5px 40px;
+                }
 
                 &:hover {
                     background-color: rgba($lightGold, .4);
@@ -2851,6 +2836,10 @@
             background-color: transparent;
             outline: 0;
 
+            @include s-pad(){
+                right:10%;
+            }
+
             a {
                 border-bottom: 1px solid rgba($white, .8);
                 text-decoration: none;
@@ -2863,6 +2852,10 @@
                 width: 100%;
                 height: 100%;
                 cursor: pointer;
+
+                @include l-phone(){
+                    font-size: 16px;
+                }
 
                 &:hover {
                     border-bottom: 1px solid rgba($darkGold, .6);
