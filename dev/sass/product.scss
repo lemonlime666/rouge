@@ -92,6 +92,14 @@ body{
                         img{
                             width: 35%;
                             min-width: 50px;
+                            position: relative;
+                            transition: 0.3s;
+                            cursor: pointer;
+                            top:0;
+                            &:hover{
+                                top:-15px;
+                                
+                            }
                         }
 
                     }
@@ -242,6 +250,12 @@ body{
         }
         
 body{
+
+    @media all and(min-width: 1600px){
+        .content .pro1 .pro1_content .pro_pic{
+            padding: 75px 50px;
+        }
+    }
 
     @media all and(max-width: 1200px){
 
