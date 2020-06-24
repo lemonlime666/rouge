@@ -133,7 +133,7 @@
         }
 
         .mask {
-            border:1px solid rgba($lightGold, .3);
+            border: 1px solid rgba($lightGold, .3);
             width: 50%;
             height: 51%;
             margin: 0 auto;
@@ -242,6 +242,7 @@
 
                     p:nth-child(1) {
                         @include font-style() {}
+
                         // border: 1px solid red;
                         letter-spacing: 2px;
                         opacity: .9;
@@ -262,8 +263,10 @@
                     }
 
                     p:nth-child(2) {
+
                         // border: 1px solid red;
                         @include font-style() {}
+
                         letter-spacing: 2px;
                         opacity: .9;
                         position: absolute;
@@ -298,9 +301,7 @@
             height: 105%;
             background-color: $grey5;
             position: relative;
-            // top:100vh;
             overflow: hidden;
-
 
             &::before {
                 content: '';
@@ -491,8 +492,8 @@
                     .innerBtn {
                         border: 1px solid;
                         display: block;
-                        width: 6vw;
-                        height: 6vw;
+                        width: 100px;
+                        height: 100px;
                         position: absolute;
                         top: 50%;
                         
@@ -559,7 +560,7 @@
                     .swiperimgBox {
                         // border: 1px solid gold;
                         width: 90%;
-                        height: 31vw;
+                        height: 100%;
                         display: flex;
                         flex-flow: row nowrap;
                         overflow: hidden;
@@ -567,7 +568,7 @@
                         &::after {
                             content: '';
                             width: 90%;
-                            height: 31vw;
+                            height: 100%;
                             border: 5px double rgba($cofe, .5);
                             position: absolute;
                             top: 50%;
@@ -617,8 +618,8 @@
                         .swiperPageCount {
                             @include font-style(25px, $CG, rgba($lightGold, .6)) {
                                 background-color: $grey5;
-                                width: 2.5vw;
-                                height: 2.5vw;
+                                width: 40px;
+                                height: 40px;
                                 border: 0;
                                 outline: 0;
 
