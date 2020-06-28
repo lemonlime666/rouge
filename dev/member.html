@@ -28,6 +28,7 @@
             </div>
         </div>
         <div class="mem_content">
+            <!-- mem_tabone會員基本資料 -->
             <div class="mem_tabcontent mem_tabone">
                 <form action="" class="mem_info">
                     <p>姓名：</p> 
@@ -46,6 +47,7 @@
                     <input type="text" placeholder="Address" name="" class="mem_input">
                 </form>
             </div>
+            <!-- mem_tabtwo會員訂單紀錄查詢 -->
             <div class="mem_tabcontent mem_tabtwo">
                 <div class="mem_detailGroupbtn">
                     <button class="mem_buybtn" data-list="mem_buyTabOne">全部</button>
@@ -55,12 +57,61 @@
                     <button class="mem_buybtn" data-list="mem_buyTabFive">完成</button>
                     <button class="mem_buybtn" data-list="mem_buyTabSix">取消</button>
                 </div>
+                <!-- 訂單查詢細項table -->
+                <div class="mem_buycontent">  
+                    <div class="mem_buy mem_buyTabOne">
+                        <table class="mem_tablegroup">
+                            <tr class="mem_buydetail_title">
+                                <th>訂單編號</th>
+                                <th>訂單日期</th>
+                                <th>狀態</th>
+                                <th>金額</th>
+                                <th>寄送地址</th>
+                                <th>詳細資料</th>
+                            </tr>
+                            <tbody id="mem_buydetail_info">
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="mem_buy mem_buyTabTwo">2 Lorem ipsum dolor sit amet.</div>
+                    <div class="mem_buy mem_buyTabThree">3 Lorem ipsum dolor sit amet.</div>
+                    <div class="mem_buy mem_buyTabFour">4 Lorem ipsum dolor sit amet.</div>
+                    <div class="mem_buy mem_buyTabFive">5 Lorem ipsum dolor sit amet.</div>
+                    <div class="mem_buy mem_buyTabSix">6 Lorem ipsum dolor sit amet.</div>
+                </div>
             </div>
+            <!-- mem_tabthree膚質檢測紀錄 -->
             <div class="mem_tabcontent mem_tabthree">
-                3Lorem ipsum dolor sit amet.
+                <div class="mem_skinanalysis">
+                    <div class="mem_title">
+                        <p class="mem_date">測驗日期：2020/06/06</p>
+                        <h1 class="mem_maintitle">檢測結果：油性肌</h1>
+                        <!-- <hr> -->
+                        <p class="mem_exp">油性肌的人洗臉次數可一天2-3次，應選用清爽的洗臉和保養產品控制油脂分泌，也建議少吃油炸類、過甜、過辣的食物。</p>
+                    </div>
+                    <button class="mem_skincarePd">建議保養步驟與商品</button>
+                </div>
             </div>
+            <!-- mem_tabfour明信片 -->
             <div class="mem_tabcontent mem_tabfour">
-                4Lorem ipsum dolor sit amet.
+                <div class="mem_createcard">
+                    <div class="mem_card">
+                        <div class="mem_img"></div>
+                        <p class="mem_text">參賽日期：2020/06/06</p>
+                        <p class="mem_text">票數：155</p>
+                    </div>
+                    <div class="mem_card">
+                        <div class="mem_img"></div>
+                        <p class="mem_text">參賽日期：2020/06/06</p>
+                        <p class="mem_text">票數：155</p>
+                    </div>
+                    <div class="mem_card">
+                        <div class="mem_img"></div>
+                        <p class="mem_text">參賽日期：2020/06/06</p>
+                        <p class="mem_text">票數：155</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
