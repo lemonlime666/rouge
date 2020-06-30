@@ -186,3 +186,18 @@
                 </div>
         </section>
 </header>
+
+<div id='login' style="display: none;">
+        <div class="loginBack"></div>
+        <div class="loginBox">
+                <div class="loginlayer">
+                        <h1>
+                                {{title}}
+                                <button @click="changeForm">{{subTitle}}</button>
+                        </h1>
+                        <keep-alive>
+                                <component :is="content"></component>
+                        </keep-alive>
+                </div>
+        </div>
+</div>
