@@ -106,7 +106,7 @@
                                     <div class="card">
                                         <!--折扣-->
                                         <div class="pro-discount hugefont">
-                                            70%off
+                                            {{program}}
                                         </div>
                                         <!--滑鼠-->
                                         <div class="mouse-block">
@@ -122,7 +122,7 @@
                                         </div>
                                         <!--圖片-->
 
-                                        <img :src="item.img" alt="" srcset="">
+                                        <img :src="item.SER_IMGURL" alt="" srcset="">
 
                                         <span>
                                             <h2 class="lfont">{{item.SER_NAME}}</h2>
@@ -160,7 +160,8 @@
             el: '#contain',
             data: {
                 series:'',
-                message: '131'
+                
+                program: '70%',
 
             },
             mounted() {
@@ -169,8 +170,7 @@
                 xhr.onload=function (){
                     if( xhr.status == 200 ){
                         //modify here
-                        console.log(this.$parent);
-                        console.log(xhr.responseText);
+                        
                         app.$data.series = JSON.parse(xhr.responseText);
                         
                       
