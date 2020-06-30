@@ -92,7 +92,7 @@
 
 
 
-                        <div class="contain">
+                        <div class="contain" id="contain">
                             <div class="contain-in">
                                 <!--廣告欄位-->
                                 <div class="adv">
@@ -102,7 +102,7 @@
 
                                 </div>
                                 <!--商品欄位-->
-                                <div class="cardouter">
+                                <div class="cardouter" v-for="(item, index) in series">
                                     <div class="card">
                                         <!--折扣-->
                                         <div class="pro-discount hugefont">
@@ -122,10 +122,10 @@
                                         </div>
                                         <!--圖片-->
 
-                                        <img src="./image/light-lip-01.jpg" alt="" srcset="">
+                                        <img :src="item.img" alt="" srcset="">
 
                                         <span>
-                                            <h2 class="lfont">水潤光感系列</h2>
+                                            <h2 class="lfont">{{item.SER_NAME}}</h2>
                                             <p class="mfont">ROUGE CREAM - SHEER</p>
                                             <h4 class="sfont">see more</h4>
                                         </span>
@@ -133,78 +133,7 @@
                                     </div>
 
                                 </div>
-                                <div class="cardouter">
-                                    <div class="card">
-                                        <!--滑鼠-->
-                                        <div class="mouse-block">
-                                            <div id="mouse" class="mouse">
-                                                <div class="bigAni">
-
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                        <!--圖片-->
-
-                                        <img src="./image/light-lip-02.jpg" alt="" srcset="">
-
-                                        <span>
-                                            <h2 class="lfont">水潤光感系列</h2>
-                                            <p class="mfont">ROUGE CREAM - SHEER</p>
-                                            <h4 class="sfont">see more</h4>
-                                        </span>
-
-                                    </div>
-                                </div>
-
-                                <div class="cardouter">
-                                    <div class="card">
-                                        <!--滑鼠-->
-                                        <div class="mouse-block">
-                                            <div id="mouse" class="mouse">
-                                                <div class="bigAni">
-
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                        <!--圖片-->
-
-                                        <img src="./image/light-lip-03.jpg" alt="" srcset="">
-
-                                        <span>
-                                            <h2 class="lfont">水潤光感系列</h2>
-                                            <p class="mfont">ROUGE CREAM - SHEER</p>
-                                            <h4 class="sfont">see more</h4>
-                                        </span>
-
-                                    </div>
-
-                                </div>
-                                <div class="cardouter">
-                                    <div class="card">
-                                        <!--滑鼠-->
-                                        <div class="mouse-block">
-                                            <div id="mouse" class="mouse">
-                                                
-                                                <div class="bigAni">
-
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                        <!--圖片-->
-
-                                        <img src="./image/light-lip-04.jpg" alt="" srcset="">
-
-                                        <span>
-                                            <h2 class="lfont">水潤光感系列</h2>
-                                            <p class="mfont">ROUGE CREAM - SHEER</p>
-                                            <h4 class="sfont">see more</h4>
-                                        </span>
-
-                                    </div>
-                                </div>
+                                
                             </div>
                         </div>
 
@@ -224,8 +153,37 @@
             </div>
         </div>
     </div>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.js"></script>
     <script>
+
+        const app = new Vue({
+            el: '#contain',
+            data: {
+                series:'',
+                message: '131'
+
+            },
+            mounted() {
+               
+                var xhr = new XMLHttpRequest();
+                xhr.onload=function (){
+                    if( xhr.status == 200 ){
+                        //modify here
+                        console.log(this.$parent);
+                        console.log(xhr.responseText);
+                        app.$data.series = JSON.parse(xhr.responseText);
+                        
+                      
+                    }else{
+                        alert( xhr.status );
+                    }
+                }
+                
+                var url = "./php/light-lips.php";
+                xhr.open("get", url, true);
+                xhr.send( null );
+            }
+        })
         
         window.addEventListener('load', function () {
 
