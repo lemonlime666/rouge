@@ -162,6 +162,12 @@ gulp.task('gojs', function () {
     .pipe(gulp.dest('dest/js'));//目的地
 });
 
+gulp.task('gophp', function () {
+    //js move
+    return gulp.src('./dev/php/*.php')//來源打包
+    .pipe(gulp.dest('dest/php'));//目的地
+});
+
 //壓圖
 gulp.task('goimg',function(){
     gulp.src('./dev/image/*')
