@@ -17,11 +17,11 @@
 </head>
 <body>
   @@include("./app/header_black.html")
-  <div class="shop-main">
+  <div class="shop-main" id="app">
     <div class="title">
       <h2 class="xxlfont">Shoppingcart</h2>
     </div>
-    <div class="shop-block">
+    <div class="shop-block" v-if="products.length">
       <div class="pro-total-block">
         <div class="pro-total-title">
           <div class="pro-title">
@@ -36,71 +36,41 @@
 
         </div>
         <!--購物車卡片-->
-        <div class="cart-card">
+        <div class="cart-card" v-for="(item, index) in products">
           <div class="cart-pro-pic">
             <div class="cart-pic-img">
-              <img src="./image/light-lip-01.jpg">
+              <img :src="item.img">
             </div>
 
           </div>
           <div class="rwd-pro-del">
             <div class="cart-pro-del">
               <div class="cart-name">
-                超級無敵口紅
+                {{item.name}}
 
               </div>
               <div class="cart-del">
-                <button>delete</button>
+                <button @click="remove(index)">delete</button>
 
               </div>
 
             </div>
             <div class="cart-mem">
-              <input type="number" min="1">
-  
+              <button @click="decrement(index)" v-bind:disabled="item.count <= 1">-</button>
+              <div>{{item.count}}</div>
+              <button @click="increment(index)">+</button>
+              
             </div>
 
           </div>
           
           <div class="cart-price">
-            5555555555555
+            {{item.price*item.count | showPrice}}
 
           </div>
 
         </div>
-        <!--購物車卡片-->
-        <div class="cart-card">
-          <div class="cart-pro-pic">
-            <div class="cart-pic-img">
-              <img src="./image/light-lip-01.jpg">
-            </div>
-
-          </div>
-          <div class="rwd-pro-del">
-            <div class="cart-pro-del">
-              <div class="cart-name">
-                超級無敵口紅
-
-              </div>
-              <div class="cart-del">
-                <button>delete</button>
-
-              </div>
-
-            </div>
-            <div class="cart-mem">
-              <input type="number" min="1">
-  
-            </div>
-
-          </div>
-          
-          <div class="cart-price">
-            5555555555555
-
-          </div>
-
-        </div>
+       
         <!--總價-->
         <div class="cart-total-price">
           <div class="cart-total-tit">
@@ -108,7 +78,7 @@
           </div>
           
           <div class="cart-total-mem">
-            1000000
+            {{totalprice | showPrice}}
           </div>
 
         </div>
@@ -122,6 +92,65 @@
 
       </div>
     </div>
+    <h2 v-else>購物車為空</h2>
   </div>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.js'></script>
+  <script>
+    const app = new Vue({
+      el: "#app",
+      data: {
+        products: [
+          {
+            id: 1,
+            img: 1313,
+            name: '超級無敵口紅1',
+            count: 1,
+            price: 5000,
+          },
+          {
+            id: 2,
+            img: 1314,
+            name: '超級無敵口紅2',
+            count: 1,
+            price: 6000,
+          },
+          {
+            id: 3,
+            img: 1315,
+            name: '超級無敵口紅3',
+            count: 1,
+            price: 7000,
+          }
+        ]
+      },
+      methods: {
+        remove(index){
+          this.products.splice(index, 1);
+        },
+        decrement(index){
+          this.products[index].count--;
+        },
+        increment(index){
+          this.products[index].count++;
+        },
+        
+
+      },
+      computed: {
+        totalprice(){
+          let totalprice = 0;
+          for(item of this.products){
+            totalprice += item.price * item.count;
+          }
+          return totalprice;
+        }
+      },
+      filters: {
+        showPrice(price){
+          return price.toFixed(2);
+        }
+      }
+    })
+  </script>
 </body>
 </html>

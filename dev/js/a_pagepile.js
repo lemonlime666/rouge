@@ -3,7 +3,7 @@ $(document).ready(function () {
     $('#pagepiling').pagepiling({
         menu: null,
         direction: 'horizontal',
-        scrollingSpeed: 800,
+        scrollingSpeed: 1000,
         loopBottom: true,
         navigation: {
             'textColor': '#efefef',
@@ -27,7 +27,7 @@ $(document).ready(function () {
         speed: 1000, // Speed of the enter/exit transition.
         transition: true, // Set a transition on enter/exit.
         // disableAxis: null, // What axis should be disabled. Can be X or Y.
-        // reset: true, // If the tilt effect has to be reset on exit.
+        reset: true, // If the tilt effect has to be reset on exit.
         glare: true, // Enables glare effect
         maxGlare: .1, // From 0 - 1.
         // reverse:true,

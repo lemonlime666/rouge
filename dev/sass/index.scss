@@ -1,12 +1,10 @@
 @import './app/header';
 
 #pagepiling {
-    // .section{
-    //     overflow: hidden;
-    // }
 
     .pg1 {
         // display: none;
+        overflow: hidden;
 
         .layer {
             position: absolute;
@@ -257,6 +255,7 @@
                             left: 50%;
                             transform: translateX(-50%);
                         }
+
                         @include s-pad() {
                             transform: translateY(-100%) translateX(-50%);
                         }
@@ -280,6 +279,7 @@
                             right: 50%;
                             transform: translateX(50%);
                         }
+
                         @include s-pad() {
                             transform: translateY(100%) translateX(50%);
                         }
@@ -496,7 +496,7 @@
                         height: 100px;
                         position: absolute;
                         top: 50%;
-                        
+
                         outline: 0;
 
                         background: linear-gradient(327.59deg, #38383854 50%, #292929 85%);
@@ -664,7 +664,7 @@
     }
 
     .pg3 {
-        // display: none;
+        display: none;
         background-color: $white;
 
         &::before {
@@ -1253,7 +1253,7 @@
 
     .pg4 {
         background-color: darken(rgb(20, 32, 56), 8);
-        // display: none;
+        display:none;
 
         .pg4Back {
             position: absolute;
@@ -1587,7 +1587,7 @@
     }
 
     .pg5 {
-        // display: none;
+        display: none;
         background-color: darken($milkt, 8);
         overflow: hidden;
 
@@ -2419,7 +2419,7 @@
     // }
 
     .pg7 {
-        // display: none;
+        display: none;
         background-color: $grey4;
         overflow: hidden;
 
@@ -2434,6 +2434,7 @@
             @include l-pad() {
                 top: 90%;
             }
+
             @include l-phone() {
                 top: 88%;
             }
@@ -2489,7 +2490,7 @@
                 font-size: 16px;
                 text-align: center;
                 left: 0;
-                top:15%;
+                top: 15%;
                 letter-spacing: 5px;
             }
 
@@ -2568,6 +2569,7 @@
                     bottom: 90%;
                     transform: translateX(100%);
                 }
+
                 @include l-phone() {
                     transform: none;
                 }
@@ -2603,10 +2605,10 @@
             }
 
             @media all and (max-width:1100px) {
-                right:3%;
+                right: 3%;
             }
 
-            @include pc(){
+            @include pc() {
                 width: 250px;
                 height: 250px;
             }
@@ -2656,7 +2658,7 @@
                 height: 90px;
                 cursor: pointer;
 
-                @include pc(){
+                @include pc() {
                     width: 100px;
                     height: 60px;
                 }
@@ -2673,16 +2675,17 @@
                     margin-top: 30px;
                 }
 
-                @include s-pad(){
+                @include s-pad() {
                     width: 90px;
                     height: 60px;
                 }
 
-                @include l-phone(){
+                @include l-phone() {
                     width: 65px;
                     height: 40px;
                 }
-                @include s-phone(){
+
+                @include s-phone() {
                     width: 55px;
                     height: 35px;
                 }
@@ -2767,7 +2770,7 @@
             flex-shrink: 0;
             overflow: hidden;
 
-            @include l-pad(){
+            @include l-pad() {
                 bottom: 30%;
                 transform: translateY(50%);
             }
@@ -2785,11 +2788,12 @@
                     margin-top: 60px;
                 }
 
-                @include s-pad(){
+                @include s-pad() {
                     width: 80px;
                     height: 100px;
                 }
-                @include l-phone(){
+
+                @include l-phone() {
                     display: none;
                 }
 
@@ -2806,11 +2810,12 @@
             background-color: transparent;
             outline: 0;
 
-            @include l-pad(){
+            @include l-pad() {
                 right: 10%;
             }
-            @include s-pad(){
-                top:75%;
+
+            @include s-pad() {
+                top: 75%;
             }
 
             a {
@@ -2826,7 +2831,7 @@
                 height: 100%;
                 padding: 10px 60px;
 
-                @include l-phone(){
+                @include l-phone() {
                     font-size: 16px;
                     padding: 5px 40px;
                 }
@@ -2848,8 +2853,8 @@
             background-color: transparent;
             outline: 0;
 
-            @include s-pad(){
-                right:10%;
+            @include s-pad() {
+                right: 10%;
             }
 
             a {
@@ -2865,7 +2870,7 @@
                 height: 100%;
                 cursor: pointer;
 
-                @include l-phone(){
+                @include l-phone() {
                     font-size: 16px;
                 }
 

@@ -6,16 +6,15 @@ body {
     padding: 0;
 }
 
-
-section.mem_main{
+section.mem_main {
     height: 100vh;
     width: 100%;
-    background-color: #2C3342;
+    background-color: #2c3342;
     display: flex;
     align-items: center;
     justify-content: center;
 
-    ul.mem_group{
+    ul.mem_group {
         position: absolute;
         top: 30%;
         left: 5%;
@@ -25,12 +24,12 @@ section.mem_main{
         margin: 0;
         padding: 0;
         height: 40vh;
-        width:18%;
+        width: 18%;
         display: flex;
         flex-direction: column;
         justify-content: space-evenly;
         align-items: center;
-        li{
+        li {
             font-family: "Noto Serif TC", serif;
             // border: 1px solid blue;
             outline: 2px solid #ffffff6c;
@@ -39,20 +38,20 @@ section.mem_main{
             width: 100%;
             display: flex;
             flex-direction: column;
-            justify-content: center;    
+            justify-content: center;
             font-weight: 700;
             color: #292929;
             font-size: 1.8rem;
             text-align: center;
             margin: auto 0;
             cursor: pointer;
-            transition: all .5s ease-in-out;
+            transition: all 0.5s ease-in-out;
         }
-        .mem_active{
-            background: #BB9662;
+        .mem_active {
+            background: #bb9662;
         }
     }
-    .mem_content{
+    .mem_content {
         // border: 2px dotted #E1D0A1;
         outline: 3px dotted #e1d0a167;
         outline-offset: 25px;
@@ -61,11 +60,15 @@ section.mem_main{
         align-self: flex-end;
         height: 70vh;
         width: 60%;
-        // .mem_tabone{
-
-        // }
+        .mem_tabcontent {
+            // border: 1px solid blue;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
     }
-    form.mem_info{
+    form.mem_info {
         color: #ffffff;
         // border: 1px solid red;
         width: 75%;
@@ -73,32 +76,137 @@ section.mem_main{
         display: flex;
         justify-content: space-between;
         align-items: center;
-        .mem_input{
+        .mem_input {
             background: transparent;
-            margin: 2% 0;
+            margin: 1.5% 0;
             border: none;
             border-bottom: 2px solid #e1d0a167;
             outline: none;
             width: 70%;
-            height: 50px;
+            height: 60px;
         }
     }
-// TabTwo
-    .mem_detailGroupbtn{
+    // TabTwo
+    .mem_detailGroupbtn {
         margin: 0 auto;
         // border: 1px solid blue;
         width: 75%;
         display: flex;
         justify-content: center;
-        button.mem_buybtn{
+        background-color: rgb(129, 129, 129);
+        border-bottom: 4.5px solid #292929;
+        button.mem_buybtn {
+            font-family: "Noto Serif TC", serif;
+            font-weight: 600;
             font-size: 1.2rem;
             width: 20%;
             height: 6vh;
             border: none;
             outline: none;
             cursor: pointer;
-            // color: white;
-            background-color: rgb(211, 211, 211);
+            background-color: transparent;
+            transition: 0.3s ease-in-out;
+            // border-bottom: 4.5px solid #292929;
+        }
+        .mem_buyactive {
+            color: #c2b48f;
+        }
+    }
+
+    .mem_buycontent {
+        @extend .mem_tabcontent;
+        // justify-self: start;
+        // border: 1px solid red;
+        margin: 2% 0;
+        width: 75%;
+        height: 62vh;
+        background: rgb(129, 129, 129);
+        .mem_buy {
+            display: flex;
+            // flex: auto;
+            justify-content: center;
+            align-items: flex-start;
+            // border: 1px solid green;
+            width: 96%;
+            height: 1000px;
+            table.mem_tablegroup {
+                // border: 1px solid pink;
+                border-collapse: collapse;
+                width: 100%;
+                text-align: center;
+                margin-top: 5px;
+                th {
+                    font-family: "Noto Serif TC", serif;
+                    border: 2px solid #a19677;
+                    background-color: #c2b48f;
+                    font-size: 1rem;
+                    letter-spacing: 0.1rem;
+                    padding: 10px 0;
+                }
+                td {
+                    border: 1.5px solid #a19677;
+                    font-size: 0.9rem;
+                    padding: 3px 0;
+                    // background-color: #979797d7;
+                }
+            }
+        }
+    }
+    //Tabthree
+    .mem_skinanalysis {
+        // border: 1px solid red;
+        width: 75%;
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 1.5%;
+        background: #818181;
+        // justify-content: start;
+        .mem_title {
+            padding: 0 1rem;
+            p.mem_date{
+                font-size: .9rem;
+                color: #292929;
+            }
+            h1.mem_maintitle {
+                font-family: "Noto Serif TC", serif;
+            }
+            p.mem_exp{
+                color: #292929;
+            }
+        }
+        button.mem_skincarePd{
+            cursor: pointer;
+            outline: none;
+            border: none;
+            background: #bbbbbb;
+            padding: .8rem;
+            font-family: "Noto Serif TC", serif;
+            letter-spacing: .2rem;
+        }
+    }
+
+    //TabFour
+    .mem_createcard{
+        // border: 1px solid blue;
+        width: 75%;
+        display: grid;
+        grid-template-columns: repeat(2,2fr);
+        color: #bbbbbb;
+        .mem_card{
+            border: 2px solid #e1d0a167;
+            margin: 2% auto;
+            width: 70%;
+            // background: #818181;
+            .mem_img{
+                // border: 1px solid green;
+                margin: 1% auto;
+                width: 85%;
+                height: 250px;
+            }
+            p.mem_text{
+                margin: .5rem;
+                padding: 0 1rem;
+            }
         }
     }
 }
