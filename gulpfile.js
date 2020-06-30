@@ -158,7 +158,6 @@ gulp.task('go', function () {
 gulp.task('gojs', function () {
     //js move
     return gulp.src('./dev/js/*.js')//來源打包
-    .pipe(concat('main.js'))
     .pipe(gulp.dest('dest/js'));//目的地
 });
 
