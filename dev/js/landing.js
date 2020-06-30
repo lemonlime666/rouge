@@ -344,48 +344,6 @@ window.addEventListener('load', function () {
     }
     draw();
 
-    // pg7 card move
-    // function cardMove() {
-
-    //     var cardPageCount = 0;
-
-    //     $('.pg7Others').click(function () {
-
-    //         if (cardPageCount == 0) {
-    //             $('.refCardBox').animate({
-    //                 height: '80%',
-    //             });
-    //             $('.refCardBox span').animate({
-    //                 width: '10%',
-    //                 height: '30%'
-    //             });
-    //             $('.refCardBox span').toggleClass('trytilt');
-    //             $('.pg7ColorBox').fadeOut(500);
-    //             $('.pg7MainCard').fadeOut(500);
-    //             $('.pg7 h1').fadeOut(500);
-    //             $('.pg7DecoSpan').fadeOut(500);
-    //             $('.pg7Others a').text('返回明信片');
-    //             cardPageCount++;
-    //         } else if (cardPageCount == 1) {
-    //             $('.refCardBox').animate({
-    //                 height: '35%',
-    //             });
-    //             $('.refCardBox span').animate({
-    //                 width: '100px',
-    //                 height: '120px'
-    //             });
-    //             $('.refCardBox span').toggleClass('trytilt');
-    //             $('.pg7ColorBox').fadeIn(500);
-    //             $('.pg7MainCard').fadeIn(500);
-    //             $('.pg7 h1').fadeIn(500);
-    //             $('.pg7DecoSpan').fadeIn(500);
-    //             $('.pg7Others a').text('其他作品');
-    //             cardPageCount--;
-    //         }
-    //     })
-    // }
-    // cardMove();
-
     //lazyload
     function lazy(){
         setTimeout(function(){
