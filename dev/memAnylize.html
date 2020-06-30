@@ -5,52 +5,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>會員保養分析</title>
-    <link rel="stylesheet" href="./css/memAnylize.css">
+    <link rel="stylesheet" href="css/memAnylize.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
 <body>
     @@include('./app/header.html')
-    <section class="memAnyl-background">
-        <div class="memAnyl-pic1">
 
-        </div>
-        <div class="memAnyl-downLine"></div>
-        <div class="memAnyl-leftLine"></div>
-
-        <div class="memAnyl-Rouge">
-            ROUGE
-        </div>
-        <div class="memAnyl-rightLine"></div>
-        <div class="memAnyl-Anylize">
-            ANYLIZE
-        </div>
-
-    </section>
     <main class="memAnyl-main">
-
-
-
-        <section class="memAnyl-content">
-            <h1>線上膚質測試</h1>
+        <section class="memAnyl-content" id="memAnylQ1">
+            <h1>膚質測試問卷</h1>
+            <div class="memAnyl-hr"></div>
             <div class="memAnyl-foreword">
-                肌膚適度的清潔勝於保養
-
-                有乾淨、健康的肌膚，後續上保養品時才能事半功倍
-
-                但如何挑選一個合適的清潔保養用品
-
-                前提是必須先了解自己的膚質狀況
-
-                透過本膚質檢測
-
-                快速的帶您了解自己各部位的膚況
-
-                並給予您專業的清潔建議，以達到正確清潔、保養修護
+                如何挑選一個適合的清潔保養用品，前提是必須先了解自己的膚質狀況 透過本膚質檢測，快速了解自己膚況，並給予您專業的清潔建議，以達到正確清潔保養修護
             </div>
             <div class="memAnyl-question">
-                <div class="odd">
-                    <p>Q1.肌膚油脂的分泌程度?(包含兩頰T字部位)</p>
+                <div class="backgroundNumber">01</div>
+                <div class="memAnyl-title">
+
+                    <div class="circle">
+                        <p>
+                            01
+                        </p>
+                    </div>
+                    <div class="line"></div>
+                    <p class="question">question</p>
+
+
+                </div>
+                <div class="memAnyl-answer">
+                    <h1>肌膚油脂的分泌程度?(包含兩頰T字部位)</h1>
                     <div>
                         <div>
                             <input type="radio" name="Q1" id="Q1A1">
@@ -64,81 +48,298 @@
                             <input type="radio" name="Q1" id="Q1A3">
                             <label for="Q1A3">油膩</label>
                         </div>
+
                     </div>
+
                 </div>
-                <div class="even">
-                    <p>Q2.清潔完肌膚後,時常感到乾澀或油膩?(15分鐘內肌膚狀態作判斷)</p>
-                    <div>
-                        <div>
-                            <input type="radio" name="Q2" id="Q2A1">
-                            <label for="Q2A1">偏乾燥</label>
-                        </div>
-                        <div>
-                            <input type="radio" name="Q2" id="Q2A2">
-                            <label for="Q2A2">正常</label>
-                        </div>
-                        <div>
-                            <input type="radio" name="Q2" id="Q2A3">
-                            <label for="Q2A3">偏油膩</label>
-                        </div>
-                    </div>
+                <div class="memAnyl-endBox">
+                    <img src="./image/Q1img.jpg">
                 </div>
-                <div class="odd">
-                    <p>Q3.日曬後肌膚狀況?</p>
-                    <div>
-                        <div>
-                            <input type="radio" name="Q3" id="Q3A1">
-                            <label for="Q3A1">發癢、泛紅</label>
-                        </div>
-                        <div>
-                            <input type="radio" name="Q3" id="Q3A2">
-                            <label for="Q3A2">正常</label>
-                        </div>
-                        <div>
-                            <input type="radio" name="Q3" id="Q3A3">
-                            <label for="Q3A3">脫屑、反黑</label>
-                        </div>
-                    </div>
+            </div>
+            <p class="memAnyl-page">題目一/共五題</p>
+
+            <div class="memAnyl-btn">
+                <div id="Q1">
+                    <p>按鈕一</p>
                 </div>
-                <div class="even">
-                    <p>Q4.肌膚出汗的程度?</p>
-                    <div>
-                        <div>
-                            <input type="radio" name="Q4" id="Q4A1">
-                            <label for="Q4A1">幾乎不出汗</label>
-                        </div>
-                        <div>
-                            <input type="radio" name="Q4" id="Q4A2">
-                            <label for="Q4A2">普通</label>
-                        </div>
-                        <div>
-                            <input type="radio" name="Q4" id="Q4A3">
-                            <label for="Q4A3">易出汗</label>
-                        </div>
-                    </div>
+                <div id="Q1gofor">
+                    <p>按鈕二</p>
                 </div>
-                <div class="odd">
-                    <p>Q5.日常中大部分所處的環境為?</p>
-                    <div>
-                        <div>
-                            <input type="radio" name="Q5" id="Q5A1">
-                            <label for="Q5A1">低溫、乾燥</label>
-                        </div>
-                        <div>
-                            <input type="radio" name="Q5" id="Q5A2">
-                            <label for="Q5A2">空調室</label>
-                        </div>
-                        <div>
-                            <input type="radio" name="Q5" id="Q5A3">
-                            <label for="Q5A3">潮濕、悶熱</label>
-                        </div>
-                    </div>
-                </div>
-                <button class="memAnyl-btn" onclick="location.href='memAnylizeResult.html'">分析結果</button>
+            </div>
         </section>
+
     </main>
 
+    <main class="memAnyl-main memAnylQ2" id="memAnylQ2">
+        <section class="memAnyl-content">
+            <h1>膚質測試問卷</h1>
+            <div class="memAnyl-hr"></div>
+            <div class="memAnyl-foreword">
+                如何挑選一個適合的清潔保養用品，前提是必須先了解自己的膚質狀況 透過本膚質檢測，快速了解自己膚況，並給予您專業的清潔建議，以達到正確清潔保養修護
+            </div>
+            <div class="memAnyl-question">
+                <div class="backgroundNumber">02</div>
+                <div class="memAnyl-title">
+
+                    <div class="circle">
+                        <p>
+                            02
+                        </p>
+                    </div>
+                    <div class="line"></div>
+                    <p class="question">question</p>
+
+
+                </div>
+                <div class="memAnyl-answer">
+                    <h1>清潔完肌膚後，時常感到乾澀或油膩?(15分鐘)內肌膚狀態做判斷</h1>
+                    <div>
+                        <div>
+                            <input type="radio" name="Q1" id="Q1A1">
+                            <label for="Q1A1">偏乾燥</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="Q1" id="Q1A2">
+                            <label for="Q1A2">正常</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="Q1" id="Q1A3">
+                            <label for="Q1A3">偏油膩</label>
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="memAnyl-endBox">
+                    <img src="./image/Q1img.jpg">
+                </div>
+            </div>
+            <p class="memAnyl-page">題目二/共五題</p>
+
+            <div class="memAnyl-btn">
+                <div id="Q2back">
+                    <p>按鈕一</p>
+                </div>
+                <div id="Q2gofor">
+                    <p>按鈕二</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+    <main class="memAnyl-main memAnylQ3" id="memAnylQ3">
+        <section class="memAnyl-content">
+            <h1>膚質測試問卷</h1>
+            <div class="memAnyl-hr"></div>
+            <div class="memAnyl-foreword">
+                如何挑選一個適合的清潔保養用品，前提是必須先了解自己的膚質狀況 透過本膚質檢測，快速了解自己膚況，並給予您專業的清潔建議，以達到正確清潔保養修護
+            </div>
+            <div class="memAnyl-question">
+                <div class="backgroundNumber">03</div>
+                <div class="memAnyl-title">
+
+                    <div class="circle">
+                        <p>
+                            03
+                        </p>
+                    </div>
+                    <div class="line"></div>
+                    <p class="question">question</p>
+
+
+                </div>
+                <div class="memAnyl-answer">
+                    <h1>日曬後肌膚狀況</h1>
+                    <div>
+                        <div>
+                            <input type="radio" name="Q1" id="Q1A1">
+                            <label for="Q1A1">發癢、泛紅</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="Q1" id="Q1A2">
+                            <label for="Q1A2">正常</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="Q1" id="Q1A3">
+                            <label for="Q1A3">脫屑、反黑</label>
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="memAnyl-endBox">
+                    <img src="./image/Q1img.jpg">
+                </div>
+            </div>
+            <p class="memAnyl-page">題目三/共五題</p>
+
+            <div class="memAnyl-btn">
+                <div id="Q3back">
+                    <p>按鈕一</p>
+                </div>
+                <div id="Q3gofor">
+                    <p>按鈕二</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+    <main class="memAnyl-main memAnylQ4" id="memAnylQ4">
+        <section class="memAnyl-content">
+            <h1>膚質測試問卷</h1>
+            <div class="memAnyl-hr"></div>
+            <div class="memAnyl-foreword">
+                如何挑選一個適合的清潔保養用品，前提是必須先了解自己的膚質狀況 透過本膚質檢測，快速了解自己膚況，並給予您專業的清潔建議，以達到正確清潔保養修護
+            </div>
+            <div class="memAnyl-question">
+                <div class="backgroundNumber">04</div>
+                <div class="memAnyl-title">
+
+                    <div class="circle">
+                        <p>
+                            04
+                        </p>
+                    </div>
+                    <div class="line"></div>
+                    <p class="question">question</p>
+
+
+                </div>
+                <div class="memAnyl-answer">
+                    <h1>肌膚出汗的程度</h1>
+                    <div>
+                        <div>
+                            <input type="radio" name="Q1" id="Q1A1">
+                            <label for="Q1A1">幾乎不出汗</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="Q1" id="Q1A2">
+                            <label for="Q1A2">普通</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="Q1" id="Q1A3">
+                            <label for="Q1A3">易出汗</label>
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="memAnyl-endBox">
+                    <img src="./image/Q1img.jpg">
+                </div>
+            </div>
+            <p class="memAnyl-page">題目四/共五題</p>
+
+            <div class="memAnyl-btn">
+                <div id="Q4back">
+                    <p>按鈕一</p>
+                </div>
+                <div id="Q4gofor">
+                    <p>按鈕二</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+    <main class="memAnyl-main memAnylQ5" id="memAnylQ5">
+        <section class="memAnyl-content">
+            <h1>膚質測試問卷</h1>
+            <div class="memAnyl-hr"></div>
+            <div class="memAnyl-foreword">
+                如何挑選一個適合的清潔保養用品，前提是必須先了解自己的膚質狀況 透過本膚質檢測，快速了解自己膚況，並給予您專業的清潔建議，以達到正確清潔保養修護
+            </div>
+            <div class="memAnyl-question">
+                <div class="backgroundNumber">05</div>
+                <div class="memAnyl-title">
+
+                    <div class="circle">
+                        <p>
+                            05
+                        </p>
+                    </div>
+                    <div class="line"></div>
+                    <p class="question">question</p>
+
+
+                </div>
+                <div class="memAnyl-answer">
+                    <h1>日常中大部分所處的環境為?</h1>
+                    <div>
+                        <div>
+                            <input type="radio" name="Q1" id="Q1A1">
+                            <label for="Q1A1">低溫、乾燥</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="Q1" id="Q1A2">
+                            <label for="Q1A2">空調室</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="Q1" id="Q1A3">
+                            <label for="Q1A3">潮濕、悶熱</label>
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="memAnyl-endBox">
+                    <img src="./image/Q1img.jpg">
+                </div>
+            </div>
+            <p class="memAnyl-page">題目五/共五題</p>
+
+            <div class="memAnyl-btn">
+                <div id="Q5back">
+                    <p>按鈕一</p>
+                </div>
+                <div id="Q5gofor">
+                    <p>按鈕二</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
     <script>
+        var Q1gofor = document.getElementById("Q1gofor");
+        Q1gofor.addEventListener('click', function() {
+            document.getElementById('memAnylQ1').style.cssText = "display: none;";
+            document.getElementById('memAnylQ2').style.cssText = "display: block;";
+        })
+        var Q2gofor = document.getElementById("Q2gofor");
+        Q2gofor.addEventListener('click', function() {
+            document.getElementById('memAnylQ2').style.cssText = "display: none;";
+            document.getElementById('memAnylQ3').style.cssText = "display: block;";
+        })
+        var Q3gofor = document.getElementById("Q3gofor");
+        Q3gofor.addEventListener('click', function() {
+            document.getElementById('memAnylQ3').style.cssText = "display: none;";
+            document.getElementById('memAnylQ4').style.cssText = "display: block;";
+        })
+        var Q4gofor = document.getElementById("Q4gofor");
+        Q4gofor.addEventListener('click', function() {
+                document.getElementById('memAnylQ4').style.cssText = "display: none;";
+                document.getElementById('memAnylQ5').style.cssText = "display: block;";
+            })
+            //退回事件
+        var Q2back = document.getElementById("Q2back");
+        Q2back.addEventListener('click', function() {
+            document.getElementById('memAnylQ2').style.cssText = "display: none;";
+            document.getElementById('memAnylQ1').style.cssText = "display: block;";
+        })
+        var Q3back = document.getElementById("Q3back");
+        Q3back.addEventListener('click', function() {
+            document.getElementById('memAnylQ3').style.cssText = "display: none;";
+            document.getElementById('memAnylQ2').style.cssText = "display: block;";
+        })
+        var Q4back = document.getElementById("Q4back");
+        Q4back.addEventListener('click', function() {
+            document.getElementById('memAnylQ4').style.cssText = "display: none;";
+            document.getElementById('memAnylQ3').style.cssText = "display: block;";
+        })
+        var Q6back = document.getElementById("Q5back");
+        Q5back.addEventListener('click', function() {
+            document.getElementById('memAnylQ5').style.cssText = "display: none;";
+            document.getElementById('memAnylQ4').style.cssText = "display: block;";
+        })
     </script>
 </body>
 

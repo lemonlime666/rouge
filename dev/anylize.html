@@ -14,32 +14,57 @@
 <body>
 
     @@include("./app/header_black.html")
+    <!-- <div class="anyl-background"></div> -->
     <main class="anyl-main">
-        <section class="anyl-item">
-            <div class="anyl-product anyl-item1">
-                <img src="./image/care.png">
+        
+
+        <div class="anyl-item">
+
+            <div class="anyl-product odd">
+                <div class="item anyl-item1">
+                    <img src="./image/care.png">
+                </div>
+                <div class="anyl-shadow anyl-text1">
+                    <h1>產品名</h1>
+                    <p>文字介紹</p>
+                </div>
             </div>
-            <div class="anyl-shadow anyl-text1"></div>
 
-            <div class="anyl-product anyl-item2">
-                <img src="./image/care1.png">
 
+            <div class="anyl-product even">
+                <div class="item anyl-item2">
+                    <img src="./image/care1.png">
+                </div>
+                <div class="anyl-shadow anyl-text2">
+                    <h1>產品名</h1>
+                    <p>文字介紹</p>
+                </div>
             </div>
-            <div class="anyl-shadow anyl-text2"></div>
 
-            <div class="anyl-product anyl-item3">
-                <img src="./image/mask2.png">
 
+            <div class="anyl-product odd">
+                <div class="item anyl-item3">
+                    <img src="./image/mask2.png">
+                </div>
+                <div class="anyl-shadow anyl-text3">
+                    <h1>產品名</h1>
+                    <p>文字介紹</p>
+                </div>
             </div>
-            <div class="anyl-shadow anyl-text3"></div>
 
-            <div class="anyl-product anyl-item4">
-                <img src="./image/care.png">
 
+            <div class="anyl-product even">
+                <div class="item anyl-item4">
+                    <img src="./image/care.png">
+                </div>
+                <div class="anyl-shadow anyl-text4">
+                    <h1>產品名</h1>
+                    <p>文字介紹</p>
+                </div>
             </div>
-            <div class="anyl-shadow anyl-text4"></div>
-        </section>
-        <section class="anyl-background">
+
+        </div>
+        <!-- <section class="anyl-background">
             <div class="anyl-pic">
                 <img src="./image/background1.jpg" class="anyl-img">
             </div>
@@ -52,18 +77,27 @@
                     </div>
                 </a>
             </div>
-        </section>
+        </section> -->
 
-        <div id="dayTimeBlock">
 
-        </div>
-        <div class="anyl-timeChoose">
+        <div class="timeBlock">
+            <div class="anyl-timeChoose">
 
-            <button class="btn1-2 anyl-button1">日間保養</button>
-            <button class="btn1-2 anyl-button1">夜間保養</button>
-            <button class="btn1-2 anyl-button1">春夏保養</button>
-            <button class="btn1-2 anyl-button1">秋冬保養</button>
+                <button class="btn1-2 anyl-button1" id="anylSun">日間保養</button>
+                <button class="btn1-2 anyl-button1" id="anylNight">夜間保養</button>
+                <button class="btn1-2 anyl-button1" id="anyl_1to6">春夏保養</button>
+                <button class="btn1-2 anyl-button1" id="anyl_7to12">秋冬保養</button>
 
+            </div>
+            <div id="dayTimeBlock">
+
+            </div>
+            <div class="anyl-button">
+                <a href="">
+                    <p>專業保養分析</p>
+                    <p>ANYLIZE</p>
+                </a>
+            </div>
         </div>
     </main>
 
@@ -103,8 +137,38 @@
 
             document.getElementById('dayHour').innerText = `${uploadHour} : ${uploadMinute}`;
 
+            if (uploadHour >= 18 | uploadHour <= 6) {
+                document.getElementById('anylNight').style.cssText = "background-color: red;"
+            } else {
+                document.getElementById('anylSun').style.cssText = "background-color: red;"
+            }
+            let todatMonth = today.getMonth();
+            if (todatMonth <= 7) {
+                document.getElementById('anyl_1to6').style.cssText = "background-color: red;"
+            } else {
+                document.getElementById('anyl_7to12').style.cssText = "background-color: red;"
+            }
         };
-
+        var anylSun = document.getElementById('anylSun');
+        var anylNight = document.getElementById('anylNight');
+        var anyl_1to6 = document.getElementById('anyl_1to6');
+        var anyl_7to12 = document.getElementById('anyl_7to12');
+        anylSun.addEventListener('click', function() {
+            this.style.cssText = "background-color: red";
+            document.getElementById('anylNight').style.cssText = "background-color: $darkGold";
+        });
+        anylNight.addEventListener('click', function() {
+            this.style.cssText = "background-color: red";
+            document.getElementById('anylSun').style.cssText = "background-color: $darkGold";
+        });
+        anyl_1to6.addEventListener('click', function() {
+            this.style.cssText = "background-color: red";
+            document.getElementById('anyl_7to12').style.cssText = "background-color: $darkGold";
+        });
+        anyl_7to12.addEventListener('click', function() {
+            this.style.cssText = "background-color: red";
+            document.getElementById('anyl_1to6').style.cssText = "background-color: $darkGold";
+        });
     </script>
 </body>
 

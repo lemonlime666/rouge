@@ -7,166 +7,135 @@
     border-radius: $width/2;
 }
 
+$wordColor: #463e37;
 body {
     font-family: 'Noto Sans TC', sans-serif;
     width: 100%;
     margin: 0;
-    background-color: $skin;
-    text-align: center;
+    background-color: #918174;
 }
+
 .memAnyl-main {
-    margin: 0px auto;
-    width: 100%;
-    border-radius: 5px;
-    height: 100%;
     position: relative;
     display: flex;
-    .memAnyl-background {
-        width: 100%;
-        position: absolute;
-        height: 100%;
-        top: 0;
-        z-index: -1;
-        .memAnyl-leftblock{
-            position: absolute;
-            top: 0;
-            height: 100%;
-            width:200px;
-            background-color: $navy;
-        }
-        .memAnyl-ANYL{
-            position: absolute;
-            font-size: 40px;
-            text-shadow: 1px 1px $grape, -1px -1px $grape,
-              1px -1px $grape, -1px 1px $grape;
-            top: 350px;
-            //   background-color: $white;
-            transform: rotate(270deg);
-        }
-        .memAnyl-RESU{
-            position: absolute;
-            font-size: 40px;
-            text-shadow: 1px 1px $grape, -1px -1px $grape,
-              1px -1px $grape, -1px 1px $grape;
-            top: 50px;
-            left:20px;
-            transform: rotate(270deg);
-            
-
-        }
-        
+    flex-direction: column;
+    @media screen and (min-width:991px){
+        flex-direction: row;    
     }
-    .memAnyl-content {
-        width: 70%;
+    
+    .memAnylresult-content {
+        width: 60%;
         display: flex;
         flex-direction: column;
         align-items: flex-start;
-        background-color: $sky;
-        border: 5px solid $navy;
-        border-radius: 20px;
-        margin: 100px auto;
+        margin: 50px auto;
         text-align: center;
         position: relative;
         top: 50px;
-        
-        .memAnylResult-word{
+        .memAnylResult-word {
             display: flex;
+            flex-direction: column;
             margin: 0 auto;
-            div{
-                h1{ 
+            color: $wordColor;
+            .title {
+                margin-bottom: 20px;
+                color: $white;
+                h1 {
                     position: relative;
-                    width: 80%;
-                    margin-left: 20px;
+                    margin-left: 10px;
+                    text-align: start;
+                    font-size: 30px;
                 }
             }
-            p{
-                width: 50%;
-                margin: 20px auto;
+            .line {
+                border: 1px solid $white;
+            }
+            .forword {
+                width: 95%;
+                margin: 10px;
             }
         }
-        .memAnylResult-item{
-            
-            right:0px;
-            top: 130px;
+        .sun {
+            color: $wordColor;
+            display: flex;
+            margin: 30px auto 0;
             width: 100%;
-            height: 40%;
-            h3{
-                position: relative;
-                color:$red;
+            .word {
+                width: 80%;
+                h3 {
+                    text-align: start;
+                }
+                .line {
+                    border: 1px solid white;
+                }
+                p {
+                    margin-top: 30px;
+                    margin-right: 10px;
+                    text-align: left;
+                }
+            }
+            .pic {
+                border: 1px solid white;
                 width: 200px;
-                
-            }
-            .sun{
-                width: 100%;
-                display: flex;
-                flex-direction: column;
-                margin: 25px auto;
-                text-align: center;
-                div{
-                    margin: 0 auto;
-                    width: 90%;
-                    p{
-                        width: 200px;
-                    }
-                    .content{
-                        display: flex;
-                        margin: 0 auto;
-                        .circle{
-                            @include circle(150px);
-                            background-color: $grey2;
-                            margin: 0 auto 0 50px;
-                            // width: 90%;
-                            img{
-                            position: relative;
-                            left: 10px;
-                            top: 10px;
-                            width: 80%;
-                            }
-                        }
-                        div{
-                            width: 50%;
-                            text-align: left;
-                            margin-left: 0;
-                        }
-                    }
+                height: 250px;
+                img {
+                    width: 100%;
+                    height: 100%;
                 }
             }
-            .night{
-                width: 100%;
-                display: flex;
-                flex-direction: column;
-                margin: 25px auto;
-                text-align: center;
-                div{
-                    margin: 0 auto;
-                    width: 90%;
-                    p{
-                        width: 200px;
-                    }
-                    .content{
-                        display: flex;
-                        margin: 0 auto;
-                        .circle{
-                            @include circle(150px);
-                            background-color: $grey2;
-                            margin: 0 auto 0 50px;
-                            // width: 90%;
-                            img{
-                            position: relative;
-                            left: 10px;
-                            top: 10px;
-                            width: 80%;
-                            }
-                        }
-                        div{
-                            width: 50%;
-                            text-align: left;
-                            margin-left: 0;
-                        }
-                    }
+        }
+        .night {
+            color: $wordColor;
+            display: flex;
+            flex-direction: row-reverse;
+            margin: 30px auto 0;
+            width: 100%;
+            .word {
+                width: 80%;
+                h3 {
+                    text-align: end;
+                }
+                .line {
+                    border: 1px solid white;
+                }
+                p {
+                    margin-top: 30px;
+                    margin-left: 10px;
+                    text-align: left;
                 }
             }
+            .pic {
+                border: 1px solid white;
+                width: 200px;
+                height: 280px;
+                img {
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+        }
+        
+    }
+    .btn {
+        display: flex;
+        position: relative;
+        @media screen and (min-width:991px){
+            right: 10%;
+            margin-top:320px ;
+            flex-direction: column;    
+
+        }
+        margin-top: 10px;
+        div {
+            background-color: #463e37;
+            
+            
+            color: $white;
+            width: 150px;
+            height: 50px;
+            padding-top: 10px;
+            margin: 10px auto;
+            text-align: center;
         }
     }
 }
-

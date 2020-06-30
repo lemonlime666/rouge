@@ -5,228 +5,259 @@
     width: $width;
     height: $width;
     border-radius: $width/2;
-};
+}
 
-    html,
-    body {
-        font-family: 'Noto Sans TC', sans-serif;
-        width: 100%;
-        margin: 0;
-        background:  linear-gradient(to right,$greyGrape,$skin,$greyGrape);
-    }
-    .memAnyl-background {
-        width: 100%;
-        position: absolute;
-        height: 100%;
-        z-index: -1;
-        
-        
-        .memAnyl-Rouge{
-            position: absolute;
-            top: 340px;
-            right:30px;
-            color: $opacityCofe;
-            font-size: 150px;
-            transform: rotate(-45deg);
-            text-shadow: 1px 1px $grape, -1px -1px $grape,
-              1px -1px $grape, -1px 1px $grape;
-              opacity: .8;
+;
+html,
+body {
+    font-family: 'Noto Sans TC', sans-serif;
+    width: 100%;
+    margin: 0;
+    background: $grey1;
+}
 
-        }
-        .memAnyl-Anylize{
-            position: absolute;
-            top: 100px;
-            // right:100px;
-            color: $opacityCofe;
-            font-size: 150px;
-            transform: rotate(-45deg);
-            text-shadow: 1px 1px $grape, -1px -1px $grape,
-              1px -1px $grape, -1px 1px $grape;
-              opacity: .8;
-        }
-        .memAnyl-downLine{
-            border-width: 3px;
-            border-color: $tomato;
-            border-top: 3px;
-            border-top: 5px solid $tomato;
-            width: 100%;
-            position: absolute;
-            top: 600px;
-        }
-        .memAnyl-leftLine{
-            border-width: 3px;
-            border-color: $tomato;
-            border-top: 3px;
-            border: 2.5px solid $tomato;
-            height: 99.2%;
-            position: absolute;
-            top: 0px;
-            right:200px;
-
-        }
-        .memAnyl-rightLine{
-            // border-width: 3px;
-            border-color: $tomato;
-            border-top: 3px;
-            border: 2.5px solid $tomato;
-            height: 99%;
-            position: absolute;
-            top: 0px;
-            left: 300px;
-        }
-
-
-    }
-    .memAnyl-main {
-        margin: 0px auto;
-        width: 100%;
-        height: 100%;
+.memAnyl-main {
+    margin: 0px auto;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    text-align: center;
+    .memAnyl-content {
+        width: 80%;
         position: relative;
+        top: 80px;
+        // background-color: $lightGold;
+        // border: 5px solid $navy;
+        border-radius: 20px;
+        margin: 0 auto;
         text-align: center;
-        
-        
-        .memAnyl-content {
+        display: flex;
+        flex-direction: column;
+        h1 {
+            text-align: left;
+            margin: 20px auto 20px 300px;
+            color: $greyNavy;
+        }
+        .memAnyl-hr {
+            border: 2px solid $grey5;
             width: 80%;
-            position: relative;
-            top: 150px;
-            background-color: $lightGold;
-            border: 5px solid $navy;
-            border-radius: 20px;
             margin: 0 auto;
-            text-align: center;
+        }
+        .memAnyl-foreword {
+            width: 50%;
+            text-align: left;
+            color: $greyNavy;
+            margin: 20px auto 0px 250px;
+            padding: 15px;
+        }
+        .memAnyl-question {
+            width: 80%;
+            // height: 390px;
+            color: $red;
             display: flex;
             flex-direction: column;
-            h1{
-                text-align: left;
-                margin-left: 120px;
-                color:$greyNavy;
+            margin: 0 auto;
+            text-align: center;
+            @media screen and(min-width: 991px) {
+                flex-direction: row;
             }
-            .memAnyl-foreword {
-                border: 3px solid $grey1;
-                border-radius: 15px;
-                width: 75%;
-                text-align: left;
-                background-color: $white;
-                color: $greyNavy;
-                margin: 20px auto 50px;
-                padding:15px;
+            .backgroundNumber {
+                position: absolute;
+                font-size: 400px;
+                color: $grey3;
+                opacity: .2;
+                right: 400px;
+                top: 0;
+                font-family: Noto serif TC;
             }
-            .memAnyl-question {
-                width: 100%;
-                // height: 390px;
-                color: $red;
+            .memAnyl-title {
                 display: flex;
+                flex-direction: row-reverse;
+                justify-self: end;
                 margin: 0 auto;
-                flex-direction: column;
                 text-align: center;
-                [type="radio"]:checked,
-                [type="radio"]:not(:checked) {
-                    position: absolute;
-                    left: -9999px;
+                @media screen and(min-width: 991px) {
+                    flex-direction: column;
+                }
+                .circle {
+                    @include circle(40px);
+                    background-color: $lightGold;
+                    margin: 20px auto;
+                    text-align: center;
+                    p {
+                        margin: 8px auto;
+                        color: honeydew;
+                        text-align: center;
+                    }
+                }
+                .line {
+                    border: 1.5px solid $lightGold;
+                    height: 0px;
+                    width: 100px;
+                    margin: auto 10px;
+                    @media screen and(min-width: 991px) {
+                        width: 0;
+                        height: 100px;
+                        margin: 0 auto;
+                    }
+                }
+                .question {
+                    font-size: 30px;
+                    margin: auto 0;
+                    color: $lightGold;
+                    @media screen and(min-width: 991px) {
+                        margin: 50px auto;
+                        transform: rotate(270deg);
+                    }
+                }
+            }
+            [type="radio"]:checked,
+            [type="radio"]:not(:checked) {
+                position: absolute;
+                left: -9999px;
+            }
+            .memAnyl-answer {
+                width: 100%;
+                margin: 10px 0px;
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                text-align: center;
+                position: relative;
+                h1 {
+                    margin: 0 auto 0 0;
                 }
                 div {
+                    margin-top: 30px;
+                    margin-left: 5%;
+                    width: 100px;
+                    text-align: left;
+                }
+            }
+            [type="radio"]:checked+label,
+            [type="radio"]:not(:checked)+label {
+                position: relative;
+                padding-left: 28px;
+                line-height: 20px;
+                display: inline-block;
+                color: $grey5;
+            }
+            [type="radio"]:checked+label:before,
+            [type="radio"]:not(:checked)+label:before {
+                content: '';
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 18px;
+                height: 18px;
+                border: 1px solid $grey3;
+                border-radius: 100%;
+                background: #fff;
+            }
+            [type="radio"]:checked+label:after,
+            [type="radio"]:not(:checked)+label:after {
+                content: '';
+                width: 12px;
+                height: 12px;
+                background: $rose;
+                position: absolute;
+                top: 4px;
+                left: 4px;
+                border-radius: 100%;
+                -webkit-transition: all 0.2s ease;
+                transition: all 0.2s ease;
+            }
+            [type="radio"]:not(:checked)+label:after {
+                opacity: 0;
+                -webkit-transform: scale(0);
+                transform: scale(0);
+            }
+            [type="radio"]:checked+label:after {
+                opacity: 1;
+                -webkit-transform: scale(1);
+                transform: scale(1);
+            }
+            // .memAnyl-btn {
+            //     position: relative;
+            //     border: 0px solid transparent;
+            //     font-size: 25px;
+            //     color: $navy;
+            //     width: 150px;
+            //     height: 70px;
+            //     margin: 30px 80px 30px auto;
+            //     box-shadow: 5px 10px 15px rgb(59, 59, 59);
+            //     border-radius: 15px;
+            //     cursor: pointer;
+            //     transition: box-shadow 0.3s, color 0.3s, background-color 0.3s;
+            //     &:hover {
+            //         box-shadow: 15px 15px 15px rgb(59, 59, 59);
+            //         transition: box-shadow 0.3s, color 0.3s, background-color 0.3s;
+            //         border: 0px solid $darkGold;
+            //         color: $white;
+            //         background-color: $tomato;
+            //     }
+            //     &:active {
+            //         outline: none;
+            //         transition: box-shadow 0.3s;
+            //         box-shadow: none;
+            //     }
+            //     &:focus {
+            //         outline: none;
+            //     }
+            // }
+            .memAnyl-endBox {
+                height: 200px;
+                width: 150px;
+                position: absolute;
+                bottom: 150px;
+                right: 0px;
+                @media screen and (min-width: 991px) {
+                    position: relative;
+                    bottom: 0;
+                    height: 400px;
+                    width: 500px;
+                }
+                img {
                     width: 100%;
-                    // height: 70px;
-                    display: flex;
-                    @media screen and (max-width:991px) {
-                        flex-direction: column;
-                    }
-                    p{
-                        width: 70%;
-                        margin: 20px;
-                        text-align: left;
-                    }
-                    div{
-                        width: 50%;
-                        @media screen and (max-width:991px){
-                            display: flex;
-                            flex-direction: row;
-                            width: 100%;
-                        }
-                        div{
-                            margin: 20px 15px;
-                        }
-
-                    }
-                }
-                .odd{
-                    background-color: $opacityCofe;
-                    
-                
-                }
-                [type="radio"]:checked+label,
-                [type="radio"]:not(:checked)+label {
-                    position: relative;
-                    padding-left: 28px;
-                    line-height: 20px;
-                    display: inline-block;
-                    color: $grey5;
-                }
-                [type="radio"]:checked+label:before,
-                [type="radio"]:not(:checked)+label:before {
-                    content: '';
-                    position: absolute;
-                    left: 0;
-                    top: 0;
-                    width: 18px;
-                    height: 18px;
-                    border: 1px solid #ddd;
-                    border-radius: 100%;
-                    background: #fff;
-                }
-                [type="radio"]:checked+label:after,
-                [type="radio"]:not(:checked)+label:after {
-                    content: '';
-                    width: 12px;
-                    height: 12px;
-                    background: $tomato;
-                    position: absolute;
-                    top: 4px;
-                    left: 4px;
-                    border-radius: 100%;
-                    -webkit-transition: all 0.2s ease;
-                    transition: all 0.2s ease;
-                }
-                [type="radio"]:not(:checked)+label:after {
-                    opacity: 0;
-                    -webkit-transform: scale(0);
-                    transform: scale(0);
-                }
-                [type="radio"]:checked+label:after {
-                    opacity: 1;
-                    -webkit-transform: scale(1);
-                    transform: scale(1);
-                }
-                .memAnyl-btn {
-                    position: relative;
-                    border: 0px solid transparent;
-                    font-size: 25px;
-                    color: $navy;
-                    width: 150px;
-                    height: 70px;
-                    margin: 30px 80px 30px auto;
-                    box-shadow: 5px 10px 15px rgb(59, 59, 59);
-                    border-radius: 15px;
-                    cursor: pointer;
-                    transition:  box-shadow 0.3s,color 0.3s,background-color 0.3s;
-                    &:hover {
-                        box-shadow: 15px 15px 15px rgb(59, 59, 59);
-                        transition:  box-shadow 0.3s,color 0.3s,background-color 0.3s;
-                        border: 0px solid $darkGold;
-                        color: $white;
-                        background-color: $tomato;
-                    }
-                    &:active{
-                        outline:none;
-                        transition: box-shadow 0.3s;
-                        box-shadow: none;
-                    }
-                    &:focus{
-                        outline:none;
-                    }
+                    height: 100%;
                 }
             }
         }
+        .memAnyl-btn {
+            display: flex;
+            width: 80%;
+            justify-content: space-between;
+            margin: 30px auto;
+            div {
+                border: 1px solid black;
+                width: 100px;
+                height: 60px;
+                text-align: center;
+                p {
+                    margin-top: 15%;
+                }
+            }
+        }
+        .memAnyl-page {
+            color: $grey1;
+            width: 200px;
+            margin-left: 300px;
+        }
     }
+}
 
+.memAnylQ2 {
+    display: none;
+}
 
+.memAnylQ3 {
+    display: none;
+}
+
+.memAnylQ4 {
+    display: none;
+}
+
+.memAnylQ5 {
+    display: none;
+}
