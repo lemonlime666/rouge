@@ -131,14 +131,12 @@
             data: {
                 products: ''
             },
-            computed: {
-                add(){
-                    if(this.products.length < 8){
-                        this.products.push('')
+            beforeUpdate() {
+                while(this.products.length < 8){
+                    this.products.push('');
                     }
-                    console.log("1321");
-                }
-                
+    
+
             },
             mounted() {
               var xhr = new XMLHttpRequest();
