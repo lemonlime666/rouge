@@ -160,9 +160,9 @@
                 </a>
         </div>
         <ul id='sidenav' class='inCorner'>
-                <li><a href="#">LOGIN</a></li>
-                <li><a href="./member.html">MYPAGE</a></li>
-                <li><a href="./shoppingcart.html">CART(0)</a></li>
+                <li><a href="#" id="LoginSignup">LOGIN</a></li>
+                <li><a href="memPage.html">MYPAGE</a></li>
+                <li><a href="#">CART(0)</a></li>
         </ul>
         <section id='menu'>
                 <div class="menuLeft">
@@ -187,3 +187,18 @@
                 </div>
         </section>
 </header>
+
+<div id='login' style="display: none;">
+        <div class="loginBack"></div>
+        <div class="loginBox">
+                <div class="loginlayer">
+                        <h1>
+                                {{title}}
+                                <button @click="changeForm">{{subTitle}}</button>
+                        </h1>
+                        <keep-alive>
+                                <component :is="content"></component>
+                        </keep-alive>
+                </div>
+        </div>
+</div>

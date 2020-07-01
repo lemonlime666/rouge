@@ -20,7 +20,7 @@
 
     </div>
     <!--內容-->
-    <div class="content">
+    <div class="content" id="content">
         <div class="breadcrumb">
             <ol class="breadcrumb_list xsfont">
               <li><a href="./door.html">SHOP</a></li>
@@ -38,31 +38,12 @@
                     <p class="xsfont">滿注獨家研發的「鎖水保濕因子」，搭配頂級抗老成分「普拉絲鏈」，針對唇部肌膚組織有卓越修護功效，提供 8 小時修護效果。天然荷荷巴油能帶給雙唇持久滋潤，不讓乾燥、脫屑等問題找上妳的雙唇。
                     </p>
                 </div>
-                <div class="pro_pic">
-                    <div class="pro_img">
-                        <img src="./image/pro_img_1.png" alt="">
+                <div class="pro_pic" id="pro_pic">
+                    <!--商品欄位-->
+                    <div class="pro_img" v-for="(item, index) in products">
+                        <img :src="item.PRO_IMG" alt="">
                     </div>
-                    <div class="pro_img">
-                        <img src="./image/pro_img_1.png" alt="">
-                    </div>
-                    <div class="pro_img">
-                        <img src="./image/pro_img_1.png" alt="">
-                    </div>
-                    <div class="pro_img">
-                        <img src="./image/pro_img_1.png" alt="">
-                    </div>
-                    <div class="pro_img">
-                        <img src="./image/pro_img_1.png" alt="">
-                    </div>
-                    <div class="pro_img">
-                        <img src="./image/pro_img_1.png" alt="">
-                    </div>
-                    <div class="pro_img">
-                        <img src="./image/pro_img_1.png" alt="">
-                    </div>
-                    <div class="pro_img">
-                        <img src="./image/pro_img_1.png" alt="">
-                    </div>
+                    
                    
                 </div>
             </div>
@@ -81,10 +62,9 @@
                 </div>
                 <div class="pro_top">
                     <form class="pro_color">
-                        <select name="" id="">
-                            <option value="">#274</option>
-                            <option value="">#275</option>
-                            <option value="">#276</option>
+                        <select name="">
+                            <option v-for="item in products">{{item.PRO_COLOR}}</option>
+                            
                         </select>
                     </form>
                     <form class="pro_number">
@@ -137,28 +117,46 @@
             <button class="lag-type-btn">留言</button>
         </div>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.js"></script>
     <script>
+
         let proBack = document.querySelector(".pro-out");
         setTimeout(function(){
             proBack.style.display = "none";
 
         },2000);
-    </script>
-    <script>
-        var imgs = [
-        'image/S3L-3-214.png',
-        'image/S3L-3-314.png',
-        'image/S3L-3-364.png',
-        ];
-        var index = 0;
-        var len = imgs.length;
-        $('.pro_btn_c').on('click',function(){
-            if($(this).data("control") == "last"){
-                index = Math.max(0,--index);
-                }else
-                    index = Math.min(len-1,++index);
-                    $('#box_img').attr('src',imgs[index]);
-    　　});
+
+        const app = new Vue({
+            el: '#content',
+            data: {
+                products: ''
+            },
+            beforeUpdate() {
+                while(this.products.length < 8){
+                    this.products.push('');
+                    }
+    
+
+            },
+            mounted() {
+              var xhr = new XMLHttpRequest();
+              xhr.onload = function (){
+                if( xhr.status == 200 ){
+                    
+                    app.$data.products = JSON.parse(xhr.responseText);
+
+                }else{
+                    alert( xhr.status );
+                }
+                
+              }
+              var url = "./php/poduct.php";
+                xhr.open("get", url, true);
+                xhr.send( null );  
+            }
+        })
+
+        
     </script>
     
 </body>

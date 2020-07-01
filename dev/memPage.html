@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>member</title>
+    <link rel="stylesheet" href="./css/memPage.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&family=Noto+Serif+TC:wght@200;300;400;500;600;700;900&display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Nunito+Sans:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.min.js"></script>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class='wrapTexture'></div>
+    </div>
+    @@include("./app/header.html")
+    <main id="mainSection">
+        <section id="mainInfoSec">
+            <div id="infoContent">
+                <component :is="content"></component>
+            </div>
+        </section>
+        <section id="btnSec">
+            <span class="alterInfo activeInfo" @click="content='meminfo'">個人資料</span>
+            <span class="alterInfo" @click="content='orderlist'">訂單記錄</span>
+            <span class="alterInfo" @click="content='analinfo'">膚質檢測</span>
+            <span class="alterInfo" @click="content='mypostcard'">明信片</span>
+        </section>
+    </main>
+
+
+    <script src="./js/memPage.js"></script>
+    <script>
+        window.addEventListener('load', function () {
+                    $('.alterInfo').click(function () {
+                        $('.alterInfo').removeClass('activeInfo');
+                        $(this).toggleClass('activeInfo');
+                    })
+                });
+    </script>
+</body>
+
+</html>
