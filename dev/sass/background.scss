@@ -36,7 +36,7 @@ main{
 
     .menu{
         // border: 1px solid green;
-        width: 20%;
+        width: 18%;
         height: 100%;
         min-width: 200px;
         position: absolute;
@@ -69,6 +69,7 @@ main{
                 border-bottom: 1px solid $cofe;
                 @include font-style(){
                     color: rgba($lightGold, .8);
+                    font-size: 16px;
                 }
                 &:first-of-type{
                     border-top: 1px solid $cofe;
@@ -77,8 +78,8 @@ main{
                     background-color: $wood;
                 }
 
-                @include pc(){
-                    font-size: 16px;
+                @include l-pad(){
+                    font-size: 14px;
                 }
             }
 
