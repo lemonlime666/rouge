@@ -39,13 +39,39 @@ body {
 
 #mainSection {
     // border: 1px solid red;
-    max-width: 1100px;
+    max-width: 1200px;
     width: 70%;
+    min-width: 1000px;
     height: 84vh;
     position: absolute;
     left: 50%;
     bottom: 0;
     transform: translateX(-50%);
+    @include pc(){
+        width: 80%;
+        min-width: 0;
+    }
+    @include m-pad(){
+        width: 90%;
+        height: 74vh;
+    }
+    @include s-pad(){
+        height: 76vh;
+    }
+    @include l-phone(){
+        width: 100%;
+        height: 74vh;
+    }
+    @include s-phone(){
+        height: 78vh;
+    }
+    @media screen and (max-width:375px) {
+        height: 78vh;
+    }
+    @media screen and (max-width:360px) {
+        height: 74vh;
+    }
+
 
     &::before {
         content: "";
@@ -74,6 +100,13 @@ body {
             display: flex;
             justify-content: center;
             align-items: center;
+            @include m-pad(){
+                float: unset;
+                margin: 0 auto;
+            }
+            @include s-pad(){
+                width: 100%;
+            }
 
             .contentBox {
                 // border: 1px solid green;
@@ -86,14 +119,23 @@ body {
                 padding-top: 80px;
                 z-index: 10;
 
+                @include s-pad(){
+                    padding-top: 20px;
+                    width: 100%;
+                }
+
                 form.mem_info {
                     color: #ffffff;
-                    // border: 1px solid red;
+                    // border: 1px solid red !important;
                     width: 70%;
                     margin: 0 auto;
                     display: flex;
                     justify-content: center;
                     align-items: center;
+                    @include s-pad(){
+                        width: 90%;
+                        font-size: 14px;
+                    }
                     .mem_input {
                         background: transparent;
                         margin: 10px 0 10px 20px;
@@ -104,6 +146,10 @@ body {
                         height: 60px;
                         @include font-style(){
                             font-size: 16px;
+                        }
+                        @include l-phone(){
+                            height: 40px;
+                            font-size: 14px;
                         }
                     }
                 }
@@ -123,14 +169,34 @@ body {
         justify-content: flex-start;
         align-items: center;
         padding-top: 60px;
+        z-index: 30;
+
+        @include m-pad(){
+            width: 90%;
+            height:10%;
+            flex-flow: row;
+            justify-content: center;
+            align-items: center;
+            top: -90px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 0;
+        }
+        @include s-pad(){
+            top: -100px;
+        }
+        @include l-phone(){
+            width: 90%;
+            top: -70px;
+        }
+        @include s-phone(){
+            top: -60px;
+        }
 
         .alterInfo {
             width: 100%;
             height: 10%;
-
             @include font-style() {}
-
-            ;
             background-color: #a39775;
             color: $wood;
             font-weight: 500;
@@ -139,6 +205,18 @@ body {
             align-items: center;
             position: relative;
             cursor: pointer;
+
+            @include m-pad(){
+                width: 150px;
+                height:100%;
+            }
+            @include l-phone(){
+                font-size: 14px;
+                height: 70%;
+            }
+            @include s-phone(){
+                font-size: 12px;
+            }
 
             &:hover {
                 background-color: $darkGold;
@@ -155,10 +233,14 @@ body {
 
         .activeInfo {
             @include font-style() {}
-
-            ;
             background-color: $wood;
             color: $white;
+            @include l-phone(){
+                font-size: 14px;
+            }
+            @include s-phone(){
+                font-size: 12px;
+            }
 
             &:hover {
                 background-color: $wood;
@@ -175,6 +257,14 @@ body {
     justify-content: space-between;
     background-color: rgb(129, 129, 129);
     border-bottom: 4.5px solid #292929;
+    // border: 1px solid red !important;
+    @include pc(){
+        transform: translateX(20px);
+    }
+    @include m-pad(){
+        transform: unset;
+        width: 100%;
+    }
     .mem_buybtn {
         @include font-style(){};
         font-size: 16px;
@@ -187,6 +277,15 @@ body {
         transition: 0.2s;
         border-bottom: 4.5px solid #292929;
         cursor: pointer;
+        @include l-phone(){
+            font-size: 14px;
+        }
+        @media all and (max-width:420px){
+            font-size: 12px;
+        }
+        @media all and (max-width:360px){
+            font-size: 10px;
+        }
     }
     .mem_buyactive {
         background-color: $wood;
@@ -200,6 +299,13 @@ body {
     width: 80%;
     height: 70%;
     background: rgb(129, 129, 129);
+    @include pc(){
+        transform: translateX(20px);
+    }
+    @include m-pad(){
+        transform: unset;
+        width: 100%;
+    }
     .mem_buy {
         // border: 1px solid red;
         display: flex;
@@ -220,11 +326,24 @@ body {
                     font-size: 16px;
                 }
                 padding: 10px 0;
+
+                @include l-phone(){
+                    font-size: 14px;
+                }
+                @media all and (max-width:420px){
+                    font-size: 12px;
+                }
+                @media all and (max-width:360px){
+                    font-size: 10px;
+                }
             }
             td {
                 border: 1.5px solid #a19677;
-                font-size: 0.9rem;
+                font-size: 15px;
                 padding: 3px 0;
+                @include l-phone(){
+                    font-size: 14px;
+                }
             }
         }
     }
@@ -277,8 +396,20 @@ body {
     .mem_card{
         flex-shrink: 0;
         border: 2px solid #e1d0a167;
-        width: 60%;
-        height: 80%;
+        width: 400px;
+        height: 500px;
+        @include s-pad(){
+            width: 350px;
+            height: 450px;
+        }
+        @include l-phone(){
+            width: 250px;
+            height: 350px;
+        }
+        @include s-phone(){
+            width: 200px;
+            height: 300px;
+        }
         .mem_img{
             margin: 1% auto;
             width: 100%;
