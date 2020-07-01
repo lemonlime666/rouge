@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/background.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.min.js"></script>
+    <title>BackGround</title>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class='wrapTexture'></div>
+    </div>
+    @@include('./app/back_header.html')
+
+    <main id="background">
+        <aside class="menu menuOut" style="display: flex;">
+            <div class="subjectBox">
+                <span class="sub activeSub" data-subject="member" @click="changeSub">會員管理</span>
+                <span class="sub"data-subject="staff" @click="changeSub">員工管理</span>
+                <span class="sub"data-subject="product" @click="changeSub">商品管理</span>
+                <span class="sub"data-subject="pdpost" @click="changeSub">商品留言管理</span>
+                <span class="sub"data-subject="orderlist" @click="changeSub">訂單管理</span>
+                <span class="sub"data-subject="advert" @click="changeSub">廣告排程</span>
+                <span class="sub"data-subject="promotion" @click="changeSub">促銷管理</span>
+                <span class="sub"data-subject="gift" @click="changeSub">贈品管理</span>
+                <span class="sub"data-subject="anal" @click="changeSub">保養分析資料管理</span>
+                <span class="sub"data-subject="card" @click="changeSub">明信片管理</span>
+                
+                <span class="log">LOGIN</span>
+            </div>
+        </aside>
+        <section>
+            <div class="contentBox">
+                <component :is="content"></component>
+            </div>
+        </section>
+    </main>
+
+
+    <script src="./js/back_header.js"></script>
+    <script src="./js/background.js"></script>
+    <script>
+        //menuInOut
+        function menuInOut(){
+            let winWidth = window.innerWidth;
+            console.log(winWidth);
+            if(winWidth<=996){
+                $('#ham').show();
+                $('.menu').removeClass('menuOut');
+            }else{
+                $('#ham').hide();
+                $('.menu').addClass('menuOut');
+            }
+        };
+        window.addEventListener('load',menuInOut);
+        window.addEventListener('resize',menuInOut);
+
+        //menuOut
+        $('#ham').click(function(){
+            if(!$(this).hasClass('open')){
+                $('.menu').addClass('menuOut');
+            }else{
+                $('.menu').removeClass('menuOut');
+            }
+        })
+    </script>
+</body>
+
+</html>

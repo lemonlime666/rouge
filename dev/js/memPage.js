@@ -146,7 +146,7 @@ Vue.component('tab6',{
     `,
 });
 
-const cootents = new Vue({
+const contents = new Vue({
     el: '#mainSection',
     data:{
         content:'meminfo',
