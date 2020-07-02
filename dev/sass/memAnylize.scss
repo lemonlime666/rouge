@@ -141,6 +141,7 @@ body {
                 line-height: 20px;
                 display: inline-block;
                 color: $grey5;
+                width: 120px;
             }
             [type="radio"]:checked+label:before,
             [type="radio"]:not(:checked)+label:before {
