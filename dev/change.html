@@ -7,7 +7,7 @@
   
 </head>
 <body>
-  <form action="./php/update.php" method="get">
+
   <table id="app">
     <tr>
       <th>系列編號</th>
@@ -16,17 +16,17 @@
       <th>系列圖片</th>
       <th>系列內容</th>
     </tr>
-    <tr v-for="(item, index) in series"> 
+    <tr v-for="item in series"> 
       <td >{{item.SER_NO}}</td>
       <td name="123">{{item.SER_NAME}}</td>
       <td>{{item.SER_ENGNAME}}</td>
       <td>{{item.SER_IMGURL}}</td>
       <td>{{item.SER_TEXT}}</td>
-      <td><button @click="change">編輯</button><button @click="sent">確認</button></td>
+      <td><button @click="change">編輯</button><button @click="sent">送出</button> </td>
     </tr>
   </table>
   
-</form>
+
   <!-- SER_NO, SER_NAME, SER_ENGNAME, SER_IMGURL, SER_TEXT -->
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.js"></script>
@@ -45,6 +45,7 @@
               //     console.log(e.target);
               //  },
               change(e){
+
                   console.log(e.target.parentNode.parentNode);
                   let first = e.target.parentNode.parentNode.childNodes[2].innerText;
                   console.log(first);
@@ -57,23 +58,21 @@
                   addinput.appendChild(input);    
                },
                sent(e){
+               
                 //  console.log( document.getElementsByName('SER_NAME')[0].value)
-                 e.target.parentNode.parentNode.childNodes[2].innerText= document.getElementsByName('SER_NAME')[0].value
+                //  e.target.parentNode.parentNode.childNodes[2].innerText= document.getElementsByName('SER_NAME')[0].value
                 var xhr = new XMLHttpRequest();
                 xhr.onload=function (){
                     if( xhr.status == 200 ){
                         //modify here
-                      
-                 
-                      
+                      alert(xhr.responseText);   
                     }else{
                         alert( xhr.status );
                     }
                 }
-                
-                var url = "./php/update.php";
+                var url = "./php/update.php?SER_NAME="+document.getElementsByName('SER_NAME')[0].value;
                 xhr.open("get", url, true);
-                xhr.send();
+                xhr.send(null);
                },
             },
             mounted() {
