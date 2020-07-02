@@ -129,17 +129,17 @@ Vue.component('loginBox', {
             }
             xhr.open("post", "./php/login.php", true);
             xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
-    
+
             //將資料放入物件中
             let loginInfo = {
                 memMail: document.getElementById('mail').value,
                 memPsw: document.getElementById('psw').value
             };
-    
+
             let str = JSON.stringify(loginInfo); //loginInfo轉成JSON格式字串
             let data = `loginInfo=${str}`; //將JSON格式字串儲存進陣列中
             xhr.send(data); //傳遞JSON至PHP
-    
+
             //將登入表單上的資料清空，並隱藏起來
             $('#login').hide();
             document.getElementById('mail').value = '';
@@ -169,6 +169,25 @@ Vue.component('signUpBox', {
         };
     },
     methods: {
+        passcheck(e) {
+            e.preventDefault();
+            let name = document.getElementById('s_name');
+            let mail = document.getElementById('s_mail');
+            let pass = document.getElementById('s_psw');
+            let check = document.getElementById('pswCheck');
+            let emailRule = /^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z]+$/;
+            if (pass.value != check.value || pass.value == "" || check.value == "") {
+                alert('請再次確認密碼');
+                pass.value = "";
+                check.value = "";
+            } else if (name.value == "") {
+                alert('請再次確認姓名');
+            } else if (mail.value == "" || mail.value.search(emailRule) == -1) {
+                alert('請再次確認電子信箱');
+            } else {
+                this.$options.methods.signup(e);
+            }
+        },
         signup(e) {
             e.preventDefault();
             //AJAX傳送資料到PHP
@@ -206,7 +225,8 @@ Vue.component('signUpBox', {
             document.getElementById('s_psw').value = '';
             document.getElementById('s_name').value = '';
             document.getElementById('pswCheck').value = '';
-        }
+
+        },
     },
     template: `
             <form class="signForm logdiv" method="post">
@@ -226,7 +246,7 @@ Vue.component('signUpBox', {
                     <span>PASSWORD CHECK</span>
                     <input type="password" id="pswCheck">
                 </label>
-                <input type="submit" value="SIGNUP" id="signUpSubmit" @click="signup">
+                <input type="submit" value="SIGNUP" id="signUpSubmit" @click="passcheck">
             </form>
     `,
 })
