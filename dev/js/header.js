@@ -141,7 +141,6 @@ Vue.component('loginBox', {
             xhr.send(data); //傳遞JSON至PHP
 
             //將登入表單上的資料清空，並隱藏起來
-            $('#login').hide();
             document.getElementById('mail').value = '';
             document.getElementById('psw').value = '';
         }
