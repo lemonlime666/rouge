@@ -162,7 +162,7 @@ gulp.task('gojs', function () {
 });
 
 gulp.task('gophp', function () {
-    //js move
+    //php move
     return gulp.src('./dev/php/*.php')//來源打包
     .pipe(gulp.dest('dest/php'));//目的地
 });
@@ -190,6 +190,7 @@ gulp.task('live',function(){
     gulp.watch(['./dev/*.html' ,'./dev/**/*.html','./dev/css/*.css'], ['go']).on('change',reload);
     gulp.watch('./dev/js/*.js',['gojs']).on('change',reload);
     gulp.watch('./dev/sass/**/*.scss',['go']).on('change',reload);
+    gulp.watch('./dev/php/*.php',['gophp']).on('change',reload);
     
 })
 

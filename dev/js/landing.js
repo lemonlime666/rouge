@@ -347,8 +347,13 @@ window.addEventListener('load', function () {
     //lazyload
     function lazy(){
         setTimeout(function(){
+            $('.pg2').css({
+                display:'table-cell',
+            })
+        },500)
+        setTimeout(function(){
             $('.pg3').css({
-                display:'inline-table',
+                display:'table-cell',
             })
         },2000)
         setTimeout(function(){
