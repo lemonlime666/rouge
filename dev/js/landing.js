@@ -1,17 +1,48 @@
 window.addEventListener('load', function () {
 
-    //for swiper
-    let swiperImg = document.getElementsByClassName('swiperimg');
-    let swiperPageBox = document.getElementById('swiperPage');
+    //動態抓取資料圖片
+    $.ajax({
+        type: "get",
+        url: "./php/indexAd.php",
+        dataType: "json",
+        success(data) {
+            for (i = 0; i < data.length; i++) {
+                let div = document.createElement('div');
+                div.classList.add("swiperimgContent");
+                let ahref = document.createElement('a');
+                ahref.setAttribute('href', '#');
+                let adimg = document.createElement('img');
+                adimg.classList.add('swiperimg');
+                adimg.setAttribute('src', `${data[i]}`);
 
-    //動態新增pagination
-    for (i = 0; i < swiperImg.length; i++) {
-        let swiperPage = document.createElement('button');
-        swiperPage.className = 'swiperPageCount';
-        swiperPage.innerText = i + 1;
-        swiperPageBox.appendChild(swiperPage);
-        $('.swiperPageCount:nth-child(1)').addClass('activeAdvert');
-        $(`.swiperPageCount:nth-child(${i+1})`).addClass('mfont');
+                ahref.appendChild(adimg);
+                div.appendChild(ahref);
+                document.querySelector('.swiperimgBox').appendChild(div);
+            }
+            createPagination();
+        },
+        error(xhr) {
+            console.log(xhr.responseText);
+        }
+    })
+
+    //for swiper
+    function createPagination() {
+        let a = document.querySelector('.swiperimgBox');
+        let swiperImg = document.getElementsByClassName('swiperimg');
+        let swiperPageBox = document.getElementById('swiperPage');
+
+        //動態新增pagination
+        for (i = 0; i < swiperImg.length; i++) {
+            let swiperPage = document.createElement('button');
+            swiperPage.className = 'swiperPageCount';
+            swiperPage.innerText = i + 1;
+            swiperPage.dataset.page = i + 1;
+            swiperPageBox.appendChild(swiperPage);
+            $('.swiperPageCount:nth-child(1)').addClass('activeAdvert');
+            $(`.swiperPageCount:nth-child(${i+1})`).addClass('mfont');
+        }
+        swipe();
     }
 
     //changeSwiper
@@ -56,24 +87,19 @@ window.addEventListener('load', function () {
         });
 
         //pagination swipe
-        for (i = 1; i <= $('.swiperPageCount').length; i++) {
-            $(`.swiperPageCount:nth-child(${i})`).click(swipeChange(i));
+        $('#swiperPage button').click(function (e) {
+            let i = e.target.dataset.page;
+            $('.swiperimgContent:nth-child(1)').animate({
+                marginLeft: `${(i-1)*-100}%`,
+            });
+            $(`#swiperPage button`).removeClass('activeAdvert');
+            $(this).addClass('activeAdvert');
+            counter = i;
+            clearInterval(autoSwipe);
+            autoSwipe = setInterval(autoSwipeCount, 6000);
+        })
 
-        }
-
-        function swipeChange(i) {
-            return function () {
-                $('.swiperimgContent:nth-child(1)').animate({
-                    marginLeft: `${(i-1)*-100}%`,
-                });
-                $(`#swiperPage button`).removeClass('activeAdvert');
-                $(`.swiperPageCount:nth-child(${i})`).addClass('activeAdvert');
-                counter = i;
-                clearInterval(autoSwipe);
-                autoSwipe = setInterval(autoSwipeCount, 6000);
-            }
-        }
-
+        //autoSwipe
         let direction = 0;
         let autoSwipe = setInterval(autoSwipeCount, 6000);
 
@@ -114,12 +140,9 @@ window.addEventListener('load', function () {
             $(`#swiperPage button`).removeClass('activeAdvert');
             $(`.swiperPageCount:nth-child(${counter})`).addClass('activeAdvert');
         }
-
     }
-    swipe();
 
     //pg3changBack
-
     function pg3Change() {
         for (i = 1; i <= $('.pg3BtnBox span').length; i++) {
             $(`.pg3BtnBox span:nth-child(${i})`).click(changeConfirm(i));
@@ -345,32 +368,32 @@ window.addEventListener('load', function () {
     draw();
 
     //lazyload
-    function lazy(){
-        setTimeout(function(){
+    function lazy() {
+        setTimeout(function () {
             $('.pg2').css({
-                display:'table-cell',
+                display: 'table-cell',
             })
-        },500)
-        setTimeout(function(){
+        }, 500)
+        setTimeout(function () {
             $('.pg3').css({
-                display:'table-cell',
+                display: 'table-cell',
             })
-        },2000)
-        setTimeout(function(){
+        }, 2000)
+        setTimeout(function () {
             $('.pg4').css({
-                display:'inline-table',
+                display: 'inline-table',
             })
-        },4000)
-        setTimeout(function(){
+        }, 4000)
+        setTimeout(function () {
             $('.pg5').css({
-                display:'inline-table',
+                display: 'inline-table',
             })
-        },6000)
-        setTimeout(function(){
+        }, 6000)
+        setTimeout(function () {
             $('.pg7').css({
-                display:'inline-table',
+                display: 'inline-table',
             })
-        },8000)
+        }, 8000)
     }
     lazy();
 

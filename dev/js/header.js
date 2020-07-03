@@ -119,6 +119,8 @@ Vue.component('loginBox', {
                 if (xhr.status == 200) {
                     member = JSON.parse(xhr.responseText);
                     if (member.mail) { //登入成功
+                        alert('登入成功');
+                        $('#login').hide();
                         $('#LoginSignup').html('LOGOUT');
                     } else {
                         alert("帳密錯誤");
