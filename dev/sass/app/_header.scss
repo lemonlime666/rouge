@@ -637,7 +637,7 @@
             }
         }
 
-        form {
+        .logdiv {
             // border: 1px solid red;
             display: flex;
             flex-flow: column;
@@ -685,6 +685,7 @@
                 background-color: transparent;
                 border: 1px solid $lightGold;
                 border-radius: 5px;
+                outline: 0;
                 @include font-style(14px,$CG,$lightGold,700){
                     letter-spacing: 3px;
                 }
@@ -704,6 +705,7 @@
                 background-color: transparent;
                 border: 1px solid $lightGold;
                 border-radius: 5px;
+                outline: 0;
                 @include font-style(14px,$CG,$lightGold,700){
                     letter-spacing: 3px;
                 }
