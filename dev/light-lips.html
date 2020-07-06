@@ -110,7 +110,7 @@
                                         </div>
                                         <!--滑鼠-->
                                         <div class="mouse-block">
-                                            <div id="mouse" class="mouse">
+                                            <div id="mouse" class="mouse" :id="item.SER_NO" @click="cardClick">
                                                 <div class="mouse-in">
                                                     
                                                 </div>
@@ -163,6 +163,12 @@
                 
                 program: '70%',
 
+            },
+            methods: {
+                cardClick(e) {
+                    
+                    localStorage['seriesname'] = e.target.id
+                }
             },
             mounted() {
                

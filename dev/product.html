@@ -128,7 +128,8 @@
         const app = new Vue({
             el: '#content',
             data: {
-                products: ''
+                products: '',
+                series: ''
             },
             methods: {
                 proClick() {
@@ -137,19 +138,15 @@
                 }
             },
             computed: {
-                totalprice() {
-                    let tota
-
-                }
+                
             },
-            beforeUpdate() {
-                while(this.products.length < 8){
-                    this.products.push('');
-                    }
-    
-
-            },
+            
+            
+                
             mounted() { //在VUE未渲染時執行函數  
+              let ser = localStorage.getItem('seriesname')
+              console.log(ser)
+              
               var xhr = new XMLHttpRequest();
               xhr.onload = function (){
                 if( xhr.status == 200 ){ //連線成功
@@ -161,9 +158,13 @@
                 }
                 
               }
-              var url = "./php/poduct.php"; //設定PHP位置
+              var url = "./php/poduct.php?SER_NO="+ser; //設定PHP位置
                 xhr.open("get", url, true);
                 xhr.send( null );  
+
+                // fetch(url).then(rs => rs.json).then((res)=>{
+                    
+                // })
             }
         })
 
