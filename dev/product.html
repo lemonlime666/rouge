@@ -41,7 +41,7 @@
                 <div class="pro_pic" id="pro_pic">
                     <!--商品欄位-->
                     <div class="pro_img" v-for="(item, index) in products">
-                        <img :src="item.PRO_IMG" alt="">
+                        <img :src="item.PRO_IMG" alt="" :id="[`pro` + item.PRO_NO]" @click="proClick">
                     </div>
                     
                    
@@ -63,19 +63,18 @@
                 <div class="pro_top">
                     <form class="pro_color">
                         <select name="">
-                            <option v-for="item in products">{{item.PRO_COLOR}}</option>
+                            <option v-for="item in products" v-if="item != ''">{{item.PRO_COLOR}}</option>
                             
                         </select>
                     </form>
                     <form class="pro_number">
                         <select name="" id="">
-                            <option value="">1</option>
-                            <option value="">2</option>
-                            <option value="">3</option>
+                            <option value="">{{count}}</option>
+                            
                         </select>
                     </form>
                     <div class="por_price">
-                        <h3 class="lfont">$1500</h3>
+                        <h3 class="lfont">{{totalprice}}</h3>
                     </div>
                 </div>
                 <div class="pro_down">
@@ -129,30 +128,43 @@
         const app = new Vue({
             el: '#content',
             data: {
-                products: ''
+                products: '',
+                series: ''
             },
-            beforeUpdate() {
-                while(this.products.length < 8){
-                    this.products.push('');
-                    }
-    
+            methods: {
+                proClick() {
 
+
+                }
             },
-            mounted() {
+            computed: {
+                
+            },
+            
+            
+                
+            mounted() { //在VUE未渲染時執行函數  
+              let ser = localStorage.getItem('seriesname')
+              console.log(ser)
+              
               var xhr = new XMLHttpRequest();
               xhr.onload = function (){
-                if( xhr.status == 200 ){
+                if( xhr.status == 200 ){ //連線成功
                     
-                    app.$data.products = JSON.parse(xhr.responseText);
+                    app.$data.products = JSON.parse(xhr.responseText); //將導出的物件存入data中
 
                 }else{
                     alert( xhr.status );
                 }
                 
               }
-              var url = "./php/poduct.php";
+              var url = "./php/poduct.php?SER_NO="+ser; //設定PHP位置
                 xhr.open("get", url, true);
                 xhr.send( null );  
+
+                // fetch(url).then(rs => rs.json).then((res)=>{
+                    
+                // })
             }
         })
 

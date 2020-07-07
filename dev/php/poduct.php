@@ -1,7 +1,7 @@
 <?php
 try{
   require_once("connect.php");
-  $sql = "select * from product";
+  $sql = "select * from product where PRO_CLASS = 0";
   $product = $pdo->query($sql);
 
   if($product->rowCount() == 0){
