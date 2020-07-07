@@ -19,9 +19,7 @@ body {
     position: relative;
     display: flex;
     flex-direction: column;
-    @media screen and (min-width:991px){
-        flex-direction: row;    
-    }
+    
     
     .memAnylresult-content {
         width: 60%;
@@ -118,24 +116,47 @@ body {
     }
     .btn {
         display: flex;
-        position: relative;
-        @media screen and (min-width:991px){
-            right: 10%;
-            margin-top:320px ;
-            flex-direction: column;    
-
-        }
-        margin-top: 10px;
-        div {
-            background-color: #463e37;
+        width: 60%;
+        margin: 10px auto;
+        flex-direction: row;    
+        justify-content: space-between;
+        
+        
+        a {            
             
             
-            color: $white;
-            width: 150px;
-            height: 50px;
-            padding-top: 10px;
-            margin: 10px auto;
             text-align: center;
+            text-decoration: none;
+            &:active {
+                text-decoration: none;
+            }
+            &:focus {
+                text-decoration: none;
+                color: white;
+            }
+            &:visited {
+                text-decoration: none;
+                color: white
+            }
+            .btnStyle{
+                cursor: pointer;
+                font-size: 16px;
+                width: 100px;
+                height: 60px;
+                text-align: center;
+                color: white;
+                background-color: $tomato;
+                border: 1px solid  $tomato;
+                transition: background-color 0.5s , border 0.5s;            
+                &:hover{
+                    background-color: #AE5F5F;
+                    border: 1px solid  #AE5F5F;
+                    transition: background-color 0.5s , border 0.5s;
+                }                
+                p {
+                    margin-top: 15%;
+                }
+            }
         }
     }
 }
