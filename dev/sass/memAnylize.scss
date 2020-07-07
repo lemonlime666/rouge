@@ -35,8 +35,13 @@ body {
         flex-direction: column;
         h1 {
             text-align: left;
-            margin: 20px auto 20px 300px;
+            margin-left:120px;
+            margin-top: 35px;
+            margin-bottom: 20px;
             color: $greyNavy;
+            @media screen and(max-width:768px){
+                margin-left: 40px;
+            }
         }
         .memAnyl-hr {
             border: 2px solid $grey5;
@@ -44,11 +49,15 @@ body {
             margin: 0 auto;
         }
         .memAnyl-foreword {
-            width: 50%;
+            width: 60%;
             text-align: left;
             color: $greyNavy;
-            margin: 20px auto 0px 250px;
+            margin-left:100px;
             padding: 15px;
+            @media screen and(max-width:768px){
+                margin-left: 30px;
+                width: 90%;
+            }
         }
         .memAnyl-question {
             width: 80%;
@@ -69,6 +78,9 @@ body {
                 right: 400px;
                 top: 0;
                 font-family: Noto serif TC;
+                @media screen and(max-width:768px){
+                    right:100px;
+                }
             }
             .memAnyl-title {
                 display: flex;
@@ -118,7 +130,7 @@ body {
             }
             .memAnyl-answer {
                 width: 100%;
-                margin: 10px 0px;
+                margin: 30px 0px;
                 display: flex;
                 flex-direction: column;
                 align-items: flex-start;
@@ -229,20 +241,33 @@ body {
             width: 80%;
             justify-content: space-between;
             margin: 30px auto;
-            div {
-                border: 1px solid black;
+            .btnStyle{
+                cursor: pointer;
+                font-size: 16px;
                 width: 100px;
                 height: 60px;
                 text-align: center;
+                color: white;
+                background-color: $tomato;
+                border: 1px solid  $tomato;
+                transition: background-color 0.5s , border 0.5s;            
+                &:hover{
+                    background-color: #AE5F5F;
+                    border: 1px solid  #AE5F5F;
+                    transition: background-color 0.5s , border 0.5s;
+                }                
                 p {
                     margin-top: 15%;
                 }
             }
         }
         .memAnyl-page {
-            color: $grey1;
+            color: $grey2;
             width: 200px;
             margin-left: 300px;
+            @media screen and (max-width:996px){
+                margin-left: 20px;
+            }
         }
     }
 }
@@ -262,3 +287,21 @@ body {
 .memAnylQ5 {
     display: none;
 }
+.Q1btn{
+    flex-direction: row-reverse;
+}
+.Q5link{
+    text-decoration: none;
+    &:active {
+        text-decoration: none;
+    }
+    &:focus {
+        text-decoration: none;
+        color: white;
+    }
+    &:visited {
+        text-decoration: none;
+        color: white
+    }
+}
+

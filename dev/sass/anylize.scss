@@ -10,7 +10,7 @@
 ;
 body {
     font-family: 'Noto Sans TC', sans-serif;
-    background-color: $white;
+    background-color: $grey1;
     margin: 0px;
     text-align: center;
     background-image: url("../image/background2.jpg");
@@ -35,50 +35,75 @@ body {
         position: relative;
         margin-top: 20px;
         @media screen and(min-width:1200px) {
-            height: 800px;    
+            height: 600px;    
         }
         
         .anyl-timeChoose {
-            margin: 0 auto;
-            width: 90%;
+            margin: 0px auto;
+            width: 70%;
             text-align: center;
             display: flex;
             justify-content: space-between;
             flex-wrap: wrap;
             @media screen and (min-width: 768px) {
-                width: 600px;
+                width: 500px;
             }
             @media screen and(min-width: 1200px) {
                 width: 300px;
                 height: 200px;
             }
             .anyl-button1 {
-                background-color: $darkGold;
-                border: 1px solid $darkGold;
-                font-size: 15px;
-                color: rgb(238, 238, 238);
-                width: 20%;
-                height: 50px;
-                border-radius: 15px;
-                cursor: pointer;
-                transition: box-shadow 0.3s;
-                @media screen and (min-width: 768px) {
-                    width: 130px;
-                    font-size: 20px;
-                    height: 65px;
-                }
-                &:hover {
-                    box-shadow: 15px 15px 15px rgb(59, 59, 59);
-                    transition: box-shadow 0.3s;
-                    border: 1px solid $darkGold;
-                }
-                &:active {
+                    width:120px;
+                    height: 50px;
+                    font-size: 18   px;
+                    // font-family: ;
+                    margin-top: 20px;
+                    font-weight: 600;
+                    color: $grey5;
+                    text-transform: uppercase;
+                    // padding: 1.25em 2em;
+                    background: $gold;
+                    border: 2px solid $cofe;
+                    border-radius: 0.75em;
+                    transform-style: preserve-3d;
+                    transition: transform 150ms linear, background 150ms cubic-bezier(0, 0, 0.58, 1);
+                    cursor: pointer;
+                    text-decoration: none;
                     outline: none;
-                    transition: box-shadow 0.3s;
-                    box-shadow: none;
-                }
-                &:focus {
-                    outline: none;
+
+                    // &:focus{
+                    //     border: 2px solid greenyellow;
+                    // }
+                    &::before {
+                    position: absolute;
+                    content: '';
+                    width: 100%;
+                    height: 100%;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    background: $grey2    ;
+                    border-radius: inherit;
+                    // box-shadow: 0 0 0 2px $grey1, 0 0.625em 0 0 $grey1;
+                    transform: translate3d(0, 0.75em, -1em);
+                    transition: transform 150ms cubic-bezier(0, 0, 0.58, 1), box-shadow 150ms cubic-bezier(0, 0, 0.58, 1);
+                    }
+                    &:hover {
+                    background: $gold;
+                    transform: translate(0, 0.25em);
+                    &::before {
+                        // box-shadow: 0 0 0 2px $grey1, 0 0.5em 0 0 $grey1;
+                        transform: translate3d(0, 0.5em, -1em);
+                    }
+                    }
+                    &:active {
+                    background: $milkt;
+                    transform: translate(0em, 0.75em);
+                    &::before {
+                        // box-shadow: 0 0 0 2px yellow, 0 5 yellow;
+                        transform: translate3d(0, 0, -1em);
+                    }
                 }
             }
         }
@@ -89,6 +114,8 @@ body {
     display: flex;
     flex-direction: column;
     text-align: center;
+    margin-bottom: 4px;
+    margin-top: 15px;
     .even {
         @media screen and (min-width: 768px) and (max-width: 1199px) {
             position: relative;
@@ -107,7 +134,7 @@ body {
         margin: 12px 0 0 10px;
         .item {
             margin: 10px;
-            background-color: $grey2;
+            background-color: $grey1;
             @include circle(120px);
             &:hover+.anyl-shadow {
                 width: 350px;
@@ -125,7 +152,7 @@ body {
         .anyl-shadow {
             width: 50px;
             height: 50px;
-            background-color: $grey1;
+            background-color: $white;
             @include circle(140px);
             position: absolute;
             z-index: -1;
@@ -146,7 +173,7 @@ body {
     margin-left: 150px;
     margin-top: 10px;
     @media screen and (min-width: 768px) and (max-width: 1199px) {
-        margin-left: 50%;
+        margin-left: 20%;
     }
     div {
         width: 100px;
@@ -168,16 +195,59 @@ body {
 }
 
 .anyl-button {
+    @media screen and (min-width:767px){
+    
+    width: 240px;
+    height:100px;   
+    line-height: 40px;
+    }
+    @media screen and (max-width:768px){
+        display: none;
+        
+
+        }
     @media screen and (min-width:1200px){
-     
-    width: 280px;
-    height:120px;   
+        line-height: 15px;
     }
     width: 200px;
     height: 80px;
     position: absolute;
     bottom: 0;
     right: 10px;
+    background-color: $skin;
+    a{  margin-top:15px ;
+        color: white;
+        text-decoration: none;
+        text-align: center;
+        &:active {
+            color: white;
+        }
+        &:focus {
+            color: white;
+        }
+        &:visited {
+            color: white
+        }
+        p {
+            margin: 5px;
+            @media screen and (min-width:1200px){
+     
+            margin: 25px;
+                }
+        }
+    }
+}
+.anyl-button2 {
+    @media screen and (min-width:767px){
+    display: none;
+    width: 280px;
+    height:120px;   
+    }
+    width: 200px;
+    height: 80px;
+    margin: 10px auto;
+    
+    
     background-color: $skin;
     a{  margin-top:15px ;
         color: white;
