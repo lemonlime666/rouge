@@ -255,6 +255,31 @@
    
 
     <script>
+        var makeupImg='';
+         //AJAX拿試妝資料
+        window.addEventListener('load',loadimg);
+        function loadimg(){
+            var xhr = new XMLHttpRequest();
+                xhr.onload=function (){
+                    if( xhr.status == 200 ){
+                        //modify here
+                        
+                        // let backJSON = JSON.parse(xhr.responseText);
+                        console.log(xhr.responseText);
+                        makeupImg =xhr.responseText;
+                        setcanvasimg(makeupImg)
+                      
+                    }else{
+                        alert( xhr.status );
+                    }
+                }
+                
+                var url = "./php/saveCard.php";
+                xhr.open("get", url, true);
+                xhr.send( null );
+        };
+
+        //配件區show
         $(function(){
             $(".stickH").click(function(){
                 $(".sB").slideToggle("slow");
@@ -270,6 +295,7 @@
         });
 
         //RWD可能要用JS重劃高度
+    function setcanvasimg(makeupImg){
         const card = new fabric.Canvas('canvas')   
         card.setDimensions({
             
@@ -279,7 +305,7 @@
             cssOnly: true
             });
 
-        fabric.Image.fromURL('./image/model/model02-hei-res-non.png', (img) => {
+        fabric.Image.fromURL(makeupImg, (img) => {
             img.set({
    // 通过scale来设置图片大小，这里设置和画布一样大
             
@@ -291,6 +317,8 @@
         card.setBackgroundImage(img, card.renderAll.bind(card));   
         card.renderAll();
     });
+    }
+      
        
 
     //開啟關閉筆刷
@@ -332,7 +360,7 @@
             cssOnly: true
             });
 
-        fabric.Image.fromURL('./image/model/model02-hei-res-non.png', (img) => {
+        fabric.Image.fromURL(makeupImg, (img) => {
             img.set({
    // 通过scale来设置图片大小，这里设置和画布一样大
             
@@ -449,7 +477,7 @@ $(saveCard).click(function(){
     // var dataURL = canvas.toDataURL('image/jpeg');
     // console.log(dataURL);
     var dataURL = canvas.toDataURL({format: 'jpg', multiplier: 4})
-  download("downloadtest.png", dataURL)
+  download("downloadtest.JPG", dataURL)
 
 });
 
@@ -516,10 +544,13 @@ function deleteSelectedObjectsFromCanvas(){
     card.discardActiveObject();
     card.requestRenderAll();
 }
+
+
+
+//手機板選項切換
 let s= 1;
 let f= 1;
 let p= 1;
-//手機板選項切換
 $(".listTitle").click(function(e){
     e.stopPropagation();
     
@@ -594,7 +625,7 @@ $(".listTitle").click(function(e){
                 cssOnly: true
                 });
 
-            fabric.Image.fromURL('./image/model/model02-hei-res-non.png', (img) => {
+            fabric.Image.fromURL(makeupImg, (img) => {
                 img.set({
             // 通过scale来设置图片大小，这里设置和画布一样大
                 
@@ -620,6 +651,8 @@ $(".listTitle").click(function(e){
             modal.style.display = "none";
         }
     }
+   
+
 
 </script>
 </body>
