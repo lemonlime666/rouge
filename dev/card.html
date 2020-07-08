@@ -21,6 +21,7 @@
               <p>趕快參加投票讓大家知道你的美感~~!</p>
               <div>
                   <button type="button" onclick="document.getElementById('id01').style.display='none'" class="btn2-1">放棄參加</button>
+                  <!-- <button type="button" onclick="window.location='./vote.html'"class="btn3-1">馬上參加</button> -->
                   <button type="button" onclick="window.location='./vote.html'"class="btn3-1">馬上參加</button>
               </div>
           </div>
@@ -239,11 +240,13 @@
         <div id="third">
             <div class="fabocHead"  style="height: 30vh; z-index: -1;"></div>
             <h1>輸入文字</h1>
-            <form action="get">
+            <form action="POST" id="form1">
                 <p class="M_bgf">ROUGE</p>
-                <textarea name="" id="cardText"></textarea>
+                <input name="hidden_data" id='hidden_data' type="hidden"/>
+                <textarea name="cardText" id="cardText"></textarea>
             </form>
-            <h2 id="inVote" onclick="document.getElementById('id01').style.display='block'">儲存明信片</h2>
+            <!-- <h2 id="inVote" onclick="document.getElementById('id01').style.display='block'">儲存明信片</h2> -->
+            <h2 id="inVote" onclick="saveImg()">儲存明信片</h2>
             <div class="C_social">
                  <button class="M_social"><i class="fab fa-facebook fa-4x"></i></button>
                 <button class="M_social"><i class="fab fa-line fa-4x"></i></button>
@@ -255,6 +258,32 @@
    
 
     <script>
+        var makeupImg='';
+        const card = new fabric.Canvas('canvas')   
+         //AJAX拿試妝資料
+        window.addEventListener('load',loadimg);
+        function loadimg(){
+            var xhr = new XMLHttpRequest();
+                xhr.onload=function (){
+                    if( xhr.status == 200 ){
+                        //modify here
+                        
+                        // let backJSON = JSON.parse(xhr.responseText);
+                        console.log(xhr.responseText);
+                        makeupImg =xhr.responseText;
+                        setcanvasimg(makeupImg)
+                      
+                    }else{
+                        alert( xhr.status );
+                    }
+                }
+                
+                var url = "./php/loadCard.php";
+                xhr.open("get", url, true);
+                xhr.send( null );
+        };
+
+        //配件區show
         $(function(){
             $(".stickH").click(function(){
                 $(".sB").slideToggle("slow");
@@ -270,7 +299,8 @@
         });
 
         //RWD可能要用JS重劃高度
-        const card = new fabric.Canvas('canvas')   
+    function setcanvasimg(makeupImg){
+
         card.setDimensions({
             
             width: '100%',
@@ -279,7 +309,7 @@
             cssOnly: true
             });
 
-        fabric.Image.fromURL('./image/model/model02-hei-res-non.png', (img) => {
+        fabric.Image.fromURL(makeupImg, (img) => {
             img.set({
    // 通过scale来设置图片大小，这里设置和画布一样大
             
@@ -291,6 +321,8 @@
         card.setBackgroundImage(img, card.renderAll.bind(card));   
         card.renderAll();
     });
+    }
+      
        
 
     //開啟關閉筆刷
@@ -332,7 +364,7 @@
             cssOnly: true
             });
 
-        fabric.Image.fromURL('./image/model/model02-hei-res-non.png', (img) => {
+        fabric.Image.fromURL(makeupImg, (img) => {
             img.set({
    // 通过scale来设置图片大小，这里设置和画布一样大
             
@@ -442,20 +474,58 @@
             card.add(img);
         });
  };
+
+/*儲存圖片*/
+function saveImg(){
+    document.getElementById('id01').style.display='block';
+    var canvas = document.getElementById("canvas");
+  var dataURL = canvas.toDataURL("image/png");
+  document.getElementById('hidden_data').value = dataURL;
+  var formData = new FormData(document.getElementById("form1"));
+
+  var xhr = new XMLHttpRequest();
+  xhr.onload = function(){
+    if( xhr.status == 200){
+        console.log(xhr.responseText);
+      if(xhr.responseText == "error"){
+        alert("Error");
+      }else{
+        alert('Succesfully uploaded');  
+
+      }
+    }else{
+      alert(xhr.status)
+    }
+  }
+  
+  xhr.open('POST', './php/saveCard.php', true);
+//   console.log(dataURL);
+  // xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
+  // let data_info = `IMGURL=${document.getElementById('hidden_data').value}&text=${document.getElementById("myWord").value}`
+  // console.log(data_info);
+  // xhr.send(data_info);
+  xhr.send(formData);
+
+
+    
+}
+
+
+/*儲存圖片end*/
+
  
- ///*儲存圖片
+ ///*下載圖片
 $(saveCard).click(function(){
     var canvas = document.getElementById("canvas");
     // var dataURL = canvas.toDataURL('image/jpeg');
     // console.log(dataURL);
     var dataURL = canvas.toDataURL({format: 'jpg', multiplier: 4})
-  download("downloadtest.png", dataURL)
+  download("downloadtest.JPG", dataURL)
 
 });
 
 var download = function(filename, dataUrl) {
     var element = document.createElement('a')
-
     var dataBlob = dataURLtoBlob(dataUrl)
     element.setAttribute('href', URL.createObjectURL(dataBlob))
     element.setAttribute('download', filename)
@@ -492,7 +562,7 @@ var dataURLtoBlob = function(dataurl) {
         return new Blob([raw], {type: mime})
     }
 }
- //儲存圖片*/
+ //下載圖片*/
 
  
  //按DEL刪除
@@ -516,10 +586,13 @@ function deleteSelectedObjectsFromCanvas(){
     card.discardActiveObject();
     card.requestRenderAll();
 }
+
+
+
+//手機板選項切換
 let s= 1;
 let f= 1;
 let p= 1;
-//手機板選項切換
 $(".listTitle").click(function(e){
     e.stopPropagation();
     
@@ -594,7 +667,7 @@ $(".listTitle").click(function(e){
                 cssOnly: true
                 });
 
-            fabric.Image.fromURL('./image/model/model02-hei-res-non.png', (img) => {
+            fabric.Image.fromURL(makeupImg, (img) => {
                 img.set({
             // 通过scale来设置图片大小，这里设置和画布一样大
                 
@@ -620,6 +693,8 @@ $(".listTitle").click(function(e){
             modal.style.display = "none";
         }
     }
+   
+
 
 </script>
 </body>

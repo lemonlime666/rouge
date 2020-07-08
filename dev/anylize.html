@@ -8,7 +8,11 @@
     <link rel="stylesheet" href="css/anylize.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="./js/main.js"></script>
-
+    <style>
+        .btn1-2{
+            color:red;
+        }
+    </style>
 </head>
 
 <body>
@@ -16,7 +20,12 @@
     @@include("./app/header_black.html")
     <!-- <div class="anyl-background"></div> -->
     <main class="anyl-main">
-        
+        <div class="anyl-button2">
+            <a href="memAnylize.html">
+                <p>專業保養分析</p>
+                <p>ANYLIZE</p>
+            </a>
+        </div>
 
         <div class="anyl-item">
 
@@ -99,6 +108,7 @@
                 </a>
             </div>
         </div>
+        
     </main>
 
     <script>
@@ -138,15 +148,15 @@
             document.getElementById('dayHour').innerText = `${uploadHour} : ${uploadMinute}`;
 
             if (uploadHour >= 18 | uploadHour <= 6) {
-                document.getElementById('anylNight').style.cssText = "background-color: red;"
+                document.getElementById('anylNight').style.cssText = "background-color: #C0A57C;transform: translate(0em, 0.75em);"
             } else {
-                document.getElementById('anylSun').style.cssText = "background-color: red;"
+                document.getElementById('anylSun').style.cssText = "background-color: #C0A57C;transform: translate(0em, 0.75em);"
             }
             let todatMonth = today.getMonth();
             if (todatMonth <= 7) {
-                document.getElementById('anyl_1to6').style.cssText = "background-color: red;"
+                document.getElementById('anyl_1to6').style.cssText = "background-color: #C0A57C;transform: translate(0em, 0.75em);"
             } else {
-                document.getElementById('anyl_7to12').style.cssText = "background-color: red;"
+                document.getElementById('anyl_7to12').style.cssText = "background-color: #C0A57C;transform: translate(0em, 0.75em);"
             }
         };
         var anylSun = document.getElementById('anylSun');
@@ -154,19 +164,23 @@
         var anyl_1to6 = document.getElementById('anyl_1to6');
         var anyl_7to12 = document.getElementById('anyl_7to12');
         anylSun.addEventListener('click', function() {
-            this.style.cssText = "background-color: red";
-            document.getElementById('anylNight').style.cssText = "background-color: $darkGold";
+            var style=document.createElement('style');
+            // element.classList.remove("btn1-2");
+            // style.innerHTML=".btn1-2::before{transform: translate3d(0, 0em, -1em);}";//添加样式内容的话也可以用上面提到过的`insertRule`,相对例子里的硬编码会更优雅点。
+            // document.head.appendChild(style);
+            this.style.cssText = "background-color: #C0A57C;transform: translate(0em, 0.75em);";
+            document.getElementById('anylNight').style.cssText = "background-color: $darkGold;";
         });
         anylNight.addEventListener('click', function() {
-            this.style.cssText = "background-color: red";
+            this.style.cssText = "background-color: #C0A57C;transform: translate(0em, 0.75em);";
             document.getElementById('anylSun').style.cssText = "background-color: $darkGold";
         });
         anyl_1to6.addEventListener('click', function() {
-            this.style.cssText = "background-color: red";
+            this.style.cssText = "background-color: #C0A57C;transform: translate(0em, 0.75em);";
             document.getElementById('anyl_7to12').style.cssText = "background-color: $darkGold";
         });
         anyl_7to12.addEventListener('click', function() {
-            this.style.cssText = "background-color: red";
+            this.style.cssText = "background-color: #C0A57C;transform: translate(0em, 0.75em);";
             document.getElementById('anyl_1to6').style.cssText = "background-color: $darkGold";
         });
     </script>
