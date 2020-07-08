@@ -8,12 +8,12 @@ if( !file_exists($upload_dir)){
 $imgDataStr = $_POST['hidden_data'];//收到convas.toDataURL()送來的資料
 $imgDatatext = $_POST['cardText'];
 echo $_POST['hidden_data'];
-$imgDataStr = str_replace('data:image/jpg;base64,', '', $imgDataStr); //將檔案格式的資訊拿掉
+$imgDataStr = str_replace('data:image/png;base64,', '', $imgDataStr); //將檔案格式的資訊拿掉
 // $imgDataStr = str_replace(' ', '+', $imgDataStr);
 $data = base64_decode($imgDataStr);
 //準備好要存的filename
 $fileName = date("Ymd-h-i-s");  //或time()
-$file = $upload_dir . $fileName . ".jpg";
+$file = $upload_dir . $fileName . ".png";
 $success = file_put_contents($file, $data);
 // echo $success ? $file : 'error';
 ?>
