@@ -21,7 +21,8 @@
               <p>趕快參加投票讓大家知道你的美感~~!</p>
               <div>
                   <button type="button" onclick="document.getElementById('id01').style.display='none'" class="btn2-1">放棄參加</button>
-                  <button type="button" onclick="window.location='./vote.html'"class="btn3-1">馬上參加</button>
+                  <!-- <button type="button" onclick="window.location='./vote.html'"class="btn3-1">馬上參加</button> -->
+                  <button type="button" onclick="saveImg()"class="btn3-1">馬上參加</button>
               </div>
           </div>
         </form>
@@ -239,9 +240,10 @@
         <div id="third">
             <div class="fabocHead"  style="height: 30vh; z-index: -1;"></div>
             <h1>輸入文字</h1>
-            <form action="get">
+            <form action="POST" id="form1">
                 <p class="M_bgf">ROUGE</p>
-                <textarea name="" id="cardText"></textarea>
+                <input name="hidden_data" id='hidden_data' type="hidden"/>
+                <textarea name="cardText" id="cardText"></textarea>
             </form>
             <h2 id="inVote" onclick="document.getElementById('id01').style.display='block'">儲存明信片</h2>
             <div class="C_social">
@@ -256,6 +258,7 @@
 
     <script>
         var makeupImg='';
+        const card = new fabric.Canvas('canvas')   
          //AJAX拿試妝資料
         window.addEventListener('load',loadimg);
         function loadimg(){
@@ -274,7 +277,7 @@
                     }
                 }
                 
-                var url = "./php/saveCard.php";
+                var url = "./php/loadCard.php";
                 xhr.open("get", url, true);
                 xhr.send( null );
         };
@@ -296,7 +299,7 @@
 
         //RWD可能要用JS重劃高度
     function setcanvasimg(makeupImg){
-        const card = new fabric.Canvas('canvas')   
+
         card.setDimensions({
             
             width: '100%',
@@ -470,8 +473,46 @@
             card.add(img);
         });
  };
+
+/*儲存圖片*/
+function saveImg(){
+    var canvas = document.getElementById("canvas");
+  var dataURL = canvas.toDataURL("image/jpg");
+  document.getElementById('hidden_data').value = dataURL;
+  var formData = new FormData(document.getElementById("form1"));
+
+  var xhr = new XMLHttpRequest();
+  xhr.onload = function(){
+    if( xhr.status == 200){
+        console.log(xhr.responseText);
+      if(xhr.responseText == "error"){
+        alert("Error");
+      }else{
+        alert('Succesfully uploaded');  
+
+      }
+    }else{
+      alert(xhr.status)
+    }
+  }
+  
+  xhr.open('POST', './php/saveCard.php', true);
+//   console.log(dataURL);
+  // xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
+  // let data_info = `IMGURL=${document.getElementById('hidden_data').value}&text=${document.getElementById("myWord").value}`
+  // console.log(data_info);
+  // xhr.send(data_info);
+  xhr.send(formData);
+
+
+    // window.location='./vote.html';
+}
+
+
+/*儲存圖片end*/
+
  
- ///*儲存圖片
+ ///*下載圖片
 $(saveCard).click(function(){
     var canvas = document.getElementById("canvas");
     // var dataURL = canvas.toDataURL('image/jpeg');
@@ -483,7 +524,6 @@ $(saveCard).click(function(){
 
 var download = function(filename, dataUrl) {
     var element = document.createElement('a')
-
     var dataBlob = dataURLtoBlob(dataUrl)
     element.setAttribute('href', URL.createObjectURL(dataBlob))
     element.setAttribute('download', filename)
@@ -520,7 +560,7 @@ var dataURLtoBlob = function(dataurl) {
         return new Blob([raw], {type: mime})
     }
 }
- //儲存圖片*/
+ //下載圖片*/
 
  
  //按DEL刪除
