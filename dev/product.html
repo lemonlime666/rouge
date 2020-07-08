@@ -34,8 +34,8 @@
         <section class="pro1">
             <div class="pro1_content">
                 <div class="pro_text">
-                    <h2 class="lfont">水潤光感系列</h2>
-                    <p class="xsfont">滿注獨家研發的「鎖水保濕因子」，搭配頂級抗老成分「普拉絲鏈」，針對唇部肌膚組織有卓越修護功效，提供 8 小時修護效果。天然荷荷巴油能帶給雙唇持久滋潤，不讓乾燥、脫屑等問題找上妳的雙唇。
+                    <h2 class="lfont">{{this.products[0].SER_NAME}}</h2>
+                    <p class="xsfont">{{this.products[0].SER_TEXT}}
                     </p>
                 </div>
                 <div class="pro_pic" id="pro_pic">
@@ -51,13 +51,18 @@
         </section>
         <section class="pro2">
             <div class="pro2_content">
+                <!-- 商品輪播圖 -->
                 <div class="box">
                     <div class="box_img">
-                        <img src="./image/pro-lip-1.jpg" alt="" id="box_img">
+                        <img :src="proImgs[0]" alt="" id="box_img">
                     </div>
                     <div class="pro_btn">
-                        <div class="pro_btn_top pro_btn_c" data-control="last"></div>
-                        <div class="pro_btn_down pro_btn_c" data-control="next"></div>
+                        <div class="pro_btn_top pro_btn_c" data-control="last" @click="goPic">
+                            <img :src="proImgs[0]" alt="">
+                        </div>
+                        <div class="pro_btn_down pro_btn_c" data-control="next" @click="goPic">
+                            <img :src="proImgs[1]" alt="">
+                        </div>
                     </div>
                 </div>
                 <div class="pro_top">
@@ -70,14 +75,14 @@
                     </form>
                     <!-- 商品數量 -->
                     <form class="pro_number">
-                        <select name="" id="">
+                        <select name="" id="" v-model="proNum">
                             <option v-for="n in 9" :data-num="n">{{n}}</option>
                             
                         </select>
                     </form>
 
                     <div class="por_price">
-                        <h3 class="lfont">$ {{proPrice}}</h3>
+                        <h3 class="lfont">$ {{totalPrice}}</h3>
                     </div>
                 </div>
                 <div class="pro_down">
@@ -133,19 +138,25 @@
             data: {
                 products: [],
                 series: '',
-                proPrice: '',
-                selected: '',
+                proPrice: '', //商品單價
+                selected: '', //商品色票
+                proNum: '', //商品數量
+                proImgs: '', //圖片編號
                 
                 // n:1,
             },
             methods: {
                 proClick(e) {
                     let i = e.target.dataset.num
-                    console.log(this.products[i].PRO_PRICE)
+                    // console.log(this.products[i].PRO_PRICE)
                     //改變商品價格
                     this.proPrice = this.products[i].PRO_PRICE
                     //改變色票編號
                     this.selected = this.products[i].PRO_COLOR
+                    //改變圖片編號
+                    
+                    this.proImgs = this.products[i].PRO_IMGS.split("|")
+
                 },
                 colorChange(e) {
                     
@@ -159,6 +170,13 @@
                     // console.log('111111')
                     // this.proPrice = this.products[i].PRO_PRICE
 
+                },
+                goPic(e) {
+                    let boxImg = document.getElementById('box_img')
+                    // console.log(boxImg.src)
+                    // console.log(e.target.src)
+                    boxImg.src = e.target.src
+                    // boxImg.src = this.
                 }
                 
             },
@@ -170,8 +188,12 @@
 
             },
             computed: {
-                // sumprice(){
-                //     return parseInt(app.$data.proPrice)*app.$data.n;
+                totalPrice(){
+                    return this.proPrice*this.proNum;
+                },
+                // proImgs() {
+                    
+                //     return this.products[0].PRO_IMGS.split("|")
                 // }
                 
             },
@@ -192,8 +214,10 @@
                 if( xhr.status == 200 ){ //連線成功
                     
                     app.$data.products = JSON.parse(xhr.responseText); //將導出的物件存入data中
-                    // app.$data.proPrice = app.$data.products[0].PRO_PRICE
-                    // app.$data.selected = app.$data.products[0].PRO_COLOR
+                    app.$data.proPrice = app.$data.products[0].PRO_PRICE //給預設第一項商品單價
+                    app.$data.proNum = 1 //給預設第一項商品數量
+                    app.$data.selected = app.$data.products[0].PRO_COLOR //給預設第一項商品色票
+                    app.$data.proImgs = app.$data.products[0].PRO_IMGS.split("|")
                 }else{
                     alert( xhr.status );
                 }
