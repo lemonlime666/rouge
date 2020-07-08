@@ -91,7 +91,7 @@
             
         </section>
         </div>
-        <div class="lag-content">
+        <div class="lag-content" v-for="(item, index) in proMessage">
             <div class="lag-pic">
                 <div class="lag-pic-img">
                     <span>
@@ -102,12 +102,12 @@
             </div>
             <div class="lag-val">
                 <div class="lag-id">丁莉</div>
-                <div class="lag-time">2020-6-23</div>
+                <div class="lag-time">{{item.MES_DATE}}</div>
     
             </div>
             <div class="lag-ent">
                 <div class="ent-content">
-                    測試測試測試測試測試測試測試測試測試測試測試測試測試測試測試測試測試測試測試測試測試測試測試測試
+                    {{item.MES_TEXT}}
                 </div>
                 
             </div>
@@ -135,7 +135,8 @@
                 series: '',
                 proPrice: '',
                 selected: '',
-                
+                proMessage: ''
+
                 // n:1,
             },
             methods: {
@@ -188,9 +189,8 @@
               console.log(ser)
               
               var xhr = new XMLHttpRequest();
-              xhr.onload = function (){
+            xhr.onload = function (){
                 if( xhr.status == 200 ){ //連線成功
-                    
                     app.$data.products = JSON.parse(xhr.responseText); //將導出的物件存入data中
                     // app.$data.proPrice = app.$data.products[0].PRO_PRICE
                     // app.$data.selected = app.$data.products[0].PRO_COLOR
@@ -206,9 +206,20 @@
                 // fetch(url).then(rs => rs.json).then((res)=>{
                     
                 // })
+                var xhr1 = new XMLHttpRequest();
+                xhr1.onload = function (){
+                    if( xhr1.status == 200 ){ //連線成功
+                        app.$data.proMessage = JSON.parse(xhr1.responseText);
+                    }else{
+                        alert( xhr1.status );
+                    }
+                
+                }
+                var url1 = "./php/message.php";
+                xhr1.open("get", url1, true);
+                xhr1.send( null );
             }
-        })
-
+        });
         
     </script>
     
