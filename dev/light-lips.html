@@ -103,7 +103,8 @@
                                 </div>
                                 <!--商品欄位-->
                                 <div class="cardouter" v-for="(item, index) in series">
-                                    <div class="card">
+
+                                    <div class="card" @click="dataClick" >
                                         <!--折扣-->
                                         <div class="pro-discount hugefont">
                                             {{program}}
@@ -163,12 +164,15 @@
                 
                 program: '70%',
 
+
             },
             methods: {
                 cardClick(e) {
                     
                     localStorage['seriesname'] = e.target.id
-                }
+                },
+                
+                
             },
             mounted() {
                
@@ -178,6 +182,7 @@
                         //modify here
                         
                         app.$data.series = JSON.parse(xhr.responseText);
+
                         
                       
                     }else{
@@ -187,7 +192,7 @@
                 
                 var url = "./php/light-lips.php";
                 xhr.open("get", url, true);
-                xhr.send( null );
+                xhr.send();
             }
         })
         

@@ -41,7 +41,7 @@
                 <div class="pro_pic" id="pro_pic">
                     <!--商品欄位-->
                     <div class="pro_img" v-for="(item, index) in products">
-                        <img :src="item.PRO_IMG" alt="" :id="[`pro` + item.PRO_NO]" @click="proClick">
+                        <img :src="item.PRO_IMG" alt="" :id="[`pro` + item.PRO_NO]" @click="proClick" :data-num="index">
                     </div>
                     
                    
@@ -61,20 +61,23 @@
                     </div>
                 </div>
                 <div class="pro_top">
+                    <!-- 商品號 -->
                     <form class="pro_color">
-                        <select name="">
-                            <option v-for="item in products" v-if="item != ''">{{item.PRO_COLOR}}</option>
+                        <select name="" v-model="selected" @change="colorChange">
+                            <option v-for="(item, index) in products" v-if="item != ''" :value="item.PRO_COLOR" :data-color="index">{{item.PRO_COLOR}}</option>
                             
                         </select>
                     </form>
+                    <!-- 商品數量 -->
                     <form class="pro_number">
                         <select name="" id="">
-                            <option value="">{{count}}</option>
+                            <option v-for="n in 9" :data-num="n">{{n}}</option>
                             
                         </select>
                     </form>
+
                     <div class="por_price">
-                        <h3 class="lfont">{{totalprice}}</h3>
+                        <h3 class="lfont">$ {{proPrice}}</h3>
                     </div>
                 </div>
                 <div class="pro_down">
@@ -128,18 +131,55 @@
         const app = new Vue({
             el: '#content',
             data: {
-                products: '',
-                series: ''
+                products: [],
+                series: '',
+                proPrice: '',
+                selected: '',
+                
+                // n:1,
             },
             methods: {
-                proClick() {
-
+                proClick(e) {
+                    let i = e.target.dataset.num
+                    console.log(this.products[i].PRO_PRICE)
+                    //改變商品價格
+                    this.proPrice = this.products[i].PRO_PRICE
+                    //改變色票編號
+                    this.selected = this.products[i].PRO_COLOR
+                },
+                colorChange(e) {
+                    
+                    // console.log(e.target.childNodes)
+                    for(let i=0; i<e.target.childNodes.length; i++){
+                        if(e.target.childNodes[i].selected == true){
+                            this.proPrice = this.products[i].PRO_PRICE
+                        }
+                    }
+                    // let i = e.target.dataset.color;
+                    // console.log('111111')
+                    // this.proPrice = this.products[i].PRO_PRICE
 
                 }
-            },
-            computed: {
                 
             },
+            beforeUpdate() {
+                while(this.products.length < 8){
+                    this.products.push('');
+                    }
+    
+
+            },
+            computed: {
+                // sumprice(){
+                //     return parseInt(app.$data.proPrice)*app.$data.n;
+                // }
+                
+            },
+            // computed: {
+            //     proPrice (){
+            //         return this.products[0].PRO_PRICE
+            //     }
+            // },
             
             
                 
@@ -152,7 +192,8 @@
                 if( xhr.status == 200 ){ //連線成功
                     
                     app.$data.products = JSON.parse(xhr.responseText); //將導出的物件存入data中
-
+                    // app.$data.proPrice = app.$data.products[0].PRO_PRICE
+                    // app.$data.selected = app.$data.products[0].PRO_COLOR
                 }else{
                     alert( xhr.status );
                 }
