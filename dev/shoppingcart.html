@@ -71,10 +71,11 @@
 
         </div>
         <!-- 贈品卡片 -->
-        <div class="cart-card" v-for="item in gifts" if="item.GIF_CONDI  this.totalprice" v-cloak>
+        <div class="cart-card" v-if="totalprice > min.GIF_CONDI" v-cloak>
+          <!-- <div class="cart-card" v-for="item in gifts" v-if="item.GIF_CONDI < totalprice" v-cloak> -->
           <div class="cart-pro-pic">
             <div class="cart-pic-img">
-              <img :src="item.GIF_IMGURL">
+              <img :src="giftgift.GIF_IMGURL">
             </div>
 
           </div>
@@ -82,8 +83,9 @@
             <div class="cart-pro-del">
               <div class="cart-name gift-name">
                 滿額禮:<br>
-                {{item.GIF_NAME}}----
+                <!-- {{item.GIF_NAME}} -->
                
+               {{giftgift.GIF_NAME}}
               </div>
               
 
@@ -166,7 +168,8 @@
       data: {
         products: '',
         gifts:'',
-        max: ''
+        max: '',
+        min: ''
         
         
       },
@@ -175,14 +178,7 @@
           this.products.splice(index, 1);
           localStorage['shoppingcart'] = JSON.stringify(this.products)
           //禮物
-          alert();
-          for(let i=0; i<this.gifts.length;i++){
-            
-            if(this.totalprice>this.gifts[i].GIF_CONDI){
-            
-              this.$data.max = this.gifts[i];
-              }   
-          }
+   
         },
         decrement(index){
           this.products[index].comNum--;
@@ -196,18 +192,6 @@
         //   this.gogift = app.gifts.filter(item => item.GIF_CONDI > app.totalprice)
         // }
 
-
-        lastgift() {
-          alert();
-          for(let i=0; i<this.gifts.length;i++){
-            
-            if(this.totalprice>this.gifts[i].GIF_CONDI){
-            
-              this.$data.max = this.gifts[i];
-              }             
-          }
-          // return this.gifts.filter(item =>  item.GIF_CONDI < this.totalprice)
-        }
       },
       computed: {
         totalprice(){
@@ -215,8 +199,22 @@
           for(item of this.products){
             totalprice += item.comPrice*item.comNum;
           }
+         
           return totalprice;
         },
+        giftgift() {
+          
+                for(let i=0; i<app.$data.gifts.length;i++){
+                        if(this.totalprice>app.$data.gifts[i].GIF_CONDI){
+                          app.$data.max=app.$data.gifts[i];
+                          }             
+                      }
+
+          // return this.gifts.filter(item =>  item.GIF_CONDI < this.totalprice)
+          //console.log(this.gifts.filter(item =>  item.GIF_CONDI < this.totalprice));
+          // console.log(this.gifts);
+          return app.$data.max;
+        }
         
         // lastgift() {
         //   for(let i=0; i<this.gifts.length;i++){
@@ -241,13 +239,31 @@
         }
       },
       created() {
+        
+        
+      },
+      mounted() {
+        // this.products = localStorage.getItem('shoppingcart')
+  
         this.products = JSON.parse(localStorage.getItem('shoppingcart')) //抓取localstorage中的購物車字串並轉為物件
+        let totalprice=0;
+        for(item of this.products){
+            totalprice += item.comPrice*item.comNum;
+          }
+      
         var xhr = new XMLHttpRequest();
         xhr.onload = function (){
           if( xhr.status == 200){
-            
+          //給預設的系列名稱   
             app.$data.gifts = JSON.parse(xhr.responseText);
-            
+            app.$data.min =app.$data.gifts[0]
+            console.log(app.$data.max); 
+                for(let i=0; i<app.$data.gifts.length;i++){
+                        if(totalprice>app.$data.gifts[i].GIF_CONDI){
+                          app.$data.max=app.$data.gifts[i];
+                          }             
+                      }
+                   
           }else{
             alert(xhr.status)
           }
@@ -255,17 +271,6 @@
         var url = "./php/shoppingcart.php";
         xhr.open("get", url, true);
         xhr.send(null);
-        
-      },
-      mounted() {
-        // this.products = localStorage.getItem('shoppingcart')
-        
-
-
-        
-
-        this.products = JSON.parse(localStorage.getItem('shoppingcart')) //抓取localstorage中的購物車字串並轉為物件
-
         
 
       },
