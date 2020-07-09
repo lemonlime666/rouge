@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  
+</head>
+<body>
+
+  <table id="app">
+    <tr>
+      <th>系列編號</th>
+      <th>系列名稱</th>
+      <th>系列英文名稱</th>
+      <th>系列圖片</th>
+      <th>系列內容</th>
+    </tr>
+    <tr v-for="item in series"> 
+      <td >{{item.SER_NO}}</td>
+      <td name="123">{{item.SER_NAME}}</td>
+      <td>{{item.SER_ENGNAME}}</td>
+      <td>{{item.SER_IMGURL}}</td>
+      <td>{{item.SER_TEXT}}</td>
+      <td><button @click="change">編輯</button><button @click="sent">送出</button> </td>
+    </tr>
+  </table>
+  
+
+  <!-- SER_NO, SER_NAME, SER_ENGNAME, SER_IMGURL, SER_TEXT -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.js"></script>
+    <script>
+      
+        const app = new Vue({
+            el: '#app',
+            data: {
+                series:'',
+                
+                program: '70%',
+
+            },
+            methods: {
+              //  change:function(e){
+              //     console.log(e.target);
+              //  },
+              change(e){
+
+                  console.log(e.target.parentNode.parentNode);
+                  let first = e.target.parentNode.parentNode.childNodes[2].innerText;
+                  console.log(first);
+                  let addinput =e.target.parentNode.parentNode.childNodes[2];
+                  console.log(addinput);
+                  let input= document.createElement("input")
+                  input.value=first;
+                  input.name='SER_NAME';
+                  e.target.parentNode.parentNode.childNodes[2].innerText ="";
+                  addinput.appendChild(input);    
+               },
+               sent(e){
+               
+                //  console.log( document.getElementsByName('SER_NAME')[0].value)
+                //  e.target.parentNode.parentNode.childNodes[2].innerText= document.getElementsByName('SER_NAME')[0].value
+                var xhr = new XMLHttpRequest();
+                xhr.onload=function (){
+                    if( xhr.status == 200 ){
+                        //modify here
+                      alert(xhr.responseText);   
+                    }else{
+                        alert( xhr.status );
+                    }
+                }
+                var url = "./php/update.php?SER_NAME="+document.getElementsByName('SER_NAME')[0].value;
+                xhr.open("get", url, true);
+                xhr.send(null);
+               },
+            },
+            mounted() {
+               
+                var xhr = new XMLHttpRequest();
+                xhr.onload=function (){
+                    if( xhr.status == 200 ){
+                        //modify here
+                        
+                        app.$data.series = JSON.parse(xhr.responseText);
+                        
+                      
+                    }else{
+                        alert( xhr.status );
+                    }
+                }
+                
+                var url = "./php/light-lips.php";
+                xhr.open("get", url, true);
+                xhr.send( null );
+            },
+        })
+        </script>  
+</body>
+</html>

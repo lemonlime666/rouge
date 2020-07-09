@@ -1,230 +1,272 @@
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@200;300;400;500;600;700;900&display=swap"
+            rel="stylesheet"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/pagePiling.js/1.5.6/jquery.pagepiling.min.css"
+        />
+        <link rel="stylesheet" href="./css/index.css" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/pagePiling.js/1.5.6/jquery.pagepiling.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/tilt.js/1.2.1/tilt.jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.min.js"></script>
+        <title>Document</title>
+    </head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@200;300;400;500;600;700;900&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pagePiling.js/1.5.6/jquery.pagepiling.min.css">
-    <link rel="stylesheet" href="./css/index.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pagePiling.js/1.5.6/jquery.pagepiling.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tilt.js/1.2.1/tilt.jquery.min.js"></script>
-    <title>Document </title>
-</head>
-
-<body>
-    @@include('./app/header.html')
-    <main id="pagepiling">
-        <div class="section pg1">
-            <div class='layer'>
-                <span>SCROLL</span>
-                <span></span>
-            </div>
-            <div class='mask tryTilt' data-tilt>
-                <span>BE GORGEOUS INSIDE OUT</span>
-            </div>
-        </div>
-        <div class="section pg2 pp-scrollable">
-            <div class='backCover'>
-                <div class='contentBox'>
-                    <div class='filmBox'>
-                        <p class="mfont">A MIRACLE FOR BEAUTY</p>
-                        <p class="lfont">THE POWER OF LIPSTICKS</p>
-                        <video muted src="./video/rougeVid.mp4" autoplay loop></video>
-                    </div>
+    <body>
+        @@include('./app/header.html')
+        <main id="pagepiling">
+            <div class="section pg1">
+                <div class="layer">
+                    <span>SCROLL</span>
+                    <span></span>
+                </div>
+                <div class="mask tryTilt" data-tilt>
+                    <span>BE GORGEOUS INSIDE OUT</span>
                 </div>
             </div>
-            <div class='advert'>
-                <span class="decoBackSpan"></span>
-                <span class="decoCornerSpan"></span>
-                <div class='swiper'>
-                    <h2 class="adTitle xxlfont">PROMOTION</h2>
-                    <div class="swiperBox">
-                        <button class="innerBtn xsfont"> Prev </button>
-                        <button class="innerBtn xsfont"> Next </button>
-                        <div class="swiperimgBox">
-                            <div class="swiperimgContent"><a href="#"><img src="./image/adimg1.jpg"
-                                        class="swiperimg"></a></div>
-                            <div class="swiperimgContent"><a href="#"><img src="./image/adimg2.jpg"
-                                        class="swiperimg"></a></div>
-                            <div class="swiperimgContent"><a href="#"><img src="./image/adimg3.jpg"
-                                        class="swiperimg"></a></div>
+            <div class="section pg2 pp-scrollable">
+                <div class="backCover">
+                    <div class="contentBox">
+                        <div class="filmBox">
+                            <p class="mfont">A MIRACLE FOR BEAUTY</p>
+                            <p class="lfont">THE POWER OF LIPSTICKS</p>
+                            <video
+                                muted
+                                src="./video/rougeVid.mp4"
+                                autoplay
+                                loop
+                            ></video>
                         </div>
-                        <div id="swiperPage"></div>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="section pg3">
-            <div class='sec3back'>
-                <span class='pg3DecoSpan'></span>
-                <span class='pg3DecoSpan'></span>
-                <p class='pg3BackText' id='pg3BackText1'>SHEER</p>
-                <p class='pg3BackText' id='pg3BackText2'>LIPSTICKS</p>
-            </div>
-            <div class='femiModel'><img src="./image/model1.png" alt=""></div>
-            <h2 class="itemClass">鑽石閃耀水潤光感潤色唇膏</h2>
-            <div class="pg3MainBox">
-                <div class='pg3ContentImg'>
-                    <div class='pg3ImgBox'><img src="./image/pg3img2.jpg" alt=""></div>
-                    <div class='pg3ImgBox'><img src="./image/pg3img1.jpg" alt=""></div>
-                </div>
-                <div class='pg3ContentText'>
-                    <div class="pg3TextBox">
-                        <div class='pg3ItemTitle'>
-                            <div><img src="./image/lip1.png" alt=""></div>
-                            <p class="mfont">水潤光感系列</p>
+                <div class="advert">
+                    <span class="decoBackSpan"></span>
+                    <span class="decoCornerSpan"></span>
+                    <div class="swiper">
+                        <h2 class="adTitle xxlfont">PROMOTION</h2>
+                        <div class="swiperBox">
+                            <button class="innerBtn xsfont">Prev</button>
+                            <button class="innerBtn xsfont">Next</button>
+                            <div class="swiperimgBox"></div>
+                            <div id="swiperPage"></div>
                         </div>
-                        <div class='pg3ItemIntro xsfont'>
-                            全新絕對完美唇膏滿注獨家研發的「鎖水保濕因子」，搭配頂級抗老成分「普拉絲鏈」，針對唇部肌膚組織有卓越修護功效，提供8小時修護效果。天然荷荷巴油能帶給雙唇持久滋潤，不讓乾燥、脫屑等問題找上妳的雙唇。
-                        </div>
-                        <button>前往商品</button>
-                    </div>
-                    <div class="pg3BtnBox">
-                        <span class="itemCheck">水潤光感</span>
-                        <span>絲絨霧感</span>
-                        <span>奢華霜感</span>
-                        <span>水感修護</span>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="section pg4">
-            <div class="pg4Back"></div>
-            <div class="pg4MainBox">
-                <div class="contentLeft">
-                    <div class="pg4LeftOutsdie">
-                        <div class="pg4LeftInside"></div>
-                        <img src="./image/lipModel1.png" alt="">
-                    </div>
-                    <button><a href="#" class="mfont">線上試色</a></button>
+            <div class="section pg3">
+                <div class="sec3back">
+                    <span class="pg3DecoSpan"></span>
+                    <span class="pg3DecoSpan"></span>
+                    <p class="pg3BackText" id="pg3BackText1">SHEER</p>
+                    <p class="pg3BackText" id="pg3BackText2">LIPSTICKS</p>
                 </div>
-                <div class="contentRight">
-                    <div class="pg4RightBack">
-                        <p class='xlfont'>找尋你的完美</p>
-                        <p class="hugefont">專屬色</p>
-                        <div class="pg4ColorBox pp-scrollable">
-                            <div class="pg4ColorBox1 pp-scrollable">
-                                <span class='stickClick'><img src="./image/stick1.png"></span>
-                                <span><img src="./image/stick2.png"></span>
-                                <span><img src="./image/stick3.png"></span>
-                                <span><img src="./image/stick4.png"></span>
+                <div class="femiModel">
+                    <img src="./image/model1.png" alt="" />
+                </div>
+                <h2 class="itemClass">鑽石閃耀水潤光感潤色唇膏</h2>
+                <div class="pg3MainBox">
+                    <div class="pg3ContentImg">
+                        <div class="pg3ImgBox">
+                            <img src="./image/pg3img2.jpg" alt="" />
+                        </div>
+                        <div class="pg3ImgBox">
+                            <img src="./image/pg3img1.jpg" alt="" />
+                        </div>
+                    </div>
+                    <div class="pg3ContentText">
+                        <div class="pg3TextBox">
+                            <div class="pg3ItemTitle">
+                                <div><img src="./image/lip1.png" alt="" /></div>
+                                <p class="mfont">水潤光感系列</p>
                             </div>
-                            <div class="pg4ColorBox2 pp-scrollable">
-                                <span><img src="./image/stick1.png"></span>
-                                <span><img src="./image/stick2.png"></span>
-                                <span><img src="./image/stick3.png"></span>
-                                <span><img src="./image/stick4.png"></span>
+                            <div class="pg3ItemIntro xsfont">
+                                全新絕對完美唇膏滿注獨家研發的「鎖水保濕因子」，搭配頂級抗老成分「普拉絲鏈」，針對唇部肌膚組織有卓越修護功效，提供8小時修護效果。天然荷荷巴油能帶給雙唇持久滋潤，不讓乾燥、脫屑等問題找上妳的雙唇。
                             </div>
+                            <button>前往商品</button>
                         </div>
-                        <div class="pg4colorGuide"><img src="./image/stick01.png"></div>
+                        <div class="pg3BtnBox">
+                            <span class="itemCheck">水潤光感</span>
+                            <span>絲絨霧感</span>
+                            <span>奢華霜感</span>
+                            <span>水感修護</span>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="section pg5">
-            <div class='pg5back'></div>
-            <div class='pg5main'>
-                <div class="pg5Book">
-                    <div class="bookLeft bookPage">
-                        <h2 class="xxlfont">A NEW STANDARD</h2>
-                        <div class="bookLeftImg1">
-                            <img src="./image/careImg1.jpg" alt="">
+            <div class="section pg4">
+                <div class="pg4Back"></div>
+                <div class="pg4MainBox">
+                    <div class="contentLeft">
+                        <div class="pg4LeftOutsdie">
+                            <div class="pg4LeftInside"></div>
+                            <img src="./image/lipModel1.png" alt="" />
                         </div>
-                        <div class="bookLeftImg2">
-                            <img src="./image/careImg3.jpg" alt="">
-                        </div>
-                        <div class="bookLeftText">
-                            <h3 class="mfont">極致保濕系列</h3>
-                            <p>
-                                獨特的水感凝露質地保濕化妝水，遇膚溫與輕加推擦，瞬間轉化為露水，讓臉部保濕呈現細緻滑潤，立即滲入肌膚舒緩肌膚與補充肌膚水份。保濕化妝水帶給肌膚宛如絲絨般的柔滑與光輝。
-                            </p>
-                            <button class="careShopLink"><a href="#">See More</a></button>
-                        </div>
+                        <button><a href="#" class="mfont">線上試色</a></button>
                     </div>
-                    <div class="bookRight bookPage">
-                        <div class='bookFront1'>
-                            <div class="bookVid">
-                                <video muted src="./video/careVid1.mp4" autoplay loop></video>
+                    <div class="contentRight">
+                        <div class="pg4RightBack">
+                            <p class="xlfont">找尋你的完美</p>
+                            <p class="hugefont">專屬色</p>
+                            <div class="pg4ColorBox pp-scrollable">
+                                <div class="pg4ColorBox1 pp-scrollable">
+                                    <span class="stickClick"
+                                        ><img src="./image/stick1.png"
+                                    /></span>
+                                    <span
+                                        ><img src="./image/stick2.png"
+                                    /></span>
+                                    <span
+                                        ><img src="./image/stick3.png"
+                                    /></span>
+                                    <span
+                                        ><img src="./image/stick4.png"
+                                    /></span>
+                                </div>
+                                <div class="pg4ColorBox2 pp-scrollable">
+                                    <span
+                                        ><img src="./image/stick1.png"
+                                    /></span>
+                                    <span
+                                        ><img src="./image/stick2.png"
+                                    /></span>
+                                    <span
+                                        ><img src="./image/stick3.png"
+                                    /></span>
+                                    <span
+                                        ><img src="./image/stick4.png"
+                                    /></span>
+                                </div>
+                            </div>
+                            <div class="pg4colorGuide">
+                                <img src="./image/stick01.png" />
                             </div>
                         </div>
-                        <div class='bookBack1'>
-                            <div class="rightBackImg1">
-                                <img src="./image/careImg2.jpg" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="section pg5">
+                <div class="pg5back"></div>
+                <div class="pg5main">
+                    <div class="pg5Book">
+                        <div class="bookLeft bookPage">
+                            <h2 class="xxlfont">A NEW STANDARD</h2>
+                            <div class="bookLeftImg1">
+                                <img src="./image/careImg1.jpg" alt="" />
                             </div>
-                            <div class="rightBackImg2">
-                                <img src="./image/careImg4.jpg" alt="">
+                            <div class="bookLeftImg2">
+                                <img src="./image/careImg3.jpg" alt="" />
                             </div>
-                            <div class="rightBackText">
-                                <h3 class="mfont">極致清潔系列</h3>
+                            <div class="bookLeftText">
+                                <h3 class="mfont">極致保濕系列</h3>
                                 <p>
-                                    溫和洗淨肌膚，帶走髒污與多餘的油脂。活性的泡沫因子，使潔面慕絲能從液狀變成泡沫質地。內含木瓜、鳳梨等天然酵素，幫助老廢角質的剝落卻完全不傷肌膚，還原乾淨清爽的晶透膚觸。
+                                    獨特的水感凝露質地保濕化妝水，遇膚溫與輕加推擦，瞬間轉化為露水，讓臉部保濕呈現細緻滑潤，立即滲入肌膚舒緩肌膚與補充肌膚水份。保濕化妝水帶給肌膚宛如絲絨般的柔滑與光輝。
                                 </p>
-                                <button class="careShopLink"><a href="#">See More</a></button>
+                                <button class="careShopLink">
+                                    <a href="#">See More</a>
+                                </button>
                             </div>
                         </div>
-                    </div>
-                    <div class="bookLast bookPage">
-                        <div class="bookVid">
-                            <video muted src="./video/careVid2.mp4" autoplay loop></video>
+                        <div class="bookRight bookPage">
+                            <div class="bookFront1">
+                                <div class="bookVid">
+                                    <video
+                                        muted
+                                        src="./video/careVid1.mp4"
+                                        autoplay
+                                        loop
+                                    ></video>
+                                </div>
+                            </div>
+                            <div class="bookBack1">
+                                <div class="rightBackImg1">
+                                    <img src="./image/careImg2.jpg" alt="" />
+                                </div>
+                                <div class="rightBackImg2">
+                                    <img src="./image/careImg4.jpg" alt="" />
+                                </div>
+                                <div class="rightBackText">
+                                    <h3 class="mfont">極致清潔系列</h3>
+                                    <p>
+                                        溫和洗淨肌膚，帶走髒污與多餘的油脂。活性的泡沫因子，使潔面慕絲能從液狀變成泡沫質地。內含木瓜、鳳梨等天然酵素，幫助老廢角質的剝落卻完全不傷肌膚，還原乾淨清爽的晶透膚觸。
+                                    </p>
+                                    <button class="careShopLink">
+                                        <a href="#">See More</a>
+                                    </button>
+                                </div>
+                            </div>
                         </div>
+                        <div class="bookLast bookPage">
+                            <div class="bookVid">
+                                <video
+                                    muted
+                                    src="./video/careVid2.mp4"
+                                    autoplay
+                                    loop
+                                ></video>
+                            </div>
+                        </div>
+                        <h2 class="xlfont">OF THE CLEAN BEAUTY</h2>
+                        <button class="analBtn">
+                            <a href="#">保養分析</a>
+                            <p class="xsfont">
+                                專業檢測分析，為您推薦最適合您的保養流程
+                            </p>
+                        </button>
                     </div>
-                    <h2 class="xlfont">OF THE CLEAN BEAUTY</h2>
-                    <button class="analBtn">
-                        <a href="#">保養分析</a>
-                        <p class="xsfont">專業檢測分析，為您推薦最適合您的保養流程</p>
-                    </button>
-                </div>
-                <div class="pg5BookBtn">
-                    <button id="bookPrev"></button>
-                    <span id="bookPage" class="xsfont">1</span>
-                    <button id="bookNext"></button>
+                    <div class="pg5BookBtn">
+                        <button id="bookPrev"></button>
+                        <span id="bookPage" class="xsfont">1</span>
+                        <button id="bookNext"></button>
+                    </div>
                 </div>
             </div>
-        </div>
-        <!-- <div class="section pg6">
+            <!-- <div class="section pg6">
             <h2 class="xxlfont">STEP</h2>
         </div> -->
-        <div class="section pg7" id="pg7">
-            <div class="pg7back"></div>
-            <span class="pg7DecoSpan"></span>
-            <h1>DESIGN YOUR OWN COVER</h1>
-            <div class="pg7MainCard">
-                <canvas id='c'></canvas>
-                <button class="clearRect">Clear</button>
+            <div class="section pg7" id="pg7">
+                <div class="pg7back"></div>
+                <span class="pg7DecoSpan"></span>
+                <h1>DESIGN YOUR OWN COVER</h1>
+                <div class="pg7MainCard">
+                    <canvas id="c"></canvas>
+                    <button class="clearRect">Clear</button>
+                </div>
+                <div class="pg7ColorBox">
+                    <p>pick a color and draw</p>
+                    <span class="colorPicker"></span>
+                    <span class="colorPicker"></span>
+                    <span class="colorPicker"></span>
+                    <span class="colorPicker"></span>
+                    <span class="colorPicker"></span>
+                    <span class="colorPicker"></span>
+                </div>
+                <div class="refCardBox pp-scrollable">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <button class="pg7CardBtn"><a href="#">製作明信片</a></button>
+                <button class="pg7Others"><a>其他作品</a></button>
             </div>
-            <div class="pg7ColorBox">
-                <p>pick a color and draw</p>
-                <span class="colorPicker"></span>
-                <span class="colorPicker"></span>
-                <span class="colorPicker"></span>
-                <span class="colorPicker"></span>
-                <span class="colorPicker"></span>
-                <span class="colorPicker"></span>
-            </div>
-            <div class="refCardBox pp-scrollable">
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-            <button class="pg7CardBtn"><a href="#">製作明信片</a></button>
-            <button class="pg7Others"><a>其他作品</a></button>
-        </div>
-        <!-- <div class="section pg8">
+            <!-- <div class="section pg8">
             <h2 class="xxlfont">VOTE</h2>
         </div> -->
-    </main>
-    <script src="./js/a_pagepile.js"></script>
-    <script src="./js/header.js"></script>
-    <script src="./js/landing.js"></script>
-</body>
-
+        </main>
+        <script src="./js/a_pagepile.js"></script>
+        <script src="./js/header.js"></script>
+        <script src="./js/landing.js"></script>
+    </body>
 </html>

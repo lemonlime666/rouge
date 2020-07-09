@@ -1,7 +1,8 @@
 <?php
 try{
-  require_once("connect.php");
-  $sql = "select * from series";
+	require_once("connect.php");
+	// echo "連線成功~<br>";
+  $sql = "select * from series where PRO_CLASS = 0";
   $series = $pdo->query($sql);
 
 

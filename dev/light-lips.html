@@ -103,14 +103,15 @@
                                 </div>
                                 <!--商品欄位-->
                                 <div class="cardouter" v-for="(item, index) in series">
-                                    <div class="card">
+
+                                    <div class="card" @click="dataClick" >
                                         <!--折扣-->
                                         <div class="pro-discount hugefont">
-                                            70%off
+                                            {{program}}
                                         </div>
                                         <!--滑鼠-->
                                         <div class="mouse-block">
-                                            <div id="mouse" class="mouse">
+                                            <div id="mouse" class="mouse" :id="item.SER_NO" @click="cardClick">
                                                 <div class="mouse-in">
                                                     
                                                 </div>
@@ -122,7 +123,7 @@
                                         </div>
                                         <!--圖片-->
 
-                                        <img :src="item.img" alt="" srcset="">
+                                        <img :src="item.SER_IMGURL" alt="" srcset="">
 
                                         <span>
                                             <h2 class="lfont">{{item.SER_NAME}}</h2>
@@ -160,8 +161,18 @@
             el: '#contain',
             data: {
                 series:'',
-                message: '131'
+                
+                program: '70%',
 
+
+            },
+            methods: {
+                cardClick(e) {
+                    
+                    localStorage['seriesname'] = e.target.id
+                },
+                
+                
             },
             mounted() {
                
@@ -169,9 +180,9 @@
                 xhr.onload=function (){
                     if( xhr.status == 200 ){
                         //modify here
-                        console.log(this.$parent);
-                        console.log(xhr.responseText);
+                        
                         app.$data.series = JSON.parse(xhr.responseText);
+
                         
                       
                     }else{
@@ -181,7 +192,7 @@
                 
                 var url = "./php/light-lips.php";
                 xhr.open("get", url, true);
-                xhr.send( null );
+                xhr.send();
             }
         })
         

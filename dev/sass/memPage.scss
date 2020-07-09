@@ -1,0 +1,423 @@
+@import "./app/header";
+
+body {
+    font-family: "Noto Sans TC", sans-serif;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.wrapper {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: darken(#2c3342, 8);
+    z-index: -1;
+    overflow: hidden;
+
+    .wrapTexture {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-image: url(../image/back2.png);
+        background-repeat: no-repeat;
+        background-size: cover;
+        opacity: .06;
+        z-index: -1;
+    }
+
+    &::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 100%;
+        transform: translateX(-50%);
+        border: 10px double rgba($cofe, .1);
+    }
+}
+
+#mainSection {
+    // border: 1px solid red;
+    max-width: 1200px;
+    width: 70%;
+    min-width: 1000px;
+    height: 84vh;
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    @include pc(){
+        width: 80%;
+        min-width: 0;
+    }
+    @include m-pad(){
+        width: 90%;
+        height: 74vh;
+    }
+    @include s-pad(){
+        height: 76vh;
+    }
+    @include l-phone(){
+        width: 100%;
+        height: 74vh;
+    }
+    @include s-phone(){
+        height: 78vh;
+    }
+    @media screen and (max-width:375px) {
+        height: 78vh;
+    }
+    @media screen and (max-width:360px) {
+        height: 74vh;
+    }
+
+
+    &::before {
+        content: "";
+        position: absolute;
+        width: 95%;
+        height: 102%;
+        left: 50%;
+        bottom: 0;
+        transform: translateX(-50%);
+        border: 4px double rgba($cofe, .3);
+        border-bottom: 0;
+    }
+
+    #mainInfoSec {
+        border: 4px double rgba($lightGold, .5);
+        width: 90%;
+        height: 100%;
+        margin: 0 auto;
+        background-color: $grey4;
+
+        #infoContent {
+            // border: 1px solid red;
+            width: 90%;
+            height: 100%;
+            float: right;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            @include m-pad(){
+                float: unset;
+                margin: 0 auto;
+            }
+            @include s-pad(){
+                width: 100%;
+            }
+
+            .contentBox {
+                // border: 1px solid green;
+                width: 95%;
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: center;
+                padding-top: 80px;
+                z-index: 10;
+
+                @include s-pad(){
+                    padding-top: 20px;
+                    width: 100%;
+                }
+
+                form.mem_info {
+                    color: #ffffff;
+                    // border: 1px solid red !important;
+                    width: 70%;
+                    margin: 0 auto;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    @include s-pad(){
+                        width: 90%;
+                        font-size: 14px;
+                    }
+                    .mem_input {
+                        background: transparent;
+                        margin: 10px 0 10px 20px;
+                        border: none;
+                        border-bottom: 2px solid #e1d0a167;
+                        outline: none;
+                        width: 70%;
+                        height: 60px;
+                        @include font-style(){
+                            font-size: 16px;
+                        }
+                        @include l-phone(){
+                            height: 40px;
+                            font-size: 14px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    #btnSec {
+        // border: 1px solid green;
+        width: 230px;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: -40px;
+        display: flex;
+        flex-flow: column;
+        justify-content: flex-start;
+        align-items: center;
+        padding-top: 60px;
+        z-index: 30;
+
+        @include m-pad(){
+            width: 90%;
+            height:10%;
+            flex-flow: row;
+            justify-content: center;
+            align-items: center;
+            top: -90px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 0;
+        }
+        @include s-pad(){
+            top: -100px;
+        }
+        @include l-phone(){
+            width: 90%;
+            top: -70px;
+        }
+        @include s-phone(){
+            top: -60px;
+        }
+
+        .alterInfo {
+            width: 100%;
+            height: 10%;
+            @include font-style() {}
+            background-color: #a39775;
+            color: $wood;
+            font-weight: 500;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            cursor: pointer;
+
+            @include m-pad(){
+                width: 150px;
+                height:100%;
+            }
+            @include l-phone(){
+                font-size: 14px;
+                height: 70%;
+            }
+            @include s-phone(){
+                font-size: 12px;
+            }
+
+            &:hover {
+                background-color: $darkGold;
+            }
+
+            &::before {
+                content: "";
+                width: 90%;
+                height: 75%;
+                border: 1px solid rgba($white, .7);
+                position: absolute;
+            }
+        }
+
+        .activeInfo {
+            @include font-style() {}
+            background-color: $wood;
+            color: $white;
+            @include l-phone(){
+                font-size: 14px;
+            }
+            @include s-phone(){
+                font-size: 12px;
+            }
+
+            &:hover {
+                background-color: $wood;
+                color: $white;
+            }
+        }
+    }
+}
+
+.mem_detailGroupbtn {
+    margin: 0 auto;
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    background-color: rgb(129, 129, 129);
+    border-bottom: 4.5px solid #292929;
+    // border: 1px solid red !important;
+    @include pc(){
+        transform: translateX(20px);
+    }
+    @include m-pad(){
+        transform: unset;
+        width: 100%;
+    }
+    .mem_buybtn {
+        @include font-style(){};
+        font-size: 16px;
+        color: $grey5;
+        width: calc(100% / 5);
+        height: 60px;
+        border: 0;
+        outline: 0;
+        background-color: transparent;
+        transition: 0.2s;
+        border-bottom: 4.5px solid #292929;
+        cursor: pointer;
+        @include l-phone(){
+            font-size: 14px;
+        }
+        @media all and (max-width:420px){
+            font-size: 12px;
+        }
+        @media all and (max-width:360px){
+            font-size: 10px;
+        }
+    }
+    .mem_buyactive {
+        background-color: $wood;
+        color: #c2b48f;
+    }
+}
+
+.mem_buycontent {
+    // border: 1px solid red;
+    margin: 2% 0;
+    width: 80%;
+    height: 70%;
+    background: rgb(129, 129, 129);
+    @include pc(){
+        transform: translateX(20px);
+    }
+    @include m-pad(){
+        transform: unset;
+        width: 100%;
+    }
+    .mem_buy {
+        // border: 1px solid red;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        width: 100%;
+        height: 100%;
+        table.mem_tablegroup {
+            border-collapse: collapse;
+            width: 100%;
+            text-align: center;
+            
+            th {
+                border: 2px solid #a19677;
+                background-color: #c2b48f;
+                @include font-style(){
+                    color: $grey5;
+                    font-size: 16px;
+                }
+                padding: 10px 0;
+
+                @include l-phone(){
+                    font-size: 14px;
+                }
+                @media all and (max-width:420px){
+                    font-size: 12px;
+                }
+                @media all and (max-width:360px){
+                    font-size: 10px;
+                }
+            }
+            td {
+                border: 1.5px solid #a19677;
+                font-size: 15px;
+                padding: 3px 0;
+                @include l-phone(){
+                    font-size: 14px;
+                }
+            }
+        }
+    }
+}
+
+.mem_skinanalysis {
+    // border: 1px solid red;
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.5%;
+    background: #818181;
+    .mem_title {
+        // border: 1px solid red;
+        padding: 20px 20px;
+        p.mem_date{
+            font-size: 12px;
+            color: #464646;
+        }
+        h1.mem_maintitle {
+            font-family: "Noto Serif TC", serif;
+            margin-bottom: 10px;
+        }
+        p.mem_exp{
+            @include font-style(){}
+            font-size: 16px;
+            color: #292929;
+        }
+    }
+    button.mem_skincarePd{
+        cursor: pointer;
+        outline: none;
+        border: none;
+        background: #bbbbbb;
+        padding: .8rem;
+        font-family: "Noto Serif TC", serif;
+        letter-spacing: .2rem;
+    }
+}
+
+.mem_createcard{
+    // border: 1px solid blue;
+    width: 75%;
+    height: 80%;
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    align-items: flex-start;
+    color: #bbbbbb;
+    .mem_card{
+        flex-shrink: 0;
+        border: 2px solid #e1d0a167;
+        width: 400px;
+        height: 500px;
+        @include s-pad(){
+            width: 350px;
+            height: 450px;
+        }
+        @include l-phone(){
+            width: 250px;
+            height: 350px;
+        }
+        @include s-phone(){
+            width: 200px;
+            height: 300px;
+        }
+        .mem_img{
+            margin: 1% auto;
+            width: 100%;
+            height: 100%;
+        }
+        p.mem_text{
+            margin: .5rem;
+            padding: 0 1rem;
+        }
+    }
+}

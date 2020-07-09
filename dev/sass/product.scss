@@ -52,6 +52,7 @@ body{
 
         .pro-block{
             display: flex;
+            margin-bottom: 5%;
         }
         .pro1{
             
@@ -154,15 +155,29 @@ body{
                         transform: translateY(-50%);
                         padding-right: 5px;
                         .pro_btn_top{
-                            border: 1px solid red;
+                            border: 1px solid black;
                             height: 50px;
                             width: 50px;
                             margin-bottom: 5%;
+                            position: relative;
+                            img{
+                                position: absolute;
+                                height: 100%;
+                                width: 100%;
+                                object-fit: cover;
+                            }
                         }
                         .pro_btn_down{
-                            border: 1px solid red;
+                            border: 1px solid black;
                             height: 50px;
                             width: 50px;
+                            position: relative;
+                            img{
+                                position: absolute;
+                                height: 100%;
+                                width: 100%;
+                                object-fit: cover;
+                            }
                         }
                     }
                 }
@@ -201,6 +216,7 @@ body{
                         color: #EFEFEF;
                         h3{
                             text-align: center;
+                            white-space:nowrap;
                         }
                     }
                 }

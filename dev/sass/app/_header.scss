@@ -567,5 +567,165 @@
         }
     }
 }
-
 // menu
+
+//login
+#login {
+    display: none;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 90;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .loginBack{
+        background-color: rgba(0, 0, 0, .6);
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        z-index: 91;
+    }
+
+    .loginBox {
+        width: 50%;
+        height: 50%;
+        background-color: darken($grey5, 5);
+        z-index: 92;
+        border: 1px solid rgba($lightGold,.5);
+
+        .loginlayer {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-flow: row;
+            justify-content: center;
+            align-items: center;
+        }
+
+        h1 {
+            // border: 1px solid navy;
+            writing-mode: vertical-lr;
+            width: 20%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            order: 2;
+            background-color: $navy;
+            @include font-style(40px,$notoSans,#afafaf){
+                letter-spacing: 5px;
+            };
+
+            button {
+                border: 0;
+                text-decoration: underline;
+                outline: 0;
+                margin-top: 40px;
+                cursor: pointer;
+                background-color: transparent;
+                @include font-style(10px,$notoSans){
+                    letter-spacing: 2px;
+                    color: $lightGold;
+                };
+
+                &:hover {
+                    color: orangered;
+                    transition: all .2s;
+                }
+            }
+        }
+
+        .logdiv {
+            // border: 1px solid red;
+            display: flex;
+            flex-flow: column;
+            justify-content: center;
+            align-items: flex-start;
+            width: 80%;
+            height: 100%;
+
+            label {
+                // border: 1px solid red;
+                width: 100%;
+                height: 18%;
+                display: flex;
+                flex-flow: column nowrap;
+                justify-content: center;
+                align-items: center;
+
+                span {
+                    // border: 1px solid red;
+                    display: inline-block;
+                    text-align: center;
+                    margin-bottom: 10px;
+                    @include font-style(14px,$CG,$white){
+
+                    }
+                }
+
+                input {
+                    width: 50%;
+                    border: 0;
+                    border-radius: 3px;
+                    background-color: #efefef;
+                    height: 20px;
+                    outline: 0;
+                    padding-left: 10px;
+                    font-family: serif;
+                    font-size: 16px;
+                }
+            }
+
+            #loginSubmit {
+                margin: 0 auto;
+                margin-top: 20px;
+                padding: 5px 15px;
+                background-color: transparent;
+                border: 1px solid $lightGold;
+                border-radius: 5px;
+                outline: 0;
+                @include font-style(14px,$CG,$lightGold,700){
+                    letter-spacing: 3px;
+                }
+
+                &:hover{
+                    // border: 1px solid $lightGold;
+                    background-color: $lightGold;
+                    color: $red;
+                    transition: all .3s;
+                }
+
+            }
+            #signUpSubmit {
+                margin: 0 auto;
+                margin-top: 20px;
+                padding: 5px 10px;
+                background-color: transparent;
+                border: 1px solid $lightGold;
+                border-radius: 5px;
+                outline: 0;
+                @include font-style(14px,$CG,$lightGold,700){
+                    letter-spacing: 3px;
+                }
+
+                &:hover{
+                    background-color: $lightGold;
+                    color: $red;
+                    transition: all .3s;
+                }
+
+            }
+        }
+        .loginForm{
+            order: 3;
+            border-left:1px solid rgba($lightGold,.5) ;
+        }
+        .signForm{
+            order: 1;
+            border-right:1px solid rgba($lightGold,.5) ;
+        }
+
+    }
+}
