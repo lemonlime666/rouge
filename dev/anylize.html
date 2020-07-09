@@ -9,9 +9,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="./js/main.js"></script>
     <style>
-        .btn1-2{
-            color:red;
-        }
+        
     </style>
 </head>
 
@@ -92,10 +90,10 @@
         <div class="timeBlock">
             <div class="anyl-timeChoose">
 
-                <button class="btn1-2 anyl-button1" id="anylSun">日間保養</button>
-                <button class="btn1-2 anyl-button1" id="anylNight">夜間保養</button>
-                <button class="btn1-2 anyl-button1" id="anyl_1to6">春夏保養</button>
-                <button class="btn1-2 anyl-button1" id="anyl_7to12">秋冬保養</button>
+                <button class="btn1-2 anyl-button1" id="anylSun" value="0">日間保養</button>
+                <button class="btn1-2 anyl-button1" id="anylNight" value="1">夜間保養</button>
+                <button class="btn1-2 anyl-button1" id="anyl_1to6" value="0">春夏保養</button>
+                <button class="btn1-2 anyl-button1" id="anyl_7to12" value="1">秋冬保養</button>
 
             </div>
             <div id="dayTimeBlock">
@@ -104,14 +102,56 @@
             <div class="anyl-button">
                 <a href="memAnylize.html">
                     <p>專業保養分析</p>
-                    <p>ANYLIZE</p>
+                    <p id="heyhey"></p>
                 </a>
             </div>
         </div>
         
     </main>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.js"></script>
+
     <script>
+
+const app = new Vue({
+            el: '#contain',
+            data: {
+                
+                pdolateYear:'',
+                // pdoearlYear:'',
+                // pdonight:'',
+                // pdosun:'',
+                message: '131',
+
+            },
+            mounted() {
+               
+                var xhr = new XMLHttpRequest();
+                xhr.onload=function (){
+                    if( xhr.status == 200 ){
+                        //modify here
+                        // console.log(this.$parent);
+                        // console.log(xhr.responseText);
+                        app.$data.pdolateYear = JSON.parse(xhr.responseText);
+                        // app.$data.pdoearlYear = JSON.parse(xhr.responseText);
+                        // app.$data.pdosun = JSON.parse(xhr.responseText);
+                        // app.$data.pdonight = JSON.parse(xhr.responseText);
+                        
+                      
+                    }else{
+                        // alert( xhr.status );
+                    }
+                }
+                
+                var url = "./php/anylize.php";
+                xhr.open("get", url, true);
+                xhr.send( null );
+            }
+        })
+
+
+
+
         window.addEventListener('load', dayTime());
 
         function dayTime() {
@@ -158,16 +198,13 @@
             } else {
                 document.getElementById('anyl_7to12').style.cssText = "background-color: #C0A57C;transform: translate(0em, 0.75em);"
             }
-        };
-        var anylSun = document.getElementById('anylSun');
+
+            var anylSun = document.getElementById('anylSun');
         var anylNight = document.getElementById('anylNight');
         var anyl_1to6 = document.getElementById('anyl_1to6');
         var anyl_7to12 = document.getElementById('anyl_7to12');
         anylSun.addEventListener('click', function() {
-            var style=document.createElement('style');
-            // element.classList.remove("btn1-2");
-            // style.innerHTML=".btn1-2::before{transform: translate3d(0, 0em, -1em);}";//添加样式内容的话也可以用上面提到过的`insertRule`,相对例子里的硬编码会更优雅点。
-            // document.head.appendChild(style);
+            
             this.style.cssText = "background-color: #C0A57C;transform: translate(0em, 0.75em);";
             document.getElementById('anylNight').style.cssText = "background-color: $darkGold;";
         });
@@ -183,6 +220,10 @@
             this.style.cssText = "background-color: #C0A57C;transform: translate(0em, 0.75em);";
             document.getElementById('anyl_1to6').style.cssText = "background-color: $darkGold";
         });
+
+        
+        };
+        
     </script>
 </body>
 
