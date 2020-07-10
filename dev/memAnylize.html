@@ -5,6 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>會員保養分析</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&family=Noto+Serif+TC:wght@200;300;400;500;600;700;900&display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Nunito+Sans:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="css/memAnylize.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
@@ -289,11 +295,7 @@
                     <div id="Q5back" class="btnStyle">
                         <p>回上一題</p>
                     </div>
-                    <a href="memAnylizeResult.html" class="Q5link">
-                        <div id="Q5gofor" class="Q5btn btnStyle">
-                            <p>結果分析</p>
-                        </div>
-                    </a>
+                        <input id="Q5gofor" class="Q5btn btnStyle"  name="button" onclick="location.href='memAnylizeResult.html'" onclick="buySelect();" value="結果分析" />                  
                 </div>
             </section>
 
@@ -341,39 +343,98 @@
             document.getElementById('memAnylQ5').style.cssText = "display: none;";
             document.getElementById('memAnylQ4').style.cssText = "display: block;";
         });
-        function buySelect(){
+
         var Q1 = 0;
         var Q2 = 0;
         var Q3 = 0;
         var Q4 = 0;
         var Q5 = 0;
+        var total = 0;
+        var type;
+        function buySelect(){
+            total = 0;
         $("[name='Q1']:checked").each(function(){
-            Q1 += Number($(this).val());       
+            var Q1 = 0;
+            Q1 += Number($(this).val());  
+            total += Q1;  
+            // console.log(total)   ;
         });
         $("[name='Q2']:checked").each(function(){
-            Q2 += Number($(this).val());       
+            let Q2 = 0;
+            Q2 += Number($(this).val());
+            total += Q2;        
+            // console.log(total)   ;
         });
         $("[name='Q3']:checked").each(function(){
-            Q3 += Number($(this).val());       
+            let Q3 = 0;
+            Q3 += Number($(this).val());    
+            total += Q3;  
+            // console.log(total)   ;
         });
         $("[name='Q4']:checked").each(function(){
-            Q4 += Number($(this).val());       
+            let Q4 = 0;
+            Q4= Number($(this).val());       
+            total += Q4;  
+            // console.log(total)   ;
         });
         $("[name='Q5']:checked").each(function(){
-            Q5 += Number($(this).val());       
-        });
-        var total = Q1+Q2+Q3+Q4+Q5;
+            let Q5 = 0;
+            Q5 += Number($(this).val());    
+            total += Q5;
+        });            
+            // console.log(total);
+            switch(true){
+                case total<=7:
+                var type = 0;
+                break;
+                case total <=10:
+                var type = 1;
+                break;
+                case total <=13:
+                var type = 2;
+                break;
+                case total <=15:
+                var type = 3;
+                break;
 
-            if(total <=4){
-                console.log('乾燥')
-            }else if(total <=8){
-                console.log('混合')
-            }else if(total <=12){
-                console.log('油性')
-            }else if(total <=15){
-                console.log('敏感')
             }
+            console.log(type);
+            // console.log(sum);
+            localStorage.setItem('type',type)
         }
+        
+        
+        // function checkId(){  
+        //     //產生XMLHttpRequest物件
+        //     var xhr = new XMLHttpRequest();
+
+        //     //註冊callback function
+        //     xhr.onreadystatechange = function(){
+        //         console.log(xhr.readyState);
+        //         if( xhr.readyState == 4){ // server端做完了
+        //         if( xhr.status == 200){ // server端正確的執行完畢(status:200)
+        //             document.getElementById("idMsg").innerText=xhr.responseText;
+        //         }else{
+        //             alert(xhr.status);
+        //         }
+        //         }
+        //     }
+
+        //     //設定好所要連結的程式
+        //     let url = "GetResponseText.php?memId=" + document.getElementById("memId").value;
+        //     xhr.open("get", url, true);
+
+        //     //送出資料
+        //     xhr.send(null);
+
+        //     }//function_checkId 
+
+        //     //..........................................
+        //     window.addEventListener("load", function(){
+            
+        //     document.getElementById("memId").addEventListener("change", checkId, false);
+
+        //     }, false);
     </script>
 </body>
 
