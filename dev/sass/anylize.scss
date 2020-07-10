@@ -9,7 +9,6 @@
 
 ;
 body {
-    font-family: 'Noto Sans TC', sans-serif;
     background-color: #efefef;
     margin: 0px;
     height: 100vh;
@@ -78,7 +77,9 @@ body {
             }
             .anyl-button1 {
                 width: 40%;
-                height: 30%;
+                height: 30%;            
+                @include font-style(){};
+
                     @media screen and(max-width:767px){
                         width: 100px;
                         margin-left:10px;
@@ -89,7 +90,6 @@ body {
                     
                     margin-top: 20px;
                     font-weight: 600;
-                    color: $grey5;
                     text-transform: uppercase;
                     // padding: 1.25em 2em;
                     background: $gold;
@@ -315,17 +315,4 @@ body {
         }
     }
 }
-#item1{
-    display: none;
-}
-#item2{
-    display: none;
-}
 
-#item3{
-    display: none;
-}
-
-#item4{
-    display: none;
-}

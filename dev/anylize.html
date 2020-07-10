@@ -35,192 +35,21 @@
             </a>
         </div>
 <!--  -->
-        <div class="anyl-item" id="item1">
+        <div class="anyl-item" id="anyl-item">
 
-            <div class="anyl-product odd">
+            <div class="anyl-product" v-for="(lateyear,index) in pdolateYear" v-if="index < 4">
                 <div class="item anyl-item1">
                     <img src="./image/care.png">
                 </div>
                 <div class="anyl-shadow anyl-text1">
-                    <h1>春夏日間產品</h1>
-                    <p>文字介紹</p>
-                </div>
-            </div>
-
-
-            <div class="anyl-product even">
-                <div class="item anyl-item2">
-                    <img src="./image/care1.png">
-                </div>
-                <div class="anyl-shadow anyl-text2">
-                    <h1>產品名</h1>
-                    <p>文字介紹</p>
-                </div>
-            </div>
-
-
-            <div class="anyl-product odd">
-                <div class="item anyl-item3">
-                    <img src="./image/mask2.png">
-                </div>
-                <div class="anyl-shadow anyl-text3">
-                    <h1>產品名</h1>
-                    <p>文字介紹</p>
-                </div>
-            </div>
-
-
-            <div class="anyl-product even">
-                <div class="item anyl-item4">
-                    <img src="./image/care.png">
-                </div>
-                <div class="anyl-shadow anyl-text4">
-                    <h1>產品名</h1>
+                    <h1>{{lateyear.PRO_NAME}}</h1>
                     <p>文字介紹</p>
                 </div>
             </div>
 
         </div>
 <!--  -->
-        <div class="anyl-item" id="item2">
-
-            <div class="anyl-product odd">
-                <div class="item anyl-item1">
-                    <img src="./image/care.png">
-                </div>
-                <div class="anyl-shadow anyl-text1">
-                    <h1>春夏夜間產品</h1>
-                    <p>文字介紹</p>
-                </div>
-            </div>
-
-
-            <div class="anyl-product even">
-                <div class="item anyl-item2">
-                    <img src="./image/care1.png">
-                </div>
-                <div class="anyl-shadow anyl-text2">
-                    <h1>產品名</h1>
-                    <p>文字介紹</p>
-                </div>
-            </div>
-
-
-            <div class="anyl-product odd">
-                <div class="item anyl-item3">
-                    <img src="./image/mask2.png">
-                </div>
-                <div class="anyl-shadow anyl-text3">
-                    <h1>產品名</h1>
-                    <p>文字介紹</p>
-                </div>
-            </div>
-
-
-            <div class="anyl-product even">
-                <div class="item anyl-item4">
-                    <img src="./image/care.png">
-                </div>
-                <div class="anyl-shadow anyl-text4">
-                    <h1>產品名</h1>
-                    <p>文字介紹</p>
-                </div>
-            </div>
-
-        </div>
-<!--  -->
-        <div class="anyl-item" id="item3">
-
-            <div class="anyl-product odd">
-                <div class="item anyl-item1">
-                    <img src="./image/care.png">
-                </div>
-                <div class="anyl-shadow anyl-text1">
-                    <h1>秋冬日間產品</h1>
-                    <p>文字介紹</p>
-                </div>
-            </div>
-
-
-            <div class="anyl-product even">
-                <div class="item anyl-item2">
-                    <img src="./image/care1.png">
-                </div>
-                <div class="anyl-shadow anyl-text2">
-                    <h1>產品名</h1>
-                    <p>文字介紹</p>
-                </div>
-            </div>
-
-
-            <div class="anyl-product odd">
-                <div class="item anyl-item3">
-                    <img src="./image/mask2.png">
-                </div>
-                <div class="anyl-shadow anyl-text3">
-                    <h1>產品名</h1>
-                    <p>文字介紹</p>
-                </div>
-            </div>
-
-
-            <div class="anyl-product even">
-                <div class="item anyl-item4">
-                    <img src="./image/care.png">
-                </div>
-                <div class="anyl-shadow anyl-text4">
-                    <h1>產品名</h1>
-                    <p>文字介紹</p>
-                </div>
-            </div>
-
-        </div>
-<!--  -->
-        <div class="anyl-item" id="item4">
-
-            <div class="anyl-product odd">
-                <div class="item anyl-item1">
-                    <img src="./image/care.png">
-                </div>
-                <div class="anyl-shadow anyl-text1">
-                    <h1>秋冬夜間產品</h1>
-                    <p>文字介紹</p>
-                </div>
-            </div>
-
-
-            <div class="anyl-product even">
-                <div class="item anyl-item2">
-                    <img src="./image/care1.png">
-                </div>
-                <div class="anyl-shadow anyl-text2">
-                    <h1>產品名</h1>
-                    <p>文字介紹</p>
-                </div>
-            </div>
-
-
-            <div class="anyl-product odd">
-                <div class="item anyl-item3">
-                    <img src="./image/mask2.png">
-                </div>
-                <div class="anyl-shadow anyl-text3">
-                    <h1>產品名</h1>
-                    <p>文字介紹</p>
-                </div>
-            </div>
-
-
-            <div class="anyl-product even">
-                <div class="item anyl-item4">
-                    <img src="./image/care.png">
-                </div>
-                <div class="anyl-shadow anyl-text4">
-                    <h1>產品名</h1>
-                    <p>文字介紹</p>
-                </div>
-            </div>
-
+        
         </div>
         <!-- <section class="anyl-background">
             <div class="anyl-pic">
@@ -244,10 +73,10 @@
             </div>
             <div class="anyl-timeChoose">
 
-                <button class="btn1-2 anyl-button1" id="anylSun" value="0">春夏日間保養</button>
-                <button class="btn1-2 anyl-button1" id="anylNight" value="1">春夏夜間保養</button>
-                <button class="btn1-2 anyl-button1" id="anyl_1to6" value="0">秋冬日間保養</button>
-                <button class="btn1-2 anyl-button1" id="anyl_7to12" value="1">秋冬夜間保養</button>
+                <button class="btn1-2 anyl-button1" id="anylSun" value="0">日間</button>
+                <button class="btn1-2 anyl-button1" id="anylNight" value="1">夜間</button>
+                <button class="btn1-2 anyl-button1" id="anyl_1to6" value="0">春夏</button>
+                <button class="btn1-2 anyl-button1" id="anyl_7to12" value="1">秋冬</button>
 
             </div>
             
@@ -265,39 +94,52 @@
 
     <script>
 
-const app = new Vue({
-            el: '#contain',
+        var app = new Vue({
+            el: '#anyl-item',
             data: {
                 
                 pdolateYear:'',
                 // pdoearlYear:'',
                 // pdonight:'',
                 // pdosun:'',
-                message: '131',
 
             },
             mounted() {
-               
+                let today = new Date();
+                let uploadHour = today.getHours();
+                let todatMonth = today.getMonth();
+
+                if (uploadHour >= 18 | uploadHour <= 6) {
+                    var useTime = 1
+                         } else {
+                             var useTime = 0
+                    }
+                if(todatMonth<=7){
+                    var season = 0;
+                }else{
+                    var season = 1;
+                }
+                // sun(){
+                //         useTime += 1;
+                //     };
+                // console.log(useTime);
+                console.log(useTime);
                 var xhr = new XMLHttpRequest();
                 xhr.onload=function (){
                     if( xhr.status == 200 ){
-                        //modify here
-                        // console.log(this.$parent);
-                        // console.log(xhr.responseText);
                         app.$data.pdolateYear = JSON.parse(xhr.responseText);
-                        // app.$data.pdoearlYear = JSON.parse(xhr.responseText);
-                        // app.$data.pdosun = JSON.parse(xhr.responseText);
-                        // app.$data.pdonight = JSON.parse(xhr.responseText);
-                        
-                      
                     }else{
-                        // alert( xhr.status );
+                        alert( xhr.status );
                     }
                 }
+                // let data_info = 'answer='+3;
+                var url = `./php/anylize.php`;
+                xhr.open("post", url, true);
+                xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
+                let data_info = `season=${season}&useTime=${useTime}`
+                // let data_info = `season=${season}`
                 
-                var url = "./php/anylize.php";
-                xhr.open("get", url, true);
-                xhr.send( null );
+                xhr.send(data_info); 
             }
         })
 
@@ -326,41 +168,21 @@ const app = new Vue({
             document.getElementById('dayTimeBlock').appendChild(newDay);
             document.getElementById('dayDay').innerText = today.getDate();
 
-            let newHour = document.createElement('div');
-            newHour.id = 'dayHour';
-            document.getElementById('dayTimeBlock').appendChild(newHour);
             let uploadHour = today.getHours();
-            if (today.getMinutes() < 10) {
-                let minutes = today.getMinutes();
-                var uploadMinute = `0${minutes}`;
-            } else {
-                var uploadMinute = today.getMinutes();
-            };
 
-            document.getElementById('dayHour').innerText = `${uploadHour} : ${uploadMinute}`;
-////////////////////////////////時間判斷
-            let todatMonth = today.getMonth();
             if (uploadHour >= 18 | uploadHour <= 6) {
-                if(todatMonth <= 7){
-                    document.getElementById('anylNight').style.cssText = "background-color: #C0A57C;transform: translate(0em, 0.75em);";
-                    document.getElementById('item2').style.cssText = "display:flex";
-                }else{
-                    document.getElementById('anyl_7to12').style.cssText = "background-color: #C0A57C;transform: translate(0em, 0.75em);";
-                    document.getElementById('item4').style.cssText = "display:flex";
-                }
-            }else{
-                if(todatMonth <= 7){
-                    document.getElementById('anylSun').style.cssText = "background-color: #C0A57C;transform: translate(0em, 0.75em);";
-                    document.getElementById('item1').style.cssText = "display:block";
-                }else{
-                    document.getElementById('anyl_1to6').style.cssText = "background-color: #C0A57C;transform: translate(0em, 0.75em);";
-                    document.getElementById('item3').style.cssText = "display:flex";
-                    }
-                };
-            
-            
+                document.getElementById('anylNight').style.cssText = "background-color: #C0A57C;transform: translate(0em, 0.75em);"
+            } else {
+                document.getElementById('anylSun').style.cssText = "background-color: #C0A57C;transform: translate(0em, 0.75em);"
+            }
+            let todatMonth = today.getMonth();
+            if (todatMonth <= 7) {
+                document.getElementById('anyl_1to6').style.cssText = "background-color: #C0A57C;transform: translate(0em, 0.75em);"
+            } else {
+                document.getElementById('anyl_7to12').style.cssText = "background-color: #C0A57C;transform: translate(0em, 0.75em);"
+            }
 
-        var anylSun = document.getElementById('anylSun');
+            var anylSun = document.getElementById('anylSun');
         var anylNight = document.getElementById('anylNight');
         var anyl_1to6 = document.getElementById('anyl_1to6');
         var anyl_7to12 = document.getElementById('anyl_7to12');
@@ -368,54 +190,23 @@ const app = new Vue({
             
             this.style.cssText = "background-color: #C0A57C;transform: translate(0em, 0.75em);";
             document.getElementById('anylNight').style.cssText = "background-color: $darkGold;";
-            document.getElementById('anyl_7to12').style.cssText = "background-color: $darkGold";
-            document.getElementById('anyl_1to6').style.cssText = "background-color: $darkGold";
-            $('#item1').show();
-            $('#item2').hide();
-            $('#item3').hide();
-            $('#item4').hide();
         });
         anylNight.addEventListener('click', function() {
             this.style.cssText = "background-color: #C0A57C;transform: translate(0em, 0.75em);";
             document.getElementById('anylSun').style.cssText = "background-color: $darkGold";
-            document.getElementById('anyl_7to12').style.cssText = "background-color: $darkGold";
-            document.getElementById('anyl_1to6').style.cssText = "background-color: $darkGold";
-
-            
-            $('#item2').show();
-            $('#item1').hide();
-            $('#item3').hide();
-            $('#item4').hide();
         });
         anyl_1to6.addEventListener('click', function() {
             this.style.cssText = "background-color: #C0A57C;transform: translate(0em, 0.75em);";
-            document.getElementById('anylNight').style.cssText = "background-color: $darkGold;";
-            document.getElementById('anylSun').style.cssText = "background-color: $darkGold";
             document.getElementById('anyl_7to12').style.cssText = "background-color: $darkGold";
-
-            
-            $('#item3').show();
-            $('#item2').hide();
-            $('#item1').hide();
-            $('#item4').hide();
         });
         anyl_7to12.addEventListener('click', function() {
             this.style.cssText = "background-color: #C0A57C;transform: translate(0em, 0.75em);";
-            document.getElementById('anylNight').style.cssText = "background-color: $darkGold;";
-            document.getElementById('anylSun').style.cssText = "background-color: $darkGold";
             document.getElementById('anyl_1to6').style.cssText = "background-color: $darkGold";
-
-            
-            $('#item4').show();
-            $('#item2').hide();
-            $('#item3').hide();
-            $('#item1').hide();
         });
 
         
         };
         
     </script>
-</body>
 
 </html>
