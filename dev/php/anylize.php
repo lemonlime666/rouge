@@ -1,23 +1,13 @@
 <?php
 try{
   require_once("connect.php");
-  //lateYear
-  $sqllateYear = "SELECT * FROM `product` WHERE `PRO_SEASON` LIKE '1'";
-  $pdolateYear = $pdo->query($sqllateYear);
-  
-  // sun
-  $sqlsun = "SELECT * FROM `product` WHERE `PRO_USETIME` LIKE '0'";
-  $pdosun = $pdo->query($sqlsun);
-
-  //night
-  $sqlnight = "SELECT * FROM `product` WHERE `PRO_USETIME` LIKE '1'";
-  $pdonight = $pdo->query($sqlnight);
-
-  //earlyYear
-  $sqlearlYear = "SELECT * FROM `product` WHERE `PRO_SEASON` LIKE '0'";
-  $pdoearlYear = $pdo->query($sqlearlYear);
-  
-  //如果找得資料，取回資料，送出xml文件
+  // $sqlresult = "select * FROM product WHERE MTC_CLASS=:answer";
+  // $pdoresult = $pdo->prepare($sqlresult);
+  $sqllateYear = "select * from product where PRO_SEASON = :season and (PRO_USETIME =:useTime OR PRO_USETIME =2)";
+  $pdolateYear = $pdo->prepare($sqllateYear);
+  $pdolateYear->bindValue(":season", $_POST["season"]);
+  $pdolateYear->bindValue(":useTime", $_POST["useTime"]);
+  $pdolateYear->execute();
   if($pdolateYear->rowCount()==0){
     echo "{}";
 }else{
