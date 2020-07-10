@@ -34,9 +34,8 @@
         <section class="pro1">
             <div class="pro1_content">
                 <div class="pro_text">
-                    <h2 class="lfont">{{this.products[0].SER_NAME}}</h2>
-                    <p class="xsfont">{{this.products[0].SER_TEXT}}
-                    </p>
+                    <h2 class="lfont">{{seriename}}</h2>
+                    <p class="xsfont">{{serietext}}</p>
                 </div>
                 <div class="pro_pic" id="pro_pic">
                     <!--商品欄位-->
@@ -86,7 +85,8 @@
                     </div>
                 </div>
                 <div class="pro_down">
-                    <button class="addcart">ADD TO CART</button>
+                    <!-- 加入購物車 -->
+                    <button class="addcart" @click="addChart">ADD TO CART</button>
                     <div class="test_color">
                         <a class="mfont" href="./makeUp.html">口紅試色</a>
                     </div>
@@ -96,6 +96,7 @@
             
         </section>
         </div>
+        <!-- 商品留言 -->
         <div class="lag-content" v-for="(item, index) in proMessage">
             <div class="lag-pic">
                 <div class="lag-pic-img">
@@ -142,13 +143,26 @@
                 selected: '', //商品色票
                 proNum: '', //商品數量
                 proImgs: '', //圖片編號
-                
+                proI: '', //商品編號
+                proMessage:'', //商品留言
+                seriename:'', //系列名稱
+                serietext:'', //系列介紹
+                proCommit:{   
+                        comNo:'', //商品編號
+                        comName:'', //商品名稱
+                        comImg: '', //小圖片路徑
+                        comNum: '', //商品數量
+                        comPrice: '', //商品單價  
+                    },
+                totalCommit: [],
                 // n:1,
             },
             methods: {
                 proClick(e) {
                     let i = e.target.dataset.num
                     // console.log(this.products[i].PRO_PRICE)
+                    //改變商品編號
+                    this.proI = i
                     //改變商品價格
                     this.proPrice = this.products[i].PRO_PRICE
                     //改變色票編號
@@ -164,6 +178,7 @@
                     for(let i=0; i<e.target.childNodes.length; i++){
                         if(e.target.childNodes[i].selected == true){
                             this.proPrice = this.products[i].PRO_PRICE
+                            this.proI = i
                         }
                     }
                     // let i = e.target.dataset.color;
@@ -171,13 +186,30 @@
                     // this.proPrice = this.products[i].PRO_PRICE
 
                 },
-                goPic(e) {
+                goPic(e) { //圖片輪換
                     let boxImg = document.getElementById('box_img')
                     // console.log(boxImg.src)
                     // console.log(e.target.src)
                     boxImg.src = e.target.src
                     // boxImg.src = this.
+                },
+                addChart() { //加入購物車
+                    //建立物件
+                    // console.log(this.proI)
+                    let i = this.proI
+                    this.proCommit.comNo = this.products[i].PRO_NO
+                    this.proCommit.comName = this.products[i].PRO_NAME
+                    this.proCommit.comImg = this.products[i].PRO_IMG
+                    this.proCommit.comPrice = this.products[i].PRO_PRICE
+                    this.proCommit.comNum = this.proNum
+
+                    // console.log(this.proCommit)
+                    const copy = Object.assign({}, this.proCommit) //複製物件
+                    this.totalCommit.push(copy)
+                    console.log(this.totalCommit)
+                    localStorage['shoppingcart'] = JSON.stringify(this.totalCommit)
                 }
+
                 
             },
             beforeUpdate() {
@@ -195,6 +227,7 @@
                     
                 //     return this.products[0].PRO_IMGS.split("|")
                 // }
+                
                 
             },
             // computed: {
@@ -217,7 +250,10 @@
                     app.$data.proNum = 1 //給預設第一項商品數量
                     app.$data.selected = app.$data.products[0].PRO_COLOR //給預設第一項商品色票
                     app.$data.proImgs = app.$data.products[0].PRO_IMGS.split("|")
-                }else{
+                    app.$data.seriename = app.$data.products[0].SER_NAME //給預設的系列名稱
+                    app.$data.serietext = app.$data.products[0].SER_TEXT //給預設的系列介紹
+                    app.$data.proI = app.$data.products[0].SER_NO - 1 //給預設的系列編號
+                }else{ 
                     alert( xhr.status );
                 }
                 
