@@ -96,7 +96,6 @@ Vue.component('orderlist', {
     data() {
         return {
             list:'tab1',
-            a:['a', 'b', 'c', 'd','a', 'b', 'c', 'd','a', 'b', 'c', 'd','a', 'b', 'c', 'd','a', 'b', 'c', 'd'],
         };
     },
     methods: {
@@ -114,8 +113,8 @@ Vue.component('orderlist', {
                 </div>
                 
                 <div class="mem_buycontent">  
-                    <div class="mem_buy mem_buyTabOne">
-                        <table class="mem_tablegroup">
+                    <table class="mem_tablegroup">
+                        <thead>
                             <tr class="mem_buydetail_title">
                                 <th>編號</th>
                                 <th>日期</th>
@@ -123,15 +122,54 @@ Vue.component('orderlist', {
                                 <th>寄送地址</th>
                                 <th>明細</th>
                             </tr>
-                            <tbody id="mem_buydetail_info">
-                                <component :is="list" v-for="item in this.a"><component>
-                            </tbody>
-                        </table>
-                    </div>
+                        </thead>
+                        <component :is="list"><component>
+                    </table>
                 </div>
     </div>
     `,
 })
+
+Vue.component('tab1',{ 
+    data() {
+        return {
+            datas:[],
+        };
+    },
+    template: `
+            <tbody class="mem_buydetail_info">
+                <tr>
+                    <td>a</td>
+                    <td>b</td>
+                    <td>c</td>
+                    <td>d</td>
+                    <td>
+                        <button>查詢</button>
+                    </td>
+                </tr>
+            </tbody>
+    `,
+});
+Vue.component('tab2',{ 
+    data() {
+        return {
+            datas:[],
+        };
+    },
+    template: `
+            <tbody class="mem_buydetail_info">
+                <tr>
+                    <td>1</td>
+                    <td>2</td>
+                    <td>3</td>
+                    <td>4</td>
+                    <td>
+                        <button>查詢</button>
+                    </td>
+                </tr>
+            </tbody>
+    `,
+});
 
 Vue.component('analinfo', {
     props: [],
@@ -174,20 +212,9 @@ Vue.component('mypostcard', {
     `,
 })
 
-Vue.component('tab1',{ 
-    template: `
-            <tr>未出貨</tr>
-    `,
-});
-Vue.component('tab2',{ 
-    template: `
-            <div>已出貨</div>
-    `,
-});
-
 const contents = new Vue({
     el: '#mainSection',
     data:{
-        content:'meminfo',
+        content:'orderlist',
     }
 })
