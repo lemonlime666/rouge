@@ -98,13 +98,9 @@ $(document).ready(function () {
 
     //=============================================================
 
-    //memPage
-    document.getElementById('memPage').click(function(e){
-        e.preventDefault();
+    $('#memPage').click(function(){
         alert('ok');
-    })
-
-
+    });
 });
 
 
