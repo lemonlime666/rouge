@@ -18,10 +18,6 @@ $(document).ready(function () {
 		}
 	});
 
-	// window.addEventListener('resize', () => {
-	// 	let winWidth = window.innerWidth;
-	// })
-
 	window.addEventListener('resize', () => {
 		let winWidth = window.innerWidth;
 		console.log(winWidth);

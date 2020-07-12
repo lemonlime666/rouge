@@ -98,6 +98,13 @@ $(document).ready(function () {
 
     //=============================================================
 
+    //memPage
+    document.getElementById('memPage').click(function(e){
+        e.preventDefault();
+        alert('ok');
+    })
+
+
 });
 
 

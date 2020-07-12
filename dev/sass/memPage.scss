@@ -96,14 +96,10 @@ body {
             // border: 1px solid red;
             width: 90%;
             height: 100%;
-            float: right;
+            margin: 0 auto;
             display: flex;
             justify-content: center;
             align-items: center;
-            @include m-pad(){
-                float: unset;
-                margin: 0 auto;
-            }
             @include s-pad(){
                 width: 100%;
             }
@@ -127,31 +123,87 @@ body {
                 form.mem_info {
                     color: #ffffff;
                     // border: 1px solid red !important;
-                    width: 70%;
+                    width: 80%;
+                    height: 60%;
                     margin: 0 auto;
                     display: flex;
-                    justify-content: center;
+                    flex-flow: column nowrap;
+                    justify-content: flex-start;
                     align-items: center;
-                    @include s-pad(){
+                    @include m-pad(){
                         width: 90%;
+                    }
+                    @include s-pad(){
                         font-size: 14px;
                     }
-                    .mem_input {
-                        background: transparent;
-                        margin: 10px 0 10px 20px;
-                        border: none;
-                        border-bottom: 2px solid #e1d0a167;
-                        outline: none;
-                        width: 70%;
-                        height: 60px;
+                    label{
+                        // border: 1px solid gold;
+                        width: 100%;
+                        height: 20%;
+                        display: grid;
+                        grid-column: 3fr;
+                        grid-template-columns: 1fr 5fr;
+                        align-items: center;
                         @include font-style(){
                             font-size: 16px;
                         }
-                        @include l-phone(){
-                            height: 40px;
-                            font-size: 14px;
+                        .subjectBox{
+                            border-right:1px solid rgba($white, .4);
+                            border-left: 1px solid rgba($white, .4);
+                            border-bottom: 1px solid rgba($wood, .4);
+                            height: 100%;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            background-color: rgba($cofe, .5);
+                        }
+                        .inputBox{
+                            border-right:1px solid rgba($white, .4);
+                            border-bottom: 1px solid rgba($wood, .4);
+                            padding-left: 25px;
+                            height: 100%;
+                            display: flex;
+                            flex-flow: row nowrap;
+                            justify-content: flex-start;
+                            align-items: center;
+                            background-color: rgba($lightGold, .5);
                         }
                     }
+                    .modifyMemInfo{
+                        border: 0;
+                        outline: 0;
+                        font-style: italic;
+                        background-color: $darkGold;
+                        align-self: flex-end;
+                        padding: 5px 20px;
+                        margin-top: 30px;
+                        border-radius: 5px;
+                        cursor: pointer;
+                        @include font-style(){
+                            font-size: 14px;
+                            color: $wood;
+                        }
+                        &:hover{
+                            background-color: $lightGold;
+                            transition: all .2s;
+                        }
+                    }
+                    // input {
+                    //     background: transparent;
+                    //     margin: 10px 0 10px 20px;
+                    //     border: none;
+                    //     border-bottom: 2px solid #e1d0a167;
+                    //     outline: none;
+                    //     width: 70%;
+                    //     height: 60px;
+                    //     @include font-style(){
+                    //         font-size: 16px;
+                    //     }
+                    //     @include l-phone(){
+                    //         height: 40px;
+                    //         font-size: 14px;
+                    //     }
+                    // }
                 }
             }
         }
@@ -159,11 +211,11 @@ body {
 
     #btnSec {
         // border: 1px solid green;
-        width: 230px;
+        width: 200px;
         height: 100%;
         position: absolute;
         top: 0;
-        left: -40px;
+        left: -60px;
         display: flex;
         flex-flow: column;
         justify-content: flex-start;
@@ -196,19 +248,23 @@ body {
         .alterInfo {
             width: 100%;
             height: 10%;
-            @include font-style() {}
+            @include font-style() {
+                font-size: 16px;
+                font-weight: 500;
+                color: $wood;
+            }
             background-color: #a39775;
-            color: $wood;
-            font-weight: 500;
             display: flex;
             justify-content: center;
             align-items: center;
             position: relative;
             cursor: pointer;
+            box-shadow: 5px 8px 20px rgba($lightGold, .15);
 
             @include m-pad(){
                 width: 150px;
                 height:100%;
+                box-shadow:unset;
             }
             @include l-phone(){
                 font-size: 14px;
@@ -235,6 +291,7 @@ body {
             @include font-style() {}
             background-color: $wood;
             color: $white;
+            font-size: 16px;
             @include l-phone(){
                 font-size: 14px;
             }
