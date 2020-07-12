@@ -359,6 +359,7 @@ body {
     height: 70%;
     background: rgb(129, 129, 129);
     display: block;
+    position: relative;
     @include pc() {
         transform: translateX(20px);
     }
@@ -441,6 +442,107 @@ body {
                         background-color: $lightGold;
                         border-radius: 3px;
                         padding: 0px 3px;
+                        cursor: pointer;
+                        &:hover{
+                            background-color: $darkGold;
+                        }
+                        @include font-style(){
+                            font-size: 12px;
+                            color: $wood;
+                        }
+                    }
+                }
+            }
+            .checkOrderItemDetail{
+                background-color: rgba(black, .9);
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                z-index: 80;
+                display: flex;
+                flex-flow: column;
+                justify-content: flex-start;
+                align-items: center;
+                .checkOrderItemDetailTh{
+                    list-style: none;
+                    // border: 1px solid red;
+                    width: 100%;
+                    @include font-style(){
+                        font-size: 16px;
+                        color: $lightGold;
+                    }
+                    display: grid;
+                    grid-template-columns: 1fr 1fr 3fr;
+
+                    li{
+                        border-right: 1px solid $lightGold;
+                        text-align: center;
+                        background-color: $wood;
+                        padding: 5px 0;
+                        &:last-child{
+                            border-right: 0;
+                        }
+
+                    }
+                }
+                .checkOrderItemDetailDiv{
+                    // border: 1px solid red;
+                    width: 100%;
+                    height: 80%;
+                    overflow-y: scroll;
+
+                    .checkOrderItemDetailTr{
+                        list-style: none;
+                        border-bottom: 1px solid rgba($white, .4);
+                        display: grid;
+                        grid-template-columns: 1fr 1fr 3fr;
+                        &:nth-of-type(odd){
+                            background-color: rgba($lightGold, .5);
+                        }
+                        &:nth-of-type(even){
+                            background-color: rgba($cofe, .5);
+                        }
+    
+                        li{
+                            text-align: center;
+                            padding: 10px 0;
+                            @include font-style(){
+                                font-size: 16px;
+                            }
+                            border-right: 1px solid rgba($white, .4);
+                            &:last-child{
+                            border-right: 0;
+                        }
+                        }
+                    }
+                    .checkOrderItemDetailGift{
+                        // border: 1px solid green;
+                        width: 100%;
+                        @include font-style(){
+                            font-size: 16px;
+                        }
+                        text-align: center;
+                        padding: 10px 0;
+                        background-color: rgba($cofe, .6);
+                        margin: 0px 0 20px;
+                    }
+                }
+                .checkOrderItemDetailBtnBox{
+                    // border: 1px solid peru;
+                    width: 100%;
+                    text-align: center;
+                    button{
+                        border: 0;
+                        outline: 0;
+                        background-color: $lightGold;
+                        border-radius: 3px;
+                        padding: 5px 15px;
+                        cursor: pointer;
+                        &:hover{
+                            background-color: $darkGold;
+                        }
                         @include font-style(){
                             font-size: 12px;
                             color: $wood;

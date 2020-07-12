@@ -133,42 +133,178 @@ Vue.component('orderlist', {
 Vue.component('tab1',{ 
     data() {
         return {
+            ord:0,
             datas:[],
+            counter:0,
+            prepare:[],
+            gift: "",
         };
     },
     template: `
             <tbody class="mem_buydetail_info">
-                <tr>
-                    <td>a</td>
-                    <td>b</td>
-                    <td>c</td>
-                    <td>d</td>
+                <div class="checkOrderItemDetail" v-if="counter==1">
+                    <ul class="checkOrderItemDetailTh">
+                        <li>數量</li>
+                        <li>價錢</li>
+                        <li>商品</li>
+                    </ul>
+                    <div class="checkOrderItemDetailDiv">
+                        <ul class="checkOrderItemDetailTr" v-for="(list, i) in prepare" :list="list" :key="i">
+                            <li>{{list.ORD_LIST_NUM}}</li>
+                            <li>{{list.ORD_PRICE}}</li>
+                            <li>{{list.PRO_NAME}}</li>
+                        </ul>
+                        <div class="checkOrderItemDetailGift"><i>贈品&nbsp&nbsp</i> {{gift}}</div>
+                    </div>
+                    <div class="checkOrderItemDetailBtnBox">
+                    <button @click="counter--;">確認</button>
+                    </div>
+                </div>
+                <tr v-for="item, i in datas" :item="item" :key="i">
+                    <td>{{item.ORD_NO}}</td>
+                    <td>{{item.ORD_DATE}}</td>
+                    <td>{{item.ORD_PRICE}}</td>
+                    <td>{{item.ORD_ADRS}}</td>
                     <td>
-                        <button>查詢</button>
+                        <button :data-ordno="item.ORD_NO" @click="checkList">查詢</button>
                     </td>
                 </tr>
             </tbody>
     `,
+    methods:{
+        getData(){
+            let xhr = new XMLHttpRequest();
+            let a = this;
+            xhr.onload = function (){
+                if(xhr.status == 200){
+                    a.datas = JSON.parse(xhr.responseText);
+                }else{
+                    alert(xhr.status);
+                }
+            }
+            xhr.open("post", "../php/memPageOrder.php", true);
+            xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
+            let status = this.ord;
+            xhr.send(`status=${status}`);
+        },
+        checkList(e){
+            let num = e.target.dataset.ordno;
+            let xhr = new XMLHttpRequest();
+            let a = this;
+            xhr.onload = function (){
+                if(xhr.status == 200){
+                    a.prepare = JSON.parse(xhr.responseText);
+                    if(!JSON.parse(xhr.responseText)[0].GIF_NAME){
+                        a.gift = "無贈品";
+                    }else{
+                        a.gift = JSON.parse(xhr.responseText)[0].GIF_NAME;
+                    }
+                }else{
+                    alert(xhr.status);
+                }
+            }
+            xhr.open("post", "../php/checkOrderList.php", true);
+            xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
+            let str={
+                ordNo:num,
+                ordStatus:this.ord
+            }
+            let obj = JSON.stringify(str);
+            xhr.send(`obj=${obj}`);
+            this.counter++;
+        }
+    },
+    mounted(){
+        this.getData();
+    }
 });
 Vue.component('tab2',{ 
     data() {
         return {
+            ord:1,
             datas:[],
+            counter:0,
+            prepare:[],
+            gift: "無贈品",
         };
     },
     template: `
             <tbody class="mem_buydetail_info">
-                <tr>
-                    <td>1</td>
-                    <td>2</td>
-                    <td>3</td>
-                    <td>4</td>
+                <div class="checkOrderItemDetail" v-if="counter==1">
+                    <ul class="checkOrderItemDetailTh">
+                        <li>數量</li>
+                        <li>價錢</li>
+                        <li>商品</li>
+                    </ul>
+                    <div class="checkOrderItemDetailDiv">
+                        <ul class="checkOrderItemDetailTr" v-for="(list, i) in prepare" :list="list" :key="i">
+                            <li>{{list.ORD_LIST_NUM}}</li>
+                            <li>{{list.ORD_PRICE}}</li>
+                            <li>{{list.PRO_NAME}}</li>
+                        </ul>
+                        <div class="checkOrderItemDetailGift"><i>贈品&nbsp&nbsp</i> {{gift}}</div>
+                    </div>
+                    <div class="checkOrderItemDetailBtnBox">
+                    <button @click="counter--;">確認</button>
+                    </div>
+                </div>
+                <tr v-for="item, i in datas" :item="item" :key="i">
+                    <td>{{item.ORD_NO}}</td>
+                    <td>{{item.ORD_DATE}}</td>
+                    <td>{{item.ORD_PRICE}}</td>
+                    <td>{{item.ORD_ADRS}}</td>
                     <td>
-                        <button>查詢</button>
+                        <button :data-ordno="item.ORD_NO" @click="checkList">查詢</button>
                     </td>
                 </tr>
             </tbody>
     `,
+    methods:{
+        getData(){
+            let xhr = new XMLHttpRequest();
+            let a = this;
+            xhr.onload = function (){
+                if(xhr.status == 200){
+                    a.datas = JSON.parse(xhr.responseText);
+                }else{
+                    alert(xhr.status);
+                }
+            }
+            xhr.open("post", "../php/memPageOrder.php", true);
+            xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
+            let status = this.ord;
+            xhr.send(`status=${status}`);
+        },
+        checkList(e){
+            let num = e.target.dataset.ordno;
+            let xhr = new XMLHttpRequest();
+            let a = this;
+            xhr.onload = function (){
+                if(xhr.status == 200){
+                    a.prepare = JSON.parse(xhr.responseText);
+                    if(!JSON.parse(xhr.responseText)[0].GIF_NAME){
+                        a.gift = "無贈品";
+                    }else{
+                        a.gift = JSON.parse(xhr.responseText)[0].GIF_NAME;
+                    }
+                }else{
+                    alert(xhr.status);
+                }
+            }
+            xhr.open("post", "../php/checkOrderList.php", true);
+            xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
+            let str={
+                ordNo:num,
+                ordStatus:a.ord
+            }
+            let obj = JSON.stringify(str);
+            xhr.send(`obj=${obj}`);
+            this.counter++;
+        }
+    },
+    mounted(){
+        this.getData();
+    }
 });
 
 Vue.component('analinfo', {
@@ -215,6 +351,6 @@ Vue.component('mypostcard', {
 const contents = new Vue({
     el: '#mainSection',
     data:{
-        content:'orderlist',
+        content:'meminfo',
     }
 })
