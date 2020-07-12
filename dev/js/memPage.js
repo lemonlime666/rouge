@@ -3,29 +3,65 @@ Vue.component('meminfo', {
     props: [],
     data() {
         return {
-
+            counter:0,
+            subject:['name','mail','phone','address'],
         };
     },
     template: `
     <div class="contentBox">
         <form action="" class="mem_info">
-            <p>姓名：</p> 
-            <input type="text" placeholder="Name" name="" class="mem_input">
-        </form>
-        <form action="" class="mem_info">
-            <p>Email：</p> 
-            <input type="email" placeholder="Phone" name="" class="mem_input">
-        </form>
-        <form action="" class="mem_info">
-            <p>電話：</p> 
-            <input type="tel" placeholder="Email" name="" class="mem_input">
-        </form>
-        <form action="" class="mem_info">
-            <p>地址：</p> 
-            <input type="text" placeholder="Address" name="" class="mem_input">
+            <label for="name">
+            <span class="subjectBox">姓名</span>
+            <span class="inputBox">Rouge</span>
+            </label>
+            <label for="mail">
+            <span class="subjectBox">信箱</span>
+            <span class="inputBox">rouge@gmail.com</span>
+            </label>
+            <label for="phone">
+            <span class="subjectBox">電話</span>
+            <span class="inputBox">0912345678</span>
+            </label>
+            <label>
+            <span class="subjectBox">地址</span>
+            <span class="inputBox">桃園市桃園區中正一街一百二十三號七樓之八</span>
+            </label for="mail">
+            <button class="modifyMemInfo" @click="alterMemInfo" v-if="this.counter == 0">修改資料</button>
+            <div v-if="this.counter == 1">
+                <button class="modifyMemInfo" @click="confirmAlter" style="margin-right:10px;">確認</button>
+                <button class="modifyMemInfo" @click="cancelAlter">取消</button>
+            </div>
         </form>
     </div>
     `,
+    methods:{
+        alterMemInfo(e){
+            e.preventDefault();
+            let inputbox = document.querySelectorAll('.inputBox');
+            for(let i=0; i<inputbox.length; i++){
+                inputbox[i].innerHTML = `<input type="text" name="${this.subject[i]}" class="alterInput" style="width:80%;padding:5px 10px;" value="${inputbox[i].textContent}">`;
+            }
+            this.counter++;
+        },
+        cancelAlter(e){
+            e.preventDefault();
+            let alterInput = document.querySelectorAll('.alterInput');
+            let inputbox = document.querySelectorAll('.inputBox');
+            for(let i=0; i<alterInput.length; i++){
+                inputbox[i].innerHTML = `${alterInput[i].defaultValue}`;
+            }
+            this.counter--;
+        },
+        confirmAlter(e){
+            e.preventDefault();
+            let alterInput = document.querySelectorAll('.alterInput');
+            let inputbox = document.querySelectorAll('.inputBox');
+            for(let i=0; i<alterInput.length; i++){
+                inputbox[i].innerHTML = `${alterInput[i].value}`;
+            }
+            this.counter--;
+        }
+    }
 })
 
 Vue.component('orderlist', {

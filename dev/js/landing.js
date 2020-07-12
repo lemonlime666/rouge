@@ -14,7 +14,6 @@ window.addEventListener('load', function () {
                 let adimg = document.createElement('img');
                 adimg.classList.add('swiperimg');
                 adimg.setAttribute('src', `${data[i]}`);
-
                 ahref.appendChild(adimg);
                 div.appendChild(ahref);
                 document.querySelector('.swiperimgBox').appendChild(div);
