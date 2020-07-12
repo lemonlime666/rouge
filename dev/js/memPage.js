@@ -5,6 +5,10 @@ Vue.component('meminfo', {
         return {
             counter:0,
             subject:['name','mail','phone','address'],
+            name:"",
+            mail:"",
+            phone:"",
+            adrs:"",
         };
     },
     template: `
@@ -12,19 +16,19 @@ Vue.component('meminfo', {
         <form action="" class="mem_info">
             <label for="name">
             <span class="subjectBox">姓名</span>
-            <span class="inputBox">Rouge</span>
+            <span class="inputBox">{{name}}</span>
             </label>
             <label for="mail">
             <span class="subjectBox">信箱</span>
-            <span class="inputBox">rouge@gmail.com</span>
+            <span class="inputBox">{{mail}}</span>
             </label>
             <label for="phone">
             <span class="subjectBox">電話</span>
-            <span class="inputBox">0912345678</span>
+            <span class="inputBox">{{phone}}</span>
             </label>
             <label>
             <span class="subjectBox">地址</span>
-            <span class="inputBox">桃園市桃園區中正一街一百二十三號七樓之八</span>
+            <span class="inputBox">{{adrs}}</span>
             </label for="mail">
             <button class="modifyMemInfo" @click="alterMemInfo" v-if="this.counter == 0">修改資料</button>
             <div v-if="this.counter == 1">
@@ -60,8 +64,31 @@ Vue.component('meminfo', {
                 inputbox[i].innerHTML = `${alterInput[i].value}`;
             }
             this.counter--;
+        },
+        getInfo(){
+            let xhr = new XMLHttpRequest();
+            let a = this;
+            xhr.onload = function () {
+                if (xhr.status == 200) {
+                    member = JSON.parse(xhr.responseText);
+                    if (member.mail) { //已登入
+                        a.name = member.name;
+                        a.mail = member.mail;
+                        a.phone = member.phone;
+                        a.adrs = member.adrs;
+                    }else{
+                        alert('請先登入會員');
+                        document.getElementById('login').style.display = "flex";
+                    }
+                }
+            }
+            xhr.open("get", "./php/getMemberInfo.php", true);
+            xhr.send(null);
         }
-    }
+    },
+    mounted() {
+        this.getInfo();
+    },
 })
 
 Vue.component('orderlist', {
@@ -81,12 +108,8 @@ Vue.component('orderlist', {
     template: `
     <div class="contentBox">
                 <div class="mem_detailGroupbtn">
-                    <button class="mem_buybtn mem_buyactive" data-list="tab1" @click="orderTab">全部</button>
-                    <button class="mem_buybtn" data-list="tab2" @click="orderTab">待付款</button>
-                    <button class="mem_buybtn" data-list="tab3" @click="orderTab">待出貨</button>
-                    <button class="mem_buybtn" data-list="tab4" @click="orderTab">待收貨</button>
-                    <button class="mem_buybtn" data-list="tab5" @click="orderTab">完成</button>
-                    <button class="mem_buybtn" data-list="tab6" @click="orderTab">取消</button>
+                    <button class="mem_buybtn mem_buyactive" data-list="tab1" @click="orderTab">未出貨</button>
+                    <button class="mem_buybtn" data-list="tab2" @click="orderTab">已出貨</button>
                 </div>
                 
                 <div class="mem_buycontent">  
@@ -153,32 +176,12 @@ Vue.component('mypostcard', {
 
 Vue.component('tab1',{ 
     template: `
-            <div>tab1</div>
+            <div>未出貨</div>
     `,
 });
 Vue.component('tab2',{ 
     template: `
-            <div>tab2</div>
-    `,
-});
-Vue.component('tab3',{ 
-    template: `
-            <div>tab3</div>
-    `,
-});
-Vue.component('tab4',{ 
-    template: `
-            <div>tab4</div>
-    `,
-});
-Vue.component('tab5',{ 
-    template: `
-            <div>tab5</div>
-    `,
-});
-Vue.component('tab6',{ 
-    template: `
-            <div>tab6</div>
+            <div>已出貨</div>
     `,
 });
 

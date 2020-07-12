@@ -311,7 +311,8 @@ body {
     margin: 0 auto;
     width: 80%;
     display: flex;
-    justify-content: space-between;
+    flex-flow: row nowrap;
+    justify-content: center;
     background-color: rgb(129, 129, 129);
     border-bottom: 4.5px solid #292929;
     // border: 1px solid red !important;
@@ -326,7 +327,7 @@ body {
         @include font-style(){};
         font-size: 16px;
         color: $grey5;
-        width: calc(100% / 5);
+        width: 50%;
         height: 60px;
         border: 0;
         outline: 0;
