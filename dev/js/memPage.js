@@ -96,6 +96,7 @@ Vue.component('orderlist', {
     data() {
         return {
             list:'tab1',
+            a:['a', 'b', 'c', 'd','a', 'b', 'c', 'd','a', 'b', 'c', 'd','a', 'b', 'c', 'd','a', 'b', 'c', 'd'],
         };
     },
     methods: {
@@ -116,15 +117,14 @@ Vue.component('orderlist', {
                     <div class="mem_buy mem_buyTabOne">
                         <table class="mem_tablegroup">
                             <tr class="mem_buydetail_title">
-                                <th>訂單編號</th>
-                                <th>訂單日期</th>
-                                <th>狀態</th>
+                                <th>編號</th>
+                                <th>日期</th>
                                 <th>金額</th>
                                 <th>寄送地址</th>
-                                <th>詳細資料</th>
+                                <th>明細</th>
                             </tr>
                             <tbody id="mem_buydetail_info">
-                                <component :is="list"><component>
+                                <component :is="list" v-for="item in this.a"><component>
                             </tbody>
                         </table>
                     </div>
@@ -176,7 +176,7 @@ Vue.component('mypostcard', {
 
 Vue.component('tab1',{ 
     template: `
-            <div>未出貨</div>
+            <tr>未出貨</tr>
     `,
 });
 Vue.component('tab2',{ 
