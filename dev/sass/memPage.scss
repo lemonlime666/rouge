@@ -22,7 +22,7 @@ body {
         background-image: url(../image/back2.png);
         background-repeat: no-repeat;
         background-size: cover;
-        opacity: .06;
+        opacity: 0.06;
         z-index: -1;
     }
 
@@ -33,7 +33,7 @@ body {
         left: 50%;
         width: 100%;
         transform: translateX(-50%);
-        border: 10px double rgba($cofe, .1);
+        border: 10px double rgba($cofe, 0.1);
     }
 }
 
@@ -47,31 +47,30 @@ body {
     left: 50%;
     bottom: 0;
     transform: translateX(-50%);
-    @include pc(){
+    @include pc() {
         width: 80%;
         min-width: 0;
     }
-    @include m-pad(){
+    @include m-pad() {
         width: 90%;
         height: 74vh;
     }
-    @include s-pad(){
+    @include s-pad() {
         height: 76vh;
     }
-    @include l-phone(){
+    @include l-phone() {
         width: 100%;
         height: 74vh;
     }
-    @include s-phone(){
+    @include s-phone() {
         height: 78vh;
     }
-    @media screen and (max-width:375px) {
+    @media screen and (max-width: 375px) {
         height: 78vh;
     }
-    @media screen and (max-width:360px) {
+    @media screen and (max-width: 360px) {
         height: 74vh;
     }
-
 
     &::before {
         content: "";
@@ -81,12 +80,12 @@ body {
         left: 50%;
         bottom: 0;
         transform: translateX(-50%);
-        border: 4px double rgba($cofe, .3);
+        border: 4px double rgba($cofe, 0.3);
         border-bottom: 0;
     }
 
     #mainInfoSec {
-        border: 4px double rgba($lightGold, .5);
+        border: 4px double rgba($lightGold, 0.5);
         width: 90%;
         height: 100%;
         margin: 0 auto;
@@ -100,7 +99,7 @@ body {
             display: flex;
             justify-content: center;
             align-items: center;
-            @include s-pad(){
+            @include s-pad() {
                 width: 100%;
             }
 
@@ -115,7 +114,7 @@ body {
                 padding-top: 80px;
                 z-index: 10;
 
-                @include s-pad(){
+                @include s-pad() {
                     padding-top: 20px;
                     width: 100%;
                 }
@@ -130,13 +129,13 @@ body {
                     flex-flow: column nowrap;
                     justify-content: flex-start;
                     align-items: center;
-                    @include m-pad(){
+                    @include m-pad() {
                         width: 90%;
                     }
-                    @include s-pad(){
+                    @include s-pad() {
                         font-size: 14px;
                     }
-                    label{
+                    label {
                         // border: 1px solid gold;
                         width: 100%;
                         height: 20%;
@@ -144,32 +143,32 @@ body {
                         grid-column: 3fr;
                         grid-template-columns: 1fr 5fr;
                         align-items: center;
-                        @include font-style(){
+                        @include font-style() {
                             font-size: 16px;
                         }
-                        .subjectBox{
-                            border-right:1px solid rgba($white, .4);
-                            border-left: 1px solid rgba($white, .4);
-                            border-bottom: 1px solid rgba($wood, .4);
+                        .subjectBox {
+                            border-right: 1px solid rgba($white, 0.4);
+                            border-left: 1px solid rgba($white, 0.4);
+                            border-bottom: 1px solid rgba($wood, 0.4);
                             height: 100%;
                             display: flex;
                             justify-content: center;
                             align-items: center;
-                            background-color: rgba($cofe, .5);
+                            background-color: rgba($cofe, 0.5);
                         }
-                        .inputBox{
-                            border-right:1px solid rgba($white, .4);
-                            border-bottom: 1px solid rgba($wood, .4);
+                        .inputBox {
+                            border-right: 1px solid rgba($white, 0.4);
+                            border-bottom: 1px solid rgba($wood, 0.4);
                             padding-left: 25px;
                             height: 100%;
                             display: flex;
                             flex-flow: row nowrap;
                             justify-content: flex-start;
                             align-items: center;
-                            background-color: rgba($lightGold, .5);
+                            background-color: rgba($lightGold, 0.5);
                         }
                     }
-                    .modifyMemInfo{
+                    .modifyMemInfo {
                         border: 0;
                         outline: 0;
                         font-style: italic;
@@ -179,13 +178,13 @@ body {
                         margin-top: 30px;
                         border-radius: 5px;
                         cursor: pointer;
-                        @include font-style(){
+                        @include font-style() {
                             font-size: 14px;
                             color: $wood;
                         }
-                        &:hover{
+                        &:hover {
                             background-color: $lightGold;
-                            transition: all .2s;
+                            transition: all 0.2s;
                         }
                     }
                     // input {
@@ -223,9 +222,9 @@ body {
         padding-top: 60px;
         z-index: 30;
 
-        @include m-pad(){
+        @include m-pad() {
             width: 90%;
-            height:10%;
+            height: 10%;
             flex-flow: row;
             justify-content: center;
             align-items: center;
@@ -234,14 +233,14 @@ body {
             transform: translateX(-50%);
             padding: 0;
         }
-        @include s-pad(){
+        @include s-pad() {
             top: -100px;
         }
-        @include l-phone(){
+        @include l-phone() {
             width: 90%;
             top: -70px;
         }
-        @include s-phone(){
+        @include s-phone() {
             top: -60px;
         }
 
@@ -259,18 +258,18 @@ body {
             align-items: center;
             position: relative;
             cursor: pointer;
-            box-shadow: 5px 8px 20px rgba($lightGold, .15);
+            box-shadow: 5px 8px 20px rgba($lightGold, 0.15);
 
-            @include m-pad(){
+            @include m-pad() {
                 width: 150px;
-                height:100%;
-                box-shadow:unset;
+                height: 100%;
+                box-shadow: unset;
             }
-            @include l-phone(){
+            @include l-phone() {
                 font-size: 14px;
                 height: 70%;
             }
-            @include s-phone(){
+            @include s-phone() {
                 font-size: 12px;
             }
 
@@ -282,20 +281,21 @@ body {
                 content: "";
                 width: 90%;
                 height: 75%;
-                border: 1px solid rgba($white, .7);
+                border: 1px solid rgba($white, 0.7);
                 position: absolute;
             }
         }
 
         .activeInfo {
-            @include font-style() {}
+            @include font-style() {
+            }
             background-color: $wood;
             color: $white;
             font-size: 16px;
-            @include l-phone(){
+            @include l-phone() {
                 font-size: 14px;
             }
-            @include s-phone(){
+            @include s-phone() {
                 font-size: 12px;
             }
 
@@ -316,15 +316,16 @@ body {
     background-color: rgb(129, 129, 129);
     border-bottom: 4.5px solid #292929;
     // border: 1px solid red !important;
-    @include pc(){
+    @include pc() {
         transform: translateX(20px);
     }
-    @include m-pad(){
+    @include m-pad() {
         transform: unset;
         width: 100%;
     }
     .mem_buybtn {
-        @include font-style(){};
+        @include font-style() {
+        }
         font-size: 16px;
         color: $grey5;
         width: 50%;
@@ -335,13 +336,13 @@ body {
         transition: 0.2s;
         border-bottom: 4.5px solid #292929;
         cursor: pointer;
-        @include l-phone(){
+        @include l-phone() {
             font-size: 14px;
         }
-        @media all and (max-width:420px){
+        @media all and (max-width: 420px) {
             font-size: 12px;
         }
-        @media all and (max-width:360px){
+        @media all and (max-width: 360px) {
             font-size: 10px;
         }
     }
@@ -357,10 +358,11 @@ body {
     width: 80%;
     height: 70%;
     background: rgb(129, 129, 129);
-    @include pc(){
+    overflow-y: scroll;
+    @include pc() {
         transform: translateX(20px);
     }
-    @include m-pad(){
+    @include m-pad() {
         transform: unset;
         width: 100%;
     }
@@ -375,31 +377,38 @@ body {
             border-collapse: collapse;
             width: 100%;
             text-align: center;
-            
-            th {
-                border: 2px solid #a19677;
-                background-color: #c2b48f;
-                @include font-style(){
-                    color: $grey5;
-                    font-size: 16px;
-                }
-                padding: 10px 0;
+            .mem_buydetail_title {
+                display: grid;
+                grid-template-columns: 1.5fr 2fr 2fr 4fr 1fr;
 
-                @include l-phone(){
-                    font-size: 14px;
-                }
-                @media all and (max-width:420px){
-                    font-size: 12px;
-                }
-                @media all and (max-width:360px){
-                    font-size: 10px;
+                th {
+                    border: 2px solid #a19677;
+                    background-color: red;
+                    @include font-style() {
+                        color: $grey5;
+                        font-size: 16px;
+                    }
+                    padding: 3px 0;
+
+                    @include l-phone() {
+                        font-size: 14px;
+                    }
+                    @media all and (max-width: 420px) {
+                        font-size: 12px;
+                    }
+                    @media all and (max-width: 360px) {
+                        font-size: 10px;
+                    }
                 }
             }
+            // .mem_buydetail_info{
+            //     border: 1px solid green;
+            // }
             td {
                 border: 1.5px solid #a19677;
                 font-size: 15px;
                 padding: 3px 0;
-                @include l-phone(){
+                @include l-phone() {
                     font-size: 14px;
                 }
             }
@@ -417,7 +426,7 @@ body {
     .mem_title {
         // border: 1px solid red;
         padding: 20px 20px;
-        p.mem_date{
+        p.mem_date {
             font-size: 12px;
             color: #464646;
         }
@@ -425,24 +434,25 @@ body {
             font-family: "Noto Serif TC", serif;
             margin-bottom: 10px;
         }
-        p.mem_exp{
-            @include font-style(){}
+        p.mem_exp {
+            @include font-style() {
+            }
             font-size: 16px;
             color: #292929;
         }
     }
-    button.mem_skincarePd{
+    button.mem_skincarePd {
         cursor: pointer;
         outline: none;
         border: none;
         background: #bbbbbb;
-        padding: .8rem;
+        padding: 0.8rem;
         font-family: "Noto Serif TC", serif;
-        letter-spacing: .2rem;
+        letter-spacing: 0.2rem;
     }
 }
 
-.mem_createcard{
+.mem_createcard {
     // border: 1px solid blue;
     width: 75%;
     height: 80%;
@@ -451,30 +461,30 @@ body {
     justify-content: center;
     align-items: flex-start;
     color: #bbbbbb;
-    .mem_card{
+    .mem_card {
         flex-shrink: 0;
         border: 2px solid #e1d0a167;
         width: 400px;
         height: 500px;
-        @include s-pad(){
+        @include s-pad() {
             width: 350px;
             height: 450px;
         }
-        @include l-phone(){
+        @include l-phone() {
             width: 250px;
             height: 350px;
         }
-        @include s-phone(){
+        @include s-phone() {
             width: 200px;
             height: 300px;
         }
-        .mem_img{
+        .mem_img {
             margin: 1% auto;
             width: 100%;
             height: 100%;
         }
-        p.mem_text{
-            margin: .5rem;
+        p.mem_text {
+            margin: 0.5rem;
             padding: 0 1rem;
         }
     }
