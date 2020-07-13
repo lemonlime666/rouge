@@ -5,13 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>會員保養分析結果</title>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&family=Noto+Serif+TC:wght@200;300;400;500;600;700;900&display=swap"
-        rel="stylesheet">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Nunito+Sans:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="css/memAnylizeResult.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&family=Noto+Serif+TC:wght@200;300;400;500;600;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Nunito+Sans:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap">
+    <link rel="stylesheet" href="./css/memAnylizeResult.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
@@ -19,15 +15,10 @@
 
     @@include('./app/header.html')
     <main class="memAnyl-main">
-        <!-- <section class="memAnyl-background">
-            <aside class="memAnyl-leftblock"></aside>
-            <p class="memAnyl-ANYL">ANYLIZE</p>
-            <p class="memAnyl-RESU">RESULT</p>
-        </section> -->
-        <section class="memAnylresult-content">
+        <section id="memAnylresult" class="memAnylresult-content">
             <div class="memAnylResult-word">
                 <div class="title">
-                    <h1>檢測結果 - 油性肌</h1>
+                    <h1>檢測結果 - 乾性肌</h1>
                 </div>
                 <div class="line"></div>
                 <p class="forword">
@@ -38,40 +29,100 @@
                 <div class="word">
                     <h3>日間保養步驟</h3>
                     <div class="line"></div>
-                    <div>
-                        <p>1.使用化妝水保持住肌膚的水嫩與濕度</p>
-                        <p>2.使用化妝水保持住肌膚的水嫩與濕度</p>
-                        <p>3.使用化妝水保持住肌膚的水嫩與濕度</p>
+                    <div class="product" v-for="(item,index) in result" v-if="index < 3">
+                        <p>步驟 {{index+1}} : 使用{{item.PRO_NAME}}</p>
+                        <div class="pic">
+                            <img src="">
+                        </div>
                     </div>
 
                 </div>
-                <div class="pic">
-                    <img src="./image/dayToningLotion.jpg">
-                </div>
+
             </div>
             <div class="night">
                 <div class="word">
                     <h3>夜間保養步驟</h3>
                     <div class="line"></div>
-                    <div>
-                        <p>1.使用化妝水保持住肌膚的水嫩與濕度</p>
-                        <p>2.使用化妝水保持住肌膚的水嫩與濕度</p>
-                        <p>3.使用化妝水保持住肌膚的水嫩與濕度</p>
+                    <div class="product" v-for="(item,index) in result" v-if="index < 3">
+                        <p>步驟 {{index+1}} : 使用{{item.PRO_NAME}}</p>
+                        <div class="pic">
+                            <img src="">
+                        </div>
                     </div>
                 </div>
-                <div class="pic">
-                    <img src="./image/nightToningLotion.jpg">
-                </div>
             </div>
-            
+
         </section>
         <div class="btn">
-            <a href="memAnylize.html"><div class="btnStyle"><p>在次檢測</p></div></a>
-            <a href=""><div class="btnStyle"><p>儲存檢測結果</p></div></a>
+            <a href="memAnylize.html">
+                <div class="btnStyle">
+                    <p>在次檢測</p>
+                </div>
+            </a>
+            <a href="">
+                <div class="btnStyle">
+                    <p>儲存檢測結果</p>
+                </div>
+            </a>
         </div>
     </main>
 
-    <script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.js"></script>
+
+    <!-- <script>
+        const app = new Vue({
+            el: '#memAnylresult',
+            data: {
+                
+                result:'',
+                sunItem:'',
+                word:'',
+                type:'',
+            },
+            mounted() {
+               
+                var xhr = new XMLHttpRequest();
+                xhr.onload=function (){
+                    if( xhr.status == 200 ){
+                        console.log(xhr.responseText)
+                        app.$data.result = JSON.parse(xhr.responseText);
+                        app.$data.type = localStorage.type;
+                    }else{
+                        alert( xhr.status );
+                    }
+                }
+                // let data_info = 'answer='+3;
+                var url = `./php/memAnylizeResult.php`;
+                xhr.open("post", url, true);
+                xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
+                let data_info = 'answer=' + localStorage.type;
+                
+                xhr.send(data_info); 
+                console.log(data_info)
+                // xhr.send(null);
+                
+
+                
+                // var xhr2 = new XMLHttpRequest();
+                // xhr2.onload=function (){
+                //     if( xhr2.status == 200 ){
+                //         app.$data.word = JSON.parse(xhr2.responseText);
+                //     }else{
+                //         alert( xhr2.status );
+                //     }
+                // }
+                
+                // var url2 = "php/memAnylizeResult2.php";
+                // xhr2.open("get", url, true);
+                // xhr2.send( null );
+
+
+                
+            },
+
+        }); -->
+
+
     </script>
 </body>
 

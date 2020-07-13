@@ -19,18 +19,33 @@ body {
     position: relative;
     display: flex;
     flex-direction: column;
-    
-    
+    position: relative;
     .memAnylresult-content {
+        &::before {
+            content: '';
+            position: absolute;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 2px solid $white;
+            opacity: .2;
+            z-index: -1;
+        }
         width: 60%;
+        @media screen and(max-width:991px) {
+            width: 80%;
+        }
         display: flex;
         flex-direction: column;
         align-items: flex-start;
-        margin: 50px auto;
+        margin: 55px auto;
         text-align: center;
         position: relative;
         top: 50px;
         .memAnylResult-word {
+            @include font-style(16px, $notoSerif, $white, $default-fweight) {}
+            text-align: left;
             display: flex;
             flex-direction: column;
             margin: 0 auto;
@@ -49,8 +64,9 @@ body {
                 border: 1px solid $white;
             }
             .forword {
-                width: 95%;
+                width: 80%;
                 margin: 10px;
+                @include font-style(16px, $notoSerif, $white, $default-fweight) {}
             }
         }
         .sun {
@@ -59,9 +75,11 @@ body {
             margin: 30px auto 0;
             width: 100%;
             .word {
-                width: 80%;
+                width: 100%;
                 h3 {
                     text-align: start;
+                    @include font-style(25px, $notoSerif, $white, $default-fweight) {}
+                    margin: 10px;
                 }
                 .line {
                     border: 1px solid white;
@@ -70,15 +88,24 @@ body {
                     margin-top: 30px;
                     margin-right: 10px;
                     text-align: left;
+                    @include font-style(18px, $notoSerif, $white, $default-fweight) {}
                 }
-            }
-            .pic {
-                border: 1px solid white;
-                width: 200px;
-                height: 250px;
-                img {
-                    width: 100%;
-                    height: 100%;
+                .product {
+                    display: flex;
+                    margin: 20px;
+                    @media screen and(max-width: 991px) {
+                        flex-direction: column;
+                    }
+                    .pic {
+                        border: 1px solid white;
+                        width: 150px;
+                        height: 150px;
+                        margin: 15px;
+                        img {
+                            width: 100%;
+                            height: 100%;
+                        }
+                    }
                 }
             }
         }
@@ -89,42 +116,51 @@ body {
             margin: 30px auto 0;
             width: 100%;
             .word {
-                width: 80%;
+                width: 100%;
                 h3 {
-                    text-align: end;
+                    text-align: start;
+                    margin: 10px;
+                    @include font-style(25px, $notoSerif, $white, $default-fweight) {}
                 }
                 .line {
                     border: 1px solid white;
                 }
                 p {
                     margin-top: 30px;
-                    margin-left: 10px;
+                    margin-right: 10px;
                     text-align: left;
+                    @include font-style(18px, $notoSerif, $white, $default-fweight) {}
                 }
-            }
-            .pic {
-                border: 1px solid white;
-                width: 200px;
-                height: 280px;
-                img {
-                    width: 100%;
-                    height: 100%;
+                .product {
+                    display: flex;
+                    margin: 20px;
+                    @media screen and(max-width: 991px) {
+                        flex-direction: column;
+                    }
+                    .pic {
+                        border: 1px solid white;
+                        width: 150px;
+                        height: 150px;
+                        margin: 15px;
+                        img {
+                            width: 100%;
+                            height: 100%;
+                        }
+                    }
                 }
             }
         }
-        
     }
     .btn {
         display: flex;
         width: 60%;
+        @media screen and(max-width: 767px) {
+            width: 80%;
+        }
         margin: 10px auto;
-        flex-direction: row;    
+        flex-direction: row;
         justify-content: space-between;
-        
-        
-        a {            
-            
-            
+        a {
             text-align: center;
             text-decoration: none;
             &:active {
@@ -138,7 +174,7 @@ body {
                 text-decoration: none;
                 color: white
             }
-            .btnStyle{
+            .btnStyle {
                 cursor: pointer;
                 font-size: 16px;
                 width: 100px;
@@ -146,13 +182,13 @@ body {
                 text-align: center;
                 color: white;
                 background-color: $tomato;
-                border: 1px solid  $tomato;
-                transition: background-color 0.5s , border 0.5s;            
-                &:hover{
+                border: 1px solid $tomato;
+                transition: background-color 0.5s, border 0.5s;
+                &:hover {
                     background-color: #AE5F5F;
-                    border: 1px solid  #AE5F5F;
-                    transition: background-color 0.5s , border 0.5s;
-                }                
+                    border: 1px solid #AE5F5F;
+                    transition: background-color 0.5s, border 0.5s;
+                }
                 p {
                     margin-top: 15%;
                 }
