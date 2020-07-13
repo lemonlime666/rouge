@@ -3,7 +3,7 @@
 try{
   require_once("connect.php");
   // $sqlresult = "select * from `produvt` where MTC_CLASS= :type";
-  $sqlresult = "select * FROM product WHERE MTC_CLASS=:answer";
+  $sqlresult = "select * from mt_info, product where mt_info.MTC_CLASS = product.MTC_CLASS and mt_info.MTC_CLASS = :answer;";
   $pdoresult = $pdo->prepare($sqlresult);
   $pdoresult->bindValue(":answer", $_POST["answer"]);
   $pdoresult->execute();
