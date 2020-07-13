@@ -42,7 +42,7 @@ body {
         margin: 55px auto;
         text-align: center;
         position: relative;
-        top: 50px;
+        top: 60px;
         .memAnylResult-word {
             @include font-style(16px, $notoSerif, $white, $default-fweight) {}
             text-align: left;
@@ -50,6 +50,7 @@ body {
             flex-direction: column;
             margin: 0 auto;
             color: $wordColor;
+            width: 100%;
             .title {
                 margin-bottom: 20px;
                 color: $white;
@@ -67,6 +68,10 @@ body {
                 width: 80%;
                 margin: 10px;
                 @include font-style(16px, $notoSerif, $white, $default-fweight) {}
+                @media screen and (max-width:1199px){
+                    width: 95%;
+                    
+                }
             }
         }
         .sun {
@@ -85,22 +90,31 @@ body {
                     border: 1px solid white;
                 }
                 p {
-                    margin-top: 30px;
                     margin-right: 10px;
                     text-align: left;
                     @include font-style(18px, $notoSerif, $white, $default-fweight) {}
+                    @media screen and(min-width:768px){
+                        width: 400px;
+                        
+                    }
                 }
                 .product {
                     display: flex;
                     margin: 20px;
-                    @media screen and(max-width: 991px) {
+                    align-items:center;
+                    @media screen and(max-width: 767px) {
                         flex-direction: column;
+                        align-items: flex-start;   
                     }
                     .pic {
                         border: 1px solid white;
                         width: 150px;
                         height: 150px;
                         margin: 15px;
+                        @media screen and(max-width:767px){
+                            width: 100px;
+                            height: 100px;
+                        }
                         img {
                             width: 100%;
                             height: 100%;
@@ -112,36 +126,45 @@ body {
         .night {
             color: $wordColor;
             display: flex;
-            flex-direction: row-reverse;
             margin: 30px auto 0;
             width: 100%;
             .word {
                 width: 100%;
                 h3 {
                     text-align: start;
-                    margin: 10px;
                     @include font-style(25px, $notoSerif, $white, $default-fweight) {}
+                    margin: 10px;
                 }
                 .line {
                     border: 1px solid white;
                 }
                 p {
-                    margin-top: 30px;
                     margin-right: 10px;
                     text-align: left;
                     @include font-style(18px, $notoSerif, $white, $default-fweight) {}
+                    @media screen and(min-width:768px){
+                        width: 400px;
+                        
+                    }
                 }
                 .product {
                     display: flex;
                     margin: 20px;
-                    @media screen and(max-width: 991px) {
+                    align-items:center;
+                    @media screen and(max-width: 767px) {
                         flex-direction: column;
+                        align-items: flex-start;   
+                        
                     }
                     .pic {
                         border: 1px solid white;
                         width: 150px;
                         height: 150px;
                         margin: 15px;
+                        @media screen and(max-width:767px){
+                            width: 100px;
+                            height: 100px;
+                        }
                         img {
                             width: 100%;
                             height: 100%;

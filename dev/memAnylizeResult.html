@@ -16,13 +16,13 @@
     @@include('./app/header.html')
     <main class="memAnyl-main">
         <section id="memAnylresult" class="memAnylresult-content">
-            <div class="memAnylResult-word">
+            <div class="memAnylResult-word" v-for="(item,index) in result" v-if="index<1">
                 <div class="title">
-                    <h1>檢測結果 - 乾性肌</h1>
+                    <h1>檢測結果 - {{item.MTC_TYPE}}</h1>
                 </div>
                 <div class="line"></div>
                 <p class="forword">
-                    油性肌就是隨時臉上都是油亮狀態的皮膚類型，額頭和鼻子的T字部位油膩，常長黑頭、粉刺和痘痘，易上妝也易脫妝，這類肌膚毛孔粗大，有彈性不容易長皺紋，平常應該注重清潔和補水，別忘了太乾也是肌膚出油的原因！油性肌的人洗臉次數可一天2-3次，應選用清爽的洗臉和保養產品控制油脂分泌，也建議少吃油炸類、過甜、過辣的食物。
+                    {{item.MTI_TEXT}}    
                 </p>
             </div>
             <div class="sun">
@@ -69,7 +69,7 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.js"></script>
 
-    <!-- <script>
+    <script>
         const app = new Vue({
             el: '#memAnylresult',
             data: {
@@ -99,10 +99,11 @@
                 
                 xhr.send(data_info); 
                 console.log(data_info)
-                // xhr.send(null);
-                
 
-                
+
+
+                // xhr.send(null);
+
                 // var xhr2 = new XMLHttpRequest();
                 // xhr2.onload=function (){
                 //     if( xhr2.status == 200 ){
@@ -112,15 +113,17 @@
                 //     }
                 // }
                 
-                // var url2 = "php/memAnylizeResult2.php";
-                // xhr2.open("get", url, true);
-                // xhr2.send( null );
+                // var url2 = "./php/memAnylizeResult2.php";
+                // xhr2.open("post", url2, true);
+                // let data_info2='answer=' + (parseInt(localStorage.type)+1);
+                // console.log(data_info2);
+                // xhr2.send( data_info2 );
 
 
                 
             },
 
-        }); -->
+        });
 
 
     </script>
