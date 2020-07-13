@@ -16,7 +16,8 @@ $data = base64_decode($imgDataStr);
 $fileName = date("Ymd-h-i-s");  //或time()
 $file = $upload_dir . $fileName . ".png";
 $success = file_put_contents($file, $data);
-
+$file= substr($file,1);
+echo $file;
 // echo $success ? $file : 'error';
 
 session_start();
@@ -78,4 +79,5 @@ if( isset($_SESSION["mail"])){ //已登入
 // }catch(PDOException $e){
 //   echo $e->getMessage();
 // }
+
 ?>
