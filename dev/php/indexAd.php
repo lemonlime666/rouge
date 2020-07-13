@@ -1,5 +1,6 @@
 <?php
 date_default_timezone_set("Asia/Taipei");
+$a ='';
 try {
     require_once("connectWade.php");
     $sql = "select * from `ADSCHEDULE` where AD_STATUS=1";
@@ -19,7 +20,8 @@ try {
         echo json_encode($adArr);
     }
 } catch (PDOException $e) {
-    $e->getMessage();
-    echo "error";
+    $a .= "錯誤行號 : ". $e->getLine(). "<br>";
+    $a .= "錯誤原因 : ". $e->getMessage(). "<br>";
+    echo $a;
 }
 ?>
