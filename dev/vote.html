@@ -8,13 +8,14 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" ></script>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./css/dingli.css">
-   <script src="./js/main.js"></script>
+
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.js"></script>
 </head>
 <body>
 
    
   
-    @@include("./app/header.html")
+    @@include("./app/header_black.html")
     <div id="id01" class="modal">
         <form class="modal-content animate"  method="post">
           <div class="container">
@@ -34,6 +35,20 @@
           </div>
         </form>
       </div>
+    <!-- 投票燈箱 -->
+    <div id="id02" class="modal2">
+        <form class="modal-content2 animate"  method="post">
+          <div class="container">
+              <p>確定要送出你寶貴的一票嗎</p>
+              <div>
+                  <button type="button" onclick="document.getElementById('id02').style.display='none'" class="btn2-1">放棄投票</button>
+                  <!-- <button type="button" onclick="window.location='./vote.html'"class="btn3-1">馬上參加</button> -->
+                  <button type="button" onclick="sendVote()"class="btn3-1">送出投票</button>
+              </div>
+          </div>
+        </form>
+      </div>
+
     <div style="background-color: #292929; height: 100px;width: 100%;"></div>
     <body>
         <div class="firstscreen" style="background-color: #292929;">
@@ -80,11 +95,28 @@
 
 
         <div class="showCards">
-            <div class="showCard">
+            <div class="showCard" id="content">
                 <!-- <img src="./image/top.jpg" alt=""> -->
-
                  <!-- 翻轉 -->
-                <div class="postCardShow">
+                <div class="postCardShow"  v-for="(item, index) in showCards">
+                    <div class="flip-card">
+                        <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img :src="item.CARD_URL">
+                        </div>
+                        <div class="flip-card-back">
+                            <h1>設計理念</h1> 
+                            <p>{{item.CARD_INF}}</p> 
+                            <h3>目前票數:{{item.CARD_VOTESUM}} 票</h3>
+                            <button class="btn3-1" :id="item.CARD_NO" @click="vote">點我投票</button>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+        
+            
+                 <!-- 翻轉 -->
+                 <!-- <div class="postCardShow">
                     <div class="flip-card">
                         <div class="flip-card-inner">
                         <div class="flip-card-front">
@@ -99,132 +131,7 @@
                         </div>
                         </div>
                     </div>
-                </div>
-                 <!-- 翻轉 -->
-                <div class="postCardShow">
-                    <div class="flip-card">
-                        <div class="flip-card-inner">
-                        <div class="flip-card-front">
-                            <img src="./image/top.jpg">
-                        </div>
-                        <div class="flip-card-back">
-                            <h1>設計理念</h1> 
-                            <p>利用各種不一樣的配件將自己臉上的美更加展現綻放!</p> 
-                            <h2>會員名稱:XXXX</h2>
-                            <h3>目前票數:135 票</h3>
-                            <button class="btn3-1">點我投票</button>
-                        </div>
-                        </div>
-                    </div>
-                </div>
-
-                 <!-- 翻轉 -->
-                 <div class="postCardShow">
-                    <div class="flip-card">
-                        <div class="flip-card-inner">
-                        <div class="flip-card-front">
-                            <img src="./image/top.jpg">
-                        </div>
-                        <div class="flip-card-back">
-                            <h1>設計理念</h1> 
-                            <p>利用各種不一樣的配件將自己臉上的美更加展現綻放!</p>
-                            <h2>會員名稱:XXXX</h2>
-                            <h3>目前票數:135 票</h3> 
-                            <button class="btn3-1">點我投票</button>
-                        </div>
-                        </div>
-                    </div>
-                </div>
-
-                 <!-- 翻轉 -->
-                 <div class="postCardShow">
-                    <div class="flip-card">
-                        <div class="flip-card-inner">
-                        <div class="flip-card-front">
-                            <img src="./image/top.jpg">
-                        </div>
-                        <div class="flip-card-back">
-                            <h1>設計理念</h1> 
-                            <p>利用各種不一樣的配件將自己臉上的美更加展現綻放!</p> 
-                            <h2>會員名稱:XXXX</h2>
-                            <h3>目前票數:135 票</h3>
-                            <button class="btn3-1">點我投票</button>
-                        </div>
-                        </div>
-                    </div>
-                </div>                
-            </div>
-            <div class="showCard">
-                                 <!-- 翻轉 -->
-                <div class="postCardShow">
-                    <div class="flip-card">
-                        <div class="flip-card-inner">
-                        <div class="flip-card-front">
-                            <img src="./image/top.jpg">
-                        </div>
-                        <div class="flip-card-back">
-                            <h1>設計理念</h1> 
-                            <p>利用各種不一樣的配件將自己臉上的美更加展現綻放!</p>
-                            <h2>會員名稱:XXXX</h2>
-                            <h3>目前票數:135 票</h3> 
-                            <button class="btn3-1">點我投票</button>
-                        </div>
-                        </div>
-                    </div>
-                </div>
-                 <!-- 翻轉 -->
-                <div class="postCardShow">
-                    <div class="flip-card">
-                        <div class="flip-card-inner">
-                        <div class="flip-card-front">
-                            <img src="./image/top.jpg">
-                        </div>
-                        <div class="flip-card-back">
-                            <h1>設計理念</h1> 
-                            <p>利用各種不一樣的配件將自己臉上的美更加展現綻放!</p> 
-                            <h2>會員名稱:XXXX</h2>
-                            <h3>目前票數:135 票</h3>
-                            <button class="btn3-1">點我投票</button>
-                        </div>
-                        </div>
-                    </div>
-                </div>
-
-                 <!-- 翻轉 -->
-                 <div class="postCardShow">
-                    <div class="flip-card">
-                        <div class="flip-card-inner">
-                        <div class="flip-card-front">
-                            <img src="./image/top.jpg">
-                        </div>
-                        <div class="flip-card-back">
-                            <h1>設計理念</h1> 
-                            <p>利用各種不一樣的配件將自己臉上的美更加展現綻放!</p> 
-                            <h2>會員名稱:XXXX</h2>
-                            <h3>目前票數:135 票</h3>
-                            <button class="btn3-1">點我投票</button>
-                        </div>
-                        </div>
-                    </div>
-                </div>
-
-                 <!-- 翻轉 -->
-                 <div class="postCardShow">
-                    <div class="flip-card">
-                        <div class="flip-card-inner">
-                        <div class="flip-card-front">
-                            <img src="./image/top.jpg">
-                        </div>
-                        <div class="flip-card-back">
-                            <h1>設計理念</h1> 
-                            <p>利用各種不一樣的配件將自己臉上的美更加展現綻放!</p> 
-                            <h2>會員名稱:XXXX</h2>
-                            <h3>目前票數:135 票</h3>
-                            <button class="btn3-1">點我投票</button>
-                        </div>
-                        </div>
-                    </div>
-                </div>  
+                </div>   -->
             </div>
 
         </div>
@@ -239,7 +146,86 @@
                 modal.style.display = "none";
             }
         }
-   </script>
+        function sendVote(){
+                let getCardNo= localStorage.getItem('cardNo');
+                alert(getCardNo);
+                let xhr = new XMLHttpRequest();
+                xhr.onload = function (){
+                    if( xhr.status == 200 ){ //連線成功
+                
+                    alert(xhr.responseText);
+                        // app.$data.CARD_NO = app.$data.showCard[0].CARD_NO //給預設第一項商品單價
+                        // app.$data.CARD_URL = app.$data.showCard[0].CARD_URL 
+                    
+                    }else{ 
+                        alert( xhr.status );
+                    }
+                    
+                }
+                var url = "./php/vote.php?cardNo="+getCardNo; //設定PHP位置
+                    xhr.open("get", url, true);
+                    xhr.send( null );  
 
+            }
+        
+
+        const app = new Vue({
+            el: '#content',
+            data: {
+                //CARD_NO, CARD_URL, MAKEUP_NO,CARD_INF, CARD_VOTESUM, CARD_VOTEDATE
+                showCards: [],
+                CARD_NO: '',
+                CARD_URL: '', //圖片
+                CARD_INF: '', //設計理念
+                CARD_VOTESUM: '', //投票數輛
+                CARD_VOTEDATE:'', //參加日期
+  
+            },
+            methods: {
+                vote(e){
+                    document.getElementById('id02').style.display='block';
+                    localStorage['cardNo']=e.target.id
+                     let cardNO = localStorage.getItem('cardNO')
+                     console.log(cardNO)
+                },
+                
+
+
+                },
+            computed: {
+         
+     
+            },
+        
+            
+                
+            mounted() { //在VUE未渲染時執行函數  
+            //   let ser = localStorage.getItem('seriesname')
+            //   console.log(ser)
+              
+            var xhr = new XMLHttpRequest();
+            xhr.onload = function (){
+                if( xhr.status == 200 ){ //連線成功
+                    app.$data.showCards = JSON.parse(xhr.responseText); //將導出的物件存入data中
+                   console.log(app.$data.showCards);
+                    // app.$data.CARD_NO = app.$data.showCard[0].CARD_NO //給預設第一項商品單價
+                    // app.$data.CARD_URL = app.$data.showCard[0].CARD_URL 
+                
+                }else{ 
+                    alert( xhr.status );
+                }
+                
+              }
+              var url = "./php/showVoteCard.php"; //設定PHP位置
+                xhr.open("get", url, true);
+                xhr.send( null );  
+
+            }
+        });
+          
+
+ 
+   </script>
+    <script src="./js/header.js"></script>
 </body>
 </html>

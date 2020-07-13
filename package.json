@@ -8,7 +8,8 @@
     "live": "gulp live",
     "img":"gulp goimg",
     "js":"gulp gojs",
-    "go":"gulp go"
+    "go":"gulp go",
+    "php":"gulp gophp"
   },
   "keywords": [],
   "author": "",

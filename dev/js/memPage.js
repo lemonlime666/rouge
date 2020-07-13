@@ -3,29 +3,92 @@ Vue.component('meminfo', {
     props: [],
     data() {
         return {
-
+            counter:0,
+            subject:['name','mail','phone','address'],
+            name:"",
+            mail:"",
+            phone:"",
+            adrs:"",
         };
     },
     template: `
     <div class="contentBox">
         <form action="" class="mem_info">
-            <p>姓名：</p> 
-            <input type="text" placeholder="Name" name="" class="mem_input">
-        </form>
-        <form action="" class="mem_info">
-            <p>Email：</p> 
-            <input type="email" placeholder="Phone" name="" class="mem_input">
-        </form>
-        <form action="" class="mem_info">
-            <p>電話：</p> 
-            <input type="tel" placeholder="Email" name="" class="mem_input">
-        </form>
-        <form action="" class="mem_info">
-            <p>地址：</p> 
-            <input type="text" placeholder="Address" name="" class="mem_input">
+            <label for="name">
+            <span class="subjectBox">姓名</span>
+            <span class="inputBox">{{name}}</span>
+            </label>
+            <label for="mail">
+            <span class="subjectBox">信箱</span>
+            <span class="inputBox">{{mail}}</span>
+            </label>
+            <label for="phone">
+            <span class="subjectBox">電話</span>
+            <span class="inputBox">{{phone}}</span>
+            </label>
+            <label>
+            <span class="subjectBox">地址</span>
+            <span class="inputBox">{{adrs}}</span>
+            </label for="mail">
+            <button class="modifyMemInfo" @click="alterMemInfo" v-if="this.counter == 0">修改資料</button>
+            <div v-if="this.counter == 1">
+                <button class="modifyMemInfo" @click="confirmAlter" style="margin-right:10px;">確認</button>
+                <button class="modifyMemInfo" @click="cancelAlter">取消</button>
+            </div>
         </form>
     </div>
     `,
+    methods:{
+        alterMemInfo(e){
+            e.preventDefault();
+            let inputbox = document.querySelectorAll('.inputBox');
+            for(let i=0; i<inputbox.length; i++){
+                inputbox[i].innerHTML = `<input type="text" name="${this.subject[i]}" class="alterInput" style="width:80%;padding:5px 10px;" value="${inputbox[i].textContent}">`;
+            }
+            this.counter++;
+        },
+        cancelAlter(e){
+            e.preventDefault();
+            let alterInput = document.querySelectorAll('.alterInput');
+            let inputbox = document.querySelectorAll('.inputBox');
+            for(let i=0; i<alterInput.length; i++){
+                inputbox[i].innerHTML = `${alterInput[i].defaultValue}`;
+            }
+            this.counter--;
+        },
+        confirmAlter(e){
+            e.preventDefault();
+            let alterInput = document.querySelectorAll('.alterInput');
+            let inputbox = document.querySelectorAll('.inputBox');
+            for(let i=0; i<alterInput.length; i++){
+                inputbox[i].innerHTML = `${alterInput[i].value}`;
+            }
+            this.counter--;
+        },
+        getInfo(){
+            let xhr = new XMLHttpRequest();
+            let a = this;
+            xhr.onload = function () {
+                if (xhr.status == 200) {
+                    member = JSON.parse(xhr.responseText);
+                    if (member.mail) { //已登入
+                        a.name = member.name;
+                        a.mail = member.mail;
+                        a.phone = member.phone;
+                        a.adrs = member.adrs;
+                    }else{
+                        alert('請先登入會員');
+                        document.getElementById('login').style.display = "flex";
+                    }
+                }
+            }
+            xhr.open("get", "./php/getMemberInfo.php", true);
+            xhr.send(null);
+        }
+    },
+    mounted() {
+        this.getInfo();
+    },
 })
 
 Vue.component('orderlist', {
@@ -45,34 +108,204 @@ Vue.component('orderlist', {
     template: `
     <div class="contentBox">
                 <div class="mem_detailGroupbtn">
-                    <button class="mem_buybtn mem_buyactive" data-list="tab1" @click="orderTab">全部</button>
-                    <button class="mem_buybtn" data-list="tab2" @click="orderTab">待付款</button>
-                    <button class="mem_buybtn" data-list="tab3" @click="orderTab">待出貨</button>
-                    <button class="mem_buybtn" data-list="tab4" @click="orderTab">待收貨</button>
-                    <button class="mem_buybtn" data-list="tab5" @click="orderTab">完成</button>
-                    <button class="mem_buybtn" data-list="tab6" @click="orderTab">取消</button>
+                    <button class="mem_buybtn mem_buyactive" data-list="tab1" @click="orderTab">未出貨</button>
+                    <button class="mem_buybtn" data-list="tab2" @click="orderTab">已出貨</button>
                 </div>
                 
                 <div class="mem_buycontent">  
-                    <div class="mem_buy mem_buyTabOne">
-                        <table class="mem_tablegroup">
+                    <table class="mem_tablegroup">
+                        <thead>
                             <tr class="mem_buydetail_title">
-                                <th>訂單編號</th>
-                                <th>訂單日期</th>
-                                <th>狀態</th>
+                                <th>編號</th>
+                                <th>日期</th>
                                 <th>金額</th>
                                 <th>寄送地址</th>
-                                <th>詳細資料</th>
+                                <th>明細</th>
                             </tr>
-                            <tbody id="mem_buydetail_info">
-                                <component :is="list"><component>
-                            </tbody>
-                        </table>
-                    </div>
+                        </thead>
+                        <component :is="list"><component>
+                    </table>
                 </div>
     </div>
     `,
 })
+
+Vue.component('tab1',{ 
+    data() {
+        return {
+            ord:0,
+            datas:[],
+            counter:0,
+            prepare:[],
+            gift: "",
+        };
+    },
+    template: `
+            <tbody class="mem_buydetail_info">
+                <div class="checkOrderItemDetail" v-if="counter==1">
+                    <ul class="checkOrderItemDetailTh">
+                        <li>數量</li>
+                        <li>價錢</li>
+                        <li>商品</li>
+                    </ul>
+                    <div class="checkOrderItemDetailDiv">
+                        <ul class="checkOrderItemDetailTr" v-for="(list, i) in prepare" :list="list" :key="i">
+                            <li>{{list.ORD_LIST_NUM}}</li>
+                            <li>{{list.ORD_PRICE}}</li>
+                            <li>{{list.PRO_NAME}}</li>
+                        </ul>
+                        <div class="checkOrderItemDetailGift"><i>贈品&nbsp&nbsp</i> {{gift}}</div>
+                    </div>
+                    <div class="checkOrderItemDetailBtnBox">
+                    <button @click="counter--;">確認</button>
+                    </div>
+                </div>
+                <tr v-for="item, i in datas" :item="item" :key="i">
+                    <td>{{item.ORD_NO}}</td>
+                    <td>{{item.ORD_DATE}}</td>
+                    <td>{{item.ORD_PRICE}}</td>
+                    <td>{{item.ORD_ADRS}}</td>
+                    <td>
+                        <button :data-ordno="item.ORD_NO" @click="checkList">查詢</button>
+                    </td>
+                </tr>
+            </tbody>
+    `,
+    methods:{
+        getData(){
+            let xhr = new XMLHttpRequest();
+            let a = this;
+            xhr.onload = function (){
+                if(xhr.status == 200){
+                    a.datas = JSON.parse(xhr.responseText);
+                }else{
+                    alert(xhr.status);
+                }
+            }
+            xhr.open("post", "../php/memPageOrder.php", true);
+            xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
+            let status = this.ord;
+            xhr.send(`status=${status}`);
+        },
+        checkList(e){
+            let num = e.target.dataset.ordno;
+            let xhr = new XMLHttpRequest();
+            let a = this;
+            xhr.onload = function (){
+                if(xhr.status == 200){
+                    a.prepare = JSON.parse(xhr.responseText);
+                    if(!JSON.parse(xhr.responseText)[0].GIF_NAME){
+                        a.gift = "無贈品";
+                    }else{
+                        a.gift = JSON.parse(xhr.responseText)[0].GIF_NAME;
+                    }
+                }else{
+                    alert(xhr.status);
+                }
+            }
+            xhr.open("post", "../php/checkOrderList.php", true);
+            xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
+            let str={
+                ordNo:num,
+                ordStatus:this.ord
+            }
+            let obj = JSON.stringify(str);
+            xhr.send(`obj=${obj}`);
+            this.counter++;
+        }
+    },
+    mounted(){
+        this.getData();
+    }
+});
+Vue.component('tab2',{ 
+    data() {
+        return {
+            ord:1,
+            datas:[],
+            counter:0,
+            prepare:[],
+            gift: "無贈品",
+        };
+    },
+    template: `
+            <tbody class="mem_buydetail_info">
+                <div class="checkOrderItemDetail" v-if="counter==1">
+                    <ul class="checkOrderItemDetailTh">
+                        <li>數量</li>
+                        <li>價錢</li>
+                        <li>商品</li>
+                    </ul>
+                    <div class="checkOrderItemDetailDiv">
+                        <ul class="checkOrderItemDetailTr" v-for="(list, i) in prepare" :list="list" :key="i">
+                            <li>{{list.ORD_LIST_NUM}}</li>
+                            <li>{{list.ORD_PRICE}}</li>
+                            <li>{{list.PRO_NAME}}</li>
+                        </ul>
+                        <div class="checkOrderItemDetailGift"><i>贈品&nbsp&nbsp</i> {{gift}}</div>
+                    </div>
+                    <div class="checkOrderItemDetailBtnBox">
+                    <button @click="counter--;">確認</button>
+                    </div>
+                </div>
+                <tr v-for="item, i in datas" :item="item" :key="i">
+                    <td>{{item.ORD_NO}}</td>
+                    <td>{{item.ORD_DATE}}</td>
+                    <td>{{item.ORD_PRICE}}</td>
+                    <td>{{item.ORD_ADRS}}</td>
+                    <td>
+                        <button :data-ordno="item.ORD_NO" @click="checkList">查詢</button>
+                    </td>
+                </tr>
+            </tbody>
+    `,
+    methods:{
+        getData(){
+            let xhr = new XMLHttpRequest();
+            let a = this;
+            xhr.onload = function (){
+                if(xhr.status == 200){
+                    a.datas = JSON.parse(xhr.responseText);
+                }else{
+                    alert(xhr.status);
+                }
+            }
+            xhr.open("post", "../php/memPageOrder.php", true);
+            xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
+            let status = this.ord;
+            xhr.send(`status=${status}`);
+        },
+        checkList(e){
+            let num = e.target.dataset.ordno;
+            let xhr = new XMLHttpRequest();
+            let a = this;
+            xhr.onload = function (){
+                if(xhr.status == 200){
+                    a.prepare = JSON.parse(xhr.responseText);
+                    if(!JSON.parse(xhr.responseText)[0].GIF_NAME){
+                        a.gift = "無贈品";
+                    }else{
+                        a.gift = JSON.parse(xhr.responseText)[0].GIF_NAME;
+                    }
+                }else{
+                    alert(xhr.status);
+                }
+            }
+            xhr.open("post", "../php/checkOrderList.php", true);
+            xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
+            let str={
+                ordNo:num,
+                ordStatus:a.ord
+            }
+            let obj = JSON.stringify(str);
+            xhr.send(`obj=${obj}`);
+            this.counter++;
+        }
+    },
+    mounted(){
+        this.getData();
+    }
+});
 
 Vue.component('analinfo', {
     props: [],
@@ -114,37 +347,6 @@ Vue.component('mypostcard', {
     </div>
     `,
 })
-
-Vue.component('tab1',{ 
-    template: `
-            <div>tab1</div>
-    `,
-});
-Vue.component('tab2',{ 
-    template: `
-            <div>tab2</div>
-    `,
-});
-Vue.component('tab3',{ 
-    template: `
-            <div>tab3</div>
-    `,
-});
-Vue.component('tab4',{ 
-    template: `
-            <div>tab4</div>
-    `,
-});
-Vue.component('tab5',{ 
-    template: `
-            <div>tab5</div>
-    `,
-});
-Vue.component('tab6',{ 
-    template: `
-            <div>tab6</div>
-    `,
-});
 
 const contents = new Vue({
     el: '#mainSection',

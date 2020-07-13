@@ -64,8 +64,9 @@ $(document).ready(function () {
                     $('#LoginSignup').html('LOGIN');
                 }
             }
-            xhr.open("get", "./php/logout.php", true);
+            xhr.open("get", "./php/logout.php", false);
             xhr.send(null);
+            document.location.reload();
         }
     });
 
@@ -87,7 +88,6 @@ $(document).ready(function () {
                 member = JSON.parse(xhr.responseText);
                 if (member.mail) { //已登入
                     $('#LoginSignup').html('LOGOUT');
-                    console.log(member.name);
                 }
             }
         }
@@ -98,6 +98,22 @@ $(document).ready(function () {
 
     //=============================================================
 
+    $('#memPage').click(function(){
+        let xhr = new XMLHttpRequest();
+        xhr.onload = function () {
+            if (xhr.status == 200) {
+                member = JSON.parse(xhr.responseText);
+                if (member.mail) { //已登入
+                    document.location.href = "./memPage.html"
+                }else{
+                    alert('請先登入會員');
+                    document.getElementById('login').style.display = "flex";
+                }
+            }
+        }
+        xhr.open("get", "./php/getMemberInfo.php", true);
+        xhr.send(null);
+    });
 });
 
 
@@ -122,6 +138,7 @@ Vue.component('loginBox', {
                         alert('登入成功');
                         $('#login').hide();
                         $('#LoginSignup').html('LOGOUT');
+                        document.location.reload();
                     } else {
                         alert("帳密錯誤");
                     }
@@ -199,6 +216,7 @@ Vue.component('signUpBox', {
                     if (member.mail) { //登入成功
                         $('#LoginSignup').html('LOGOUT');
                         alert("註冊成功");
+                        document.location.reload();
                     } else {
                         alert("此信箱已被註冊");
                     }
