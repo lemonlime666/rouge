@@ -20,6 +20,7 @@ $success = file_put_contents($file, $data);
 session_start();
 if( isset($_SESSION["mail"])){ //已登入
     $memInfo = array("memNo"=>$_SESSION["memNo"],"name"=>$_SESSION["name"], "mail"=>$_SESSION["mail"], "adrs"=>$_SESSION["adrs"], "phone"=>$_SESSION["phone"], "voteD"=>$_SESSION["voteD"]);
+    require_once("connect.php");
     $sql="insert into CARD(CARD_URL, MAKEUP_NO,CARD_VOTE,CARD_TEXT) values ('$file',(SELECT MAKEUP_NO FROM rouge.makeup where mem_no ='{$_SESSION["memNo"]}'),'0','$imgDatatext');";
     echo $sql;
     $affectedRows =$pdo ->exec($sql);
