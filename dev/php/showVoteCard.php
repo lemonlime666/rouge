@@ -6,14 +6,14 @@
 try{
     require_once("connectWade.php");
     /*SELECT * FROM rouge.card where CARD_VOTE =1 and MONTH(CURDATE()) <= MONTH(CARD_VOTEDATE);*/
-    $sql = "SELECT * FROM rouge.card where CARD_VOTE =1 and MONTH(CURDATE()) <= MONTH(CARD_VOTEDATE)";
-    $product = $pdo->query($sql);
+    $sql = "SELECT * FROM rouge.card where CARD_VOTE =1 and MONTH(CURDATE()) <= MONTH(CARD_VOTEDATE) order by CARD_VOTEDATE";
+    $showcards = $pdo->query($sql);
   
-    if($product->rowCount() == 0){
+    if($showcards->rowCount() == 0){
       echo "{查無資料}";
     }else{
-      $productRow = $product->fetchAll(PDO::FETCH_ASSOC);
-      echo json_encode($productRow);
+      $showcardRow = $showcards->fetchAll(PDO::FETCH_ASSOC);
+      echo json_encode($showcardRow);
     }
   }catch(PDOException $e){
     echo $e->getMessage();
