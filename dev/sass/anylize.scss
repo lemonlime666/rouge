@@ -18,26 +18,26 @@ body {
     // background-size: cover;
     position: relative;
     // height: 937px;
-    
 }
-.anyl-background{
+
+.anyl-background {
     width: 80%;
     height: 100%;
     position: absolute;
     top: 0;
-    @media screen and(max-width:1199px){
+    @media screen and(max-width: 1199px) {
         width: 100%;
     }
     // background-image: url("../image/background2.jpg");
     // background-repeat: no-repeat;
     // background-size: cover;
-    img{
+    img {
         width: 100%;
         height: 100%;
     }
 }
+
 .anyl-main {
-    
     width: 100%;
     border-radius: 5px;
     height: 100%;
@@ -46,65 +46,164 @@ body {
     @media screen and(min-width: 1200px) {
         flex-direction: row;
         justify-content: space-between;
-        
     }
-    
     .timeBlock {
         position: relative;
         display: flex;
         margin: 5px auto 20px;
         flex-direction: column;
         justify-self: start;
-        @media screen and(min-width:1200px) {
+        text-align: center;
+        width: 30%;
+        margin-top: 100px;
+        @media screen and (max-width: 1199px) {
+            width: 100%;
+            margin-top: 10px;
         }
-        
+        ;
+        .anylTime {
+            display: flex;
+            width: 50%;
+            margin: 0 auto;
+            #dayTimeBlock {
+                margin: 10px auto;
+                @include font-style(20px, $notoSerif, $wood, $default-fweight) {}
+                width: 100px;
+                height: 120px;
+                margin-top: 10px;
+                display: flex;
+                flex-direction: column;
+                @media screen and (max-width: 1199px) {
+                    display: none;
+                }
+                #dayMonth {
+                    font-size: 50px;
+                }
+                #dayDay {
+                    margin-left: 20px;
+                }
+            }
+            img {
+                width: 100px;
+                height: 100px;
+                @media screen and (max-width: 1199px) {
+                    display: none;
+                }
+            }
+        }
         .anyl-timeChoose {
             margin: 0px auto;
             width: 100%;
             text-align: center;
             display: flex;
+            flex-direction: column;
             justify-content: space-between;
-            flex-wrap: wrap;
-            @media screen and (min-width: 768px) {
-                width: 500px;
+            .choose {
+                display: flex;
+                justify-content: space-between;
+                border: 6px solid $white;
+                padding: 15px 20px 45px;
+                margin-top: 27px;
+                position: relative;
+                @media screen and (max-width: 1199px) {
+                    justify-content: center;
+                    width: 50%;
+                    margin-right: 10px;
+                    margin-left: 10px;
+                    padding: 15px 0px 45px 10px;
+                }
+                @media screen and (max-width: 400px) {
+                 margin: 0;
+                 padding: 0;
+                }
+            }
+            .useTime {
+                &::before {
+                    content: '步驟一';
+                    width: 34px;
+                    height: 100px;
+                    border: 1px solid $white;
+                    background-color: $white;
+                    position: absolute;
+                    left: -42px;
+                    top: 0;
+                    writing-mode: vertical-rl;
+                    text-align: center;
+                    @include font-style(20px, $notoSerif, $grey5, ) {}
+                    @media screen and (max-width: 1199px) {
+                        writing-mode: vertical-lr;
+                        width: 100px;
+                        height: 34px;
+                        left: 0;
+                        top: -40px;
+                        @media screen and (max-width: 400px) {
+                            content: '';
+                            width: 0;
+                            height: 0;
+                        }
+                    }
+                }
+            }
+            .seasonTime {
+                &::before {
+                    content: '步驟二';
+                    width: 34px;
+                    height: 100px;
+                    border: 1px solid $white;
+                    background-color: $white;
+                    position: absolute;
+                    left: -42px;
+                    top: 0;
+                    writing-mode: vertical-rl;
+                    text-align: center;
+                    @include font-style(20px, $notoSerif, $grey5, ) {}
+                    @media screen and (max-width: 1199px) {
+                        writing-mode: vertical-lr;
+                        width: 100px;
+                        height: 34px;
+                        left: 0;
+                        top: -40px;
+                    }
+                    @media screen and (max-width: 400px) {
+                        content: '';
+                        width: 0;
+                        height: 0;
+                    }
+                }
+            }
+            @media screen and (max-width: 1199px) {
+                flex-direction: row;
             }
             @media screen and(min-width: 1200px) {
-                width: 300px;
                 height: 200px;
             }
-            @media screen and(max-width:400px){
-                width: 80%;
-            }
+            // @media screen and(max-width:400px) {
+            //     width: 80%;
+            // }
             .anyl-button1 {
                 width: 40%;
-                height: 30%;            
-                @include font-style(){};
-
-                    @media screen and(max-width:767px){
-                        width: 100px;
-                        margin-left:10px;
-                    }
-                    height: 50px;
-                    font-size: 18   px;
-                    // font-family: ;
+                height: 30%;
+                @include font-style() {}
+                ;
+                @media screen and (max-width: 1199px) {
+                    width: 40%;
+                    margin-right: 30px;
+                }
+                @media screen and (max-width: 400px) {
+                    margin-right: 10px;
                     
-                    margin-top: 20px;
-                    font-weight: 600;
-                    text-transform: uppercase;
-                    // padding: 1.25em 2em;
-                    background: $gold;
-                    border: 2px solid $cofe;
-                    border-radius: 0.75em;
-                    transform-style: preserve-3d;
-                    transition: transform 150ms linear, background 150ms cubic-bezier(0, 0, 0.58, 1);
-                    cursor: pointer;
-                    text-decoration: none;
-                    outline: none;
-
-                    // &:focus{
-                    //     border: 2px solid greenyellow;
-                    // }
-                    &::before {
+                   }
+                height: 50px;
+                text-transform: uppercase;
+                background: $gold;
+                border: none;
+                transform-style: preserve-3d;
+                transition: transform 150ms linear;
+                background :150ms cubic-bezier(0, 0, 0.58, 1);
+                cursor: pointer;
+                text-decoration: none;
+                outline: none;
+                &::before {
                     position: absolute;
                     content: '';
                     width: 100%;
@@ -113,21 +212,20 @@ body {
                     left: 0;
                     right: 0;
                     bottom: 0;
-                    background: $grey2    ;
-                    border-radius: inherit;
-                    // box-shadow: 0 0 0 2px $grey1, 0 0.625em 0 0 $grey1;
-                    transform: translate3d(0, 0.75em, -1em);
+                    background: $grey2;
+                    border-radius: 0.75em;
+                    transform: translate3d(0.5em, 0.5em, -1em);
                     transition: transform 150ms cubic-bezier(0, 0, 0.58, 1), box-shadow 150ms cubic-bezier(0, 0, 0.58, 1);
-                    }
-                    &:hover {
+                }
+                &:hover {
                     background: $gold;
                     transform: translate(0, 0.25em);
                     &::before {
                         // box-shadow: 0 0 0 2px $grey1, 0 0.5em 0 0 $grey1;
-                        transform: translate3d(0, 0.5em, -1em);
+                        transform: translate3d(0.25em, 0.25em, -1em);
                     }
-                    }
-                    &:active {
+                }
+                &:active {
                     background: $milkt;
                     transform: translate(0em, 0.75em);
                     &::before {
@@ -141,34 +239,31 @@ body {
 }
 
 .anyl-item {
-    // display: flex;
-    flex-direction: column;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
     text-align: center;
-    margin-right: 2%;
-    margin-bottom: 10px;
-    margin-top: 150px; 
-
+    width: 70%;
+    height: 80%;
     opacity: 1;
     transition: display .5s linear;
-    
-
-    @media screen and (min-width:1200px){
-        margin-left: 20%;
-        margin-right: auto;
+    margin-top: 120px;
+    @media screen and (max-width: 1199px) {
+        width: 100%;
     }
-    .even {
-        
-        @media screen and (min-width: 1200px) {
-            position: relative;
-            width: 350px;
-        }
+    @media screen and (max-width: 400px) {
+        height:  64%;
     }
-    // .odd {}
     .anyl-product {
         display: flex;
-        margin: 12px auto 0 ;
+        margin: 12px auto 0;
         width: 500px;
-        @media screen and(max-width:767px){
+        @media screen and(min-width: 1200px) {
+            width: 35%;
+            margin: 12px auto 0 10px;
+
+        }
+        @media screen and(max-width: 767px) {
             width: 80%;
             margin: 12px auto 0;
         }
@@ -177,123 +272,90 @@ body {
             background-color: $grey1;
             @include circle(120px);
             z-index: 1;
-            
+            @media screen and(max-width: 400px) {
+                @include circle(60px);
+            }
             img {
                 width: 100px;
                 height: 100px;
                 position: relative;
+                @media screen and(max-width: 400px) {
+                    width: 60px;
+                    height: 55px;
+                }
             }
         }
         .anyl-shadow {
-            width: 450px;
+            width: 430px;
             opacity: .8;
-            @media screen and(max-width:500px){
-                width:80%;
+            @include font-style(10px, $notoSerif, black, $default-fweight) {}
+            ;
+            @media screen and(min-width: 1200px) {
+                width: 34%;
+                max-width: 450px;
+            }
+            @media screen and(max-width: 400px) {
+                width: 85%;
+                height: 80px;
+                @include font-style(1px, $notoSerif, black, $default-fweight) {}
             }
             height: 140px;
             border-radius: 75px;
             background-color: $white;
             // @include circle(140px);
             position: absolute;
-            
             // transition: width 0.5s linear, visibility 0.5s linear;
             h1 {
                 margin-top: 18px;
-                font-size: 20px;
-                font-family: "Noto Serif TC", serif;
-                
-                
+                margin-left: 130px;
+                @media screen and(max-width: 400px) {
+                    margin-left: 75px;
+                }
             }
-            
+            p {
+                font-size: 18px;
+            }
         }
-    }
-}
-
-#dayTimeBlock {
-    font-size: 30px;
-    color: $red;
-    width: 100px;
-    height: 120px;
-    margin-top: 10px;
-    @media screen and (max-width: 1199px) {
-        display: none;
-    }
-    div {
-        width: 100px;
-    }
-    #dayYear {
-        display: none;
-    }
-    #dayMonth {
-        font-size: 50px;
-    }
-    #dayDay {
-        margin-left: 20px;
-    }
-    #dayHour {
-        // position: absolute;
-        left: 80px;
-        display: none;
     }
 }
 
 .anyl-button {
-    
-    @media screen and (max-width:1199px){
+    @media screen and (max-width: 1199px) {
         display: none;
-        
-
-        }
-        line-height: 15px;
-    
+    }
+    @include font-style(30px, $notoSerif, black, $default-fweight) {}
+    line-height: 15px;
     width: 20%;
     height: 35vh;
     position: absolute;
     bottom: 0;
-    right:  0px;
+    right: 0px;
     background-color: $skin;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    a{  margin-top:15px ;
-        color: white;
-        text-decoration: none;
-        text-align: center;
-        &:active {
-            color: white;
-        }
-        &:focus {
-            color: white;
-        }
-        &:visited {
-            color: white
-        }
-        p {
-            margin: 5px;
-            @media screen and (min-width:1200px){
-     
-            margin: 25px;
-                }
-        }
+    p {
+        margin: 25px;
     }
 }
+
 .anyl-button2 {
-    @media screen and (min-width:1199px){
-    display: none;
+    @media screen and (min-width: 1199px) {
+        display: none;
     }
+    writing-mode: vertical-rl;
+    @include font-style(22px, $notoSerif, black, $default-fweight) {}
     position: fixed;
-    right: 0;
+    right: -15px;
     top: 40%;
     width: 80px;
     height: 200px;
     margin: 10px auto;
     z-index: 1;
-    
-    
-    
-    
     background-color: $skin;
-    a{  margin-top:15px ;
+    a {
+        margin-top: 15px;
         color: white;
         text-decoration: none;
         text-align: center;
@@ -308,11 +370,15 @@ body {
         }
         p {
             margin: 5px;
-            @media screen and (min-width:1200px){
-     
-            margin: 25px;
-                }
+            @media screen and (min-width: 1200px) {
+                margin: 25px;
+            }
         }
     }
+    @media screen and (max-width: 400px) {
+        width: 60px;
+        height: 150px;
+        font-size: 15px;
+    
+    }
 }
-
