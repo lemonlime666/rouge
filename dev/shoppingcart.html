@@ -194,16 +194,32 @@
         //   this.gogift = app.gifts.filter(item => item.GIF_CONDI > app.totalprice)
         // }
         commitForm (){
+          let dataif ="sendData="+JSON.stringify(this.products) +"|"+ JSON.stringify(this.max)+"|"+this.totalprice;
+          var xhr1 = new XMLHttpRequest();
+                xhr1.onload = function (){
+                    if( xhr1.status == 200 ){ //連線成功
+                       console.log(xhr1.responseText);
+                    }else{
+                        alert( xhr1.status );
+                    }
+                
+                }
+                var url1 = "./php/sendOrder.php";
+                xhr1.open("post", url1, true);
+                xhr1.setRequestHeader("content-type","application/x-www-form-urlencoded")
+                xhr1.send( dataif);
 
-          axios.post('./php/orderlist.php', {
-            products:JSON.stringify(this.products)
-          })
-          .then(res => {
-            console.log('發送成功')
+
+          // axios.post('./php/sendOrder.php', {
             
-          }).catch(rej => {
-            console.log('發送失敗')
-          })
+          //   products:a
+          // })
+          // .then(res => {
+          //   console.log(res.config.data)
+            
+          // }).catch(rej => {
+          //   console.log('發送失敗')
+          // })
         }
 
       },

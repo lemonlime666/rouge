@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="./css/product.css">
+    <link rel="stylesheet" href="./css/product1.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="./js/main.js"></script>
 </head>
@@ -68,7 +68,7 @@
                     <!-- 商品號 -->
                     <form class="pro_color">
                         <select name="" v-model="selected" @change="colorChange">
-                            <option v-for="(item, index) in products" v-if="item != ''" :value="item.PRO_COLOR" :data-color="index">{{item.PRO_COLOR}}</option>
+                            <option v-for="(item, index) in products" v-if="item != ''" :value="item.PRO_NAME" :data-color="index">{{item.PRO_NAME}}</option>
                             
                         </select>
                     </form>
@@ -140,7 +140,7 @@
                 products: [],
                 series: '',
                 proPrice: '', //商品單價
-                selected: '', //商品色票
+                selected: '', //商品名稱
                 proNum: '', //商品數量
                 proImgs: '', //圖片編號
                 proI: '', //商品編號
@@ -166,7 +166,7 @@
                     //改變商品價格
                     this.proPrice = this.products[i].PRO_PRICE
                     //改變色票編號
-                    this.selected = this.products[i].PRO_COLOR
+                    this.selected = this.products[i].PRO_NAME
                     //改變圖片編號
                     
                     this.proImgs = this.products[i].PRO_IMGS.split("|")
@@ -202,7 +202,7 @@
                     this.proCommit.comImg = this.products[i].PRO_IMG
                     this.proCommit.comPrice = this.products[i].PRO_PRICE
                     this.proCommit.comNum = this.proNum
-                    
+
                     //判斷條件
                     //如果購物車內有相同的系列編號
 
@@ -222,17 +222,12 @@
 
                         }
                     }
-                    
-                        
+
                     // console.log(this.proCommit)
                     const copy = Object.assign({}, this.proCommit) //複製物件
                     this.totalCommit.push(copy)
                     console.log(this.totalCommit)
-                    localStorage['shoppingcart'] = JSON.stringify(this.totalCommit)    
-                    
-                    
-                    
-                    
+                    localStorage['shoppingcart'] = JSON.stringify(this.totalCommit)
                 }
 
                 
@@ -264,20 +259,13 @@
             
                 
             mounted() { //在VUE未渲染時執行函數  
-            //     if(localStorage['username'] == null){
-            //     let name = prompt('What is your name?');
-            //     localStorage['username'] = name;
-            // }else{
-            //     alert(localStorage['username']);
-            // }
-              if(localStorage['shoppingcart'] == null){ //假如localstorage為空值
+                if(localStorage['shoppingcart'] == null){ //假如localstorage為空值
                 this.totalCommit =[]
               }else{
                 this.totalCommit = JSON.parse(localStorage.getItem('shoppingcart')) //抓取localstorage中的購物車字串並轉為物件
               }
               
-              
-              let ser = localStorage.getItem('lipsname')
+              let ser = localStorage.getItem('carename')
               console.log(ser)
               
               var xhr = new XMLHttpRequest();
@@ -286,7 +274,7 @@
                     app.$data.products = JSON.parse(xhr.responseText); //將導出的物件存入data中
                     app.$data.proPrice = app.$data.products[0].PRO_PRICE //給預設第一項商品單價
                     app.$data.proNum = 1 //給預設第一項商品數量
-                    app.$data.selected = app.$data.products[0].PRO_COLOR //給預設第一項商品色票
+                    app.$data.selected = app.$data.products[0].PRO_NAME //給預設第一項商品色票
                     app.$data.proImgs = app.$data.products[0].PRO_IMGS.split("|")
                     app.$data.seriename = app.$data.products[0].SER_NAME //給預設的系列名稱
                     app.$data.serietext = app.$data.products[0].SER_TEXT //給預設的系列介紹
