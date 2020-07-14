@@ -139,7 +139,7 @@ gulp.task( 'ftp',['miniIMG'], function () {
 //gulp newVersion
 gulp.task('go', function () {
     //html move + include
-    gulp.src(['./dev/*.html'])
+    gulp.src(['./dev/*.html','./dev/*.php'])
         .pipe(fileinclude({
             prefix: '@@',
             basepath: '@file'
@@ -195,7 +195,7 @@ gulp.task('live',function(){
 })
 
 gulp.task('watch',function(){
-    gulp.watch(['./dev/*.html' ,'./dev/**/*.html','./dev/css/*.css'], ['go']).on('change',reload);
+    gulp.watch(['./dev/*.html' ,'./dev/**/*.html','./dev/css/*.css','./dev/*.php'], ['go']).on('change',reload);
     gulp.watch('./dev/js/*.js',['gojs']).on('change',reload);
     gulp.watch('./dev/sass/**/*.scss',['go']).on('change',reload);
     
