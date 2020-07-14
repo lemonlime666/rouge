@@ -10,20 +10,33 @@ window.addEventListener('load', function () {
                 let div = document.createElement('div');
                 div.classList.add("swiperimgContent");
                 let ahref = document.createElement('a');
-                ahref.setAttribute('href', '#');
                 let adimg = document.createElement('img');
                 adimg.classList.add('swiperimg');
-                adimg.setAttribute('src', `${data[i]}`);
+                adimg.setAttribute('src', `${data[i].AD_IMGURL}`);
+                adimg.setAttribute('data-series', `${data[i].SER_NO}`);
                 ahref.appendChild(adimg);
                 div.appendChild(ahref);
                 document.querySelector('.swiperimgBox').appendChild(div);
             }
             createPagination();
+            linkToShop();
         },
         error(xhr) {
             console.log(xhr.responseText);
         }
     })
+
+    //跳轉商品頁面，系列編號setLocal，在執行跳轉
+    function linkToShop(){
+        let adimg = document.querySelectorAll('.swiperimg');
+        for(let i=0; i<adimg.length; i++){
+            adimg[i].addEventListener('click', function(e){
+                // console.log(e.target.dataset.series);
+                localStorage.setItem('seriesname', e.target.dataset.series);
+                document.location.href = "#"; //這邊改成商品頁面連結
+            })
+        }
+    }
 
     //for swiper
     function createPagination() {
