@@ -18,7 +18,6 @@ window.addEventListener('load', function () {
                 div.appendChild(ahref);
                 document.querySelector('.swiperimgBox').appendChild(div);
             }
-            alert('ok');
             createPagination();
             linkToShop();
         },
