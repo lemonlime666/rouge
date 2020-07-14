@@ -13,6 +13,7 @@ window.addEventListener('load', function () {
                 let adimg = document.createElement('img');
                 adimg.classList.add('swiperimg');
                 adimg.setAttribute('src', `${data[i].AD_IMGURL}`);
+                adimg.setAttribute('data-class', `${data[i].PRO_CLASS}`);
                 adimg.setAttribute('data-series', `${data[i].SER_NO}`);
                 ahref.appendChild(adimg);
                 div.appendChild(ahref);
@@ -31,9 +32,14 @@ window.addEventListener('load', function () {
         let adimg = document.querySelectorAll('.swiperimg');
         for(let i=0; i<adimg.length; i++){
             adimg[i].addEventListener('click', function(e){
-                // console.log(e.target.dataset.series);
                 localStorage.setItem('seriesname', e.target.dataset.series);
-                document.location.href = "#"; //這邊改成商品頁面連結
+                if(e.target.dataset.class == 0){
+                    alert('口紅商品頁');
+                    // document.location.href = "#"; //這邊改成口紅商品頁面連結
+                }else if (e.target.dataset.class == 1){
+                    alert('保養品商品頁');
+                    // document.location.href = "#"; //這邊改成保養品商品頁面連結
+                } 
             })
         }
     }
