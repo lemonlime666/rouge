@@ -60,10 +60,29 @@ Vue.component('meminfo', {
             e.preventDefault();
             let alterInput = document.querySelectorAll('.alterInput');
             let inputbox = document.querySelectorAll('.inputBox');
-            for(let i=0; i<alterInput.length; i++){
-                inputbox[i].innerHTML = `${alterInput[i].value}`;
+            let xhr = new XMLHttpRequest();
+            let a = this;
+            xhr.onload= function(){
+                if(xhr.status == 200) {
+                    alert(xhr.responseText);
+                    for(let i=0; i<alterInput.length; i++){
+                        inputbox[i].innerHTML = `${alterInput[i].value}`;
+                    }
+                    a.counter--;
+                }else{
+                    alert(xhr.status);
+                }
             }
-            this.counter--;
+            xhr.open("post", "./php/alterMemberInfo.php", true);
+            xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
+            let obj = {
+                name:alterInput[0].value,
+                mail:alterInput[1].value,
+                phone:alterInput[2].value,
+                adrs:alterInput[3].value
+            };
+            let str = JSON.stringify(obj);
+            xhr.send(`alterStr=${str}`);
         },
         getInfo(){
             let xhr = new XMLHttpRequest();

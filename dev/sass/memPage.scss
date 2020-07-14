@@ -258,7 +258,7 @@ body {
             align-items: center;
             position: relative;
             cursor: pointer;
-            box-shadow: 5px 8px 20px rgba($lightGold, 0.15);
+            box-shadow: 3px 2px 20px rgba($lightGold, 0.15);
 
             @include m-pad() {
                 width: 150px;
@@ -288,10 +288,10 @@ body {
 
         .activeInfo {
             @include font-style() {
+                color: $lightGold;
+                font-size: 16px;
             }
             background-color: $wood;
-            color: $white;
-            font-size: 16px;
             @include l-phone() {
                 font-size: 14px;
             }
@@ -301,7 +301,7 @@ body {
 
             &:hover {
                 background-color: $wood;
-                color: $white;
+                color: $lightGold;
             }
         }
     }
@@ -418,7 +418,7 @@ body {
                 display: grid;
                 grid-template-columns: 1.5fr 2fr 2fr 4fr 1fr;
                 td{
-                    border: 1px solid gold;
+                    border-bottom: 1px solid rgba($white, .2);
                     @include font-style(){}
                     font-size: 14px;
                     color: $grey5;
@@ -429,7 +429,8 @@ body {
 
                     &:nth-of-type(4){
                         justify-content: flex-start;
-                        padding-left: 10px;
+                        padding-left: 15px;
+                        padding-right: 15px;
                     }
 
                     @include l-phone() {
