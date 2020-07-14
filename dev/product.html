@@ -6,7 +6,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="./css/product.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.js"></script>
 </head>
 <body>
     @@include("./app/header.html")
@@ -121,7 +121,7 @@
         </div>
         
         <div class="lag-type">
-            <form method="POST">
+            <form >
                 <textarea class="lag-type-content" id="procomment"></textarea>
                 <!-- <input type="text" class="lag-type-content" placeholder="商品留言"> -->
                 <button class="lag-type-btn"  @click="passcomment">留言</button>
@@ -131,7 +131,7 @@
         
         
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.js"></script>
+ 
     <script>
 
         let proBack = document.querySelector(".pro-out");
@@ -216,8 +216,7 @@
                     localStorage['shoppingcart'] = JSON.stringify(this.totalCommit)
                 },
                 passcomment(e){
-            
-                    
+                    e.preventDefault();
                     //將資料放入物件中
                     let commentInfo = {
                         SER_NO: 1,
@@ -227,26 +226,24 @@
 
                     };
 
-                    let str = JSON.stringify(commentInfo); //signUpInfo轉成JSON格式字串
-                    console.log(str);
+                    let str = JSON.stringify(commentInfo); //commentInfo轉成JSON格式字串
+                    // console.log(str);
 
-                    // let comment = document.getElementById('procomment');
-                    // let xhr2 =new XMLHttpRequest();
-                    // xhr2.onload = function () {
-                    //     if (xhr2.status == 200) {
-                           
-                    //     }else{
+                   
+                    let xhr2 =new XMLHttpRequest();
+                    xhr2.onload = function () {
+                        if (xhr2.status == 200) {
+                           console.log(xhr2.responseText);
+                        }else{
                             
-                    //     }
-                    // }
-                    // xhr2.open("post", "./php/comment.php", true);
-                    // xhr2.setRequestHeader("content-type", "application/x-www-form-urlencoded");
-
-                    // let data = `commentInfo=${str}`; //將JSON格式字串儲存進陣列中
-                    // xhr2.send(data); //傳遞JSON至PHP
-
-                    //將登入表單上的資料清空，並隱藏起來
-                    // document.getElementById('procomment').value = '';                    
+                        }
+                    }
+                    xhr2.open("post", "./php/comment.php", true);
+                    xhr2.setRequestHeader("content-type", "application/x-www-form-urlencoded");
+                    let procom = `commentInfo=`+str; //將JSON格式字串儲存進陣列中
+                    xhr2.send(procom); //傳遞JSON至PHP
+                    //將登入表單上的資料清空
+                    document.getElementById('procomment').value = '';                    
                 }
 
                 
