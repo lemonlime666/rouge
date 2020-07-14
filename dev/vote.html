@@ -11,7 +11,7 @@
 
    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.js"></script>
 </head>
-<body>
+<body >
 
    
   
@@ -21,7 +21,7 @@
           <div class="container">
               <h1>歡迎參加票選大賽</h1>
               <div class="showImg">
-                <img src="./image/top.jpg" alt="">
+                <img id="joinImg" src="" alt="">
                 <div class="imgContext">
                     <h2>設計理念</h2>
                      <textarea></textarea>
@@ -48,9 +48,9 @@
           </div>
         </form>
       </div>
-
     <div style="background-color: #292929; height: 100px;width: 100%;"></div>
-    <body>
+    <body >
+<div id="content"> 
         <div class="firstscreen" style="background-color: #292929;">
             <div class="vTH"><p class="vTH1">明信片票選</p><p class="vTH2">TOP3</p></div>
             <div class="Bgi">
@@ -62,26 +62,27 @@
                     </div>
                     <div class="top">
                             <div class="no2">
-                                    <img src="./image/top.jpg" alt="">
+                                    <img :src="topThree[1].CARD_URL" alt="">
                                     <div class="no">第二名</div>
-                                    <div class="tno">165票</div>
+                                    <div class="tno">{{topThree[1].CARD_VOTESUM}}票</div>
                                 </div>
-                            <div>
+    
                                 <div class="no1">
-                                    <img src="./image/top.jpg" alt="">
+                                    <img :src="topThree[0].CARD_URL" alt="">
                                     <div class="sno1">第一名</div>
-                                    <div class="tno1">300票</div>
+                                    <div class="tno1">{{topThree[0].CARD_VOTESUM}}票</div>
                                 </div>
-                            </div>
-                            <div>
+       
+                       
                                 <div class="no3">
-                                    <img src="./image/top.jpg" alt="">
+                                    <img :src="topThree[2].CARD_URL" alt="">
                                     <div class="no">第三名</div>
-                                    <div class="tno">100票</div>
+                                    <div class="tno">{{topThree[2].CARD_VOTESUM}}票</div>
                                  </div>
-                           </div>
+                 
                             <div class="invote">
-                                <button class="btn1-1" onclick="document.getElementById('id01').style.display='block'">馬上參加投票</button>
+                                <!-- <button class="btn1-1" onclick="document.getElementById('id01').style.display='block'">馬上參加投票</button> -->
+                                <button class="btn1-1" @click="joinVote">馬上參加投票</button>
                             </div>
                     </div>
 
@@ -95,7 +96,8 @@
 
 
         <div class="showCards">
-            <div class="showCard" id="content">
+            <div class="showCard">
+            <!-- <div class="showCard" id="content"> -->
                 <!-- <img src="./image/top.jpg" alt=""> -->
                  <!-- 翻轉 -->
                 <div class="postCardShow"  v-for="(item, index) in showCards">
@@ -135,6 +137,7 @@
             </div>
 
         </div>
+    </div>
    <script>
 
     // Get the modal
@@ -174,6 +177,8 @@
             data: {
                 //CARD_NO, CARD_URL, MAKEUP_NO,CARD_INF, CARD_VOTESUM, CARD_VOTEDATE
                 showCards: [],
+                topThree:[],
+                member_img:'',
                 CARD_NO: '',
                 CARD_URL: '', //圖片
                 CARD_INF: '', //設計理念
@@ -188,7 +193,18 @@
                      let cardNO = localStorage.getItem('cardNO')
                      console.log(cardNO)
                 },
-                
+                joinVote(){
+                      
+                    if(this.member_img=="未登入會員"){
+                        alert("請先登入會員");
+                    }else if(this.member_img=="尚未有明信片資料"){
+                        alert("尚未有明信片資料,請前往試妝!");
+                        location.href='./makeUp.html';
+                    }else{
+                        document.getElementById('id01').style.display='block';
+                        document.getElementById('joinImg').src = this.member_img;
+                    }
+                },
 
 
                 },
@@ -202,14 +218,15 @@
             mounted() { //在VUE未渲染時執行函數  
             //   let ser = localStorage.getItem('seriesname')
             //   console.log(ser)
-              
+             
+            
+            //拉下方投票卡片
             var xhr = new XMLHttpRequest();
             xhr.onload = function (){
                 if( xhr.status == 200 ){ //連線成功
                     app.$data.showCards = JSON.parse(xhr.responseText); //將導出的物件存入data中
                    console.log(app.$data.showCards);
-                    // app.$data.CARD_NO = app.$data.showCard[0].CARD_NO //給預設第一項商品單價
-                    // app.$data.CARD_URL = app.$data.showCard[0].CARD_URL 
+        
                 
                 }else{ 
                     alert( xhr.status );
@@ -220,7 +237,28 @@
                 xhr.open("get", url, true);
                 xhr.send( null );  
 
+
+            //拉前三 跟會員明信片圖片 然後練習在前端切割
+            var xhr2 = new XMLHttpRequest();
+            xhr2.onload = function (){
+             if( xhr2.status == 200 ){ //連線成功
+                    // app.$data.topThree = JSON.parse(xhr2.responseText); //將導出的物件存入data中
+                   let strarr = xhr2.responseText.split("|");
+                   app.$data.member_img=strarr[0];
+                   app.$data.topThree=JSON.parse(strarr[1]);
+                    console.log(strarr);
+
+                }else{ 
+                    alert( xhr2.status );
+                }
+                
+              }
+              var url = "./php/topThree.php"; //設定PHP位置
+                xhr2.open("get", url, true);
+                xhr2.send( null );  
+
             }
+         
         });
           
 
