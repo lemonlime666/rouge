@@ -59,11 +59,11 @@
                     <p>在次檢測</p>
                 </div>
             </a>
-            <a href="">
-                <div class="btnStyle">
+            <!-- <a href=""> -->
+                <div id="btnCheckId" class="btnStyle">
                     <p>儲存檢測結果</p>
                 </div>
-            </a>
+            <!-- </a> -->
         </div>
     </main>
 
@@ -84,7 +84,6 @@
                 var xhr = new XMLHttpRequest();
                 xhr.onload=function (){
                     if( xhr.status == 200 ){
-                        console.log(xhr.responseText)
                         app.$data.result = JSON.parse(xhr.responseText);
                         app.$data.type = localStorage.type;
                     }else{
@@ -95,28 +94,29 @@
                 var url = `./php/memAnylizeResult.php`;
                 xhr.open("post", url, true);
                 xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
-                let data_info = 'answer=' + localStorage.type;
                 
+                let data_info = 'answer=' + localStorage.type;
+
                 xhr.send(data_info); 
-                console.log(data_info)
+                // console.log(data_info);
 
 
+                
+                
 
                 // xhr.send(null);
 
-                // var xhr2 = new XMLHttpRequest();
-                // xhr2.onload=function (){
-                //     if( xhr2.status == 200 ){
-                //         app.$data.word = JSON.parse(xhr2.responseText);
-                //     }else{
-                //         alert( xhr2.status );
-                //     }
-                // }
                 
-                // var url2 = "./php/memAnylizeResult2.php";
+                // let today = new Date();
+                // let todayTime = `${today.getFullYear()}-${today.getMonth()+1}-${today.getDate()}`
+                // var xhr2 = new XMLHttpRequest();
+                // var url2 = "./php/memAnylizeResultUpdate.php";
                 // xhr2.open("post", url2, true);
-                // let data_info2='answer=' + (parseInt(localStorage.type)+1);
+                // xhr2.setRequestHeader("content-type","application/x-www-form-urlencoded");
+                
+                // let data_info2='today=' + todayTime;
                 // console.log(data_info2);
+
                 // xhr2.send( data_info2 );
 
 
@@ -124,8 +124,70 @@
             },
 
         });
+        var btnCheckId = document.getElementById('btnCheckId')
+
+        btnCheckId.addEventListener('click', function() {
+                //   產生XMLHttpRequest物件
+                let xhr = new XMLHttpRequest();
+                //註冊callback function
+                            var x;
+                xhr.onload = function(){
+                    if(xhr.status==200){
+                    }else{
+                        alert(xhr.status);
+                    }
+                }
+                let today = new Date();
+                let todayTime = `${today.getFullYear()}-${today.getMonth()+1}-${today.getDate()}`
+                                
+                
+                //設定好所要連結的程式
+                let url = "./php/memAnylizeResultUpdate.php";
+                xhr.open("Post", url, true);
+
+                //送出資料
+              
+                xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
+                let data_info = `today=${todayTime}&&class=${localStorage.type}`;
+                xhr.send(data_info);
+            });
+//         function checkId(){  
 
 
+
+// //   產生XMLHttpRequest物件
+//   let xhr = new XMLHttpRequest();
+//   //註冊callback function
+//             var x;
+//   xhr.onload = function(){
+//       if(xhr.status==200){
+        
+//         alert(x);
+//       }else{
+//         alert(xhr.status);
+//       }
+//   }
+
+//   //設定好所要連結的程式
+//   let today = new Date();
+//   let todayTime = `${today.getFullYear()}-${today.getMonth()+1}-${today.getDate()}`
+//   let url = "./php/memAnylizeResultUpdate.php";
+//   xhr.open("Post", url, true);
+
+//   //送出資料
+  
+                
+//   xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
+//   let data_info = 'today=' + todayTime;
+//   xhr.send(data_info);
+//   console.log(data_info);
+// }//function_checkId 
+
+
+// //..........................................
+// window.addEventListener("load", function(){
+//   document.getElementById("btnCheckId").addEventListener("click", checkId, false);
+// }, false)
     </script>
 </body>
 

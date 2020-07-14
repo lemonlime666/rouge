@@ -4,19 +4,24 @@ $(document).ready(function () {
     // let my_pro_class = '';
     //接ajax
     $.ajax({
+        type: 'GET',
         url: './php/makeUp.php',
         // data:{
         //     pro_class:0,
-        //     ser_name:''
+        //     ser_name:' my_pro_class'
         // },
-        type: 'GET',
         success(data) {
+            // let s = JSON.parse(data);
             let s = JSON.parse(data);
-            console.log(s)
+            s.pop(2605);
+            
+            
+            
+            console.log(s);
             // document.querySelector(".M_title").innerHTML = data;
-            document.querySelector(".M_title").innerHTML = s[0];
-            document.querySelector(".M_productImg").innerHTML = s[1];
-            document.querySelector(".M_detail").innerHTML = s[2];
+            // document.querySelector(".M_title").innerHTML = s[0];
+            // document.querySelector(".M_productImg").innerHTML = s[1];
+            // document.querySelector(".M_detail").innerHTML = s[1];
         }
     })
 
@@ -197,28 +202,39 @@ $(document).ready(function () {
     let isDrawing = false;
     let lastX = 0;
     let lastY = 0;
-    let hue = 100;  // 0;
+    // let hue = 100;  // 0;
     let direction = true;
+
+    let picker = document.querySelectorAll('.M_pcColor');
+    picker.forEach(function (item, index, array) {
+        item.addEventListener('click', function () {
+            let M_style = window.getComputedStyle(item, null).getPropertyValue('background-color');
+            varM_Color = M_style;
+        })
+    });
 
     function draw(e) {
         if (!isDrawing) return;
         console.log(e)
-        ctx.strokeStyle = '#9d3333';
+        ctx.strokeStyle = varM_Color;
         // ctx.strokeStyle = `hsl(${hue}, 100%, 50%)`;
         ctx.beginPath();
         ctx.moveTo(lastX, lastY);
-
         ctx.lineTo(e.offsetX, e.offsetY);
         ctx.stroke();
-
         [lastX, lastY] = [e.offsetX, e.offsetY];
     }
 
     canvas.addEventListener('mousedown', (e) => {
         isDrawing = true;
-
         [lastX, lastY] = [e.offsetX, e.offsetY];
     });
+
+    $('.M_pcnone').click(function (e) {
+        e.stopPropagation;
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+    })
+
     canvas.addEventListener('mousemove', draw);
     canvas.addEventListener('mouseup', () => isDrawing = false);
     canvas.addEventListener('mouseout', () => isDrawing = false);
