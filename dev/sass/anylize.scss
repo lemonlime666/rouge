@@ -294,7 +294,6 @@ body {
         }
         .anyl-shadow {
             width: 430px;
-            opacity: .8;
             @include font-style(10px, $notoSerif, black, $default-fweight) {}
             ;
             @media screen and(min-width: 1200px) {
@@ -308,7 +307,7 @@ body {
             }
             height: 140px;
             border-radius: 75px;
-            background-color: $white;
+            background-color: rgba(239,239,239,.8);
             // @include circle(140px);
             position: absolute;
             // transition: width 0.5s linear, visibility 0.5s linear;
@@ -321,6 +320,65 @@ body {
             }
             p {
                 font-size: 18px;
+            }
+            .type{
+                .detail{
+                    width: 260px;
+                    margin-left: 100px;
+
+                }
+                    input{
+                            @include font-style(10px, $notoSerif, $grey5) {}
+                        cursor: pointer;
+                        width: 110px;
+                        height: 40px;
+                        text-align: center;
+                        margin-top: 10px;
+                        background-color: rgba(239,239,239,.8);
+                        border: none;
+                        outline: none;
+                        transition: background-color 0.5s, border 0.5s ,color .5;
+                        &:hover {
+                        background-color: #AE5F5F;
+                        border: 1px solid #AE5F5F;
+                        transition: background-color 0.5s, border 0.5s,color .5s;
+                        color:$white;
+                }
+                    
+                }
+                
+                a{
+                    @include font-style(15px, $notoSerif, $grey5) {}
+                    cursor: pointer;
+                    width: 100%;
+                    height: 100%;
+                    text-align: center;
+                    margin-top: 10px;
+                    background-color: rgba(239,239,239,.8);
+                    border: none;
+                    outline: none;
+                    transition: background-color 0.5s, border 0.5s,color .5s;
+                    &:hover {
+                    background-color: #AE5F5F;
+                    border: 1px solid #AE5F5F;
+                    transition: background-color 0.5s, border 0.5s,color .5s;
+                    color:$white;
+            }                }
+                a:link{
+                    text-decoration: none;
+                    color:$grey5;
+                    
+                }
+                
+                a:active{
+                    text-decoration: none;
+                    color:$grey5;
+                }
+                
+                a:visited{
+                    text-decoration: none;
+                    color:$grey5;
+                }
             }
         }
     }

@@ -133,8 +133,6 @@
                             var x;
                 xhr.onload = function(){
                     if(xhr.status==200){
-                        x = xhr.responseText;
-                        alert(x);
                     }else{
                         alert(xhr.status);
                     }
@@ -152,7 +150,6 @@
                 xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
                 let data_info = `today=${todayTime}&&class=${localStorage.type}`;
                 xhr.send(data_info);
-                console.log(data_info);
             });
 //         function checkId(){  
 
@@ -164,7 +161,7 @@
 //             var x;
 //   xhr.onload = function(){
 //       if(xhr.status==200){
-//         x = xhr.responseText;
+        
 //         alert(x);
 //       }else{
 //         alert(xhr.status);
@@ -172,12 +169,13 @@
 //   }
 
 //   //設定好所要連結的程式
+//   let today = new Date();
+//   let todayTime = `${today.getFullYear()}-${today.getMonth()+1}-${today.getDate()}`
 //   let url = "./php/memAnylizeResultUpdate.php";
 //   xhr.open("Post", url, true);
 
 //   //送出資料
-//   let today = new Date();
-//   let todayTime = `${today.getFullYear()}-${today.getMonth()+1}-${today.getDate()}`
+  
                 
 //   xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
 //   let data_info = 'today=' + todayTime;
