@@ -154,7 +154,7 @@
       
       <!--結帳-->
       <div class="check">
-        <button>立即結帳</button>
+        <button @click="commitForm">立即結帳</button>
         <button><a href="./light-lips.html">繼續購物</a></button>
 
       </div>
@@ -162,6 +162,8 @@
     <h2 v-else>購物車為空</h2>
   </div>
   <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.js'></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
   <script>
     const app = new Vue({
       el: "#app",
@@ -191,6 +193,18 @@
         // gogift (){
         //   this.gogift = app.gifts.filter(item => item.GIF_CONDI > app.totalprice)
         // }
+        commitForm (){
+
+          axios.post('./php/orderlist.php', {
+            products:JSON.stringify(this.products)
+          })
+          .then(res => {
+            console.log('發送成功')
+            
+          }).catch(rej => {
+            console.log('發送失敗')
+          })
+        }
 
       },
       computed: {

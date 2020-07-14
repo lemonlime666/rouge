@@ -104,10 +104,10 @@
                                 <!--商品欄位-->
                                 <div class="cardouter" v-for="(item, index) in series">
 
-                                    <div class="card" @click="dataClick" >
+                                    <div class="card">
                                         <!--折扣-->
-                                        <div class="pro-discount hugefont">
-                                            {{program}}
+                                        <div class="pro-discount hugefont" v-if="item.SP_DISCOUNT != null">
+                                            {{item.SP_DISCOUNT * 100}}%
                                         </div>
                                         <!--滑鼠-->
                                         <div class="mouse-block">
@@ -162,7 +162,7 @@
             data: {
                 series:'',
                 
-                program: '70%',
+                
 
 
             },
