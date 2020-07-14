@@ -1,27 +1,15 @@
 
 
 $(document).ready(function () {
-    // let my_pro_class = '';
-    //接ajax
-    $.ajax({
-        url: './php/makeUp.php',
-        // data:{
-        //     pro_class:0,
-        //     ser_name:''
-        // },
-        type: 'GET',
-        success(data) {
-            let s = JSON.parse(data);
-            console.log(s)
-            // document.querySelector(".M_title").innerHTML = data;
-            document.querySelector(".M_title").innerHTML = s[0];
-            document.querySelector(".M_productImg").innerHTML = s[1];
-            document.querySelector(".M_detail").innerHTML = s[2];
-        }
-    })
 
+name(localStorage.getItem('lipsname') || 1);
 
-
+let panelBtn = document.querySelectorAll('.M_control');
+for(let i=0; i<panelBtn.length; i++){
+    panelBtn[i].addEventListener('click',function(){
+        name(i+1);
+    });
+}
 
 
     // Get the modal
@@ -200,10 +188,23 @@ $(document).ready(function () {
     let hue = 100;  // 0;
     let direction = true;
 
+    let picker = document.querySelectorAll('.M_pcColor');
+    picker.forEach(function (item, index, array) {
+        item.addEventListener('click', function () {
+            let M_style = window.getComputedStyle(item, null).getPropertyValue('background-color');
+            varM_Color = M_style;
+        })
+    });
+
+    $('.M_pcnone').click(function (e) {
+        e.stopPropagation;
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+    })
+
     function draw(e) {
         if (!isDrawing) return;
         console.log(e)
-        ctx.strokeStyle = '#9d3333';
+        ctx.strokeStyle = varM_Color;
         // ctx.strokeStyle = `hsl(${hue}, 100%, 50%)`;
         ctx.beginPath();
         ctx.moveTo(lastX, lastY);
@@ -240,12 +241,27 @@ $(document).ready(function () {
     // function getModelFileName(str) {
     //     return str.substring(str.lastIndexOf('-') + 1);
     // }
-
-
-
-
-
-
 });
 
 
+function name(aaa){
+    // let aaa = localStorage.getItem('lipsname') || 1;
+
+    let xhr = new XMLHttpRequest();
+    xhr.onload = function (){
+        if(xhr.status == 200){
+            let data = JSON.parse(xhr.responseText);
+            console.log(data.SER_NAME);
+            document.querySelector('.M_title').innerHTML = data.SER_NAME;
+            document.querySelector('.M_productImg').setAttribute("src",data.SER_IMGURL);
+            document.querySelector('.M_detail').innerHTML = data.SER_TEXT;
+        }else{
+            alert('失敗')
+        }
+    }
+    xhr.open('post','./php/makeUp_getinfo.php',true);
+    xhr.setRequestHeader('content-type','application/x-www-form-urlencoded');
+
+    xhr.send(`no=${aaa}`);
+    localStorage.setItem('lipsname',aaa);
+}

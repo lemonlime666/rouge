@@ -10,9 +10,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Nunito+Sans:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="./js/filesaver.js"></script>
+    <link rel="stylesheet" href="./css/dingli.css">
+
 </head>
 
 <body>
+@@include("./app/header_black.html")
     <section class="M_background">
         <p class="M_bgf">ROUGE</p>
         <div class="M_line"></div>
@@ -47,7 +50,6 @@
                         <button class="M_btn"><img src="./image/model/model03-hei-res-non.png" alt="" style="width: 60%;" id="M_chooseModel3" onclick="loadImage3()"></button>
                         <button class="M_btn"><img src="./image/model/model04-hei-res-non.png" alt="" style="width: 60%;" id="M_chooseModel4" onclick="loadImage4()"></button>
                         <button class="M_btn"><img src="./image/model/model05-hei-res-non.png" alt="" style="width: 60%;" id="M_chooseModel5" onclick="loadImage5()"></button>
-                        <button class="M_btnSec" id="M_chooseMode6">上傳照片</button>
                     </div>
                     <!-- model tab end -->
 
@@ -98,7 +100,7 @@
                     <form class="M_imagecus" id="M_imageGroup" method="POST">
                         <input type="hidden" name="myImage" id="hidden_data">
                         <canvas class="M_canvas" id="painter" width="500" height="580"></canvas>
-                        <p class="M_text">尚未選擇檔案</p>
+                        <p class="M_text">點選MODEL照片</br>or</br>選擇檔案上傳照片</p>
                     </form>
                     <input id="M_uploadimg" type="file" hidden>
                     <button id="M_customBtn">選擇檔案</button>
@@ -128,9 +130,10 @@
 
     <!-- PHONE -->
 
+
     <div class="M_rightgroup">
         <button class="M_shoppingBag"><i class="fas fa-shopping-bag fa-3x"></i></button>
-        <button class="M_shoppingBag" onclick="location.href='card.html'"><i class="far fa-address-card fa-3x"></i></button>
+        <button class="M_shoppingBag btn3-1" type="button" onclick="savingImage()"><i class="far fa-address-card fa-3x"></i></button>
     </div>
 
 
@@ -163,7 +166,7 @@
                 ctx.drawImage(img, 0, 0, 500, 600); //drawImage(img,x,y,width,height)
             }
             modelSrc = img.src = document.getElementById("M_chooseModel1").src;
-            alert(modelSrc);
+
         }
 
         function loadImage2() {
@@ -175,7 +178,7 @@
                 ctx.drawImage(img, 0, 0, 500, 600); //drawImage(img,x,y,width,height)
             }
             modelSrc = img.src = document.getElementById("M_chooseModel2").src;
-            alert(modelSrc);
+
         }
 
         function loadImage3() {
@@ -187,7 +190,7 @@
                 ctx.drawImage(img, 0, 0, 500, 600); //drawImage(img,x,y,width,height)
             }
             modelSrc = img.src = document.getElementById("M_chooseModel3").src;
-            alert(modelSrc);
+
         }
 
         function loadImage4() {
@@ -199,7 +202,7 @@
                 ctx.drawImage(img, 0, 0, 500, 600); //drawImage(img,x,y,width,height)
             }
             modelSrc = img.src = document.getElementById("M_chooseModel4").src;
-            alert(modelSrc);
+
 
         }
 
@@ -207,12 +210,12 @@
             var canvas = document.getElementById("painter");
             var ctx = canvas.getContext("2d");
             var img = new Image();
-            img.onload = function() {
+            img.onload = function() { 
                 ctx.clearRect(0, 0, 700, 700);
                 ctx.drawImage(img, 0, 0, 500, 600); //drawImage(img,x,y,width,height)
             }
             modelSrc = img.src = document.getElementById("M_chooseModel5").src;
-            alert(modelSrc);
+
         }
 
         //存圖到資料庫
@@ -248,7 +251,7 @@
             let circles = document.querySelectorAll(".M_pcColor");
             for (let i = 0; i < circles.length; i++) {
                 circles[i].onclick = function(e) {
-                    alert(modelSrc + e.target.id.substr(5));
+
                     modelSrc = img.src = document.getElementById("M_chooseModel1").src;
                     // modelSrc.attr("src", "./image/model/model0" + changeModel + "-hei-res-" + changeLipColor + ".png")
 
@@ -269,7 +272,6 @@
         })
     </script>
 
-
+    <script src="./js/header.js"></script>
 </body>
-
 </html>

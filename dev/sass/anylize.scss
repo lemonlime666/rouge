@@ -324,45 +324,57 @@ body {
             .type{
                 .detail{
                     width: 260px;
-                    margin-left: 100px;
-
+                    margin-left: 140px;
+                    display: flex;
                 }
-                    input{
-                            @include font-style(10px, $notoSerif, $grey5) {}
+                .memcart{
+                    p{
+                        @include font-style(10px, $notoSerif, $grey5) {}
+                        margin-top: 12px;
+                    }
+                        
+                        align-items: center;
                         cursor: pointer;
-                        width: 110px;
+                        width: 200px;
                         height: 40px;
                         text-align: center;
                         margin-top: 10px;
                         background-color: rgba(239,239,239,.8);
                         border: none;
                         outline: none;
-                        transition: background-color 0.5s, border 0.5s ,color .5;
+                        transition: background-color 0.5s,color .5;
                         &:hover {
                         background-color: #AE5F5F;
-                        border: 1px solid #AE5F5F;
-                        transition: background-color 0.5s, border 0.5s,color .5s;
-                        color:$white;
-                }
+                        // border: 1px solid #AE5F5F;
+                        transition: background-color 0.5s,color .5s;
+                        p{color:$white;}
+                        }
                     
                 }
                 
                 a{
-                    @include font-style(15px, $notoSerif, $grey5) {}
+                    p{
+                        @include font-style(15px, $notoSerif, $grey5) {}
+                        margin-top: 10px;
+                    }
+                    
                     cursor: pointer;
-                    width: 100%;
-                    height: 100%;
+                    width: 100px;
+                    margin-left: 20px;
+                    height: 40px;
                     text-align: center;
                     margin-top: 10px;
                     background-color: rgba(239,239,239,.8);
                     border: none;
                     outline: none;
-                    transition: background-color 0.5s, border 0.5s,color .5s;
+                    transition: background-color 0.5s,color .5s;
                     &:hover {
                     background-color: #AE5F5F;
-                    border: 1px solid #AE5F5F;
-                    transition: background-color 0.5s, border 0.5s,color .5s;
+                    // border: 1px solid #AE5F5F;
+                    transition: background-color 0.5s,color .5s;
                     color:$white;
+                    p{color:$white;}
+
             }                }
                 a:link{
                     text-decoration: none;
