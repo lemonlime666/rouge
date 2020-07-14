@@ -45,8 +45,10 @@
                             <p>{{lateyear.PRO_USETIME}} {{lateyear.PRO_SEASON}}</p>
                         </div>
                         <div :id="lateyear.PRO_NO" class="detail" :value="lateyear.PRO_NO">
-                            <input type="button" value="ADD TO CART" @click="addChart">
-                                <a href="">商品詳情</a>
+                            <div class="memcart" :value='lateyear.PRO_NO' @click="addChart(lateyear)">
+                                <p>ADD TO CART</p>
+                            </div>
+                                <a href=""><p>商品詳情</p></a>
                         </div>
                     </div>
                 </div>
@@ -99,14 +101,15 @@
 
                 series: [],
                 proPrice: [], //商品單價
-                proNum: '', //商品數量
+                proNum: '1', //商品數量
                 proImgs: '', //圖片編號
                 proNO: '', //商品編號
                 proClass:'',
                 proName:'',
                 proSeason:'',
                 proUsetime:'',
-
+                getItems:[],
+                totalItem:[],
                 // proMessage:'', //商品留言
                 seriename:[], //系列名稱
                 serietext:[], //系列介紹
@@ -138,21 +141,41 @@
                        this.season = 1 ;
 
                     },
-                    addChart() { //加入購物車
-                        
+                    addChart(lateyear) { //加入購物車
                     //建立物件
-                    this.proCommit.comNo = this.pdolateYear[i].PRO_NO
-                    this.proCommit.comName = this.pdolateYear[i].PRO_NAME
-                    this.proCommit.comImg = this.pdolateYear[i].PRO_IMG
-                    this.proCommit.comPrice = this.pdolateYear[i].PRO_PRICE
-                    this.proCommit.comNum = this.proNum
+                    this.proCommit.comNo = lateyear.PRO_NO;
+                    this.proCommit.comName = lateyear.PRO_NAME;
+                    this.proCommit.comImg = lateyear.PRO_IMG;
+                    this.proCommit.comPrice = lateyear.PRO_PRICE;
+                    this.proCommit.comNum = this.proNum;
+                    // console.log(this.proCommit);
+                    // this.getItems = localStorage.getItem('shoppingcart');
+                    // let getlocal = JSON.parse(localStorage.getItem('shoppingcart'));
+                    // this.totalCommit.push(getlocal);
+                    // console.log(getlocal);
+                    // let getlocals = localStorage.getItem('shoppingcart');
+                    // this.getItems.push(getlocal);
+                    
+                    // console.log(getlocals);
+                    // this.getItems.push(this.proCommit);
+                    // console.log(this.getItems);
+                    // this.totalItem = new Set(this.getItem);
+                    const copy = Object.assign({}, this.proCommit)
+                    console.log(copy);
+                    this.totalCommit.push(copy)
 
+                    localStorage['shoppingcart'] = JSON.stringify(this.totalCommit);
+
+                    // this.getItems = [];
+
+                    // this.totalItem = new Set(this.getItem);
+                    // console.log(this.getIem);
                     // console.log(this.proCommit)
                     // const copy = Object.assign({}, this.proCommit) //複製物件
                     // this.totalCommit.push(copy)
                     // console.log(this.totalCommit)
                     // localStorage['shoppingcart'] = JSON.stringify(this.totalCommit)
-                }
+                    }
                 },
             created() {
                 let today = new Date();
@@ -174,20 +197,6 @@
                 var useTime = this.usetime;
 
 
-                // var xhr = new XMLHttpRequest();
-                // xhr.onload=function (){
-                //     if( xhr.status == 200 ){
-                //         app.$data.pdolateYear = JSON.parse(xhr.responseText);                        
-                //     }else{
-                //         alert( xhr.status );
-                //     }
-                // }
-                // var url = `./php/anylize.php`;
-                // xhr.open("post", url, true);
-                // xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
-                // let data_info = `season=${season}&useTime=${useTime}`
-
-                // xhr.send(data_info); 
                 
             },
             watch:{
