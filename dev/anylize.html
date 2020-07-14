@@ -5,141 +5,292 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>保養分析</title>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&family=Noto+Serif+TC:wght@200;300;400;500;600;700;900&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&family=Noto+Serif+TC:wght@200;300;400;500;600;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Nunito+Sans:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Nunito+Sans:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="css/anylize.css">
+    <link rel="stylesheet" href="./css/anylize.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="./js/main.js"></script>
-    <style>
-        
+    <style id='btnStyle'>
+
     </style>
 </head>
 
 <body>
-    
-    @@include("./app/header_black.html")
-    
-    <main class="anyl-main">
-        <div class="anyl-background">
 
-            <img src="image/background2.jpg">
-        </div>    
+    @@include("./app/header_black.html")
+    <div class="anyl-background">
+
+        <img src="image/background2.jpg">
+    </div>
+    <main class="anyl-main" id="anyl-item">
+        
         <div class="anyl-button2">
             <a href="memAnylize.html">
                 <p>專業保養分析</p>
-                
+
             </a>
         </div>
-<!--  -->
-        <div class="anyl-item" id="anyl-item">
+        <!--  -->
+        <div class="anyl-item">
 
             <div class="anyl-product" v-for="(lateyear,index) in pdolateYear" v-if="index < 4">
                 <div class="item anyl-item1">
-                    <img src="./image/care.png">
+                    <img :src="lateyear.PRO_IMG">
                 </div>
                 <div class="anyl-shadow anyl-text1">
                     <h1>{{lateyear.PRO_NAME}}</h1>
-                    <p>文字介紹</p>
+                    <div class="type">
+                        <div class="usetime">
+                            <p>{{lateyear.PRO_USETIME}} {{lateyear.PRO_SEASON}}</p>
+                        </div>
+                        <div :id="lateyear.PRO_NO" class="detail" :value="lateyear.PRO_NO">
+                            <div class="memcart" :value='lateyear.PRO_NO' @click="addChart(lateyear)">
+                                <p>ADD TO CART</p>
+                            </div>
+                                <a href=""><p>商品詳情</p></a>
+                        </div>
+                    </div>
                 </div>
             </div>
+        </div>
+        <!--  -->
 
         </div>
-<!--  -->
-        
-        </div>
-        <!-- <section class="anyl-background">
-            <div class="anyl-pic">
-                <img src="./image/background1.jpg" class="anyl-img">
-            </div>
-            <div class="anyl-right_bottom">
-                <a class="superA" href="memAnylize.html">
-                    <div class="anyl-bottom_word">
-                        <h1>詳細膚質檢測</h1>
-                        <p>anylize skin</p>
-                        <div></div>
-                    </div>
-                </a>
-            </div>
-        </section> -->
 
 
         <div class="timeBlock">
-            <div id="dayTimeBlock">
+            <div class="anylTime">
+                <div id="dayTimeBlock">
 
+                </div>
+                <img src="./image/bee.jpg" alt="">
             </div>
             <div class="anyl-timeChoose">
 
-                <button class="btn1-2 anyl-button1" id="anylSun" value="0">日間</button>
-                <button class="btn1-2 anyl-button1" id="anylNight" value="1">夜間</button>
-                <button class="btn1-2 anyl-button1" id="anyl_1to6" value="0">春夏</button>
-                <button class="btn1-2 anyl-button1" id="anyl_7to12" value="1">秋冬</button>
-
+                <div class="choose useTime">
+                    <button class="btn1-2 anyl-button1" @click="sun" id="anylSun" value="0">日間</button>
+                    <button class="btn1-2 anyl-button1" @click="night" id="anylNight" value="1">夜間</button>
+                </div>
+                <div class="choose seasonTime">
+                    <button class="btn1-2 anyl-button1" @click="earlyear" id="anyl_1to6" value="0">春夏</button>
+                    <button class="btn1-2 anyl-button1" @click="lateyear" id="anyl_7to12" value="1">秋冬</button>
+                </div>
             </div>
-            
-            
+
+
         </div>
-        <div class="anyl-button">
-            <a href="memAnylize.html">
+        <a href="memAnylize.html">
+            <div class="anyl-button">
                 <p>專業保養分析</p>
                 <p>ANYLIZE</p>
-            </a>
-        </div>
+            </div>
+        </a>
     </main>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.js"></script>
 
     <script>
-
         var app = new Vue({
             el: '#anyl-item',
             data: {
-                
-                pdolateYear:'',
-                // pdoearlYear:'',
-                // pdonight:'',
-                // pdosun:'',
 
+                pdolateYear:'',
+                season:'',
+                usetime:'',
+
+                series: [],
+                proPrice: [], //商品單價
+                proNum: '1', //商品數量
+                proImgs: '', //圖片編號
+                proNO: '', //商品編號
+                proClass:'',
+                proName:'',
+                proSeason:'',
+                proUsetime:'',
+                getItems:[],
+                totalItem:[],
+                // proMessage:'', //商品留言
+                seriename:[], //系列名稱
+                serietext:[], //系列介紹
+                proCommit:{   
+                        comNo:'', //商品編號
+                        comName:'', //商品名稱
+                        comImg: '', //小圖片路徑
+                        comNum: '', //商品數量
+                        comPrice: '', //商品單價  
+                    },
+                totalCommit: [],
+                // n:1,
             },
-            mounted() {
+
+            methods: {
+                    sun: function (event) {
+                       this.usetime = 0 ;
+
+                    },
+                    night: function (event) {
+                       this.usetime = 1 ;
+
+                    },
+                    earlyear: function (event) {
+                       this.season = 0 ;
+
+                    },
+                    lateyear: function (event) {
+                       this.season = 1 ;
+
+                    },
+                    addChart(lateyear) { //加入購物車
+                    //建立物件
+                    this.proCommit.comNo = lateyear.PRO_NO;
+                    this.proCommit.comName = lateyear.PRO_NAME;
+                    this.proCommit.comImg = lateyear.PRO_IMG;
+                    this.proCommit.comPrice = lateyear.PRO_PRICE;
+                    this.proCommit.comNum = this.proNum;
+                    // console.log(this.proCommit);
+                    // this.getItems = localStorage.getItem('shoppingcart');
+                    // let getlocal = JSON.parse(localStorage.getItem('shoppingcart'));
+                    // this.totalCommit.push(getlocal);
+                    // console.log(getlocal);
+                    // let getlocals = localStorage.getItem('shoppingcart');
+                    // this.getItems.push(getlocal);
+                    
+                    // console.log(getlocals);
+                    // this.getItems.push(this.proCommit);
+                    // console.log(this.getItems);
+                    // this.totalItem = new Set(this.getItem);
+                    const copy = Object.assign({}, this.proCommit)
+                    console.log(copy);
+                    this.totalCommit.push(copy)
+
+                    localStorage['shoppingcart'] = JSON.stringify(this.totalCommit);
+
+                    // this.getItems = [];
+
+                    // this.totalItem = new Set(this.getItem);
+                    // console.log(this.getIem);
+                    // console.log(this.proCommit)
+                    // const copy = Object.assign({}, this.proCommit) //複製物件
+                    // this.totalCommit.push(copy)
+                    // console.log(this.totalCommit)
+                    // localStorage['shoppingcart'] = JSON.stringify(this.totalCommit)
+                    }
+                },
+            created() {
                 let today = new Date();
                 let uploadHour = today.getHours();
                 let todatMonth = today.getMonth();
-
-                if (uploadHour >= 18 | uploadHour <= 6) {
-                    var useTime = 1
+                
+                    if (uploadHour >= 18 | uploadHour <= 6) {
+                    this.usetime = 1
                          } else {
-                             var useTime = 0
+                             this.usetime = 0
                     }
-                if(todatMonth<=7){
-                    var season = 0;
-                }else{
-                    var season = 1;
-                }
-                // sun(){
-                //         useTime += 1;
-                //     };
-                // console.log(useTime);
-                console.log(useTime);
-                var xhr = new XMLHttpRequest();
+                    if(todatMonth<=7){
+                        this.season = 0;
+                    }else{
+                         this.season = 1;
+                    }
+                
+                var season = this.season;
+                var useTime = this.usetime;
+
+
+                
+            },
+            watch:{
+                usetime(before,after){
+                    var xhr = new XMLHttpRequest();
                 xhr.onload=function (){
                     if( xhr.status == 200 ){
-                        app.$data.pdolateYear = JSON.parse(xhr.responseText);
+                        let newtry = JSON.parse(xhr.responseText);
+                        // for(let i=0 ; i<newtry.length;i++){
+                        //     console.log(newtry[i].PRO_PRICE)
+                        //         app.$data.proPrice[i] = newtry[i].PRO_PRICE //給預設第一項商品單價
+                        //         app.$data.proNum = 1 //給預設第一項商品數量
+                        //         // app.$data.selected[i] = newtry[i].PRO_COLOR //給預設第一項商品色票
+                        //         app.$data.proImgs[i] = newtry[i].PRO_IMG.split("|");
+                        //         app.$data.proName[i] = newtry[i].PRO_NAME;
+                        //         app.$data.proClass[i] = newtry[i].PRO_CLASS;
+                        //         app.$data.proUsetime[i] = newtry[i].PRO_USETIME;
+                        //         app.$data.proSeason[i] = newtry[i].PRO_SEASON;
+                        //         // app.$data.seriename[i] = newtry[i].SER_NAME //給預設的系列名稱
+                        //         // app.$data.serietext[i] = newtry[i].SER_TEXT //給預設的系列介紹
+                        //         app.$data.proNO[i] = newtry[i].PRO_NO//給預設的系列編號
+                        //         }
+                        
+                        for(let i = 0; i< newtry.length;i++){
+                                if(newtry[i].PRO_SEASON == 0){
+                                    newtry[i].PRO_SEASON = '春夏';
+                                }else{newtry[i].PRO_SEASON = '秋冬';
+                        };
+                                if(newtry[i].PRO_USETIME == 0){
+                                    newtry[i].PRO_USETIME = '日間';
+                                }else if(newtry[i].PRO_USETIME == 1){
+                                    newtry[i].PRO_USETIME = '夜間';
+                                }else{newtry[i].PRO_USETIME = '全適用';};
+                        };
+                        
+                        app.$data.pdolateYear = newtry;
                     }else{
                         alert( xhr.status );
                     }
                 }
-                // let data_info = 'answer='+3;
                 var url = `./php/anylize.php`;
                 xhr.open("post", url, true);
                 xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
-                let data_info = `season=${season}&useTime=${useTime}`
-                // let data_info = `season=${season}`
-                
+                let data_info = `season=${this.season}&useTime=${this.usetime}`
+
                 xhr.send(data_info); 
+                },
+                immediate:true,
+
+                season(before,after){
+                    
+                    var xhr = new XMLHttpRequest();
+                xhr.onload=function (){
+                    if( xhr.status == 200 ){
+                        let newtry = JSON.parse(xhr.responseText);
+                        // for(let i=0 ; i<newtry.length;i++){
+                        //     app.$data.proPrice[i] = newtry[i].PRO_PRICE //給預設第一項商品單價
+                        //         app.$data.proNum = 1 //給預設第一項商品數量
+                        //         // app.$data.selected[i] = newtry[i].PRO_COLOR //給預設第一項商品色票
+                        //         app.$data.proImgs[i] = newtry[i].PRO_IMG.split("|");
+                        //         app.$data.proName[i] = newtry[i].PRO_NAME;
+                        //         app.$data.proClass[i] = newtry[i].PRO_CLASS;
+                        //         app.$data.proUsetime[i] = newtry[i].PRO_USETIME;
+                        //         app.$data.proSeason[i] = newtry[i].PRO_SEASON;
+                        //         // app.$data.seriename[i] = newtry[i].SER_NAME //給預設的系列名稱
+                        //         // app.$data.serietext[i] = newtry[i].SER_TEXT //給預設的系列介紹
+                        //         app.$data.proNO[i] = newtry[i].PRO_NO//給預設的系列編號
+                        //         }
+                        
+                        for(let i = 0; i< newtry.length;i++){
+                                if(newtry[i].PRO_SEASON == 0){
+                                    newtry[i].PRO_SEASON = '春夏';
+                                }else{newtry[i].PRO_SEASON = '秋冬';
+                        };
+                                if(newtry[i].PRO_USETIME == 0){
+                                    newtry[i].PRO_USETIME = '日間';
+                                }else if(newtry[i].PRO_USETIME == 1){
+                                    newtry[i].PRO_USETIME = '夜間';
+                                }else{newtry[i].PRO_USETIME = '全適用';};
+                        };
+                        console.log(newtry);
+                        app.$data.pdolateYear = newtry;
+                    }else{
+                        alert( xhr.status );
+                    }
+                }
+                var url = `./php/anylize.php`;
+                xhr.open("post", url, true);
+                xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
+                let data_info = `season=${this.season}&useTime=${this.useTime}`
+
+
+                xhr.send(data_info); 
+                },
             }
         })
 
@@ -147,16 +298,13 @@
 
 
         window.addEventListener('load', dayTime());
-
+        
         function dayTime() {
+        //     $('.anyl-product').fadeIn(500);
             let today = new Date();
             let months = new Array();
             months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
             // let newDiv = ;
-            let newYear = document.createElement('div');
-            newYear.id = 'dayYear';
-            document.getElementById('dayTimeBlock').appendChild(newYear);
-            document.getElementById('dayYear').innerText = today.getFullYear();
 
             let newMonth = document.createElement('div');
             newMonth.id = 'dayMonth';
@@ -170,43 +318,61 @@
 
             let uploadHour = today.getHours();
 
+            var css = document.getElementById('btnStyle');
+            var c = css.sheet;
+
             if (uploadHour >= 18 | uploadHour <= 6) {
                 document.getElementById('anylNight').style.cssText = "background-color: #C0A57C;transform: translate(0em, 0.75em);"
+                    // c.insertRule("#anylNight::before{transform: translate3d(0, 0, -1em);}", 0);
             } else {
                 document.getElementById('anylSun').style.cssText = "background-color: #C0A57C;transform: translate(0em, 0.75em);"
+                    // c.insertRule("#anylSun::before{transform: translate3d(0, 0, -1em);}", 0);
+
             }
             let todatMonth = today.getMonth();
             if (todatMonth <= 7) {
                 document.getElementById('anyl_1to6').style.cssText = "background-color: #C0A57C;transform: translate(0em, 0.75em);"
+                    // c.insertRule("#anyl_1to6::before{transform: translate3d(0, 0, -1em);}", 0);
             } else {
                 document.getElementById('anyl_7to12').style.cssText = "background-color: #C0A57C;transform: translate(0em, 0.75em);"
+                    // c.insertRule("#anyl_7to12::before{transform: translate3d(0, 0, -1em);}", 0);
+
             }
 
             var anylSun = document.getElementById('anylSun');
-        var anylNight = document.getElementById('anylNight');
-        var anyl_1to6 = document.getElementById('anyl_1to6');
-        var anyl_7to12 = document.getElementById('anyl_7to12');
-        anylSun.addEventListener('click', function() {
-            
-            this.style.cssText = "background-color: #C0A57C;transform: translate(0em, 0.75em);";
-            document.getElementById('anylNight').style.cssText = "background-color: $darkGold;";
-        });
-        anylNight.addEventListener('click', function() {
-            this.style.cssText = "background-color: #C0A57C;transform: translate(0em, 0.75em);";
-            document.getElementById('anylSun').style.cssText = "background-color: $darkGold";
-        });
-        anyl_1to6.addEventListener('click', function() {
-            this.style.cssText = "background-color: #C0A57C;transform: translate(0em, 0.75em);";
-            document.getElementById('anyl_7to12').style.cssText = "background-color: $darkGold";
-        });
-        anyl_7to12.addEventListener('click', function() {
-            this.style.cssText = "background-color: #C0A57C;transform: translate(0em, 0.75em);";
-            document.getElementById('anyl_1to6').style.cssText = "background-color: $darkGold";
-        });
+            var anylNight = document.getElementById('anylNight');
+            var anyl_1to6 = document.getElementById('anyl_1to6');
+            var anyl_7to12 = document.getElementById('anyl_7to12');
+            anylSun.addEventListener('click', function() {
 
-        
+                this.style.cssText = "background-color: #C0A57C;transform: translate(0em, 0.75em);";
+                document.getElementById('anylNight').style.cssText = "background-color: $darkGold;";
+                // c.insertRule("#anylNight#anylNight::before{transform: translate3d(0.5em, 0.5em, -1em);}", 0);
+
+            });
+            anylNight.addEventListener('click', function() {
+                this.style.cssText = "background-color: #C0A57C;transform: translate(0em, 0.75em);";
+                document.getElementById('anylSun').style.cssText = "background-color: $darkGold";
+                // c.insertRule("#anylNight#anylNight::before{transform: translate3d(0, 0, -1em);}", 0);
+
+
+            });
+            anyl_1to6.addEventListener('click', function() {
+                this.style.cssText = "background-color: #C0A57C;transform: translate(0em, 0.75em);";
+                document.getElementById('anyl_7to12').style.cssText = "background-color: $darkGold";
+                // c.insertRule("#anyl_1to6#anyl_1to6::before{transform: translate3d(0, 0, -1em);}", 0);
+
+            });
+            anyl_7to12.addEventListener('click', function() {
+                this.style.cssText = "background-color: #C0A57C;transform: translate(0em, 0.75em);";
+                document.getElementById('anyl_1to6').style.cssText = "background-color: $darkGold";
+                // c.insertRule("#anyl_7to12#anyl_7to12::before{transform: translate3d(0, 0, -1em);}", 0);
+
+            });
+
+
         };
-        
     </script>
+</body>
 
 </html>

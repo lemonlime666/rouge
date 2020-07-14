@@ -1,6 +1,7 @@
 
 
 <?php
+
 $upload_dir = "../image/saveCard//";  //檢查資料夾存不存在
 if( !file_exists($upload_dir)){
   mkdir($upload_dir);
@@ -15,15 +16,41 @@ $data = base64_decode($imgDataStr);
 $fileName = date("Ymd-h-i-s");  //或time()
 $file = $upload_dir . $fileName . ".png";
 $success = file_put_contents($file, $data);
+$file= substr($file,1);
+echo $file;
 // echo $success ? $file : 'error';
 
 session_start();
 if( isset($_SESSION["mail"])){ //已登入
     $memInfo = array("memNo"=>$_SESSION["memNo"],"name"=>$_SESSION["name"], "mail"=>$_SESSION["mail"], "adrs"=>$_SESSION["adrs"], "phone"=>$_SESSION["phone"], "voteD"=>$_SESSION["voteD"]);
-    $sql="insert into CARD(CARD_URL, MAKEUP_NO,CARD_VOTE,CARD_TEXT) values ('$file',(SELECT MAKEUP_NO FROM rouge.makeup where mem_no ='{$_SESSION["memNo"]}'),'0','$imgDatatext');";
-    echo $sql;
-    $affectedRows =$pdo ->exec($sql);
-    echo "成功的異動了 {$affectedRows} 筆資料<br>";
+    require_once("connect.php");
+
+    //要先查看他有資料嗎決定新增還是修改
+    $find ="SELECT CARD_NO, CARD_URL, rouge.makeup.MAKEUP_NO, CARD_TEXT, CARD_VOTE, CARD_INF, CARD_VOTESUM, CARD_VOTEDATE, rouge.members.MEM_NO FROM 
+    rouge.card join rouge.makeup  
+    on rouge.card.MAKEUP_NO = rouge.makeup.MAKEUP_NO 
+    join rouge.members 
+    on rouge.members.MEM_NO = rouge.makeup.MEM_NO 
+    and rouge.makeup.MEM_NO ='{$_SESSION["memNo"]}';";
+    
+    $findRows = $pdo ->query($find);
+    if($findRows->rowCount()==0){
+      echo "新增資料";
+      $sql="insert into CARD(CARD_URL, MAKEUP_NO,CARD_VOTE,CARD_TEXT) values ('$file',(SELECT MAKEUP_NO FROM rouge.makeup where mem_no ='{$_SESSION["memNo"]}'),'0','$imgDatatext');";
+      echo $sql;
+      $affectedRows =$pdo ->exec($sql);
+      echo "成功的新增了 {$affectedRows} 筆資料<br>";
+    }else{
+      echo "修改資料";
+      $upsql = "UPDATE `rouge`.`card` SET `CARD_URL` = '$file', `CARD_TEXT` = '$imgDatatext', `CARD_VOTE` =0,`CARD_INF` = null ,`CARD_VOTESUM` =null , `CARD_VOTEDATE` = null WHERE MAKEUP_NO = (SELECT MAKEUP_NO FROM rouge.makeup where mem_no ='{$_SESSION["memNo"]}')";
+      $upaffectedRows =$pdo ->exec($upsql);
+      echo "成功的修改了 {$upaffectedRows} 筆資料<br>";
+    }
+
+    // $sql="insert into CARD(CARD_URL, MAKEUP_NO,CARD_VOTE,CARD_TEXT) values ('$file',(SELECT MAKEUP_NO FROM rouge.makeup where mem_no ='{$_SESSION["memNo"]}'),'0','$imgDatatext');";
+    // echo $sql;
+    // $affectedRows =$pdo ->exec($sql);
+    // echo "成功的異動了 {$affectedRows} 筆資料<br>";
 
     // echo json_encode($memInfo);
 }else{ //未登入
@@ -52,4 +79,5 @@ if( isset($_SESSION["mail"])){ //已登入
 // }catch(PDOException $e){
 //   echo $e->getMessage();
 // }
+
 ?>

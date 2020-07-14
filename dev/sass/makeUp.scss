@@ -6,6 +6,173 @@ body {
     padding: 0;
 }
 
+.container {
+    text-align: center;
+    position: relative;
+    padding: 16px;
+    height: 40vh;
+    z-index: 1;
+    background-color: #292929;
+}
+.container h1 {
+    color: #efefef;
+    margin: 10px;
+}
+.container p {
+    color: #efefef;
+    margin: 20px 10px 20px 10px;
+}
+.container > div .btn2-1 {
+    margin: 10px;
+    width: 40%;
+    outline: none;
+    position: relative;
+    font-size: 16px;
+    color: #626262;
+    background: transparent;
+    border: 1px solid #626262;
+    padding: 10px 15px;
+    z-index: 20;
+}
+.container > div .btn2-1:hover {
+    color: #efefef;
+    cursor: pointer;
+}
+.container > div .btn2-1:hover:after {
+    background-color: #626262;
+    border: 1px solid #626262;
+    width: 99%;
+    -webkit-transition: width 0.5s;
+    transition: width 0.5s;
+}
+.container > div .btn2-1:after {
+    position: absolute;
+    left: 0;
+    top: 0;
+    content: "";
+    z-index: -1;
+    background-color: #626262;
+    width: 0%;
+    height: 100%;
+}
+.container > div .btn3-1 {
+    outline: none;
+    width: 40%;
+    margin: 10px;
+    position: relative;
+    font-size: 16px;
+    color: #883030;
+    background: transparent;
+    border: 1px solid #883030;
+    padding: 10px 15px;
+    z-index: 20;
+}
+.container > div .btn3-1:hover {
+    color: #efefef;
+    cursor: pointer;
+}
+.container > div .btn3-1:hover:after {
+    background-color: #883030;
+    border: 1px solid #883030;
+    width: 99%;
+    -webkit-transition: width 0.5s;
+    transition: width 0.5s;
+}
+.container > div .btn3-1:after {
+    position: absolute;
+    left: 0;
+    top: 0;
+    content: "";
+    z-index: -1;
+    background-color: #883030;
+    width: 0%;
+    height: 100%;
+}
+
+/* The Modal (background) */
+.modal {
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    /* Stay in place */
+    z-index: 999;
+    /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: auto;
+    /* Enable scroll if needed */
+    background-color: black;
+    /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Black w/ opacity */
+    padding-top: 60px;
+}
+
+.modal-content {
+    background-color: #efefef;
+    margin: 5% auto 15% auto;
+    /* 5% from the top, 15% from the bottom and centered */
+    border: 1px solid #989898;
+    width: 350px;
+    /* Could be more or less, depending on screen size */
+}
+
+/* Add Zoom Animation */
+.animate {
+    -webkit-animation: animatezoom 0.6s;
+    animation: animatezoom 0.6s;
+}
+
+@-webkit-keyframes animatezoom {
+    from {
+        -webkit-transform: scale(0);
+    }
+    to {
+        -webkit-transform: scale(1);
+    }
+}
+
+@keyframes animatezoom {
+    from {
+        transform: scale(0);
+    }
+    to {
+        transform: scale(1);
+    }
+}
+
+@media screen and (min-width: 1356px) {
+    .listTitle {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 1356px) {
+    #first {
+        display: none;
+    }
+    .scroll {
+        overflow-x: scroll;
+    }
+    #third {
+        width: 30%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    #third {
+        display: none;
+    }
+    .bg > div:nth-child(2) {
+        width: 618px;
+        margin: 0 auto;
+    }
+}
+
 section.M_background {
     width: 100%;
     height: 100vh;
@@ -27,6 +194,16 @@ section.M_background {
         z-index: 1;
         margin: 0 1em;
     }
+    span {
+        opacity: 0;
+        transition: all 0.7s ease;
+        transform: translateX(-50px);
+        display: inline-block;
+    }
+    span.M_fade {
+        opacity: 1;
+        transform: translateX(0px);
+    }
     .M_line {
         width: 1rem;
         height: 70vh;
@@ -44,12 +221,12 @@ main.M_makeup {
 }
 
 .M_left {
-    /*border: 1px solid red;*/
+    // border: 1px solid red;
     width: 25%;
     height: 100vh;
     @extend main.M_makeup;
     .M_catalog {
-        /*border: 1px solid black;*/
+        // border: 1px solid yellow;
         width: 65%;
         height: 100vh;
         background: #292929;
@@ -66,7 +243,8 @@ main.M_makeup {
             padding: 10%;
             font-family: "Noto Serif TC", serif;
             font-weight: 800;
-            color: #ffffff;
+            color: #999999;
+            transition: 200ms ease-in-out;
             position: relative;
             z-index: 1;
             &::after {
@@ -86,23 +264,20 @@ main.M_makeup {
                 width: 80%;
             }
         }
+        .M_active {
+            @extend button.M_opt;
+            color: #ffffff !important;
+        }
     }
 
     .M_option {
         // border: 1px solid green;
-        overflow: hidden;
         width: 35%;
         height: 100vh;
         background: #141414;
-        // #M_cpModel{
-        //     transform: translateX(0px);
-        // }
+        // overflow-y: scroll;
         .M_optionGroup {
             // border: 1px solid blue;
-            // transform: translateX(100%);
-            transition: .5s;
-            transition-delay: .5s;
-            background: #141414;
             width: 100%;
             height: 100vh;
             display: flex;
@@ -120,6 +295,55 @@ main.M_makeup {
                     filter: brightness(1);
                 }
             }
+            .M_lipsticksSer {
+                // border: 1px solid red;
+                overflow-y: scroll;
+                margin: 0;
+                height: 99vh;
+                width: 90%;
+                padding: 0;
+                color: #efefef;
+                // display: flex;
+                // flex-direction: column;
+                // justify-content: space-evenly;
+                li {
+                    list-style: none;
+                    border: 2px solid #141414;
+                    button.M_control {
+                        font-family: "Noto Serif TC", serif;
+                        font-size: 1rem;
+                        color: #999999;
+                        letter-spacing: 0.2rem;
+                        cursor: pointer;
+                        width: 100%;
+                        height: 9vh;
+                        border: none;
+                        outline: none;
+                        background: #292929;
+                    }
+                    .M_btn_panel_active {
+                        color: #efefef !important;
+                    }
+                    .M_seriesPanel {
+                        display: none;
+                        border: 2px solid #292929;
+                    }
+                }
+            }
+            .M_lipsticksSer::-webkit-scrollbar-track {
+                background-color: #6d6d6d62;
+            }
+
+            .M_lipsticksSer::-webkit-scrollbar {
+                margin-left: 3px;
+                width: 5px;
+                background-color: #1a1a1a;
+            }
+
+            .M_lipsticksSer::-webkit-scrollbar-thumb {
+                background-color: #292929;
+            }
+
             .M_pcColor {
                 // border: 1px solid blueviolet;
                 border: 2px solid #ffffffd2;
@@ -127,16 +351,10 @@ main.M_makeup {
                 cursor: pointer;
                 width: 75px;
                 height: 75px;
-                margin: 0.8%;
-            }
-            .M_pcdarkpink {
-                background-color: #9d3333;
-            }
-            .M_pcred {
-                background-color: #cd201f;
-            }
-            .M_pcorange {
-                background-color: #f55d3e;
+                margin: 20% auto;
+                display: flex;
+                justify-content: center;
+                align-items: center;
             }
             .M_pcnone {
                 color: #dadada;
@@ -144,6 +362,12 @@ main.M_makeup {
                 justify-content: center;
                 align-items: center;
                 background-color: transparent;
+                border: 2px solid #ffffffd2;
+                border-radius: 50%;
+                cursor: pointer;
+                width: 75px;
+                height: 75px;
+                margin: 20% auto;
             }
         }
         button.M_btnSec {
@@ -171,6 +395,67 @@ main.M_makeup {
         // border: 1px solid red;
         width: 65%;
         margin-bottom: 1.5%;
+    }
+    .M_imggrop {
+        // border: 1px solid red;
+        // align-self: center;
+        margin-bottom: 1.5%;
+        text-align: center;
+        width: 100%;
+        .M_imagecus {
+            // border: 1px solid blue;
+            // position: relative;
+            // outline: 2px solid #626262;
+            // width: 65%;
+            // height: 80vh;
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            .M_text {
+                position: absolute;
+                z-index: -1;
+                color: #8f8f8f;
+                letter-spacing: 0.25rem;
+                font-size: 1.5rem;
+                font-family: "Noto Serif TC", serif;
+            }
+            #M_delete {
+                position: absolute;
+                z-index: 100;
+                right: 5%;
+                top: 5%;
+                width: 30px;
+                cursor: pointer;
+                color: #5a5a5a;
+                transition: 0.5s ease-in-out;
+                &:hover {
+                    color: #141414;
+                }
+            }
+            canvas.M_canvas {
+                // position: absolute;
+                // outline: 2px solid #626262;
+                // width: 65%;
+                // height: 80vh;
+                cursor: crosshair;
+                z-index: 99;
+                display: inline-block;
+            }
+        }
+        #M_customBtn {
+            background: #292929;
+            color: #efefef;
+            border: none;
+            outline: none;
+            font-size: 1.5rem;
+            margin-top: 1%;
+            letter-spacing: 0.25rem;
+            width: 65%;
+            cursor: pointer;
+            font-family: "Noto Serif TC", serif;
+        }
     }
 }
 
@@ -209,7 +494,7 @@ main.M_makeup {
         border: 2px solid #626262;
         cursor: pointer;
         font-size: 1.5rem;
-        padding: 2%;
+        padding: 2% 2.5%;
     }
     .M_group {
         width: 100%;
@@ -230,11 +515,15 @@ main.M_makeup {
         }
     }
 }
-section.M_phoneVersion {
+.M_rightgroup {
     display: none;
 }
 
-@media (min-width: 1537px) and(max-width: 1536px) {
+@media (max-width: 1537px) {
+    .M_rightgroup {
+        display: none;
+    }
+
     .M_middle {
         .M_img {
             // border: 1px solid red;
@@ -247,7 +536,7 @@ section.M_phoneVersion {
         padding: 0;
     }
     .M_right .M_contentbtn {
-        // width: 45%;
+        width: 45%;
         padding: 2% 0;
         font-size: 1.2rem;
     }
@@ -273,9 +562,21 @@ section.M_phoneVersion {
     .M_right p.M_detail {
         margin: 0.5rem 0;
     }
+    canvas.M_canvas {
+        width: 500px;
+        height: 580px;
+        cursor: crosshair;
+        z-index: 99;
+        display: inline-block;
+    }
+
 }
 
 @media (max-width: 1200px) {
+    .M_rightgroup {
+        display: none;
+    }
+
     button.M_btnSec {
         width: 100%;
         padding: 0;
@@ -309,6 +610,10 @@ section.M_phoneVersion {
 }
 
 @media (max-width: 1024px) {
+    .M_rightgroup {
+        display: none;
+    }
+
     .M_middle {
         .M_img {
             width: 75%;
@@ -349,44 +654,13 @@ section.M_phoneVersion {
 }
 
 @media (max-width: 768px) {
-    // p.M_bgfphone{
-    //     border: 1px solid blue;
-    //     overflow-x: hidden;
-    //     // z-index: -9999;
-    //     z-index: 1;
-    //     position: absolute;
-    //     top: 0%;
-    //     left: 0;
-    //     font-family: "Noto Sans TC", sans-serif;
-    //     font-weight: 800;
-    //     letter-spacing: 0.25rem;
-    //     font-size: 12rem;
-    //     -webkit-text-stroke: 2px #dadada;
-    //     color: transparent;
-    // }
-    section.M_background {
-        display: none;
-    }
-    section.M_phoneVersion {
-        overflow: hidden;
-        display: block;
-        background-color: #efefef;
-        height: 100vh;
-        width: 100vw;
-        // border: 1px solid green;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-    }
-
     .M_rightgroup {
         width: 60px;
         height: 100px;
         position: absolute;
         top: 150px;
         right: 0;
-        // border: 1px sol  id red;
+        border: 1px solid red;
         display: flex;
         flex-direction: column;
         justify-content: space-around;
@@ -400,9 +674,102 @@ section.M_phoneVersion {
         }
     }
 
+    section.M_background {
+        height: 100vh;
+    }
+    .M_bgf {
+        display: none;
+    }
+    .M_line {
+        display: none;
+    }
+    main.M_makeup {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .M_left {
+        order: 1;
+        // border: 1px solid red;
+        width: 100%;
+        height: 30vh;
+        .M_catalog {
+            // border: 1px solid yellow;
+            width: 100%;
+            height: 10vh;
+            background: #292929;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            button.M_opt {
+                margin: 0 3%;
+                padding: 0;
+                z-index: 1;
+                &::after {
+                    display: none;
+                    content: "";
+                    width: 0;
+                    height: 0;
+                    z-index: -1;
+                }
+            }
+        }
+        .M_option {
+            width: 100%;
+            height: 20vh;
+            button.M_btnSec {
+                margin: 0 5px;
+            }
+            .M_optionGroup {
+                // border: 1px solid blue;
+                height: 20vh;
+                width: 100%;
+                flex-direction: row;
+                .M_lipsticksSer {
+                    // border: 1px solid red;
+                    overflow-x: scroll;
+                    overflow-y: hidden;
+                    margin: 0;
+                    height: 15vh;
+                    width: 98%;
+                    padding: 0;
+                    display: flex !important;
+                    flex-direction: row;
+                    justify-content: space-evenly;
+                    li.M_menu {
+                        display: flex;
+                        flex-direction: row;
+                        justify-content: center;
+                        align-items: center;
+                        button.M_control {
+                            font-size: 1rem;
+                            letter-spacing: 0.2rem;
+                            width: 150px;
+                            height: 9.5vh;
+                        }
+                    }
+
+                    .M_seriesPanel {
+                        display: flex !important;
+                        flex-direction: row;
+                        height: 9vh;
+                        .M_pcColor {
+                            width: 50px;
+                            height: 50px;
+                            margin: auto 0.8%;
+                            font-size: 10px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
     .M_middle {
         // border: 1px solid purple;
         width: 100%;
+        height: 70vh;
         display: flex;
         flex-direction: row;
         align-items: flex-end;
@@ -410,112 +777,64 @@ section.M_phoneVersion {
         z-index: 1;
         .M_img {
             // border: 1px solid red;
-            width: 52%;
-            margin-bottom: 1%;
+            width: 50%;
+            margin-bottom: 1.5%;
         }
-    }
-
-    .M_catalog {
-        // border: 1px solid blue;
-        width: 100%;
-        height: 10vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background-color: #292929;
-        button.M_tablink {
-            background-color: transparent;
-            border: none;
-            outline: none;
-            padding: 1.5%;
-            // margin: 0 5%;
-            width: 200px;
-            color: #ffffff;
-            letter-spacing: 0.25rem;
-            font-family: "Noto Serif TC", serif;
-        }
-    }
-    .M_phoneContent {
-        // border: 1px solid red;
-        background-color: #141414;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        .buttonGroup {
-            // margin-top: .6%;
-            height: 15vh;
-            width: 100vw;
-            // border: 1px solid white;
-            display: flex;
-            justify-content: space-evenly;
-            align-items: center;
-        }
-        #skin {
-            display: block;
-        }
-        .M_colorGroup {
-            width: 100vw;
-            height: 15vh;
-            // border: 1px solid yellow;
-            background: #141414;
-            display: flex;
-            justify-content: space-evenly;
-            align-items: center;
-            .M_color {
-                // border: 1px solid blueviolet;
-                border: 2px solid #ffffffd2;
-                border-radius: 50%;
-                width: 70px;
-                height: 70px;
-                margin: 0.8%;
-            }
-            .M_darkpink {
-                background-color: #9d3333;
-            }
-            .M_red {
-                background-color: #cd201f;
-            }
-            .M_orange {
-                background-color: #f55d3e;
-            }
-            .M_none {
-                color: #dadada;
+        .M_imggrop {
+            // border: 1px solid red;
+            margin-bottom: 1.5%;
+            // height: 55vh;
+            text-align: center;
+            width: 100%;
+            .M_imagecus {
+                // border: 1px solid blue;
+                outline: 2px solid #626262;
+                width: 65%;
+                height: 50vh;
+                margin: auto;
                 display: flex;
+                flex-direction: column;
                 justify-content: center;
                 align-items: center;
-                background-color: transparent;
+                .M_text {
+                    position: absolute;
+                    z-index: -1;
+                    color: #8f8f8f;
+                    letter-spacing: 0.25rem;
+                    font-size: 1.5rem;
+                    font-family: "Noto Serif TC", serif;
+                }
+                #M_delete {
+                    position: absolute;
+                    right: 19%;
+                    top: 15%;
+                    width: 30px;
+                }
             }
-        }
-        .M_detail {
-            display: none;
-            height: 15vh;
-            button.M_btnPhone {
-                // border: 1px solid yellow;
-                width: 11.5%;
-                // margin: auto;
-                text-align: center;
+            #M_customBtn {
+                background: #292929;
+                color: #efefef;
                 border: none;
                 outline: none;
-                background-color: transparent;
-            }
-            button.M_btnSec {
-                width: 8%;
-                // border: 1px solid red;
-                border: none;
-                outline: none;
-                background-color: transparent;
-                color: white;
-                font-size: 1.2rem;
-                letter-spacing: 0.1rem;
+                font-size: 1.5rem;
+                margin-top: 1%;
+                letter-spacing: 0.25rem;
+                width: 65%;
+                cursor: pointer;
                 font-family: "Noto Serif TC", serif;
             }
-            button.M_social {
-                color: #dadada;
-                padding: 0;
-                background: transparent;
-                border: none;
-                outline: none;
-            }
         }
+    }
+    canvas.M_canvas {
+        position: absolute;
+        border: 1px solid blue;
+        width: 33%;
+        height: 5vh;
+        cursor: crosshair;
+        z-index: 999;
+        display: inline-block;
+    }
+    .M_right {
+        display: none;
     }
 }
