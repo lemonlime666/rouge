@@ -29,6 +29,7 @@ body{
                 list-style: none;
             }
             li{
+                color: #aaa;
                 display: inline-block;
                 &:before{
                     content: "/";

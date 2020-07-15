@@ -30,6 +30,7 @@ body{
             }
             li{
                 display: inline-block;
+                color: #aaa;
                 &:before{
                     content: "/";
                     font-size: 18px;
@@ -91,7 +92,7 @@ body{
                         width: 25%;
                         height: 200px;
                         img{
-                            width: 35%;
+                            width: 55%;
                             min-width: 50px;
                             position: relative;
                             transition: 0.3s;
