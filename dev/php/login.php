@@ -4,7 +4,7 @@
     $loginInfo = json_decode($_POST["loginInfo"]);
 
     try{
-    require_once("connectWade.php");
+    require_once("connect.php");
     $sql = "select * from `MEMBERS` where MEM_MAIL=:mail and PASSWORD=:psw";
     $member = $pdo->prepare($sql); 
     $member->bindValue(":mail", $loginInfo->memMail);
