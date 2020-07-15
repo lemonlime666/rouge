@@ -4,9 +4,9 @@
 //show出這個月的參加明信片
 
 try{
-    require_once("connectWade.php");
+    require_once("connect.php");
     /*SELECT * FROM rouge.card where CARD_VOTE =1 and MONTH(CURDATE()) <= MONTH(CARD_VOTEDATE);*/
-    $sql = "SELECT * FROM rouge.card where CARD_VOTE =1 and MONTH(CURDATE()) <= MONTH(CARD_VOTEDATE) order by CARD_VOTEDATE";
+    $sql = "SELECT * FROM rouge.card where CARD_VOTE =0 and MONTH(CURDATE()) <= MONTH(CARD_VOTEDATE) order by CARD_VOTEDATE";
     $showcards = $pdo->query($sql);
   
     if($showcards->rowCount() == 0){

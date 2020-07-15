@@ -24,10 +24,10 @@
                 <img id="joinImg" src="" alt="">
                 <div class="imgContext">
                     <h2>設計理念</h2>
-                     <textarea></textarea>
+                     <textarea id="design"></textarea>
                      <div class="btnBox">
                         <button type="button" onclick="document.getElementById('id01').style.display='none'" class="btn2-1">放棄參加</button>
-                        <button type="button" onclick="window.location='./vote.html'" class="btn3-1">馬上參加</button>
+                        <button type="button" onclick="joinSend()" class="btn3-1">馬上參加</button>
                     </div>
                 </div>
  
@@ -51,6 +51,8 @@
     <div style="background-color: #292929; height: 100px;width: 100%;"></div>
     <body >
 <div id="content"> 
+
+
         <div class="firstscreen" style="background-color: #292929;">
             <div class="vTH"><p class="vTH1">明信片票選</p><p class="vTH2">TOP3</p></div>
             <div class="Bgi">
@@ -157,8 +159,7 @@
                     if( xhr.status == 200 ){ //連線成功
                 
                     alert(xhr.responseText);
-                        // app.$data.CARD_NO = app.$data.showCard[0].CARD_NO //給預設第一項商品單價
-                        // app.$data.CARD_URL = app.$data.showCard[0].CARD_URL 
+          
                     
                     }else{ 
                         alert( xhr.status );
@@ -171,6 +172,36 @@
 
             }
         
+        function joinSend(){
+     
+          
+
+            let str= document.getElementById("design").value;
+                // alert(str);
+                let xhr3 = new XMLHttpRequest();
+                xhr3.onload = function (){
+                    if( xhr3.status == 200 ){ //連線成功
+                
+                    alert(xhr3.responseText);
+                      
+                    
+                    }else{ 
+                        alert( xhr3.status );
+                    }
+                    
+                }
+               
+                var url = "./php/joinSend.php"; //設定PHP位置
+                xhr3.open("post", url, true);
+                xhr3.setRequestHeader("content-type", "application/x-www-form-urlencoded");
+                let procom = `sendText=`+str; //將JSON格式字串儲存進陣列中
+                xhr3.send(procom); //傳遞JSON至PHP
+
+
+        };
+
+   
+
 
         const app = new Vue({
             el: '#content',
@@ -191,7 +222,7 @@
                     document.getElementById('id02').style.display='block';
                     localStorage['cardNo']=e.target.id
                      let cardNO = localStorage.getItem('cardNO')
-                     console.log(cardNO)
+                    //  console.log(cardNO)
                 },
                 joinVote(){
                       

@@ -42,7 +42,7 @@ if( isset($_SESSION["mail"])){ //已登入
       echo "成功的新增了 {$affectedRows} 筆資料<br>";
     }else{
       echo "修改資料";
-      $upsql = "UPDATE `rouge`.`card` SET `CARD_URL` = '$file', `CARD_TEXT` = '$imgDatatext', `CARD_VOTE` =0,`CARD_INF` = null ,`CARD_VOTESUM` =null , `CARD_VOTEDATE` = null WHERE MAKEUP_NO = (SELECT MAKEUP_NO FROM rouge.makeup where mem_no ='{$_SESSION["memNo"]}')";
+      $upsql = "UPDATE `rouge`.`card` SET `CARD_URL` = '$file', `CARD_TEXT` = '$imgDatatext', `CARD_VOTE` =1,`CARD_INF` = null ,`CARD_VOTESUM` =null , `CARD_VOTEDATE` = null WHERE MAKEUP_NO = (SELECT MAKEUP_NO FROM rouge.makeup where mem_no ='{$_SESSION["memNo"]}')";
       $upaffectedRows =$pdo ->exec($upsql);
       echo "成功的修改了 {$upaffectedRows} 筆資料<br>";
     }
