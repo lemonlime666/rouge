@@ -229,13 +229,8 @@
             var xhr = new XMLHttpRequest();
             xhr.onload = function() {
                 if (xhr.status == 200) {
-
-                    if (xhr.responseText == "error") {
-                        alert("Error");
-                    } else {
-                        alert('Succesfully uploaded');
-
-                    }
+                    alert(xhr.responseText);   //在後端做註解判斷 最外層if else
+                    document.location.href="./card.html";
                 } else {
                     alert(xhr.status)
                 }
@@ -247,29 +242,29 @@
     </script>
 
     <script>
-        window.addEventListener("load", function() {
-            let circles = document.querySelectorAll(".M_pcColor");
-            for (let i = 0; i < circles.length; i++) {
-                circles[i].onclick = function(e) {
+        // window.addEventListener("load", function() {
+        //     let circles = document.querySelectorAll(".M_pcColor");
+        //     for (let i = 0; i < circles.length; i++) {
+        //         circles[i].onclick = function(e) {
 
-                    modelSrc = img.src = document.getElementById("M_chooseModel1").src;
-                    // modelSrc.attr("src", "./image/model/model0" + changeModel + "-hei-res-" + changeLipColor + ".png")
+        //             modelSrc = img.src = document.getElementById("M_chooseModel1").src;
+        //             modelSrc.attr("src", "./image/model/model0" + changeModel + "-hei-res-" + changeLipColor + ".png")
 
-                    // function changeImg() {
-                    //     var canvas = document.getElementById("painter");
-                    //     var ctx = canvas.getContext("2d");
-                    //     var img = new Image();
-                    //     img.onload = function() {
-                    //         ctx.clearRect(0, 0, 700, 700);
-                    //         ctx.drawImage(img, 0, 0, 500, 600); //drawImage(img,x,y,width,height)
-                    //     }
-                    //     modelSrc = img.src = document.getElementById("color01").src;
+        //             function changeImg() {
+        //                 var canvas = document.getElementById("painter");
+        //                 var ctx = canvas.getContext("2d");
+        //                 var img = new Image();
+        //                 img.onload = function() {
+        //                     ctx.clearRect(0, 0, 700, 700);
+        //                     ctx.drawImage(img, 0, 0, 500, 600); //drawImage(img,x,y,width,height)
+        //                 }
+        //                 modelSrc = img.src = document.getElementById("color01").src;
 
-                    // }
-                }
+        //             }
+        //         }
 
-            }
-        })
+        //     }
+        // })
     </script>
 
     <script src="./js/header.js"></script>

@@ -1,7 +1,8 @@
 <?php
 try{
   require_once("connect.php");
-  $sql = "select * from message where SER_NO = 1";
+
+  $sql = "select * from message where SER_NO = '{$_GET["ser"]}' and MES_STATUS = 0";
   $message = $pdo->query($sql);
 
   if($message->rowCount() == 0){

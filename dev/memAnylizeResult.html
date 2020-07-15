@@ -15,7 +15,7 @@
 
     @@include('./app/header.html')
     <main class="memAnyl-main">
-        <section id="memAnylresult" class="memAnylresult-content">
+        <section v-cloak id="memAnylresult" class="memAnylresult-content">
             <div class="memAnylResult-word" v-for="(item,index) in result" v-if="index<1">
                 <div class="title">
                     <h1>檢測結果 - {{item.MTC_TYPE}}</h1>
@@ -29,8 +29,17 @@
                 <div class="word">
                     <h3>日間保養步驟</h3>
                     <div class="line"></div>
-                    <div class="product" v-for="(item,index) in result" v-if="index < 3">
-                        <p>步驟 {{index+1}} : 使用{{item.PRO_NAME}}</p>
+                    <div class="product" v-for="(item,index) in sun" v-if="index < 3">
+                        <div class="detail">
+                            <p class="resultStep">步驟 {{index+1}} : 使用{{item.PRO_NAME}}</p>
+
+                            <div class="memcart">
+                                <div class="addToCart"  @click="addChart(item)">
+                                    <p>ADD TO CART</p>
+                                </div>
+                                <a href=""><p>商品詳情</p></a>
+                            </div>
+                        </div>
                         <div class="pic">
                             <img src="">
                         </div>
@@ -43,8 +52,17 @@
                 <div class="word">
                     <h3>夜間保養步驟</h3>
                     <div class="line"></div>
-                    <div class="product" v-for="(item,index) in result" v-if="index < 3">
-                        <p>步驟 {{index+1}} : 使用{{item.PRO_NAME}}</p>
+                    <div class="product" v-for="(item,index) in night" v-if="index < 3">
+                        <div class="detail">
+                            <p class="resultStep">步驟 {{index+1}} : 使用{{item.PRO_NAME}}</p>
+
+                            <div class="memcart">
+                                <div class="addToCart" @click="addChart(item)">
+                                    <p>ADD TO CART</p>
+                                </div>
+                                <a href=""><p>商品詳情</p></a>
+                            </div>
+                        </div>
                         <div class="pic">
                             <img src="">
                         </div>
@@ -70,7 +88,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.js"></script>
 
     <script>
-        const app = new Vue({
+        var app = new Vue({
             el: '#memAnylresult',
             data: {
                 
@@ -78,16 +96,74 @@
                 sunItem:'',
                 word:'',
                 type:'',
+
+                sun:[],
+                night:[],
+
+                proPrice: [], //商品單價
+                proNum: '1', //商品數量
+                proImgs: '', //圖片編號
+                proNO: '', //商品編號
+                proName:'',
+
+                getItems:[],
+                totalItem:[],
+                proCommit:{   
+                        comNo:'', //商品編號
+                        comName:'', //商品名稱
+                        comImg: '', //小圖片路徑
+                        comNum: '', //商品數量
+                        comPrice: '', //商品單價  
+                    },
             },
-            mounted() {
-               
+
+            methods: {
+                addChart(item) { //加入購物車
+                    //建立物件
+                    this.proCommit.comNo = item.PRO_NO;
+                    this.proCommit.comName = item.PRO_NAME;
+                    this.proCommit.comImg = item.PRO_IMG;
+                    this.proCommit.comPrice = item.PRO_PRICE;
+                    this.proCommit.comNum = this.proNum;
+
+                    const copy = Object.assign({}, this.proCommit)
+                    
+                    if(this.getItems.length == 0){
+                        this.getItems.push(copy);
+                        localStorage['shoppingcart'] = JSON.stringify(this.getItems);    
+                        }else {
+                            let x = 0;
+                            for( let i=0 ; i < this.getItems.length;i++){
+                                if(this.proCommit.comNo ==  this.getItems[i].comNo){
+                                    x+=1;
+                                };
+                                
+                            }
+                            if(x == 0){
+                            this.getItems.push(copy);
+                            localStorage['shoppingcart'] = JSON.stringify(this.getItems);    
+                            };
+                        };     
+                    }
+            },
+            created() {
                 var xhr = new XMLHttpRequest();
                 xhr.onload=function (){
                     if( xhr.status == 200 ){
                         app.$data.result = JSON.parse(xhr.responseText);
-                        app.$data.type = localStorage.type;
+                        let totalItem =JSON.parse(xhr.responseText);
+                        this.sun = 'IN';
+                        this.night = 'IN';
+                        for(let i = 0 ; i < totalItem.length; i++){
+                            if(totalItem[i].PRO_USETIME == 0){
+                                console.log(totalItem[i]);
+                                app.$data.sun.push(totalItem[i]);
+                            }else if(totalItem[i].PRO_USETIME == 1){
+                                app.$data.night.push(totalItem[i]);
+                            }
+                        }
                     }else{
-                        alert( xhr.status );
+                        // alert( xhr.status );
                     }
                 }
                 // let data_info = 'answer='+3;
@@ -98,6 +174,12 @@
                 let data_info = 'answer=' + localStorage.type;
 
                 xhr.send(data_info); 
+            },
+            mounted() {
+               
+                this.getItems =JSON.parse(localStorage.getItem('shoppingcart'));
+                
+                
                 // console.log(data_info);
 
 

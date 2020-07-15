@@ -330,21 +330,48 @@ Vue.component('analinfo', {
     props: [],
     data() {
         return {
-
+            src:'',
+            title:'尚未進行膚質檢測',
+            txt:'',
+            date:'',
         };
     },
     template: `
     <div class="contentBox">
         <div class="mem_skinanalysis">
             <div class="mem_title">
-                <p class="mem_date">測驗日期：2020/06/06</p>
-                <h1 class="mem_maintitle">檢測結果：油性肌</h1>
-                <p class="mem_exp">油性肌的人洗臉次數可一天2-3次，應選用清爽的洗臉和保養產品控制油脂分泌，也建議少吃油炸類、過甜、過辣的食物。</p>
+                <p class="mem_date">測驗日期：{{date}}</p>
+                <h1 class="mem_maintitle">{{title}}</h1>
+                <div class="memPageImgBox">{{src}}</div>
+                <p class="mem_exp">{{txt}}</p>
             </div>
             <button class="mem_skincarePd">建議保養步驟與商品</button>
         </div>
     </div>
     `,
+    mounted(){
+        this.getAnalData();
+    },
+    methods:{
+        getAnalData(){
+            let a = this;
+            let xhr = new XMLHttpRequest();
+            xhr.onload = function(){
+                if(xhr.status == 200){
+                    let str = JSON.parse(xhr.responseText);
+                    let txtArr = str.MTI_TEXT.split('|');
+                    a.title = txtArr[0];
+                    a.txt = txtArr[1];
+                    a.date = str.MTC_DATE;
+                    a.src = str.MTI_IMG;
+                }else{
+                    alert(xhr.status);
+                }
+            }
+            xhr.open("get", "./php/memAnalData.php", true);
+            xhr.send(null);
+        }
+    },
 })
 
 Vue.component('mypostcard', {

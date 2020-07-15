@@ -6,7 +6,7 @@ try{
   FROM promo_list
   right join series 
   on promo_list.SER_NO = series.SER_NO
-  where PRO_CLASS = 0 ;";
+  where PRO_CLASS =1 ;";
   $series = $pdo->query($sql);
 
 

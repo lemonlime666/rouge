@@ -154,7 +154,7 @@
       
       <!--結帳-->
       <div class="check">
-        <button>立即結帳</button>
+        <button @click="commitForm">立即結帳</button>
         <button><a href="./light-lips.html">繼續購物</a></button>
 
       </div>
@@ -162,6 +162,8 @@
     <h2 v-else>購物車為空</h2>
   </div>
   <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.js'></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
   <script>
     const app = new Vue({
       el: "#app",
@@ -191,6 +193,39 @@
         // gogift (){
         //   this.gogift = app.gifts.filter(item => item.GIF_CONDI > app.totalprice)
         // }
+        commitForm (){
+          let dataif ="sendData="+JSON.stringify(this.products) +"|"+ JSON.stringify(this.max)+"|"+this.totalprice;
+          var xhr1 = new XMLHttpRequest();
+                xhr1.onload = function (){
+                    if( xhr1.status == 200 ){ //連線成功
+                       alert(xhr1.responseText);
+                       if(xhr1.responseText=="購買成功"){
+                        localStorage['shoppingcart']=""
+                        window.location.href()
+                      }
+                       
+                    }else{
+                        alert( xhr1.status );
+                    }
+                
+                }
+                var url1 = "./php/sendOrder.php";
+                xhr1.open("post", url1, true);
+                xhr1.setRequestHeader("content-type","application/x-www-form-urlencoded")
+                xhr1.send( dataif);
+
+
+          // axios.post('./php/sendOrder.php', {
+            
+          //   products:a
+          // })
+          // .then(res => {
+          //   console.log(res.config.data)
+            
+          // }).catch(rej => {
+          //   console.log('發送失敗')
+          // })
+        }
 
       },
       computed: {
@@ -278,5 +313,6 @@
 
     })
   </script>
+  <script src="./js/header.js"></script>
 </body>
 </html>
