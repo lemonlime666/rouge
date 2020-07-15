@@ -198,7 +198,12 @@
           var xhr1 = new XMLHttpRequest();
                 xhr1.onload = function (){
                     if( xhr1.status == 200 ){ //連線成功
-                       console.log(xhr1.responseText);
+                       alert(xhr1.responseText);
+                       if(xhr1.responseText=="購買成功"){
+                        localStorage['shoppingcart']=""
+                        window.location.href()
+                      }
+                       
                     }else{
                         alert( xhr1.status );
                     }
@@ -308,5 +313,6 @@
 
     })
   </script>
+  <script src="./js/header.js"></script>
 </body>
 </html>
