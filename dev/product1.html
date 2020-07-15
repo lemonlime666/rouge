@@ -257,7 +257,8 @@
                     let procom = `commentInfo=`+str; //將JSON格式字串儲存進陣列中
                     xhr2.send(procom); //傳遞JSON至PHP
                     //將登入表單上的資料清空
-                    document.getElementById('procomment').value = '';                    
+                    document.getElementById('procomment').value = ''; 
+                    this.proMessage.push(commentInfo);                  
                 }
 
                 
