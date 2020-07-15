@@ -13,7 +13,7 @@ html,body{
 }
 body{
     
-    background: #493F46;
+    background: #3F4849;
     
     .content{
         font-size: 0;
@@ -29,8 +29,8 @@ body{
                 list-style: none;
             }
             li{
-                color: #aaa;
                 display: inline-block;
+                color: #aaa;
                 &:before{
                     content: "/";
                     font-size: 18px;
@@ -92,7 +92,7 @@ body{
                         width: 25%;
                         height: 200px;
                         img{
-                            width: 35%;
+                            width: 55%;
                             min-width: 50px;
                             position: relative;
                             transition: 0.3s;
@@ -330,7 +330,9 @@ body{
 }
 
     
-    
+.pro-back{
+    background: linear-gradient(180deg, transparent 0, #3F4849 15%);
+}    
 
 
 
