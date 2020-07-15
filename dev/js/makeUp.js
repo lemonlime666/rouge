@@ -9,8 +9,16 @@ for(let i=0; i<panelBtn.length; i++){
     panelBtn[i].addEventListener('click',function(){
         name(i+1);
     });
-}
+} 
 
+let c = document.querySelectorAll('.M_pcColor');
+for(i=0; i<c.length;i++){
+    c[i].addEventListener("click",function(e){
+        // alert(e.target.dataset.color);
+        //抓取前端data-color放入localstorage
+        localStorage.setItem('lipscolor',e.target.dataset.color);
+    })
+}
 
     // Get the modal
     var modal = document.getElementById('id01');
@@ -265,3 +273,4 @@ function name(aaa){
     xhr.send(`no=${aaa}`);
     localStorage.setItem('lipsname',aaa);
 }
+
