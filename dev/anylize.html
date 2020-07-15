@@ -23,7 +23,7 @@
 
         <img src="image/background2.jpg">
     </div>
-    <main class="anyl-main" id="anyl-item">
+    <main v-cloak class="anyl-main" id="anyl-item">
         
         <div class="anyl-button2">
             <a href="memAnylize.html">
@@ -34,8 +34,8 @@
         <!--  -->
         <div class="anyl-item">
 
-            <div class="anyl-product" v-for="(lateyear,index) in pdolateYear" v-if="index < 4">
-                <div class="item anyl-item1">
+            <div v-cloak class="anyl-product" v-for="(lateyear,index) in pdolateYear" v-if="index < 4">
+                <div v-cloak class="item anyl-item1">
                     <img :src="lateyear.PRO_IMG">
                 </div>
                 <div class="anyl-shadow anyl-text1">
@@ -44,8 +44,8 @@
                         <div class="usetime">
                             <p>{{lateyear.PRO_USETIME}} {{lateyear.PRO_SEASON}}</p>
                         </div>
-                        <div :id="lateyear.PRO_NO" class="detail" :value="lateyear.PRO_NO">
-                            <div class="memcart" :value='lateyear.PRO_NO' @click="addChart(lateyear)">
+                        <div class="detail">
+                            <div class="memcart" @click="addChart(lateyear)">
                                 <p>ADD TO CART</p>
                             </div>
                                 <a href=""><p>商品詳情</p></a>
@@ -106,13 +106,9 @@
                 proNO: '', //商品編號
                 proClass:'',
                 proName:'',
-                proSeason:'',
-                proUsetime:'',
+
                 getItems:[],
                 totalItem:[],
-                // proMessage:'', //商品留言
-                seriename:[], //系列名稱
-                serietext:[], //系列介紹
                 proCommit:{   
                         comNo:'', //商品編號
                         comName:'', //商品名稱
@@ -120,8 +116,6 @@
                         comNum: '', //商品數量
                         comPrice: '', //商品單價  
                     },
-                totalCommit: [],
-                // n:1,
             },
 
             methods: {
@@ -148,33 +142,25 @@
                     this.proCommit.comImg = lateyear.PRO_IMG;
                     this.proCommit.comPrice = lateyear.PRO_PRICE;
                     this.proCommit.comNum = this.proNum;
-                    // console.log(this.proCommit);
-                    // this.getItems = localStorage.getItem('shoppingcart');
-                    // let getlocal = JSON.parse(localStorage.getItem('shoppingcart'));
-                    // this.totalCommit.push(getlocal);
-                    // console.log(getlocal);
-                    // let getlocals = localStorage.getItem('shoppingcart');
-                    // this.getItems.push(getlocal);
-                    
-                    // console.log(getlocals);
-                    // this.getItems.push(this.proCommit);
-                    // console.log(this.getItems);
-                    // this.totalItem = new Set(this.getItem);
+
                     const copy = Object.assign({}, this.proCommit)
-                    console.log(copy);
-                    this.totalCommit.push(copy)
-
-                    localStorage['shoppingcart'] = JSON.stringify(this.totalCommit);
-
-                    // this.getItems = [];
-
-                    // this.totalItem = new Set(this.getItem);
-                    // console.log(this.getIem);
-                    // console.log(this.proCommit)
-                    // const copy = Object.assign({}, this.proCommit) //複製物件
-                    // this.totalCommit.push(copy)
-                    // console.log(this.totalCommit)
-                    // localStorage['shoppingcart'] = JSON.stringify(this.totalCommit)
+                    
+                    if(this.getItems.length == 0){
+                        this.getItems.push(copy);
+                        localStorage['shoppingcart'] = JSON.stringify(this.getItems);    
+                        }else {
+                            let x = 0;
+                            for( let i=0 ; i < this.getItems.length;i++){
+                                if(this.proCommit.comNo ==  this.getItems[i].comNo){
+                                    x+=1;
+                                };
+                                
+                            }
+                            if(x == 0){
+                            this.getItems.push(copy);
+                            localStorage['shoppingcart'] = JSON.stringify(this.getItems);    
+                            };
+                        };     
                     }
                 },
             created() {
@@ -199,26 +185,18 @@
 
                 
             },
+            mounted() {
+                // if(localStorage.shoppingcart.length > 0)
+                this.getItems =JSON.parse(localStorage.getItem('shoppingcart'));
+                console.log(this.getItems);
+            },
             watch:{
                 usetime(before,after){
                     var xhr = new XMLHttpRequest();
                 xhr.onload=function (){
                     if( xhr.status == 200 ){
                         let newtry = JSON.parse(xhr.responseText);
-                        // for(let i=0 ; i<newtry.length;i++){
-                        //     console.log(newtry[i].PRO_PRICE)
-                        //         app.$data.proPrice[i] = newtry[i].PRO_PRICE //給預設第一項商品單價
-                        //         app.$data.proNum = 1 //給預設第一項商品數量
-                        //         // app.$data.selected[i] = newtry[i].PRO_COLOR //給預設第一項商品色票
-                        //         app.$data.proImgs[i] = newtry[i].PRO_IMG.split("|");
-                        //         app.$data.proName[i] = newtry[i].PRO_NAME;
-                        //         app.$data.proClass[i] = newtry[i].PRO_CLASS;
-                        //         app.$data.proUsetime[i] = newtry[i].PRO_USETIME;
-                        //         app.$data.proSeason[i] = newtry[i].PRO_SEASON;
-                        //         // app.$data.seriename[i] = newtry[i].SER_NAME //給預設的系列名稱
-                        //         // app.$data.serietext[i] = newtry[i].SER_TEXT //給預設的系列介紹
-                        //         app.$data.proNO[i] = newtry[i].PRO_NO//給預設的系列編號
-                        //         }
+                        
                         
                         for(let i = 0; i< newtry.length;i++){
                                 if(newtry[i].PRO_SEASON == 0){
@@ -234,7 +212,7 @@
                         
                         app.$data.pdolateYear = newtry;
                     }else{
-                        alert( xhr.status );
+                        
                     }
                 }
                 var url = `./php/anylize.php`;
@@ -252,19 +230,7 @@
                 xhr.onload=function (){
                     if( xhr.status == 200 ){
                         let newtry = JSON.parse(xhr.responseText);
-                        // for(let i=0 ; i<newtry.length;i++){
-                        //     app.$data.proPrice[i] = newtry[i].PRO_PRICE //給預設第一項商品單價
-                        //         app.$data.proNum = 1 //給預設第一項商品數量
-                        //         // app.$data.selected[i] = newtry[i].PRO_COLOR //給預設第一項商品色票
-                        //         app.$data.proImgs[i] = newtry[i].PRO_IMG.split("|");
-                        //         app.$data.proName[i] = newtry[i].PRO_NAME;
-                        //         app.$data.proClass[i] = newtry[i].PRO_CLASS;
-                        //         app.$data.proUsetime[i] = newtry[i].PRO_USETIME;
-                        //         app.$data.proSeason[i] = newtry[i].PRO_SEASON;
-                        //         // app.$data.seriename[i] = newtry[i].SER_NAME //給預設的系列名稱
-                        //         // app.$data.serietext[i] = newtry[i].SER_TEXT //給預設的系列介紹
-                        //         app.$data.proNO[i] = newtry[i].PRO_NO//給預設的系列編號
-                        //         }
+                        
                         
                         for(let i = 0; i< newtry.length;i++){
                                 if(newtry[i].PRO_SEASON == 0){
@@ -277,10 +243,9 @@
                                     newtry[i].PRO_USETIME = '夜間';
                                 }else{newtry[i].PRO_USETIME = '全適用';};
                         };
-                        console.log(newtry);
                         app.$data.pdolateYear = newtry;
                     }else{
-                        alert( xhr.status );
+                        
                     }
                 }
                 var url = `./php/anylize.php`;
@@ -304,7 +269,6 @@
             let today = new Date();
             let months = new Array();
             months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-            // let newDiv = ;
 
             let newMonth = document.createElement('div');
             newMonth.id = 'dayMonth';
@@ -322,20 +286,16 @@
             var c = css.sheet;
 
             if (uploadHour >= 18 | uploadHour <= 6) {
-                document.getElementById('anylNight').style.cssText = "background-color: #C0A57C;transform: translate(0em, 0.75em);"
-                    // c.insertRule("#anylNight::before{transform: translate3d(0, 0, -1em);}", 0);
+                document.getElementById('anylNight').style.cssText = "background-color: #C0A57C;transform: translate(0em, 0.5em);"
             } else {
-                document.getElementById('anylSun').style.cssText = "background-color: #C0A57C;transform: translate(0em, 0.75em);"
-                    // c.insertRule("#anylSun::before{transform: translate3d(0, 0, -1em);}", 0);
+                document.getElementById('anylSun').style.cssText = "background-color: #C0A57C;transform: translate(0em, 0.5em);"
 
             }
             let todatMonth = today.getMonth();
             if (todatMonth <= 7) {
-                document.getElementById('anyl_1to6').style.cssText = "background-color: #C0A57C;transform: translate(0em, 0.75em);"
-                    // c.insertRule("#anyl_1to6::before{transform: translate3d(0, 0, -1em);}", 0);
+                document.getElementById('anyl_1to6').style.cssText = "background-color: #C0A57C;transform: translate(0em, 0.5em);"
             } else {
-                document.getElementById('anyl_7to12').style.cssText = "background-color: #C0A57C;transform: translate(0em, 0.75em);"
-                    // c.insertRule("#anyl_7to12::before{transform: translate3d(0, 0, -1em);}", 0);
+                document.getElementById('anyl_7to12').style.cssText = "background-color: #C0A57C;transform: translate(0em, 0.5em);"
 
             }
 
@@ -345,28 +305,24 @@
             var anyl_7to12 = document.getElementById('anyl_7to12');
             anylSun.addEventListener('click', function() {
 
-                this.style.cssText = "background-color: #C0A57C;transform: translate(0em, 0.75em);";
+                this.style.cssText = "background-color: #C0A57C;transform: translate(0em, 0.5em);";
                 document.getElementById('anylNight').style.cssText = "background-color: $darkGold;";
-                // c.insertRule("#anylNight#anylNight::before{transform: translate3d(0.5em, 0.5em, -1em);}", 0);
 
             });
             anylNight.addEventListener('click', function() {
-                this.style.cssText = "background-color: #C0A57C;transform: translate(0em, 0.75em);";
+                this.style.cssText = "background-color: #C0A57C;transform: translate(0em, 0.5em);";
                 document.getElementById('anylSun').style.cssText = "background-color: $darkGold";
-                // c.insertRule("#anylNight#anylNight::before{transform: translate3d(0, 0, -1em);}", 0);
 
 
             });
             anyl_1to6.addEventListener('click', function() {
-                this.style.cssText = "background-color: #C0A57C;transform: translate(0em, 0.75em);";
+                this.style.cssText = "background-color: #C0A57C;transform: translate(0em, 0.5em);";
                 document.getElementById('anyl_7to12').style.cssText = "background-color: $darkGold";
-                // c.insertRule("#anyl_1to6#anyl_1to6::before{transform: translate3d(0, 0, -1em);}", 0);
 
             });
             anyl_7to12.addEventListener('click', function() {
-                this.style.cssText = "background-color: #C0A57C;transform: translate(0em, 0.75em);";
+                this.style.cssText = "background-color: #C0A57C;transform: translate(0em, 0.5em);";
                 document.getElementById('anyl_1to6').style.cssText = "background-color: $darkGold";
-                // c.insertRule("#anyl_7to12#anyl_7to12::before{transform: translate3d(0, 0, -1em);}", 0);
 
             });
 
