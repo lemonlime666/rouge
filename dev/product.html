@@ -240,7 +240,7 @@
                     e.preventDefault();
                     //將資料放入物件中
                     let commentInfo = {
-                        SER_NO: localStorage.getItem('seriesname'),
+                        SER_NO: localStorage.getItem('lipsname'),
                         // MEM_NO: 1,
                         // MES_DATE: '2020-6-2',
                         MES_TEXT: document.getElementById('procomment').value,
@@ -344,7 +344,7 @@
                     }
                 
                 }
-                var url1 = "./php/message.php?ser="+localStorage.getItem('seriesname');
+                var url1 = "./php/message.php?ser="+localStorage.getItem('lipsname');
                 xhr1.open("get", url1, true);
                 xhr1.send( null );
             }
