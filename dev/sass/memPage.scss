@@ -559,11 +559,10 @@ body {
     // border: 1px solid red;
     width: 75%;
     display: flex;
-    flex-direction: column;
-    margin-bottom: 1.5%;
+    flex-flow: column nowrap;
     background: #818181;
     .mem_title {
-        // border: 1px solid red;
+        // border: 1px solid gold;
         padding: 20px 20px;
         p.mem_date {
             font-size: 12px;
@@ -574,10 +573,19 @@ body {
             margin-bottom: 10px;
         }
         p.mem_exp {
+            // border: 1px solid red;
             @include font-style() {
             }
             font-size: 16px;
             color: #292929;
+            line-height: 1.5;
+        }
+        .memPageImgBox{
+            border: 1px solid green;
+            width: 400px;
+            height: 200px;
+            align-self: center;
+            margin: 20px auto 30px;
         }
     }
     button.mem_skincarePd {
