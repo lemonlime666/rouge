@@ -1,8 +1,7 @@
 <?php
 try{
   require_once("connect.php");
-
-  $sql = "select * from message where SER_NO = '{$_GET["ser"]}' and MES_STATUS = 0";
+  $sql = "select * from message inner join members on members.MEM_NO = message.MEM_NO where  SER_NO = '{$_GET["ser"]}' and message.MES_STATUS = 0";
   $message = $pdo->query($sql);
 
   if($message->rowCount() == 0){
