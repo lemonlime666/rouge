@@ -183,7 +183,7 @@ Vue.component('tab1',{
                     <td>{{item.ORD_NO}}</td>
                     <td>{{item.ORD_DATE}}</td>
                     <td>{{item.ORD_PRICE}}</td>
-                    <td>{{item.ORD_ADRS}}</td>
+                    <td>{{item.ORP_ADRS}}</td>
                     <td>
                         <button :data-ordno="item.ORD_NO" @click="checkList">查詢</button>
                     </td>
@@ -271,7 +271,7 @@ Vue.component('tab2',{
                     <td>{{item.ORD_NO}}</td>
                     <td>{{item.ORD_DATE}}</td>
                     <td>{{item.ORD_PRICE}}</td>
-                    <td>{{item.ORD_ADRS}}</td>
+                    <td>{{item.ORP_ADRS}}</td>
                     <td>
                         <button :data-ordno="item.ORD_NO" @click="checkList">查詢</button>
                     </td>
@@ -331,7 +331,7 @@ Vue.component('analinfo', {
     data() {
         return {
             src:'',
-            title:'尚未進行膚質檢測',
+            title:'',
             txt:'',
             date:'',
         };
@@ -340,16 +340,16 @@ Vue.component('analinfo', {
     <div class="contentBox">
         <div class="mem_skinanalysis">
             <div class="mem_title">
-                <p class="mem_date">測驗日期：{{date}}</p>
-                <h1 class="mem_maintitle">{{title}}</h1>
-                <div class="memPageImgBox">{{src}}</div>
-                <p class="mem_exp">{{txt}}</p>
+                <p class="mem_date" v-cloak>測驗日期：{{date}}</p>
+                <h1 class="mem_maintitle" v-cloak>膚質類型：{{title}}</h1>
+                <div class="memPageImgBox" v-cloak>{{src}}</div>
+                <p class="mem_exp" v-cloak>{{txt}}</p>
             </div>
             <button class="mem_skincarePd">建議保養步驟與商品</button>
         </div>
     </div>
     `,
-    mounted(){
+    created(){
         this.getAnalData();
     },
     methods:{
@@ -359,11 +359,15 @@ Vue.component('analinfo', {
             xhr.onload = function(){
                 if(xhr.status == 200){
                     let str = JSON.parse(xhr.responseText);
-                    let txtArr = str.MTI_TEXT.split('|');
-                    a.title = txtArr[0];
-                    a.txt = txtArr[1];
-                    a.date = str.MTC_DATE;
-                    a.src = str.MTI_IMG;
+                    if(str.MTC_DATE){
+                        a.title = str.MTC_TYPE;
+                        a.txt = str.MTI_TEXT;
+                        a.date = str.MTC_DATE;
+                        a.src = str.MTI_IMG;
+                        window.localStorage.setItem('type',str.MTC_CLASS);
+                    }else{
+                        a.title = "尚未進行膚質檢測";
+                    }
                 }else{
                     alert(xhr.status);
                 }
@@ -372,6 +376,8 @@ Vue.component('analinfo', {
             xhr.send(null);
         }
     },
+    mounted(){
+    }
 })
 
 Vue.component('mypostcard', {

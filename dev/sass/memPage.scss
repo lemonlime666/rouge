@@ -7,6 +7,10 @@ body {
     padding: 0;
 }
 
+[v-cloak]{
+    opacity: 0;
+}
+
 .wrapper {
     position: absolute;
     width: 100%;

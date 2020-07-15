@@ -3,7 +3,7 @@ date_default_timezone_set("Asia/Taipei");
 $a ='';
 try {
     require_once("connectWade.php");
-    $sql = "select DISTINCT a.*, b.PRO_CLASS from ADSCHEDULE a JOIN PRODUCT b on a.SER_NO = b.SER_NO where a.AD_STATUS=0";
+    $sql = "select a.*, b.PRO_CLASS from ADSCHEDULE a JOIN SERIES b on a.SER_NO = b.SER_NO where a.AD_STATUS=0";
     $ad = $pdo->query($sql);
     $ad->execute();
 
