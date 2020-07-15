@@ -4,36 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <style>
-        form{
-            border: 1px solid red;
-            display: flex;
-            flex-flow: column nowrap;
-            justify-content: center;
-            align-items: center;
-        }
-        label{
-            border: 1px solid gold;
-            width: 50%;
-        }           
-    </style>
 </head>
 <body>
-    <form action="">
-        <label for="name">姓名:
-            <span style="border:1px solid red;">abcd</span>
-        </label>
-        <label for="name">姓名:
-            <span style="border:1px solid red;">abcd</span>
-        </label>
-        <label for="name">姓名:
-            <span style="border:1px solid red;">abcd</span>
-        </label>
-        <label for="name">姓名:
-            <span style="border:1px solid red;">abcd</span>
-        </label>   
-        <input type="submit" value="修改資料" class="modifyMemInfo">
-        <button class="modifyMemInfo">修改資料</button>
-    </form>
+    <button class="okok">1</button>
+    <button class="okok">2</button>
+    <button class="okok">3</button>
+    <button class="okok">4</button>
+    <script>
+        window.addEventListener('load', function(){
+            let btn = document.querySelectorAll('.okok');
+            for(let i=0; i<btn.length; i++){
+                btn[i].addEventListener('click',()=>aaa(i));
+            }
+        });
+        function aaa(a){
+            alert(a)
+        }
+    </script>
 </body>
 </html>
