@@ -219,10 +219,10 @@
                     e.preventDefault();
                     //將資料放入物件中
                     let commentInfo = {
-                        SER_NO: 1,
-                        MEM_NO: 1,
-                        MES_DATE: 2020,
-                        mesText: document.getElementById('procomment').value,
+                        SER_NO: localStorage.getItem('seriesname'),
+                        // MEM_NO: 1,
+                        // MES_DATE: '2020-6-2',
+                        MES_TEXT: document.getElementById('procomment').value,
 
                     };
 
@@ -233,7 +233,7 @@
                     let xhr2 =new XMLHttpRequest();
                     xhr2.onload = function () {
                         if (xhr2.status == 200) {
-                           console.log(xhr2.responseText);
+                          alert(xhr2.responseText);
                         }else{
                             
                         }
@@ -310,13 +310,13 @@
                     }
                 
                 }
-                var url1 = "./php/message.php";
+                var url1 = "./php/message.php?ser="+localStorage.getItem('seriesname');
                 xhr1.open("get", url1, true);
                 xhr1.send( null );
             }
         });
         
     </script>
-    
+    <script src="./js/header.js"></script>
 </body>
 </html>
