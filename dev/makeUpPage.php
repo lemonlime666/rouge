@@ -108,7 +108,7 @@
             </div>
             <div class="M_right">
                 <h1 class="M_title">系列名稱</h1>
-                <img src="./image/product.gif" alt="" style="width: 65%;" class="M_productImg" />
+                <img src="./image/product.gif" alt="" style="width: 45%;" class="M_productImg" />
                 <div class="M_content">
                     <!-- <h3 class="M_titleSec">完美持色飽和</h3> -->
                     <p class="M_detail">描述描述描述</p>
