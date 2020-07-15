@@ -16,7 +16,8 @@ if( isset($_SESSION["mail"])){ //已登入
       $procomment->bindValue(":mesdate", $datetime);
       $procomment->bindValue(":mestext", $commentInfo->MES_TEXT);
       $procomment->execute();
-      echo　"留言成功";
+      echo "留言成功";
+
 
       }catch(PDOException $e){
         echo $e->getMessage();

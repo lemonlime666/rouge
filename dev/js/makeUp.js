@@ -2,14 +2,14 @@
 
 $(document).ready(function () {
 
-name(localStorage.getItem('lipsname') || 1);
+    name(localStorage.getItem('lipsname') || 1);
 
-let panelBtn = document.querySelectorAll('.M_control');
-for(let i=0; i<panelBtn.length; i++){
-    panelBtn[i].addEventListener('click',function(){
-        name(i+1);
-    });
-}
+    let panelBtn = document.querySelectorAll('.M_control');
+    for (let i = 0; i < panelBtn.length; i++) {
+        panelBtn[i].addEventListener('click', function () {
+            name(i + 1);
+        });
+    }
 
 
     // Get the modal
@@ -228,40 +228,29 @@ for(let i=0; i<panelBtn.length; i++){
 
 
 
-    //下載Model圖
-    // var Mimg = document.querySelector('.M_mimg');
 
-    // $("#M_Modeldownload").click(function () {
-    //     var imagePath = Mimg.getAttribute('src');
-    //     var fileModelName = getModelFileName(imagePath);
-
-    //     saveAs(imagePath, fileModelName);
-    // });
-
-    // function getModelFileName(str) {
-    //     return str.substring(str.lastIndexOf('-') + 1);
-    // }
 });
 
 
-function name(aaa){
+
+function name(aaa) {
     // let aaa = localStorage.getItem('lipsname') || 1;
 
     let xhr = new XMLHttpRequest();
-    xhr.onload = function (){
-        if(xhr.status == 200){
+    xhr.onload = function () {
+        if (xhr.status == 200) {
             let data = JSON.parse(xhr.responseText);
             console.log(data.SER_NAME);
             document.querySelector('.M_title').innerHTML = data.SER_NAME;
-            document.querySelector('.M_productImg').setAttribute("src",data.SER_IMGURL);
+            document.querySelector('.M_productImg').setAttribute("src", data.SER_IMGURL);
             document.querySelector('.M_detail').innerHTML = data.SER_TEXT;
-        }else{
+        } else {
             alert('失敗')
         }
     }
-    xhr.open('post','./php/makeUp_getinfo.php',true);
-    xhr.setRequestHeader('content-type','application/x-www-form-urlencoded');
+    xhr.open('post', './php/makeUp_getinfo.php', true);
+    xhr.setRequestHeader('content-type', 'application/x-www-form-urlencoded');
 
     xhr.send(`no=${aaa}`);
-    localStorage.setItem('lipsname',aaa);
+    localStorage.setItem('lipsname', aaa);
 }
