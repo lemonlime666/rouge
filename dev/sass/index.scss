@@ -496,7 +496,7 @@
                         height: 100px;
                         position: absolute;
                         top: 50%;
-
+                        cursor: pointer;
                         outline: 0;
 
                         background: linear-gradient(327.59deg, #38383854 50%, #292929 85%);
@@ -622,7 +622,7 @@
                                 height: 40px;
                                 border: 0;
                                 outline: 0;
-
+                                cursor: pointer;
                                 background: linear-gradient(327.59deg, #38383854 50%, #292929 85%);
                                 border: 3px solid rgba(58, 58, 58, 0.05);
                                 box-shadow: 4px 6px 12px rgba(0, 0, 0, 0.24), -4px -4px 8px rgba(230, 230, 230, 0.1);
