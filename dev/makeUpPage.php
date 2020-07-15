@@ -230,7 +230,7 @@
             xhr.onload = function() {
                 if (xhr.status == 200) {
                     alert(xhr.responseText);   //在後端做註解判斷 最外層if else
-            
+                    document.location.href="./card.html";
                 } else {
                     alert(xhr.status)
                 }

@@ -20,7 +20,7 @@
             $imgDataStr = str_replace('data:image/png;base64,', '', $imgDataStr); //將檔案格式的資訊拿掉
             $data = base64_decode($imgDataStr);
             //準備好要存的filename
-            $fileName = date("Ymd");  //或time()
+            $fileName = date("Ymd-h-m-s");  //或time()
             $file = $upload_dir . $fileName . ".png";
             $success = file_put_contents($file, $data);
             $file = substr($file, 1);
