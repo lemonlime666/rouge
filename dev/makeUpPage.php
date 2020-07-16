@@ -229,10 +229,16 @@
             var xhr = new XMLHttpRequest();
             xhr.onload = function() {
                 if (xhr.status == 200) {
-                    alert(xhr.responseText);   //在後端做註解判斷 最外層if else
-                    document.location.href="./card.html";
+                    if(xhr.responseText == 0){
+                        alert('新增成功');
+                        document.location.href="./card.html";
+                    }else if(xhr.responseText== 1){
+                        alert('請先登入');
+                        document.getElementById('id01').style.display='none';
+                        document.getElementById('login').style.display='flex';
+                    }
                 } else {
-                    alert(xhr.status)
+                    alert(xhr.status);
                 }
             }
 

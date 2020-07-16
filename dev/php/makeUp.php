@@ -31,7 +31,7 @@
                 $sql = "INSERT INTO `rouge`.`makeup` (`MEM_NO`,  `MAKEUP_URL`) VALUES ('{$_SESSION["memNo"]}',  '$file')";
                 $insert = $pdo->prepare($sql);
                 $insert->execute();
-                echo "新增成功";
+                echo "0";
             } else {
                 // echo "修改資料";
                 $upsql = "UPDATE `rouge`.`makeup` SET `MAKEUP_URL` = '$file' WHERE (`MEM_NO` = '{$_SESSION["memNo"]}');";
@@ -39,7 +39,7 @@
             }
         } else { //未登入
 
-            echo "請先登入";
+            echo "1";
         }
     } catch (PDOException $e) {
         echo $e->getMessage();
