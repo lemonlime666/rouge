@@ -40,9 +40,9 @@ $(document).ready(function () {
             xhr.send(null);
             document.location.reload();
         }
-        let winWidth = window.innerWidth;
-        if(winWidth <= 1024){
-            $('#ham').toggleClass('open');
+
+        if($('#menu').css('left') == `${0}px`){
+            $('#ham').removeClass('open');
             $('#menu').animate({
                 left: `${-100}%`,
             }, 250)
