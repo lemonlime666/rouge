@@ -19,10 +19,19 @@
 <body>
 
     @@include("./app/header_black.html")
-    <div class="anyl-background">
-
-        <img src="image/background2.jpg">
+    <div id="anyl-background1" class="anyl-background">
+        <img src="image/anyl_background1.jpg">
     </div>
+    <div id="anyl-background2" class="anyl-background">
+        <img src="image/anyl_background2.jpg">
+    </div>
+    <div id="anyl-background3" class="anyl-background">
+        <img src="image/anyl_background3.jpg">
+    </div>
+    <div id="anyl-background4" class="anyl-background">
+        <img src="image/anyl_background4.jpg">
+    </div>
+    
     <main v-cloak class="anyl-main" id="anyl-item">
         
         <div class="anyl-button2">
@@ -121,19 +130,43 @@
             methods: {
                     sun: function (event) {
                        this.usetime = 0 ;
-
+                       if(this.season == 0){
+                    $('#anyl-background2').fadeOut(1000);
+                    $('#anyl-background1').fadeIn(1000);
+                }else{
+                    $('#anyl-background4').fadeOut(1000);
+                    $('#anyl-background3').fadeIn(1000);
+                } 
                     },
                     night: function (event) {
                        this.usetime = 1 ;
-
+                       if(this.season == 0){
+                    $('#anyl-background1').fadeOut(1000);
+                    $('#anyl-background2').fadeIn(1000);
+                }else{
+                    $('#anyl-background3').fadeOut(1000);
+                    $('#anyl-background4').fadeIn(1000);
+                }
                     },
                     earlyear: function (event) {
                        this.season = 0 ;
-
+                       if(this.usetime == 0){
+                    $('#anyl-background3').fadeOut(1000);
+                    $('#anyl-background1').fadeIn(1000);
+                }else{
+                    $('#anyl-background4').fadeOut(1000);
+                    $('#anyl-background2').fadeIn(1000);
+                }
                     },
                     lateyear: function (event) {
                        this.season = 1 ;
-
+                       if(this.usetime == 0){
+                    $('#anyl-background1').fadeOut(1000);
+                    $('#anyl-background3').fadeIn(1000);
+                }else{
+                    $('#anyl-background2').fadeOut(1000);
+                    $('#anyl-background4').fadeIn(1000);
+                }
                     },
                     addChart(lateyear) { //加入購物車
                     //建立物件
@@ -257,15 +290,12 @@
                 xhr.send(data_info); 
                 },
             }
-        })
-
-
-
-
+        });
         window.addEventListener('load', dayTime());
         
         function dayTime() {
-        //     $('.anyl-product').fadeIn(500);
+            $('#anyl-item').fadeIn(1000);
+
             let today = new Date();
             let months = new Array();
             months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
@@ -285,17 +315,33 @@
             var css = document.getElementById('btnStyle');
             var c = css.sheet;
 
-            if (uploadHour >= 18 | uploadHour <= 6) {
-                document.getElementById('anylNight').style.cssText = "background-color: #C0A57C;transform: translate(0em, 0.5em);"
-            } else {
-                document.getElementById('anylSun').style.cssText = "background-color: #C0A57C;transform: translate(0em, 0.5em);"
-
-            }
+            // $('#anyl-background1').fadeIn(1000);
             let todatMonth = today.getMonth();
-            if (todatMonth <= 7) {
-                document.getElementById('anyl_1to6').style.cssText = "background-color: #C0A57C;transform: translate(0em, 0.5em);"
+            if(uploadHour >= 18 | uploadHour <= 6){
+                if(todatMonth <= 7){
+                    $('#anyl-background2').fadeIn(1000);
+                }else{
+                    $('#anyl-background4').fadeIn(1000);
+                }
+            }else{
+                if(todatMonth <= 7){
+                    $('#anyl-background1').fadeIn(1000);
+                }else{
+                    $('#anyl-background3').fadeIn(1000);
+                }
+            };
+
+            if (uploadHour >= 18 | uploadHour <= 6) {
+                // transform: translate(0em, 0.5em);
+                document.getElementById('anylNight').style.cssText = "background-color: #C0A57C;"
             } else {
-                document.getElementById('anyl_7to12').style.cssText = "background-color: #C0A57C;transform: translate(0em, 0.5em);"
+                document.getElementById('anylSun').style.cssText = "background-color: #C0A57C;"
+            }
+            
+            if (todatMonth <= 7) {
+                document.getElementById('anyl_1to6').style.cssText = "background-color: #C0A57C;"
+            } else {
+                document.getElementById('anyl_7to12').style.cssText = "background-color: #C0A57C;"
 
             }
 
@@ -305,23 +351,24 @@
             var anyl_7to12 = document.getElementById('anyl_7to12');
             anylSun.addEventListener('click', function() {
 
-                this.style.cssText = "background-color: #C0A57C;transform: translate(0em, 0.5em);";
+                this.style.cssText = "background-color: #C0A57C;";
                 document.getElementById('anylNight').style.cssText = "background-color: $darkGold;";
 
             });
             anylNight.addEventListener('click', function() {
-                this.style.cssText = "background-color: #C0A57C;transform: translate(0em, 0.5em);";
+                this.style.cssText = "background-color: #C0A57C;";
                 document.getElementById('anylSun').style.cssText = "background-color: $darkGold";
 
 
             });
             anyl_1to6.addEventListener('click', function() {
-                this.style.cssText = "background-color: #C0A57C;transform: translate(0em, 0.5em);";
+                this.style.cssText = "background-color: #C0A57C;";
                 document.getElementById('anyl_7to12').style.cssText = "background-color: $darkGold";
 
             });
             anyl_7to12.addEventListener('click', function() {
-                this.style.cssText = "background-color: #C0A57C;transform: translate(0em, 0.5em);";
+                // transform: translate(0em, 0.5em);
+                this.style.cssText = "background-color: #C0A57C;";
                 document.getElementById('anyl_1to6').style.cssText = "background-color: $darkGold";
 
             });

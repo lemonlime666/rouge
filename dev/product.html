@@ -79,7 +79,7 @@
                             
                         </select>
                     </form>
-
+                    
                     <div class="por_price">
                         <h3 class="lfont">$ {{totalPrice}}</h3>
                     </div>
@@ -88,7 +88,7 @@
                     <!-- 加入購物車 -->
                     <button class="addcart" @click="addChart">ADD TO CART</button>
                     <div class="test_color">
-                        <a class="mfont" href="./makeUp.html">口紅試色</a>
+                        <a class="mfont" href="./memAnylize.html">保養分析</a>
                     </div>
                 </div>
             </div>
@@ -207,7 +207,7 @@
                     this.proCommit.comName = this.products[i].PRO_NAME
                     this.proCommit.comImg = this.products[i].PRO_IMG
                     this.proCommit.comPrice = this.products[i].PRO_PRICE
-                    this.proCommit.comNum = this.proNum
+                    this.proCommit.comNum = parseInt(this.proNum)
                     
                     //判斷條件
                     //如果購物車內有相同的系列編號
@@ -288,6 +288,7 @@
                     
                 //     return this.products[0].PRO_IMGS.split("|")
                 // }
+                
                 
                 
             },

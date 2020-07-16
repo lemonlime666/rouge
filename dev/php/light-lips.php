@@ -2,10 +2,11 @@
 try{
 	require_once("connect.php");
 	// echo "連線成功~<br>";
-  $sql = "SELECT  *
-  FROM promo_list
+  $sql = "SELECT *
+  FROM promo_program
   right join series 
-  on promo_list.SER_NO = series.SER_NO
+  on (select promo_program.SER_NO where now()>SP_START
+    and now()<SP_END) = series.SER_NO
   where PRO_CLASS = 0 ;";
   $series = $pdo->query($sql);
 

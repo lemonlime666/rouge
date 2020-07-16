@@ -297,3 +297,76 @@ new Vue({
 
     },
 });
+
+//---------------購物車數量計算----------------
+
+//初始化
+document.addEventListener('DOMContentLoaded', function() {
+    console.log(window.localStorage.shoppingcart)
+    let cart = JSON.parse(window.localStorage.shoppingcart)
+    let total = 0;
+      for(let i=0; i< cart.length; i++){       
+          total += cart[i].comNum 
+      }
+      console.log('物件總數:', total)
+      let shoppingcart = document.getElementById('shoppingcart')
+      shoppingcart.innerText ="CART("+total+")";
+})
+
+
+//監測物件變化
+
+
+
+Object.defineProperty(window.localStorage, 'shoppingcart', {
+    get: function () {
+        // localStorage.getItem('shoppingcart')
+    //   return test;
+      return localStorage.getItem('shoppingcart')
+    },
+    set: function (newValue) {
+      // console.log('透過物件變更')
+      localStorage.setItem('shoppingcart', newValue)
+      //需要觸發的渲染函式可以寫在這...
+      let cart = JSON.parse(newValue)
+      console.log(cart)
+      let total = 0;
+      for(let i=0; i< cart.length; i++){       
+          total += cart[i].comNum 
+      }
+      console.log('物件總數:', total)
+      let shoppingcart = document.getElementById('shoppingcart')
+      shoppingcart.innerText ="CART("+total+")";
+      
+    }
+  })
+
+  // 重寫事件
+  const oldSetItem = window.localStorage.setItem
+  window.localStorage.setItem = function (key, newValue) {
+    var setItemEvent = new Event("setItemEvent")
+    setItemEvent.key = 'shoppingcart'
+    setItemEvent.newValue = newValue
+    window.dispatchEvent(setItemEvent)
+    oldSetItem.apply(this, arguments)
+  }
+  // 添加監聽
+  window.addEventListener("setItemEvent", function (e) {
+    // console.log('透過函數變更')
+    //需要觸發的渲染函式可以寫在這...
+    let cart = JSON.parse(e.newValue)
+      let total = 0;
+      for(let i=0; i< cart.length; i++){       
+          total += cart[i].comNum 
+      }
+      console.log('函數總數:', total)
+      let shoppingcart = document.getElementById('shoppingcart')
+      shoppingcart.innerText ="CART("+total+")";
+    
+    
+  },false)
+//   window.addEventListener('load',function() {
+//     console.log(localStorage.getItem('shoppingcart'))
+//   })
+
+  

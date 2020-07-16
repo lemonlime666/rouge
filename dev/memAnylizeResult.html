@@ -5,16 +5,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>會員保養分析結果</title>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&family=Noto+Serif+TC:wght@200;300;400;500;600;700;900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Nunito+Sans:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&family=Noto+Serif+TC:wght@200;300;400;500;600;700;900&display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Nunito+Sans:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap">
     <link rel="stylesheet" href="./css/memAnylizeResult.css">
+    <script src="js/three.min.js"></script>
+    <script src="js/TweenMax.min.js"></script>
+    <script src="js/hover-effect.umd.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <style>
+        .pic {
+            width: 40vw;
+            height: 40vh;
+            margin: 10px auto;
+            position: relative;
+        }
+    </style>
 </head>
 
 <body>
 
     @@include('./app/header.html')
-    <main class="memAnyl-main">
+    <main class="memAnyl-main" id="memAnyl-main">
         <section v-cloak id="memAnylresult" class="memAnylresult-content">
             <div class="memAnylResult-word" v-for="(item,index) in result" v-if="index<1">
                 <div class="title">
@@ -22,29 +37,34 @@
                 </div>
                 <div class="line"></div>
                 <p class="forword">
-                    {{item.MTI_TEXT}}    
+                    {{item.MTI_TEXT}}
                 </p>
             </div>
             <div class="sun">
                 <div class="word">
                     <h3>日間保養步驟</h3>
                     <div class="line"></div>
-                    <div class="product" v-for="(item,index) in sun" v-if="index < 3">
-                        <div class="detail">
-                            <p class="resultStep">步驟 {{index+1}} : 使用{{item.PRO_NAME}}</p>
+                    <div class="allDetail">
+                        <div>
+                            <div class="product" v-for="(item,index) in sun" v-if="index < 3">
+                                <div class="detail">
+                                    <p class="resultStep">步驟 {{index+1}} : 使用{{item.PRO_NAME}}</p>
 
-                            <div class="memcart">
-                                <div class="addToCart"  @click="addChart(item)">
-                                    <p>ADD TO CART</p>
+                                    <div class="memcart">
+                                        <div class="addToCart" @click="addChart(item)">
+                                            <p>ADD TO CART</p>
+                                        </div>
+                                        <a href="">
+                                            <p id="productDeatil1" @mouseover="sunImg(item.PRO_IMG)">商品詳情</p>
+                                        </a>
+                                    </div>
                                 </div>
-                                <a href=""><p>商品詳情</p></a>
                             </div>
                         </div>
                         <div class="pic">
-                            <img src="">
+                            <img :src="proImgSun" alt="">
                         </div>
                     </div>
-
                 </div>
 
             </div>
@@ -52,19 +72,25 @@
                 <div class="word">
                     <h3>夜間保養步驟</h3>
                     <div class="line"></div>
-                    <div class="product" v-for="(item,index) in night" v-if="index < 3">
-                        <div class="detail">
-                            <p class="resultStep">步驟 {{index+1}} : 使用{{item.PRO_NAME}}</p>
+                    <div class="allDetail">
+                        <div>
+                            <div class="product" v-for="(item,index) in night" v-if="index < 3">
+                                <div class="detail">
+                                    <p class="resultStep">步驟 {{index+1}} : 使用{{item.PRO_NAME}}</p>
 
-                            <div class="memcart">
-                                <div class="addToCart" @click="addChart(item)">
-                                    <p>ADD TO CART</p>
+                                    <div class="memcart">
+                                        <div class="addToCart" @click="addChart(item)">
+                                            <p>ADD TO CART</p>
+                                        </div>
+                                        <a href="">
+                                            <p id="productDeatil2" @mouseover="nightImg(item.PRO_IMG)">商品詳情</p>
+                                        </a>
+                                    </div>
                                 </div>
-                                <a href=""><p>商品詳情</p></a>
                             </div>
                         </div>
                         <div class="pic">
-                            <img src="">
+                            <img :src="proImgNight" alt="">
                         </div>
                     </div>
                 </div>
@@ -91,30 +117,32 @@
         var app = new Vue({
             el: '#memAnylresult',
             data: {
-                
-                result:'',
-                sunItem:'',
-                word:'',
-                type:'',
 
-                sun:[],
-                night:[],
+                result: '',
+                sunItem: '',
+                word: '',
+                type: '',
+
+                sun: [],
+                night: [],
+                proImgSun: '/img/apple',
+                proImgNight: '/img/orange',
 
                 proPrice: [], //商品單價
                 proNum: '1', //商品數量
                 proImgs: '', //圖片編號
                 proNO: '', //商品編號
-                proName:'',
+                proName: '',
 
-                getItems:[],
-                totalItem:[],
-                proCommit:{   
-                        comNo:'', //商品編號
-                        comName:'', //商品名稱
-                        comImg: '', //小圖片路徑
-                        comNum: '', //商品數量
-                        comPrice: '', //商品單價  
-                    },
+                getItems: [],
+                totalItem: [],
+                proCommit: {
+                    comNo: '', //商品編號
+                    comName: '', //商品名稱
+                    comImg: '', //小圖片路徑
+                    comNum: '', //商品數量
+                    comPrice: '', //商品單價  
+                },
             },
 
             methods: {
@@ -127,114 +155,147 @@
                     this.proCommit.comNum = this.proNum;
 
                     const copy = Object.assign({}, this.proCommit)
-                    
-                    if(this.getItems.length == 0){
+
+                    if (this.getItems.length == 0) {
                         this.getItems.push(copy);
-                        localStorage['shoppingcart'] = JSON.stringify(this.getItems);    
-                        }else {
-                            let x = 0;
-                            for( let i=0 ; i < this.getItems.length;i++){
-                                if(this.proCommit.comNo ==  this.getItems[i].comNo){
-                                    x+=1;
-                                };
-                                
-                            }
-                            if(x == 0){
-                            this.getItems.push(copy);
-                            localStorage['shoppingcart'] = JSON.stringify(this.getItems);    
+                        localStorage['shoppingcart'] = JSON.stringify(this.getItems);
+                    } else {
+                        let x = 0;
+                        for (let i = 0; i < this.getItems.length; i++) {
+                            if (this.proCommit.comNo == this.getItems[i].comNo) {
+                                x += 1;
                             };
-                        };     
-                    }
+
+                        }
+                        if (x == 0) {
+                            this.getItems.push(copy);
+                            localStorage['shoppingcart'] = JSON.stringify(this.getItems);
+                        };
+                    };
+                },
+                
+                sunImg(x) {
+
+                    
+                    this.proImgSun = x;
+                    // console.log(this.proImgSun);
+
+                    // var button2 = new hoverEffect({
+                    //         parent: document.querySelector('.pic'),
+                    //         intensity1: 0.25,
+                    //         intensity2: 0.25,
+                    //         angle1: Math.PI / 2,
+                    //         angle2: -Math.PI / 2,
+                    //         image1: 'image/ice.jpg',
+                    //         image2: 'image/ice2.jpg',
+                    //         displacementImage: 'image/ramen.jpg',
+                    //         // hover:false,
+                    //     });
+                },
+                nightImg(x) {
+
+                        
+                        this.proImgNight = x;
+                        // console.log(this.proImgNight);
+
+                        // var button2 = new hoverEffect({
+                        //         parent: document.querySelector('.pic'),
+                        //         intensity1: 0.25,
+                        //         intensity2: 0.25,
+                        //         angle1: Math.PI / 2,
+                        //         angle2: -Math.PI / 2,
+                        //         image1: 'image/ice.jpg',
+                        //         image2: 'image/ice2.jpg',
+                        //         displacementImage: 'image/ramen.jpg',
+                        //         // hover:false,
+                        //     });
+                        }
             },
             created() {
                 var xhr = new XMLHttpRequest();
-                xhr.onload=function (){
-                    if( xhr.status == 200 ){
+                xhr.onload = function () {
+                    if (xhr.status == 200) {
                         app.$data.result = JSON.parse(xhr.responseText);
-                        let totalItem =JSON.parse(xhr.responseText);
+                        let totalItem = JSON.parse(xhr.responseText);
                         this.sun = 'IN';
                         this.night = 'IN';
-                        for(let i = 0 ; i < totalItem.length; i++){
-                            if(totalItem[i].PRO_USETIME == 0){
-                                console.log(totalItem[i]);
+                        for (let i = 0; i < totalItem.length; i++) {
+                            if (totalItem[i].PRO_USETIME == 0) {
                                 app.$data.sun.push(totalItem[i]);
-                            }else if(totalItem[i].PRO_USETIME == 1){
+                            } else if (totalItem[i].PRO_USETIME == 1) {
                                 app.$data.night.push(totalItem[i]);
                             }
                         }
-                    }else{
+                    } else {
                         // alert( xhr.status );
                     }
                 }
                 // let data_info = 'answer='+3;
                 var url = `./php/memAnylizeResult.php`;
                 xhr.open("post", url, true);
-                xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
-                
+                xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
+
                 let data_info = 'answer=' + localStorage.type;
 
-                xhr.send(data_info); 
+                xhr.send(data_info);
             },
             mounted() {
-               
-                this.getItems =JSON.parse(localStorage.getItem('shoppingcart'));
-                
-                
-                // console.log(data_info);
 
-
-                
-                
-
-                // xhr.send(null);
-
-                
-                // let today = new Date();
-                // let todayTime = `${today.getFullYear()}-${today.getMonth()+1}-${today.getDate()}`
-                // var xhr2 = new XMLHttpRequest();
-                // var url2 = "./php/memAnylizeResultUpdate.php";
-                // xhr2.open("post", url2, true);
-                // xhr2.setRequestHeader("content-type","application/x-www-form-urlencoded");
-                
-                // let data_info2='today=' + todayTime;
-                // console.log(data_info2);
-
-                // xhr2.send( data_info2 );
-
-
-                
+                this.getItems = JSON.parse(localStorage.getItem('shoppingcart'));
             },
 
         });
+        window.addEventListener('load', loadin());
+        function loadin() {
+            $('#memAnyl-main').fadeIn(1000);
+
+        }
+        // function bigImg(x){
+        //     console.log(x);
+        // }
+        var button2 = new hoverEffect({
+                            parent: document.querySelector('.pic'),
+                            intensity1: 0.25,
+                            intensity2: 0.25,
+                            angle1: Math.PI / 2,
+                            angle2: -Math.PI / 2,
+                            image1: 'image/ice.jpg',
+                            image2: 'image/ice2.jpg',
+                            displacementImage: 'image/ramen.jpg',
+                            hover:false,
+                        });
+                document.querySelector('.pic').addEventListener('mouseover', button2.next);
+
+
         var btnCheckId = document.getElementById('btnCheckId')
 
-        btnCheckId.addEventListener('click', function() {
-                //   產生XMLHttpRequest物件
-                let xhr = new XMLHttpRequest();
-                //註冊callback function
-                            var x;
-                xhr.onload = function(){
-                    if(xhr.status==200){
-                    }else{
-                        alert(xhr.status);
-                    }
+        btnCheckId.addEventListener('click', function () {
+            //   產生XMLHttpRequest物件
+            let xhr = new XMLHttpRequest();
+            //註冊callback function
+            var x;
+            xhr.onload = function () {
+                if (xhr.status == 200) {
+                } else {
+                    alert(xhr.status);
                 }
-                let today = new Date();
-                let todayTime = `${today.getFullYear()}-${today.getMonth()+1}-${today.getDate()}`
-                                
-                
-                //設定好所要連結的程式
-                let url = "./php/memAnylizeResultUpdate.php";
-                xhr.open("Post", url, true);
+            }
+            let today = new Date();
+            let todayTime = `${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()}`
 
-                //送出資料
-              
-                xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
-                let data_info = `today=${todayTime}&&class=${localStorage.type}`;
-                xhr.send(data_info);
 
-                alert('貯存成功')
-            });
+            //設定好所要連結的程式
+            let url = "./php/memAnylizeResultUpdate.php";
+            xhr.open("Post", url, true);
+
+            //送出資料
+
+            xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
+            let data_info = `today=${todayTime}&&class=${localStorage.type}`;
+            xhr.send(data_info);
+
+            alert('貯存成功')
+        });
     </script>
 </body>
 
