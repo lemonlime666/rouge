@@ -1148,15 +1148,24 @@
 
                     button {
                         // background-origin: 1px solid red;
-                        background-color: $rose;
+                        background-color: transparent;
                         outline: 0;
                         border: 0;
                         border-radius: 8px;
-                        padding: 10px 60px;
                         align-self: start;
                         margin: 60px 0 0 60px;
 
-                        @include font-style(16px, $notoSerif) {}
+                        a{
+                            background-color: $rose;
+                            border-radius: 8px;
+                            padding: 10px 60px;
+                            @include font-style(16px, $notoSerif) {}
+                            text-decoration: none;
+                            &:hover {
+                                background-color: lighten($rose, 8);
+                                transition: background-color .2s;
+                            }
+                        }
 
                         @include s-pad() {
                             position: absolute;
@@ -1168,12 +1177,6 @@
                             padding: 10px 45px;
                             font-size: 12px;
                             bottom: 20px;
-                        }
-
-                        &:hover {
-                            cursor: pointer;
-                            background-color: lighten($rose, 8);
-                            transition: background-color .35s;
                         }
 
                     }
@@ -1399,7 +1402,7 @@
                             &::before {
                                 width: 100%;
                                 left: 0;
-                                transition: all .4s;
+                                transition: all .3s;
 
                             }
                         }
@@ -2807,6 +2810,7 @@
             z-index: 10;
             background-color: transparent;
             outline: 0;
+            cursor: pointer;
 
             @include l-pad() {
                 right: 10%;
@@ -2819,9 +2823,8 @@
             a {
                 border: 2px solid $cofe;
                 text-decoration: none;
-
+                cursor: pointer;
                 @include font-style() {}
-
                 letter-spacing: 3px;
                 color: $lightGold;
                 display: block;
