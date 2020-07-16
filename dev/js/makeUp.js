@@ -236,19 +236,6 @@ for(i=0; i<c.length;i++){
 
 
 
-    //下載Model圖
-    // var Mimg = document.querySelector('.M_mimg');
-
-    // $("#M_Modeldownload").click(function () {
-    //     var imagePath = Mimg.getAttribute('src');
-    //     var fileModelName = getModelFileName(imagePath);
-
-    //     saveAs(imagePath, fileModelName);
-    // });
-
-    // function getModelFileName(str) {
-    //     return str.substring(str.lastIndexOf('-') + 1);
-    // }
 });
 
 
