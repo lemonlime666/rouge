@@ -385,16 +385,22 @@ Vue.component('mypostcard', {
     data() {
         return {
         memCard:[],
+        design:'',
+        joinDate:'',
+        voteSum:'',
+        src:'',
         };
     },
     template: `
     <div class="contentBox">
         <div class="mem_createcard">
             <div class="mem_card">
-                <div class="mem_img"></div>
-                <p class="mem_text">設計理念</p>
-                <p class="mem_text">參賽日期：2020/06/06</p>
-                <p class="mem_text">票數：155</p>
+                <div class="mem_img" >
+                         <img :src="src">
+                </div>
+                <p class="mem_text" v-cloak>設計理念:{{design}}</p>
+                <p class="mem_text"v-cloak>參賽日期：{{joinDate}}</p>
+                <p class="mem_text" v-cloak>票數：{{voteSum}}</p>
                 <button @click="toVote">前往參加投票</button>    
             </div>
         </div>
@@ -409,16 +415,30 @@ Vue.component('mypostcard', {
                 let a = this;
                 xhr.onload = function (){
                     if(xhr.status == 200){
-                        a.memCard = JSON.parse(xhr.responseText);
-                        console.log(a.memCard);
+                        if(xhr.responseText=="請先登入會員"){
+                            alert(xhr.responseText+"!!!")
+                        }else{
+                            a.memCard = JSON.parse(xhr.responseText);
+                            a.src = a.memCard.CARD_URL
+                            if(a.memCard.CARD_VOTE==1){
+                                a.design = "未參賽";
+                                a.joinDate = "未參賽";
+                                a.voteSum = "未參賽";
+                            }else{
+                                a.design = a.memCard.CARD_INF;
+                                a.joinDate = a.memCard.CARD_VOTESUM;
+                                a.voteSum = a.memCard.CARD_VOTEDATE;
+                            }
+                            console.log(a.memCard.CARD_URL+"----"+ a.src);
+                        }
+                      
                     }else{
                         alert(xhr.status);
                     }
                 }
-                xhr.open("post", "../php/memPageOrder.php", true);
-                xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
-                let status = this.ord;
-                xhr.send(`status=${status}`);
+                xhr.open("get", "./php/memCardData.php", true);
+                
+                xhr.send(null);
             },
 
     },

@@ -12,7 +12,7 @@ try{
         where members.MEM_NO ='{$_SESSION["memNo"]}';";
         $info = $pdo->query($sql);
         $info -> execute();
-        $allinfo = $info->fetch(PDO::FETCH_ASSOC);
+        $cardInfo = $info->fetch(PDO::FETCH_ASSOC);
         echo json_encode($cardInfo);
     }else{
         echo "請先登入會員";
@@ -22,7 +22,5 @@ try{
     $errMsg .='錯誤行號'. $e->getLine();
     $errMsg .='錯誤訊息'. $e->getMessage();
 }
-if($errMsg != ''){
-    echo $errMsg;
-}
+
 ?>

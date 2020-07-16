@@ -630,9 +630,12 @@ body {
             height: 300px;
         }
         .mem_img {
-            margin: 1% auto;
+            margin: 0% auto;
             width: 100%;
             height: 100%;
+            img{ width: 100%;
+                height: 100%;
+            }
         }
         p.mem_text {
             margin: 0.5rem;
