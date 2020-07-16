@@ -392,12 +392,19 @@ Vue.component('mypostcard', {
         <div class="mem_createcard">
             <div class="mem_card">
                 <div class="mem_img"></div>
+                <p class="mem_text">設計理念</p>
                 <p class="mem_text">參賽日期：2020/06/06</p>
                 <p class="mem_text">票數：155</p>
+                <button @click="toVote">前往參加投票</button>    
             </div>
         </div>
     </div>
     `,
+    methods:{
+            toVote(){
+                window.location='./vote.html'
+            }
+    },
 })
 
 const contents = new Vue({
