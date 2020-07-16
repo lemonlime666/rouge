@@ -57,6 +57,7 @@
                     <div class="M_optionGroup M_second">
                         <ul class="M_lipsticksSer" id="M_menu-app">
                             <?php
+                            $pro_name = 0;                            
                             try {
                                 require_once("./php/connect.php");
                                 //抓取兩個表格資料 撈出口紅資料共4筆
@@ -65,21 +66,22 @@
                                 $series_name->execute();
                                 $no_of_ser = $series_name->fetch();
                                 $val_of_color_counter = 0;  //動態新增ID
+                                $pro_name++;                                
                                 for ($i = 1; $i <= $no_of_ser[0]; $i++) {
                                     //最外層li
-                                    echo '<li class="M_menu">
-                                    <button class="M_control">';
+                                    echo '<li class="M_menu" data-name="$pro_name[0]">';
+                                    echo '<button class="M_control"  >';
                                     $sql_ser_name = "SELECT distinct SER_NAME FROM product, series where product.SER_NO=series.SER_NO AND PRO_COLOR LIKE '%' and series.SER_NO = $i";
                                     $MAKEUP_URL_1 = $pdo->prepare($sql_ser_name);
                                     $MAKEUP_URL_1->execute();
                                     $ser_name = $MAKEUP_URL_1->fetch();
                                     echo "$ser_name[0] </button>  <div class=\"M_seriesPanel\">";  //內層顏色div開始
                                     //撈取資料庫顏色指令
-                                    $sql_ser_ind_color = "SELECT PRO_COLOR FROM product, series where product.SER_NO=series.SER_NO AND PRO_COLOR LIKE '%' and series.ser_no = $i";
+                                    $sql_ser_ind_color = "SELECT a.PRO_COLOR , b.SER_NO FROM product a join series b on a.SER_NO = b.SER_NO where b.PRO_CLASS = 0 and a.SER_NO = $i";
                                     $MAKEUP_colors = $pdo->query($sql_ser_ind_color);  //撈取後端全部資料
                                     while ($color = $MAKEUP_colors->fetch()) {
                                         $val_of_color_counter++;  //動態新增ID
-                                        echo "<div class=\"M_pcColor\" style=\"background-color:$color[0];\" id=\"color$val_of_color_counter\" data-color=\"$color[0]\"></div>";
+                                        echo "<div class=\"M_pcColor\" style=\"background-color:$color[0];\" id=\"color$val_of_color_counter\" data-color=\"$color[0]\" data-series=\"$color[1]\"></div>";
                                     }
                                     echo '<div class="M_pcnone" ><i class="fas fa-ban fa-4x"></i></div>';
                                     echo '</li>';
@@ -114,7 +116,7 @@
                     <p class="M_detail">描述描述描述</p>
                 </div>
                 <div class="M_group">
-                    <button class="M_contentbtn">加入購物車</button>
+                    <button class="M_contentbtn">返回商品頁面</button>
                     <button class="M_contentbtn" onclick="document.getElementById('id01').style.display='block'">製作明信片</button>
                 </div>
                 <div class="M_group">
