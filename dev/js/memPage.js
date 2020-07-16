@@ -384,7 +384,7 @@ Vue.component('mypostcard', {
     props: [],
     data() {
         return {
-
+        memCard:[],
         };
     },
     template: `
@@ -403,8 +403,29 @@ Vue.component('mypostcard', {
     methods:{
             toVote(){
                 window.location='./vote.html'
-            }
+            },
+            getData(){
+                let xhr = new XMLHttpRequest();
+                let a = this;
+                xhr.onload = function (){
+                    if(xhr.status == 200){
+                        a.memCard = JSON.parse(xhr.responseText);
+                        console.log(a.memCard);
+                    }else{
+                        alert(xhr.status);
+                    }
+                }
+                xhr.open("post", "../php/memPageOrder.php", true);
+                xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
+                let status = this.ord;
+                xhr.send(`status=${status}`);
+            },
+
     },
+
+    mounted(){
+        this.getData();
+    }
 })
 
 const contents = new Vue({
