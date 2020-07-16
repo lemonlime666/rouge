@@ -10,7 +10,7 @@
         rel="stylesheet">
     <link rel="stylesheet" href="./css/anylize.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="./js/main.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.js"></script>
     <style id='btnStyle'>
 
     </style>
@@ -40,7 +40,6 @@
 
             </a>
         </div>
-        <!--  -->
         <div class="anyl-item">
 
             <div v-cloak class="anyl-product" v-for="(lateyear,index) in pdolateYear" v-if="index < 4">
@@ -63,7 +62,6 @@
                 </div>
             </div>
         </div>
-        <!--  -->
 
         </div>
 
@@ -89,18 +87,16 @@
 
 
         </div>
-        <a href="memAnylize.html">
-            <div class="anyl-button">
+            <div class="anyl-button" onclick="getmember()">
                 <p>專業保養分析</p>
                 <p>ANYLIZE</p>
             </div>
-        </a>
     </main>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.js"></script>
+    <script src="./js/header.js"></script>
 
     <script>
-        var app = new Vue({
+        const app = new Vue({
             el: '#anyl-item',
             data: {
 
@@ -128,6 +124,11 @@
             },
 
             methods: {
+                    // open:function(){
+                        
+                    //     location.href="memAnylize.html";
+                        
+                    // },
                     sun: function (event) {
                        this.usetime = 0 ;
                        if(this.season == 0){
@@ -373,8 +374,30 @@
 
             });
 
+            
 
         };
+        function getmember() {
+            
+            console.log('try');
+
+            var xhr = new XMLHttpRequest();
+            xhr.onload = function() {
+                if (xhr.status == 200) {
+                    if (xhr.responseText == 1) {
+                        alert('請先登入');
+                        document.getElementById('login').style.display = 'flex';
+                    } else {
+                        document.location.href = "./memAnylize.html";
+                    }
+                } else {
+                    alert(xhr.status);
+                }
+            }
+
+            xhr.open('POST', './php/anyliez_mem.php', true);
+            xhr.send( null);
+        }
     </script>
 </body>
 

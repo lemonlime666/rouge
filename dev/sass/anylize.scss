@@ -430,6 +430,7 @@ body {
         display: none;
     }
     @include font-style(30px, $notoSerif, black, $default-fweight) {}
+    cursor: pointer;
     line-height: 15px;
     width: 20%;
     height: 35vh;
@@ -450,6 +451,7 @@ body {
     @media screen and (min-width: 1199px) {
         display: none;
     }
+    cursor: pointer;
     writing-mode: vertical-rl;
     @include font-style(22px, $notoSerif, black, $default-fweight) {}
     position: fixed;
