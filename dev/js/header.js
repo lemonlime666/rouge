@@ -18,38 +18,11 @@ $(document).ready(function () {
             }, 500)
         }
     });
-
-    //側邊選單位置
-    function sideNavPlace() {
-        let sideNav = $('#sidenav').clone(true);
-        let winWidth = window.innerWidth;
-        if (winWidth <= 996) {
-            $('#menu .menuMid').append(sideNav);
-            sideNav.removeClass('inCorner');
-            sideNav.addClass('inMenu');
-        }
-    }
-    sideNavPlace();
-
-    window.addEventListener('resize', () => {
-        let winWidth = window.innerWidth;
-        let resizeTimer = setTimeout(() => {
-            if ($('#menu .menuMid #sidenav') && winWidth > 996) {
-                $('#menu .menuMid #sidenav').remove();
-            } else if ($('#menu .menuMid #sidenav') && winWidth <= 996) {
-                sideNavPlace();
-            }
-        }, 100);
-    })
-
-    window.addEventListener('resize', () => {
-        let winWidth = window.innerWidth;
-        console.log(winWidth);
-    })
     //header
 
-    //Login
     //==============================================
+
+    //Login
 
     var member = {};
     //確認是要登入還登出
@@ -57,7 +30,6 @@ $(document).ready(function () {
         if (this.innerHTML == "LOGIN") {
             $('#login').show();
         } else if (this.innerHTML == "LOGOUT") {
-
             let xhr = new XMLHttpRequest(); //使用Ajax回server端做登出
             xhr.onload = function () {
                 if (xhr.status == 200) { //success
@@ -67,6 +39,14 @@ $(document).ready(function () {
             xhr.open("get", "./php/logout.php", false);
             xhr.send(null);
             document.location.reload();
+        }
+        let winWidth = window.innerWidth;
+        if(winWidth <= 1024){
+            $('#ham').toggleClass('open');
+            $('#menu').animate({
+                left: `${-100}%`,
+            }, 250)
+            $('#menu').fadeOut(250);
         }
     });
 
@@ -98,6 +78,8 @@ $(document).ready(function () {
 
     //=============================================================
 
+    //前往會員頁面
+
     $('#memPage').click(function(){
         let xhr = new XMLHttpRequest();
         xhr.onload = function () {
@@ -114,6 +96,37 @@ $(document).ready(function () {
         xhr.open("get", "./php/getMemberInfo.php", true);
         xhr.send(null);
     });
+
+    //=============================================================
+
+    //側邊選單位置RWD
+
+    function sideNavPlace() {
+        let sideNav = $('#sidenav').clone(true);
+        let winWidth = window.innerWidth;
+        if (winWidth <= 1024) {
+            $('#menu .menuMid').append(sideNav);
+            sideNav.removeClass('inCorner');
+            sideNav.addClass('inMenu');
+        }
+    }
+    sideNavPlace();
+
+    window.addEventListener('resize', () => {
+        let winWidth = window.innerWidth;
+        let resizeTimer = setTimeout(() => {
+            if ($('#menu .menuMid #sidenav') && winWidth > 1024) {
+                $('#menu .menuMid #sidenav').remove();
+            } else if ($('#menu .menuMid #sidenav') && winWidth <= 1024) {
+                sideNavPlace();
+            }
+        }, 100);
+    })
+
+    window.addEventListener('resize', () => {
+        let winWidth = window.innerWidth;
+        console.log(winWidth);
+    })
 });
 
 

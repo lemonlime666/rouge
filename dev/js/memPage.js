@@ -345,7 +345,7 @@ Vue.component('analinfo', {
                 <div class="memPageImgBox" v-cloak>{{src}}</div>
                 <p class="mem_exp" v-cloak>{{txt}}</p>
             </div>
-            <button class="mem_skincarePd">建議保養步驟與商品</button>
+            <button class="mem_skincarePd" @click="gotoResult">建議保養步驟與商品</button>
         </div>
     </div>
     `,
@@ -374,6 +374,9 @@ Vue.component('analinfo', {
             }
             xhr.open("get", "./php/memAnalData.php", true);
             xhr.send(null);
+        },
+        gotoResult(){
+            document.location.href="./memAnylizeResult.html";
         }
     },
     mounted(){
