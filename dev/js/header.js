@@ -40,7 +40,6 @@ $(document).ready(function () {
             xhr.send(null);
             document.location.reload();
         }
-
         if($('#menu').css('left') == `${0}px`){
             $('#ham').removeClass('open');
             $('#menu').animate({
