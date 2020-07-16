@@ -276,20 +276,21 @@ body{
             background-color: #efefef;
             margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
             border: 1px solid #989898;
-            width:568px; /* Could be more or less, depending on screen size */
+            width:350px; /* Could be more or less, depending on screen size */
             .container{
                 width: 100%;
-                height: 50VH;
+                height: 70VH;
                     h1{
                         text-align: center;
                     }
                 .showImg{
                     display: flex;
                     justify-content: center;
+                    flex-wrap: wrap;
                     width: 100%;
                     height: auto;
                     img{
-                        width: 50%;
+                        width: 70%;
                         // height: auto;
                     }
                     .imgContext{
@@ -328,7 +329,7 @@ body{
             .container {
                 position: relative;
                 padding: 16px;
-                height: 40vh;
+                height: 30vh;
                 z-index: 1;
                 background-color: #292929;
                 h1 {
@@ -338,8 +339,10 @@ body{
                 p {
                     color: #efefef;
                     margin: 20px 10px 20px 10px;
+                    text-align: center;
                 }
                 > div {
+                    text-align: center;
                     .btn2-1 {
                         margin: 10px;
                         outline: none;
