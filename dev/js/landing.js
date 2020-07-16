@@ -32,13 +32,14 @@ window.addEventListener('load', function () {
         let adimg = document.querySelectorAll('.swiperimg');
         for(let i=0; i<adimg.length; i++){
             adimg[i].addEventListener('click', function(e){
-                localStorage.setItem('seriesname', e.target.dataset.series);
                 if(e.target.dataset.class == 0){
-                    alert('口紅商品頁');
-                    // document.location.href = "#"; //這邊改成口紅商品頁面連結
+                    // alert('口紅商品頁');
+                    localStorage.setItem('lipsname', e.target.dataset.series);
+                    document.location.href = "./product.html"; //這邊改成口紅商品頁面連結
                 }else if (e.target.dataset.class == 1){
-                    alert('保養品商品頁');
-                    // document.location.href = "#"; //這邊改成保養品商品頁面連結
+                    // alert('保養品商品頁');
+                    localStorage.setItem('carename', e.target.dataset.series);
+                    document.location.href = "./product1.html"; //這邊改成保養品商品頁面連結
                 } 
             })
         }
@@ -226,12 +227,15 @@ window.addEventListener('load', function () {
     }
 
     //pg4Change1
-    function pg4Change1() {
+    function pg4Change() {
         for (i = 1; i <= $('.pg4ColorBox1 span').length; i++) {
             $(`.pg4ColorBox1 span:nth-child(${i})`).click(pg4ChangeContent1(i));
         }
+        for (i = 1; i <= $('.pg4ColorBox2 span').length; i++) {
+            $(`.pg4ColorBox2 span:nth-child(${i})`).click(pg4ChangeContent2(i));
+        }
     }
-    pg4Change1();
+    pg4Change();
 
     function pg4ChangeContent1(i) {
         return function () {
@@ -241,28 +245,21 @@ window.addEventListener('load', function () {
 
             if (i == 1) {
                 $('.pg4LeftOutsdie img').attr('src', 'image/lipModel1.png');
-                $('.pg4colorGuide img').attr('src', 'image/stick01.png');
+                $('.pg4colorGuide img').attr('src', 'image/stick05.png');
             } else if (i == 2) {
                 $('.pg4LeftOutsdie img').attr('src', 'image/lipModel2.png');
-                $('.pg4colorGuide img').attr('src', 'image/stick02.png');
+                $('.pg4colorGuide img').attr('src', 'image/stick06.png');
             } else if (i == 3) {
                 $('.pg4LeftOutsdie img').attr('src', 'image/lipModel3.png');
-                $('.pg4colorGuide img').attr('src', 'image/stick03.png');
+                $('.pg4colorGuide img').attr('src', 'image/stick07.png');
             } else if (i == 4) {
                 $('.pg4LeftOutsdie img').attr('src', 'image/lipModel4.png');
-                $('.pg4colorGuide img').attr('src', 'image/stick04.png');
+                $('.pg4colorGuide img').attr('src', 'image/stick08.png');
             }
         }
     }
 
     //pg4Change2
-    function pg4Change2() {
-        for (i = 1; i <= $('.pg4ColorBox2 span').length; i++) {
-            $(`.pg4ColorBox2 span:nth-child(${i})`).click(pg4ChangeContent2(i));
-        }
-    }
-    pg4Change2();
-
     function pg4ChangeContent2(i) {
         return function () {
             $('.pg4ColorBox1 span').removeClass('stickClick');
@@ -384,6 +381,25 @@ window.addEventListener('load', function () {
         })
     }
     draw();
+
+    document.querySelector('.pg7CardBtn').addEventListener('click', function(){
+        let xhr = new XMLHttpRequest;
+        xhr.onload = function(){
+            if(xhr.status == 200){
+
+                if(xhr.responseText == 0){
+                    alert('請先製作您的試妝圖片～');
+                    document.location.href = "./makeUpPage.php";
+                }else if(xhr.responseText == 1){
+                    alert('請先登入會員');
+                }
+            }else{
+                alert(xhr.status);
+            }
+        }
+        xhr.open("get", "./php/linkToCard.php", true);
+        xhr.send(null);
+    })
 
     //lazyload
     function lazy() {
