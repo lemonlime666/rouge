@@ -31,11 +31,12 @@
                 $sql = "INSERT INTO `rouge`.`makeup` (`MEM_NO`,  `MAKEUP_URL`) VALUES ('{$_SESSION["memNo"]}',  '$file')";
                 $insert = $pdo->prepare($sql);
                 $insert->execute();
-                echo "0";
+                // echo "0";
             } else {
                 // echo "修改資料";
                 $upsql = "UPDATE `rouge`.`makeup` SET `MAKEUP_URL` = '$file' WHERE (`MEM_NO` = '{$_SESSION["memNo"]}');";
                 $pdo->exec($upsql);
+                // echo "0";
             }
         } else { //未登入
 

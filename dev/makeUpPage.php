@@ -229,13 +229,14 @@
             var xhr = new XMLHttpRequest();
             xhr.onload = function() {
                 if (xhr.status == 200) {
-                    if(xhr.responseText == 0){
-                        alert('新增成功');
-                        document.location.href="./card.html";
-                    }else if(xhr.responseText== 1){
+                    // console.log(xhr.responseText);
+                    if(xhr.responseText == 1){
                         alert('請先登入');
                         document.getElementById('id01').style.display='none';
                         document.getElementById('login').style.display='flex';
+                    }else {
+                        alert('新增成功');
+                        document.location.href="./card.html";
                     }
                 } else {
                     alert(xhr.status);
