@@ -2,15 +2,23 @@
 
 $(document).ready(function () {
 
-    name(localStorage.getItem('lipsname') || 1);
+name(localStorage.getItem('lipsname') || 1);
 
-    let panelBtn = document.querySelectorAll('.M_control');
-    for (let i = 0; i < panelBtn.length; i++) {
-        panelBtn[i].addEventListener('click', function () {
-            name(i + 1);
-        });
-    }
+let panelBtn = document.querySelectorAll('.M_control');
+for(let i=0; i<panelBtn.length; i++){
+    panelBtn[i].addEventListener('click',function(){
+        name(i+1);
+    });
+} 
 
+let c = document.querySelectorAll('.M_pcColor');
+for(i=0; i<c.length;i++){
+    c[i].addEventListener("click",function(e){
+        // alert(e.target.dataset.color);
+        //抓取前端data-color放入localstorage
+        localStorage.setItem('lipscolor',e.target.dataset.color);
+    })
+}
 
     // Get the modal
     var modal = document.getElementById('id01');
@@ -228,29 +236,28 @@ $(document).ready(function () {
 
 
 
-
 });
 
 
-
-function name(aaa) {
+function name(aaa){
     // let aaa = localStorage.getItem('lipsname') || 1;
 
     let xhr = new XMLHttpRequest();
-    xhr.onload = function () {
-        if (xhr.status == 200) {
+    xhr.onload = function (){
+        if(xhr.status == 200){
             let data = JSON.parse(xhr.responseText);
             console.log(data.SER_NAME);
             document.querySelector('.M_title').innerHTML = data.SER_NAME;
-            document.querySelector('.M_productImg').setAttribute("src", data.SER_IMGURL);
+            document.querySelector('.M_productImg').setAttribute("src",data.SER_IMGURL);
             document.querySelector('.M_detail').innerHTML = data.SER_TEXT;
-        } else {
+        }else{
             alert('失敗')
         }
     }
-    xhr.open('post', './php/makeUp_getinfo.php', true);
-    xhr.setRequestHeader('content-type', 'application/x-www-form-urlencoded');
+    xhr.open('post','./php/makeUp_getinfo.php',true);
+    xhr.setRequestHeader('content-type','application/x-www-form-urlencoded');
 
     xhr.send(`no=${aaa}`);
-    localStorage.setItem('lipsname', aaa);
+    localStorage.setItem('lipsname',aaa);
 }
+

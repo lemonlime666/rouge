@@ -1,7 +1,7 @@
 <?php
  require_once("connect.php");
 //拉前三
-$sql= "SELECT * FROM rouge.card where CARD_VOTE =1 and MONTH(CURDATE()) <= MONTH(CARD_VOTEDATE) order by CARD_VOTESUM desc limit 3;";
+$sql= "SELECT * FROM rouge.card where CARD_VOTE =0 and MONTH(CURDATE()) <= MONTH(CARD_VOTEDATE) order by CARD_VOTESUM desc limit 3;";
 $topThreesql = $pdo ->query($sql);
 $topThree = $topThreesql->fetchAll(PDO::FETCH_ASSOC);
 

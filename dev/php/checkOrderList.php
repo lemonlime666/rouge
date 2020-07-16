@@ -6,7 +6,7 @@ $listInfo = array();
 $a = '';
 try{
     require_once("connectWade.php");
-    $sql = "select a.ORD_NO, a.ORD_LIST_NUM, a.ORD_PRICE, b.PRO_NAME, d.GIF_NAME from ORD_LIST a join PRODUCT b on a.PRO_NO = b.PRO_NO join PRO_ORDER c on a.ORD_NO = c.ORD_NO left join GIFT d on c.ORD_GIFT = d.GIF_NO where a.ORD_NO=:num and c.MEM_NO = $no and c.ORD_UAL=:status";
+    $sql = "select a.ORD_NO, a.ORD_LIST_NUM, a.ORD_PRICE, b.PRO_NAME, d.GIF_NAME from ORD_LIST a join PRODUCT b on a.PRO_NO = b.PRO_NO join PRO_ORDER c on a.ORD_NO = c.ORD_NO left join GIFT d on c.GIF_NO = d.GIF_NO where a.ORD_NO=:num and c.MEM_NO = $no and c.ORD_UAL=:status";
     $list = $pdo->prepare($sql);
     $list->bindValue(":num", $data->ordNo);
     $list->bindValue(":status", $data->ordStatus);

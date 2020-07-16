@@ -660,7 +660,7 @@ main.M_makeup {
         position: absolute;
         top: 150px;
         right: 0;
-        border: 1px solid red;
+        // border: 1px solid red;
         display: flex;
         flex-direction: column;
         justify-content: space-around;
@@ -809,12 +809,6 @@ main.M_makeup {
                     letter-spacing: 0.25rem;
                     font-size: 1.5rem;
                     font-family: "Noto Serif TC", serif;
-                }
-                #M_delete {
-                    position: absolute;
-                    right: 19%;
-                    top: 15%;
-                    width: 30px;
                 }
             }
             #M_customBtn {

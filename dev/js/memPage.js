@@ -183,7 +183,7 @@ Vue.component('tab1',{
                     <td>{{item.ORD_NO}}</td>
                     <td>{{item.ORD_DATE}}</td>
                     <td>{{item.ORD_PRICE}}</td>
-                    <td>{{item.ORD_ADRS}}</td>
+                    <td>{{item.ORP_ADRS}}</td>
                     <td>
                         <button :data-ordno="item.ORD_NO" @click="checkList">查詢</button>
                     </td>
@@ -271,7 +271,7 @@ Vue.component('tab2',{
                     <td>{{item.ORD_NO}}</td>
                     <td>{{item.ORD_DATE}}</td>
                     <td>{{item.ORD_PRICE}}</td>
-                    <td>{{item.ORD_ADRS}}</td>
+                    <td>{{item.ORP_ADRS}}</td>
                     <td>
                         <button :data-ordno="item.ORD_NO" @click="checkList">查詢</button>
                     </td>
@@ -331,7 +331,7 @@ Vue.component('analinfo', {
     data() {
         return {
             src:'',
-            title:'尚未進行膚質檢測',
+            title:'',
             txt:'',
             date:'',
         };
@@ -340,16 +340,16 @@ Vue.component('analinfo', {
     <div class="contentBox">
         <div class="mem_skinanalysis">
             <div class="mem_title">
-                <p class="mem_date">測驗日期：{{date}}</p>
-                <h1 class="mem_maintitle">{{title}}</h1>
-                <div class="memPageImgBox">{{src}}</div>
-                <p class="mem_exp">{{txt}}</p>
+                <p class="mem_date" v-cloak>測驗日期：{{date}}</p>
+                <h1 class="mem_maintitle" v-cloak>膚質類型：{{title}}</h1>
+                <div class="memPageImgBox" v-cloak>{{src}}</div>
+                <p class="mem_exp" v-cloak>{{txt}}</p>
             </div>
             <button class="mem_skincarePd">建議保養步驟與商品</button>
         </div>
     </div>
     `,
-    mounted(){
+    created(){
         this.getAnalData();
     },
     methods:{
@@ -359,11 +359,15 @@ Vue.component('analinfo', {
             xhr.onload = function(){
                 if(xhr.status == 200){
                     let str = JSON.parse(xhr.responseText);
-                    let txtArr = str.MTI_TEXT.split('|');
-                    a.title = txtArr[0];
-                    a.txt = txtArr[1];
-                    a.date = str.MTC_DATE;
-                    a.src = str.MTI_IMG;
+                    if(str.MTC_DATE){
+                        a.title = str.MTC_TYPE;
+                        a.txt = str.MTI_TEXT;
+                        a.date = str.MTC_DATE;
+                        a.src = str.MTI_IMG;
+                        window.localStorage.setItem('type',str.MTC_CLASS);
+                    }else{
+                        a.title = "尚未進行膚質檢測";
+                    }
                 }else{
                     alert(xhr.status);
                 }
@@ -372,26 +376,76 @@ Vue.component('analinfo', {
             xhr.send(null);
         }
     },
+    mounted(){
+    }
 })
 
 Vue.component('mypostcard', {
     props: [],
     data() {
         return {
-
+        memCard:[],
+        design:'',
+        joinDate:'',
+        voteSum:'',
+        src:'',
         };
     },
     template: `
     <div class="contentBox">
         <div class="mem_createcard">
             <div class="mem_card">
-                <div class="mem_img"></div>
-                <p class="mem_text">參賽日期：2020/06/06</p>
-                <p class="mem_text">票數：155</p>
+                <div class="mem_img" >
+                         <img :src="src">
+                </div>
+                <p class="mem_text" v-cloak>設計理念:{{design}}</p>
+                <p class="mem_text"v-cloak>參賽日期：{{joinDate}}</p>
+                <p class="mem_text" v-cloak>票數：{{voteSum}}</p>
+                <button @click="toVote">前往參加投票</button>    
             </div>
         </div>
     </div>
     `,
+    methods:{
+            toVote(){
+                window.location='./vote.html'
+            },
+            getData(){
+                let xhr = new XMLHttpRequest();
+                let a = this;
+                xhr.onload = function (){
+                    if(xhr.status == 200){
+                        if(xhr.responseText=="請先登入會員"){
+                            alert(xhr.responseText+"!!!")
+                        }else{
+                            a.memCard = JSON.parse(xhr.responseText);
+                            a.src = a.memCard.CARD_URL
+                            if(a.memCard.CARD_VOTE==1){
+                                a.design = "未參賽";
+                                a.joinDate = "未參賽";
+                                a.voteSum = "未參賽";
+                            }else{
+                                a.design = a.memCard.CARD_INF;
+                                a.joinDate = a.memCard.CARD_VOTESUM;
+                                a.voteSum = a.memCard.CARD_VOTEDATE;
+                            }
+                            console.log(a.memCard.CARD_URL+"----"+ a.src);
+                        }
+                      
+                    }else{
+                        alert(xhr.status);
+                    }
+                }
+                xhr.open("get", "./php/memCardData.php", true);
+                
+                xhr.send(null);
+            },
+
+    },
+
+    mounted(){
+        this.getData();
+    }
 })
 
 const contents = new Vue({

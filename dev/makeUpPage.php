@@ -79,7 +79,7 @@
                                     $MAKEUP_colors = $pdo->query($sql_ser_ind_color);  //撈取後端全部資料
                                     while ($color = $MAKEUP_colors->fetch()) {
                                         $val_of_color_counter++;  //動態新增ID
-                                        echo "<div class=\"M_pcColor\" style=\"background-color:$color[0];\" id=\"color$val_of_color_counter\"></div>";
+                                        echo "<div class=\"M_pcColor\" style=\"background-color:$color[0];\" id=\"color$val_of_color_counter\" data-color=\"$color[0]\"></div>";
                                     }
                                     echo '<div class="M_pcnone" ><i class="fas fa-ban fa-4x"></i></div>';
                                     echo '</li>';
@@ -108,7 +108,7 @@
             </div>
             <div class="M_right">
                 <h1 class="M_title">系列名稱</h1>
-                <img src="./image/product.gif" alt="" style="width: 65%;" class="M_productImg" />
+                <img src="./image/product.gif" alt="" style="width: 45%;" class="M_productImg" />
                 <div class="M_content">
                     <!-- <h3 class="M_titleSec">完美持色飽和</h3> -->
                     <p class="M_detail">描述描述描述</p>
@@ -229,10 +229,17 @@
             var xhr = new XMLHttpRequest();
             xhr.onload = function() {
                 if (xhr.status == 200) {
-                    alert(xhr.responseText);   //在後端做註解判斷 最外層if else
-                    document.location.href="./card.html";
+                    // console.log(xhr.responseText);
+                    if(xhr.responseText == 1){
+                        alert('請先登入');
+                        document.getElementById('id01').style.display='none';
+                        document.getElementById('login').style.display='flex';
+                    }else {
+                        alert('新增成功');
+                        document.location.href="./card.html";
+                    }
                 } else {
-                    alert(xhr.status)
+                    alert(xhr.status);
                 }
             }
 
