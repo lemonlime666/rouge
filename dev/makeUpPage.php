@@ -15,7 +15,7 @@
 </head>
 
 <body>
-@@include("./app/header_black.html")
+    @@include("./app/header_black.html")
     <section class="M_background">
         <p class="M_bgf">ROUGE</p>
         <div class="M_line"></div>
@@ -210,7 +210,7 @@
             var canvas = document.getElementById("painter");
             var ctx = canvas.getContext("2d");
             var img = new Image();
-            img.onload = function() { 
+            img.onload = function() {
                 ctx.clearRect(0, 0, 700, 700);
                 ctx.drawImage(img, 0, 0, 500, 600); //drawImage(img,x,y,width,height)
             }
@@ -220,7 +220,7 @@
 
         //存圖到資料庫
         function savingImage() {
-            document.getElementById('id01').style.display='block';
+            document.getElementById('id01').style.display = 'block';
             var M_canvas = document.getElementById("painter");
             var dataURL = M_canvas.toDataURL("image/png");
             document.getElementById('hidden_data').value = dataURL;
@@ -230,13 +230,16 @@
             xhr.onload = function() {
                 if (xhr.status == 200) {
                     // console.log(xhr.responseText);
-                    if(xhr.responseText == 1){
+                    if (xhr.responseText == 1) {
                         alert('請先登入');
-                        document.getElementById('id01').style.display='none';
-                        document.getElementById('login').style.display='flex';
-                    }else {
+                        document.getElementById('id01').style.display = 'none';
+                        document.getElementById('login').style.display = 'flex';
+                        // $('#loginSubmit') .click(function(event) {
+                        //     event.preventDefault();
+                        // });
+                    } else {
                         alert('新增成功');
-                        document.location.href="./card.html";
+                        document.location.href = "./card.html";
                     }
                 } else {
                     alert(xhr.status);
@@ -276,4 +279,5 @@
 
     <script src="./js/header.js"></script>
 </body>
+
 </html>
