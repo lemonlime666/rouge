@@ -20,7 +20,7 @@ body {
 
 .memAnyl-main {
     position: relative;
-    display: flex;
+    display: none;
     flex-direction: column;
     position: relative;
     .memAnylresult-content {
@@ -83,6 +83,9 @@ body {
             margin: 30px auto 0;
             width: 100%;
             .word {
+                .allDetail{
+                    display: flex;
+                }
                 width: 100%;
                 h3 {
                     text-align: start;
@@ -236,6 +239,9 @@ body {
             margin: 30px auto 0;
             width: 100%;
             .word {
+                .allDetail{
+                    display: flex;
+                }
                 width: 100%;
                 h3 {
                     text-align: start;
