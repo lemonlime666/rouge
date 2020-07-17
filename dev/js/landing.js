@@ -15,6 +15,7 @@ window.addEventListener('load', function () {
                 adimg.setAttribute('src', `${data[i].AD_IMGURL}`);
                 adimg.setAttribute('data-class', `${data[i].PRO_CLASS}`);
                 adimg.setAttribute('data-series', `${data[i].SER_NO}`);
+                adimg.setAttribute('data-adno', `${data[i].AD_NO}`);
                 ahref.appendChild(adimg);
                 div.appendChild(ahref);
                 document.querySelector('.swiperimgBox').appendChild(div);
@@ -35,14 +36,31 @@ window.addEventListener('load', function () {
                 if(e.target.dataset.class == 0){
                     // alert('口紅商品頁');
                     localStorage.setItem('lipsname', e.target.dataset.series);
+                    addClick(e.target.dataset.adno);
                     document.location.href = "./product.html"; //這邊改成口紅商品頁面連結
                 }else if (e.target.dataset.class == 1){
                     // alert('保養品商品頁');
                     localStorage.setItem('carename', e.target.dataset.series);
+                    addClick(e.target.dataset.adno);
                     document.location.href = "./product1.html"; //這邊改成保養品商品頁面連結
                 } 
             })
         }
+    }
+
+    function addClick(adno){
+        let xhr = new XMLHttpRequest();
+        xhr.onload = function(){
+            if(xhr.status == 200) {
+                console.log('okok');
+            }else{
+                alert(xhr.status);
+            }
+        }
+        xhr.open("post", "./php/landAdClick.php", true);
+        xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
+        xhr.send(`adno=${adno}`);
+        // ALTER TABLE ADSCHEDULE add CLICK int NOT null DEFAULT 0
     }
 
     //for swiper

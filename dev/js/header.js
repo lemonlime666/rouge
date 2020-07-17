@@ -329,13 +329,11 @@ new Vue({
 
 //初始化
 document.addEventListener("DOMContentLoaded", function () {
-    // console.log(window.localStorage.shoppingcart);
     let cart = JSON.parse(window.localStorage.shoppingcart) || [];
     let total = 0;
     for (let i = 0; i < cart.length; i++) {
         total += cart[i].comNum;
     }
-    // console.log("物件總數:", total);
     let shoppingcart = document.getElementById("shoppingcart");
     shoppingcart.innerText = "CART(" + total + ")";
 });
@@ -346,9 +344,7 @@ Object.defineProperty(window.localStorage, "shoppingcart", {
         return localStorage.getItem("shoppingcart");
     },
     set: function (newValue) {
-        // console.log('透過物件變更')
         localStorage.setItem("shoppingcart", newValue);
-        //需要觸發的渲染函式可以寫在這...
         let cart = JSON.parse(newValue);
         console.log(cart);
         let total = 0;
@@ -372,8 +368,6 @@ window.localStorage.setItem = function (key, newValue) {
 };
 // 添加監聽
 window.addEventListener("setItemEvent",function (e) {
-        // console.log('透過函數變更')
-        //需要觸發的渲染函式可以寫在這...
         let cart = JSON.parse(e.newValue);
         let total = 0;
         for (let i = 0; i < cart.length; i++) {
