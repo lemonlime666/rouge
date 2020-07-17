@@ -340,15 +340,12 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 //監測物件變化
-
 Object.defineProperty(window.localStorage, "shoppingcart", {
     get: function () {
         return localStorage.getItem("shoppingcart");
     },
     set: function (newValue) {
-        // console.log('透過物件變更')
         localStorage.setItem("shoppingcart", newValue);
-        //需要觸發的渲染函式可以寫在這...
         let cart = JSON.parse(newValue);
         console.log(cart);
         let total = 0;
