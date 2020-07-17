@@ -245,16 +245,16 @@ window.addEventListener('load', function () {
 
             if (i == 1) {
                 $('.pg4LeftOutsdie img').attr('src', 'image/lipModel1.png');
-                $('.pg4colorGuide img').attr('src', 'image/stick05.png');
+                $('.pg4colorGuide img').attr('src', 'image/stick01.png');
             } else if (i == 2) {
                 $('.pg4LeftOutsdie img').attr('src', 'image/lipModel2.png');
-                $('.pg4colorGuide img').attr('src', 'image/stick06.png');
+                $('.pg4colorGuide img').attr('src', 'image/stick02.png');
             } else if (i == 3) {
                 $('.pg4LeftOutsdie img').attr('src', 'image/lipModel3.png');
-                $('.pg4colorGuide img').attr('src', 'image/stick07.png');
+                $('.pg4colorGuide img').attr('src', 'image/stick03.png');
             } else if (i == 4) {
                 $('.pg4LeftOutsdie img').attr('src', 'image/lipModel4.png');
-                $('.pg4colorGuide img').attr('src', 'image/stick08.png');
+                $('.pg4colorGuide img').attr('src', 'image/stick04.png');
             }
         }
     }
@@ -268,16 +268,16 @@ window.addEventListener('load', function () {
 
             if (i == 1) {
                 $('.pg4LeftOutsdie img').attr('src', 'image/lipModel1.png');
-                $('.pg4colorGuide img').attr('src', 'image/stick01.png');
+                $('.pg4colorGuide img').attr('src', 'image/stick05.png');
             } else if (i == 2) {
                 $('.pg4LeftOutsdie img').attr('src', 'image/lipModel2.png');
-                $('.pg4colorGuide img').attr('src', 'image/stick02.png');
+                $('.pg4colorGuide img').attr('src', 'image/stick06.png');
             } else if (i == 3) {
                 $('.pg4LeftOutsdie img').attr('src', 'image/lipModel3.png');
-                $('.pg4colorGuide img').attr('src', 'image/stick03.png');
+                $('.pg4colorGuide img').attr('src', 'image/stick07.png');
             } else if (i == 4) {
                 $('.pg4LeftOutsdie img').attr('src', 'image/lipModel4.png');
-                $('.pg4colorGuide img').attr('src', 'image/stick04.png');
+                $('.pg4colorGuide img').attr('src', 'image/stick08.png');
             }
         }
     }
