@@ -143,7 +143,7 @@
         </div>
         <div >
             
-            <div class="fabocHead" style="height: 11VH;"></div>
+            <div class="fabocHead" id="rwdHead" style="height: 11VH;"></div>
             <!-- <div class="test"></div> -->
             <!-- <img class="ca" src="./img/model/model02-hei-res-non.png" alt=""> -->
             <!-- <div style="background-color: aqua;  width: 618px; height: 89VH;"></div> -->
@@ -154,6 +154,7 @@
                         <div class="listTitle" data-imglist="1">普普風</div>
                         <div class="listTitle" data-imglist="2">花系列</div>
                         <div class="listTitle" data-imglist="3">畫筆</div>
+                        <div class="listTitle" data-imglist="4" id="Minput">輸入文字</div>
                     </div>
                     <div class="scroll">         
                         <div class="listSticky">      
@@ -226,6 +227,17 @@
                                        data-unit="1"/>
                                </div>
                            </div>
+                    </div>
+                    <div class="word">
+                        <form action="POST" id="form2">
+                            <input name="Mhidden_data" id='Mhidden_data' type="hidden"/>
+                            <textarea name="McardText" id="McardText"></textarea>
+                        </form>
+                        <div>
+                            <button class="btn3-1" onclick="saveImg()">儲存明信片</button>
+                            <button class="btn3-1" id="MsaveCard">下載圖片</button>
+                        </div>
+
                     </div>
                  </div>  
                 </div>
@@ -354,9 +366,12 @@
         let rwd = 0
         if(wdth<618){
             rwd = 89*pas
+            document.getElementById("rwdHead").style.height=`${100-rwd}VH`
         }else{
             rwd=89
+            document.getElementById("rwdHead").style.height=`${100-rwd}VH`
         }
+
         card.setDimensions({
             width: '100%',
             height: `${rwd}VH`
@@ -480,8 +495,14 @@ function saveImg(){
     document.getElementById('id01').style.display='block';
     var canvas = document.getElementById("canvas");
   var dataURL = canvas.toDataURL("image/png");
-  document.getElementById('hidden_data').value = dataURL;
-  var formData = new FormData(document.getElementById("form1"));
+  if(window.width >= 768){
+    document.getElementById('hidden_data').value = dataURL;
+    var formData = new FormData(document.getElementById("form1"));
+  }else{
+    document.getElementById('Mhidden_data').value = dataURL;
+    var formData = new FormData(document.getElementById("form2"));
+  }
+
 
   var xhr = new XMLHttpRequest();
   xhr.onload = function(){
@@ -516,6 +537,15 @@ function saveImg(){
  
  ///*下載圖片
 $(saveCard).click(function(){
+    var canvas = document.getElementById("canvas");
+    // var dataURL = canvas.toDataURL('image/jpeg');
+    // console.log(dataURL);
+    var dataURL = canvas.toDataURL({format: 'jpg', multiplier: 4})
+  download("downloadtest.JPG", dataURL)
+
+});
+
+$('#MsaveCard').click(function(){
     var canvas = document.getElementById("canvas");
     // var dataURL = canvas.toDataURL('image/jpeg');
     // console.log(dataURL);
@@ -593,6 +623,7 @@ function deleteSelectedObjectsFromCanvas(){
 let s= 1;
 let f= 1;
 let p= 1;
+let im=1;
 $(".listTitle").click(function(e){
     e.stopPropagation();
     
@@ -605,12 +636,15 @@ $(".listTitle").click(function(e){
         $(".listSticky").css('display','block')
         $(".listFlower").css('display','none')
         $(".paint").css('display','none')
+        $(".word").css('display','none')
         f=1
         p=1
+        im=1
         }else{
         $(".listSticky").css('display','none')
         $(".listFlower").css('display','none')
         $(".paint").css('display','none')
+        $(".word").css('display','none')
         }
     　break;
     case 2:
@@ -619,12 +653,15 @@ $(".listTitle").click(function(e){
         $(".listSticky").css('display','none')
         $(".listFlower").css('display','block')
         $(".paint").css('display','none')
+        $(".word").css('display','none')
         s=1
         p=1
+        im=1
         }else{
         $(".listSticky").css('display','none')
         $(".listFlower").css('display','none')
         $(".paint").css('display','none')
+        $(".word").css('display','none')
         }
     　break;
     case 3:
@@ -633,12 +670,32 @@ $(".listTitle").click(function(e){
         $(".listSticky").css('display','none')
         $(".listFlower").css('display','none')
         $(".paint").css('display','block')
+        $(".word").css('display','none')
         s=1
         f=1
+        im=1
         }else{
         $(".listSticky").css('display','none')
         $(".listFlower").css('display','none')
         $(".paint").css('display','none')
+        $(".word").css('display','none')
+        }
+    　break;
+    case 4:
+         im = im+1
+        if(im % 2 ==0 ){
+        $(".listSticky").css('display','none')
+        $(".listFlower").css('display','none')
+        $(".paint").css('display','none')
+        $(".word").css('display','block')
+        s=1
+        f=1
+        p=1
+        }else{
+        $(".listSticky").css('display','none')
+        $(".listFlower").css('display','none')
+        $(".paint").css('display','none')
+        $(".word").css('display','none')
         }
     　break;
     default:
@@ -655,9 +712,11 @@ $(".listTitle").click(function(e){
         let rwd = 0
         if(wdth<618){
             rwd = 89*pas
+            document.getElementById("rwdHead").style.height=`${100-rwd}VH`
         }else{
             // alert('msg');
             rwd=89
+            document.getElementById("rwdHead").style.height=`${100-rwd}VH`
         }
         card.clear();
             card.setDimensions({
