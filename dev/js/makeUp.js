@@ -47,11 +47,11 @@ $(document).ready(function () {
 
     // var p = localStorage.getItem('lipsname');
     // // var url = ".poduct.html";
-    // var switchPage = document.getElementById('goBack');
+    var switchPage = document.getElementById('goBack');
 
-    // switchPage.addEventListener('click', function () {
-
-    // })
+    switchPage.addEventListener('click', function () {
+        window.history.go(-1);
+    })
 
 
 
