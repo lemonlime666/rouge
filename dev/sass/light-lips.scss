@@ -388,7 +388,7 @@ footer{
 /*以下為RWD*/
 @media screen and (min-width:767px){
 
-    .cardouter:nth-child(2n){
+    .cardouter:nth-of-type(even){
         .card{
             bottom:5%;
         position: relative;
