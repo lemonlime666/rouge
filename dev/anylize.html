@@ -186,6 +186,7 @@
                             let x = 0;
                             for( let i=0 ; i < this.getItems.length;i++){
                                 if(this.proCommit.comNo ==  this.getItems[i].comNo){
+                                    this.getItems[i].comNum=parseInt(this.getItems[i].comNum) +1;
                                     x+=1;
                                 };
                                 
@@ -193,6 +194,8 @@
                             if(x == 0){
                             this.getItems.push(copy);
                             localStorage['shoppingcart'] = JSON.stringify(this.getItems);    
+                            }else{
+                                localStorage['shoppingcart'] = JSON.stringify(this.getItems);
                             };
                         };     
                     }
@@ -385,6 +388,7 @@
             xhr.onload = function() {
                 if (xhr.status == 200) {
                     if (xhr.responseText == 1) {
+                        // document.location.href = "./memAnylize.html";
                         alert('請先登入');
                         document.getElementById('login').style.display = 'flex';
                     } else {

@@ -144,6 +144,8 @@
                             if(x == 0){
                             this.getItems.push(copy);
                             localStorage['shoppingcart'] = JSON.stringify(this.getItems);    
+                            }else if(getItems.length < 9){
+                                localStorage['shoppingcart'] = JSON.stringify(this.getItems);
                             };
                         };     
                     }
