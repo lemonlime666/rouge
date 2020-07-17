@@ -29,9 +29,8 @@ if( isset($_SESSION["mail"])){ //已登入
 
     // echo json_encode($memInfo);
 }else{ //未登入
-    echo "錯誤行號",$e->getLine(),"<br>";//2.這邊才接得到例外物件
-    echo "錯誤原因",$e->getMessage(),"<br>";
-    echo "未登入";
+ 
+    echo 0;
     
 }
 ?>

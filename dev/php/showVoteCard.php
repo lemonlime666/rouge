@@ -9,8 +9,8 @@ try{
     $sql = "SELECT * FROM rouge.card where CARD_VOTE =0 and MONTH(CURDATE()) <= MONTH(CARD_VOTEDATE) order by CARD_VOTEDATE";
     $showcards = $pdo->query($sql);
   
-    if($showcards->rowCount() == 0){
-      echo "{查無資料}";
+    if($showcards->rowCount() == 0 || $showcards->rowCount() < 3 ){
+      echo "查無資料";
     }else{
       $showcardRow = $showcards->fetchAll(PDO::FETCH_ASSOC);
       echo json_encode($showcardRow);
