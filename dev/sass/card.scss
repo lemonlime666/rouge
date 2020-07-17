@@ -332,6 +332,9 @@ h2 {
                     }
                 }
             }
+            #Minput{
+                display: none;
+            }
         }
     }
 }
@@ -481,6 +484,58 @@ form {
     }
 }
 
+.word{
+    display: none;
+    form{
+        textarea{
+            width: 80%;
+            font-size: 20px;
+            height: 200px;
+            z-index: 20;
+            margin: 15px 0;
+        }
+    }
+    div{
+         width: 80%;
+         margin: 0 auto;
+         display: flex;
+         justify-content: space-between;
+        .btn3-1 {
+            outline: none;
+            margin: 10px;
+            position: relative;
+            font-size: 16px;
+            color: #883030;
+            background: transparent;
+            border: 1px solid #883030;
+            padding: 10px 15px;
+            z-index: 20;
+            &:hover {
+                //:hover:after才對
+                color: #efefef;
+                cursor: pointer;
+                &:after {
+                    background-color: #883030;
+                    border: 1px solid #883030;
+                    width: 99%;
+                    -webkit-transition: width 0.5s;
+                    transition: width 0.5s;
+                }
+            }
+            &:after {
+                position: absolute;
+                left: 0;
+                top: 0;
+                content: "";
+                z-index: -1;
+                background-color: #883030;
+                width: 0%;
+                height: 100%;
+            }
+        }
+    }
+
+}
 /* The Modal (background) */
 .modal {
     display: none; /* Hidden by default */
@@ -531,6 +586,9 @@ form {
     .listTitle {
         display: none;
     }
+    #Minput{
+        display: none;
+    }
 }
 
 @media screen and (max-width: 1356px) {
@@ -543,16 +601,37 @@ form {
     #third {
         width: 30%;
     }
+    #Minput{
+        display: none;
+    }
 }
 @media screen and (max-width: 992px) {
+    #Minput{
+        display: none;
+    }
 }
 @media screen and (max-width: 768px) {
     #third {
         display: none;
+    }
+    #Minput{
+        display: block;
     }
     .bg > div:nth-child(2) {
         width: 618px;
 
         margin: 0 auto;
     }
+}
+@media screen and (max-width: 420px) {
+    .cv{
+        div{
+            .imglist{
+                .listTitle{
+                    font-size: 17px;
+                }
+            }
+        }
+    }
+
 }

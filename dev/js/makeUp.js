@@ -2,23 +2,58 @@
 
 $(document).ready(function () {
 
-name(localStorage.getItem('lipsname') || 1);
+    name(localStorage.getItem('lipsname') || 1);
 
-let panelBtn = document.querySelectorAll('.M_control');
-for(let i=0; i<panelBtn.length; i++){
-    panelBtn[i].addEventListener('click',function(){
-        name(i+1);
-    });
-} 
+    let panelBtn = document.querySelectorAll('.M_control');
+    for (let i = 0; i < panelBtn.length; i++) {
+        panelBtn[i].addEventListener('click', function () {
+            name(i + 1);
+        });
+    }
 
-let c = document.querySelectorAll('.M_pcColor');
-for(i=0; i<c.length;i++){
-    c[i].addEventListener("click",function(e){
-        // alert(e.target.dataset.color);
-        //抓取前端data-color放入localstorage
-        localStorage.setItem('lipscolor',e.target.dataset.color);
-    })
-}
+    let c = document.querySelectorAll('.M_pcColor');
+    let arr = JSON.parse(localStorage.getItem('shoppingcart')) || []; //取得購物車裡的東西 如果沒有就是空陣列
+    // btn(加入購物車).addEventListener('click', function (e) {
+    //     let num = e.target.dataset.商品編號
+    //     for (i = 0; i < arr.length; i++) { //跑原本購物車裡的商品數量
+    //         if (arr[i].cumNo == num) { //比對購物車裡面有沒有相同的商品
+    //             if (parseInt(arr[i].cumNum) == 9) { //有可能是字串所以要先換成數字
+    //                 alert('商品以達到數量限制') //判斷數量使否已經達到9
+    //             } else {
+    //                 parseInt(arr[i].cumNum)++; //數量沒達到限制就加一
+    //                 var obj = arr;
+    //                 arr = [];
+    //             }
+    //         }else{ //如果沒有相同就推進陣列
+    //             var obj = {
+    //                 //你要推進去的資料
+    //                 // ex: 
+    //                 comNO : e.target.dataset.商品編號,
+    //             }
+    //         }
+    //     }
+    //     arr.push(obj);
+    //     localStorage.setItem('shoppingcart', JSON.stringify(arr));
+    // })
+
+    for (i = 0; i < c.length; i++) {
+        c[i].addEventListener("click", function (e) {
+            // alert(e.target.dataset.color);
+            //抓取前端data-color放入localstorage
+            localStorage.setItem('lipscolor', e.target.dataset.color);
+            localStorage.setItem('lipsname', e.target.dataset.series);
+        })
+    }
+
+    // var p = localStorage.getItem('lipsname');
+    // // var url = ".poduct.html";
+    // var switchPage = document.getElementById('goBack');
+
+    // switchPage.addEventListener('click', function () {
+
+    // })
+
+
 
     // Get the modal
     var modal = document.getElementById('id01');
@@ -233,31 +268,54 @@ for(i=0; i<c.length;i++){
     canvas.addEventListener('mouseout', () => isDrawing = false);
     // draw end
 
+    // $(window).resize(function() {
+    //     var screen=$(window).width();
+    // })        
+        
+    let screen = document.body.clientWidth;
+        if(screen<768){
+            // alert(screen)
+            document.getElementById('painter').style.width="315px";
+            document.getElementById('painter').style.height="350px";
+        }else{
+            document.getElementById('painter').style.width="500px";
+            document.getElementById('painter').style.height="580px";
+        }
+        // if(screen<768){
+        //     // alert(screen)
+        //     document.querySelector('.computer').style.display="hidden";
+        //     document.querySelector('.phone').style.display="block";
+        // }else{
+        //     document.querySelector('.computer').style.display="block";
+        //     document.querySelector('.phone').style.display="hidden";
+        // }
+
+
 
 
 
 });
 
 
-function name(aaa){
+function name(aaa) {
     // let aaa = localStorage.getItem('lipsname') || 1;
 
     let xhr = new XMLHttpRequest();
-    xhr.onload = function (){
-        if(xhr.status == 200){
+    xhr.onload = function () {
+        if (xhr.status == 200) {
             let data = JSON.parse(xhr.responseText);
             console.log(data.SER_NAME);
             document.querySelector('.M_title').innerHTML = data.SER_NAME;
-            document.querySelector('.M_productImg').setAttribute("src",data.SER_IMGURL);
+            document.querySelector('.M_productImg').setAttribute("src", data.SER_IMGURL);
             document.querySelector('.M_detail').innerHTML = data.SER_TEXT;
-        }else{
+        } else {
             alert('失敗')
         }
     }
-    xhr.open('post','./php/makeUp_getinfo.php',true);
-    xhr.setRequestHeader('content-type','application/x-www-form-urlencoded');
+    xhr.open('post', './php/makeUp_getinfo.php', true);
+    xhr.setRequestHeader('content-type', 'application/x-www-form-urlencoded');
 
     xhr.send(`no=${aaa}`);
-    localStorage.setItem('lipsname',aaa);
+    localStorage.setItem('lipsname', aaa);
 }
 
