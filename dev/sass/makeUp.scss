@@ -563,8 +563,8 @@ main.M_makeup {
         margin: 0.5rem 0;
     }
     canvas.M_canvas {
-        width: 500px;
-        height: 580px;
+        // width: 500px;
+        // height: 580px;
         cursor: crosshair;
         z-index: 99;
         display: inline-block;
@@ -794,7 +794,7 @@ main.M_makeup {
             width: 100%;
             .M_imagecus {
                 // border: 1px solid blue;
-                outline: 2px solid #626262;
+                // outline: 2px solid #626262;
                 width: 65%;
                 height: 50vh;
                 margin: auto;
@@ -827,9 +827,9 @@ main.M_makeup {
     }
     canvas.M_canvas {
         position: absolute;
-        border: 1px solid blue;
-        width: 60%;
-        height: 5vh;
+        // border: 1px solid blue;
+        // width: 60%;
+        // height: 5vh;
         cursor: crosshair;
         z-index: 999;
         display: inline-block;

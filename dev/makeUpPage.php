@@ -101,7 +101,8 @@
                 <div class="M_imggrop">
                     <form class="M_imagecus" id="M_imageGroup" method="POST">
                         <input type="hidden" name="myImage" id="hidden_data">
-                        <canvas class="M_canvas" id="painter" width="500" height="580"></canvas>
+                        <canvas class="M_canvas computer" id="painter" width="500" height="580"></canvas>
+                        <!-- <canvas class="M_canvas phone" id="painter" width="315" height="350" hidden></canvas> -->
                         <p class="M_text">點選MODEL照片</br>or</br>選擇檔案上傳照片</p>
                     </form>
                     <input id="M_uploadimg" type="file" hidden>
@@ -116,7 +117,7 @@
                     <p class="M_detail">描述描述描述</p>
                 </div>
                 <div class="M_group">
-                    <button class="M_contentbtn">返回商品頁面</button>
+                    <button class="M_contentbtn" id="goBack">返回商品頁面</button>
                     <button class="M_contentbtn" onclick="document.getElementById('id01').style.display='block'">製作明信片</button>
                 </div>
                 <div class="M_group">

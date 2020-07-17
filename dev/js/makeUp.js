@@ -45,6 +45,14 @@ $(document).ready(function () {
         })
     }
 
+    // var p = localStorage.getItem('lipsname');
+    // // var url = ".poduct.html";
+    // var switchPage = document.getElementById('goBack');
+
+    // switchPage.addEventListener('click', function () {
+
+    // })
+
 
 
     // Get the modal
@@ -259,6 +267,29 @@ $(document).ready(function () {
     canvas.addEventListener('mouseup', () => isDrawing = false);
     canvas.addEventListener('mouseout', () => isDrawing = false);
     // draw end
+
+    // $(window).resize(function() {
+    //     var screen=$(window).width();
+    // })        
+        
+    let screen = document.body.clientWidth;
+        if(screen<768){
+            // alert(screen)
+            document.getElementById('painter').style.width="315px";
+            document.getElementById('painter').style.height="350px";
+        }else{
+            document.getElementById('painter').style.width="500px";
+            document.getElementById('painter').style.height="580px";
+        }
+        // if(screen<768){
+        //     // alert(screen)
+        //     document.querySelector('.computer').style.display="hidden";
+        //     document.querySelector('.phone').style.display="block";
+        // }else{
+        //     document.querySelector('.computer').style.display="block";
+        //     document.querySelector('.phone').style.display="hidden";
+        // }
+
 
 
 
