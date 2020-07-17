@@ -65,6 +65,7 @@ body {
             display: flex;
             width: 50%;
             margin: 0 auto;
+            height: 80px;
             #dayTimeBlock {
                 margin: 10px auto;
                 @include font-style(20px, $notoSerif, $wood, $default-fweight) {}

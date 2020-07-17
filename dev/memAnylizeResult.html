@@ -150,7 +150,7 @@
                         };     
                     }
             },
-            created() {
+            mounted() {
                 var xhr = new XMLHttpRequest();
                 xhr.onload=function (){
                     if( xhr.status == 200 ){
@@ -178,35 +178,9 @@
                 let data_info = 'answer=' + localStorage.type;
 
                 xhr.send(data_info); 
-            },
-            mounted() {
+            
                
-                this.getItems =JSON.parse(localStorage.getItem('shoppingcart'));
-                
-                
-                // console.log(data_info);
-
-
-                
-                
-
-                // xhr.send(null);
-
-                
-                // let today = new Date();
-                // let todayTime = `${today.getFullYear()}-${today.getMonth()+1}-${today.getDate()}`
-                // var xhr2 = new XMLHttpRequest();
-                // var url2 = "./php/memAnylizeResultUpdate.php";
-                // xhr2.open("post", url2, true);
-                // xhr2.setRequestHeader("content-type","application/x-www-form-urlencoded");
-                
-                // let data_info2='today=' + todayTime;
-                // console.log(data_info2);
-
-                // xhr2.send( data_info2 );
-
-
-                
+                this.getItems =JSON.parse(localStorage.getItem('shoppingcart'));                
             },
 
         });
