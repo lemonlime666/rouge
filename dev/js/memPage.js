@@ -142,7 +142,7 @@ Vue.component('orderlist', {
                                 <th>明細</th>
                             </tr>
                         </thead>
-                        <component :is="list"><component>
+                        <component :is="list"></component>
                     </table>
                 </div>
     </div>
@@ -399,7 +399,7 @@ Vue.component('mypostcard', {
         <div class="mem_createcard">
             <div class="mem_card">
                 <div class="mem_img" >
-                         <img :src="src">
+                        <img :src="src">
                 </div>
                 <p class="mem_text" v-cloak>設計理念:{{design}}</p>
                 <p class="mem_text"v-cloak>參賽日期：{{joinDate}}</p>
@@ -434,13 +434,11 @@ Vue.component('mypostcard', {
                             }
                             console.log(a.memCard.CARD_URL+"----"+ a.src);
                         }
-                      
                     }else{
                         alert(xhr.status);
                     }
                 }
                 xhr.open("get", "./php/memCardData.php", true);
-                
                 xhr.send(null);
             },
 
