@@ -13,6 +13,25 @@ $(document).ready(function () {
 
     let c = document.querySelectorAll('.M_pcColor');
     let arr = JSON.parse(localStorage.getItem('shoppingcart')) || []; //取得購物車裡的東西 如果沒有就是空陣列
+    // let arr = JSON.parse(localStorage.getItem('shoppingcart')); //取得購物車裡的東西 如果沒有就是空陣列
+    var addIntoCart = document.getElementById('goBack');
+
+    addIntoCart.addEventListener('click', function (e) {
+        let num = localStorage.getItem('lipsname', e.target.dataset.series); //點擊到的系列編號
+        alert(num);
+        // for (i = 0; i < arr.length; i++) {
+        //     if(arr[i].cumNo == num){
+        //         alert(arr);
+        //     }else{
+        //         alert('111')
+        //     }
+
+        // }
+    })
+
+
+
+
     // btn(加入購物車).addEventListener('click', function (e) {
     //     let num = e.target.dataset.商品編號
     //     for (i = 0; i < arr.length; i++) { //跑原本購物車裡的商品數量
@@ -36,6 +55,9 @@ $(document).ready(function () {
     //     localStorage.setItem('shoppingcart', JSON.stringify(arr));
     // })
 
+
+
+
     for (i = 0; i < c.length; i++) {
         c[i].addEventListener("click", function (e) {
             // alert(e.target.dataset.color);
@@ -45,13 +67,13 @@ $(document).ready(function () {
         })
     }
 
-    // var p = localStorage.getItem('lipsname');
-    // // var url = ".poduct.html";
-    var switchPage = document.getElementById('goBack');
+    //返回前頁start
+    // var switchPage = document.getElementById('goBack');
 
-    switchPage.addEventListener('click', function () {
-        window.history.go(-1);
-    })
+    // switchPage.addEventListener('click', function () {
+    //     window.history.go(-1);
+    // })
+    //返回前頁end
 
 
 
@@ -271,30 +293,32 @@ $(document).ready(function () {
     // $(window).resize(function() {
     //     var screen=$(window).width();
     // })        
-        
+
     let screen = document.body.clientWidth;
-        if(screen<768){
-            // alert(screen)
-            document.getElementById('painter').style.width="315px";
-            document.getElementById('painter').style.height="350px";
-        }else{
-            document.getElementById('painter').style.width="500px";
-            document.getElementById('painter').style.height="580px";
-        }
-        // if(screen<768){
-        //     // alert(screen)
-        //     document.querySelector('.computer').style.display="hidden";
-        //     document.querySelector('.phone').style.display="block";
-        // }else{
-        //     document.querySelector('.computer').style.display="block";
-        //     document.querySelector('.phone').style.display="hidden";
-        // }
+    if (screen < 768) {
+        // alert(screen)
+        document.getElementById('painter').style.width = "315px";
+        document.getElementById('painter').style.height = "350px";
+    } else {
+        document.getElementById('painter').style.width = "500px";
+        document.getElementById('painter').style.height = "580px";
+    }
+    // if(screen<768){
+    //     // alert(screen)
+    //     document.querySelector('.computer').style.display="hidden";
+    //     document.querySelector('.phone').style.display="block";
+    // }else{
+    //     document.querySelector('.computer').style.display="block";
+    //     document.querySelector('.phone').style.display="hidden";
+    // }
 
 
 
 
 
 });
+
+
 
 
 function name(aaa) {

@@ -230,12 +230,13 @@
                 },
                 joinVote(){
                       
-                    if(this.member_img=="未登入會員" || this.member_img=="↵未登入會員"){
+                    if(this.member_img=="未登入會員" || this.member_img=="&#32未登入會員"){
                         alert("請先登入會員");
-                    }else if(this.member_img=="尚未有明信片資料" || this.member_img=="↵尚未有明信片資料" ){
+                    }else if(this.member_img=="尚未有明信片資料" || this.member_img=="&#32尚未有明信片資料" ){
                         alert("尚未有明信片資料,請前往試妝!");
                         location.href='./makeUp.html';
                     }else{
+                        console.log(this.member_img);
                         document.getElementById('id01').style.display='block';
                         document.getElementById('joinImg').src = this.member_img;
                     }
@@ -284,9 +285,10 @@
             xhr2.onload = function (){
              if( xhr2.status == 200 ){ //連線成功
                     // app.$data.topThree = JSON.parse(xhr2.responseText); //將導出的物件存入data中
-                   let strarr = xhr2.responseText.split("|");
-                   app.$data.member_img=strarr[0];
-                   if(strarr[1] == "查無資料" || strarr[1] == "↵查無資料" ){
+                    console.log(xhr2.responseText);
+                    let strarr = xhr2.responseText.split("|");
+                   app.$data.member_img= strarr[0].replace(/\r\n|\n/g,"") ;
+                   if(strarr[1].replace(/\r\n|\n/g,"") == "查無資料" ){
                         alert("查無資料");
                     }else{
                         
