@@ -327,7 +327,7 @@ new Vue({
 //---------------購物車數量計算----------------
 
 //初始化
-document.addEventListener("DOMContentLoaded", function () {
+$(document).ready(function(){
     let cart = JSON.parse(window.localStorage.shoppingcart) || [];
     let total = 0;
     if(cart.length > 0 ){
