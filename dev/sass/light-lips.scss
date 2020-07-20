@@ -388,15 +388,14 @@ footer{
 /*以下為RWD*/
 @media screen and (min-width:767px){
 
-    .cardouter:nth-of-type(even){
+    .cardouter:nth-child(2n){
         .card{
-            bottom:5%;
+        margin-bottom:12%;
         position: relative;
 
         }
         
     }
-
     
 
 }
@@ -445,6 +444,7 @@ footer{
             position: fixed;
             height:150px;
             margin-top: 90px;
+            z-index: 11;
             
             
             .intro-text{
