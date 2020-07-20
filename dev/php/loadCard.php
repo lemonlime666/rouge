@@ -10,7 +10,7 @@ if( isset($_SESSION["mail"])){ //已登入
     $sql = "SELECT MAKEUP_URL FROM rouge.makeup where MAKEUP_NO ='{$_SESSION["memNo"]}'";
       $cardURL = $pdo->query($sql);
       if($cardURL->rowCount() == 0){ //無此會員資料
-        echo "{查無資料}";
+        echo "查無資料";
       }else{
         $cardURLColum = $cardURL->fetch(PDO::FETCH_ASSOC);
         echo  $cardURLColum["MAKEUP_URL"] ;

@@ -11,54 +11,77 @@ $(document).ready(function () {
         });
     }
 
+
+    const SetItem = window.localStorage.setItem;
+    window.localStorage.setItem = function (key, newValue) {
+        var setItemCart = new Event("setItemCart");  //給新標籤 搭配dispatchEvent() 
+        setItemCart.key = key;
+        setItemCart.newValue = newValue;
+        window.dispatchEvent(setItemCart);  //觸發執行添加監聽事件
+        SetItem.apply(this, arguments);   //原有的localStorage
+    };
+
+
     let c = document.querySelectorAll('.M_pcColor');
+
+    window.addEventListener("setItemCart", function(){
+        for (i = 0; i < c.length; i++) {
+            c[i].addEventListener("click", function (e) {
+                //抓取前端data-set放入localstorage陣列中
+                let proArr = [{
+                    comNo: '',
+                    comName: '',
+                    comImg: '',
+                    comNum: '',
+                    comPrice: ''
+                }]
+                proArr.comNo = e.target.dataset.pronumber;
+                proArr.comImg = e.target.dataset.images;
+                proArr.comName = e.target.dataset.proname;
+                proArr.comNum = 1;         //試妝頁面限制購買數量1
+                proArr.comPrice = e.target.dataset.proprice;
+                console.log(proArr);
+
+                localStorage.setItem(JSON.stringify(proArr));
+
+                // localStorage.setItem('lipscolor', e.target.dataset.color);
+                // localStorage.setItem('comNo', e.target.dataset.pronumber);
+                // localStorage.setItem('comImg', e.target.dataset.images);
+                // localStorage.setItem('comName', e.target.dataset.proname);
+                // localStorage.setItem('comPrice', e.target.dataset.proprice);
+            })
+            
+        }
+    })
+
     // let arr = JSON.parse(localStorage.getItem('shoppingcart')) || []; //取得購物車裡的東西 如果沒有就是空陣列
-    // let arr = JSON.parse(localStorage.getItem('shoppingcart')); //取得購物車裡的東西 如果沒有就是空陣列
-    var addIntoCart = document.getElementById('goBack');
+    // var addIntoCart = document.getElementById('goBack');
 
     // addIntoCart.addEventListener('click', function (e) {
-    //     let num = localStorage.getItem('lipsname', e.target.dataset.series); //點擊到的系列編號
-    //     // alert(num);
-    //     for (i = 0; i < arr.length; i++) {
-    //         if (arr[i].cumNo == num) {
-    //             // console.log(arr)
-    //             if (parseInt(arr[i].cumNum) == 9) {
-    //                 alert('數量9')
-    //             } else {
-    //                 parseInt(arr[i].cumNum)++;
-    //                 var obj = arr;
-    //                 arr = [];
-    //             }
+    //     let num = JSON.stringify(proArr); //點擊到的系列編號
+    //     alert(num);
+    // for (i = 0; i < arr.length; i++) {
+    //     if (arr[i].cumNo == num) {
+    //         // console.log(arr)
+    //         if (parseInt(arr[i].cumNum) == 9) {
+    //             alert('購買數量已達限制')
     //         } else {
-    //             // console.log(num)
-    //             var obj = {
-    //                 comNO: num,
-    //             }
+    //             parseInt(arr[i].cumNum)++;
+    //             var obj = arr;
+    //             arr = [];
+    //         }
+    //     } else {
+    //         // console.log(num)
+    //         var obj = {
+    //             comNO: num,
     //         }
     //     }
-    //     arr.push(obj);
-    //     localStorage.setItem('shoppingcart', JSON.stringify(arr));
-    //     console.log(localStorage.getItem('shoppingcart', JSON.stringify(arr)));
+    // }
+
+    // arr.push(obj);
+    // localStorage.setItem('shoppingcart', JSON.stringify(arr));
+    // console.log(localStorage.getItem('shoppingcart', JSON.stringify(arr)));
     // })
-
-
-
-    // addIntoCart.addEventListener('click', function (e) {
-    //     let num = localStorage.getItem('lipsname', e.target.dataset.series); //點擊到的系列編號
-    //     alert(num);
-    //     // for (i = 0; i < arr.length; i++) {
-    //     //     if(arr[i].cumNo == num){
-    //     //         alert(arr);
-    //     //     }else{
-    //     //         alert('111')
-    //     //     }
-
-    //     // }
-    // })
-    
-
-
-
 
     // btn(加入購物車).addEventListener('click', function (e) {
     //     let num = e.target.dataset.商品編號
@@ -83,17 +106,31 @@ $(document).ready(function () {
     //     localStorage.setItem('shoppingcart', JSON.stringify(arr));
     // })
 
+    // for (i = 0; i < c.length; i++) {
+    //     c[i].addEventListener("click", function (e) {
+    //         //抓取前端data-set放入localstorage陣列中
+    //         proArr = [{
+    //             comNo: '',
+    //             comName: '',
+    //             comImg: '',
+    //             comNum:'',
+    //             comPrice:''
+    //         }]
+    //         proArr.comNo = e.target.dataset.pronumber;
+    //         proArr.comImg = e.target.dataset.images;
+    //         proArr.comName = e.target.dataset.proname;
+    //         proArr.comNum = 1;  //試妝頁面限制購買數量1
+    //         proArr.comPrice = e.target.dataset.proprice;
+    //         // console.log(proArr);
 
+    //         // localStorage.setItem('lipscolor', e.target.dataset.color);
+    //         // localStorage.setItem('comNo', e.target.dataset.pronumber);
+    //         // localStorage.setItem('comImg', e.target.dataset.images);
+    //         // localStorage.setItem('comName', e.target.dataset.proname);
+    //         // localStorage.setItem('comPrice', e.target.dataset.proprice);
 
-
-    for (i = 0; i < c.length; i++) {
-        c[i].addEventListener("click", function (e) {
-            // alert(e.target.dataset.color);
-            //抓取前端data-color放入localstorage
-            localStorage.setItem('lipscolor', e.target.dataset.color);
-            localStorage.setItem('lipsname', e.target.dataset.series);
-        })
-    }
+    //     })
+    // }
 
     //返回前頁start
     // var switchPage = document.getElementById('goBack');
