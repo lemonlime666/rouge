@@ -362,7 +362,7 @@ Object.defineProperty(window.localStorage, "shoppingcart", {
 const oldSetItem = window.localStorage.setItem;
 window.localStorage.setItem = function (key, newValue) {
     var setItemEvent = new Event("setItemEvent");
-    setItemEvent.key = "shoppingcart";
+    setItemEvent.key = key; 
     setItemEvent.newValue = newValue;
     window.dispatchEvent(setItemEvent);
     oldSetItem.apply(this, arguments);
@@ -371,14 +371,16 @@ window.localStorage.setItem = function (key, newValue) {
 window.addEventListener(
     "setItemEvent",
     function (e) {
-        let cart = JSON.parse(e.newValue);
-        let total = 0;
-        for (let i = 0; i < cart.length; i++) {
-            total += cart[i].comNum;
+        if(e.key == 'shoppingcart'){
+            let cart = JSON.parse(e.newValue);
+            let total = 0;
+            for (let i = 0; i < cart.length; i++) {
+                total += cart[i].comNum;
+            }
+            console.log("函數總數:", total);
+            let shoppingcart = document.getElementById("shoppingcart");
+            shoppingcart.innerText = "CART(" + total + ")";
         }
-        console.log("函數總數:", total);
-        let shoppingcart = document.getElementById("shoppingcart");
-        shoppingcart.innerText = "CART(" + total + ")";
     },
     false
 );

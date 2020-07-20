@@ -78,11 +78,12 @@
                                     echo "$ser_name[0] </button>  <div class=\"M_seriesPanel\">";  //內層顏色div開始
                                     //撈取資料庫顏色指令
                                     // $sql_ser_ind_color = "SELECT a.PRO_COLOR , b.SER_NO FROM product a join series b on a.SER_NO = b.SER_NO where b.PRO_CLASS = 0 and a.SER_NO = $i";
-                                    $sql_ser_ind_color = "SELECT a.PRO_COLOR , b.SER_NO , a.PRO_NAME , a.PRO_IMG , a.PRO_PRICE from product a join series b on a.SER_NO = b.SER_NO where b.PRO_CLASS = 0 and a.SER_NO = $i and PRO_COLOR is not null";
+                                    $sql_ser_ind_color = "SELECT a.PRO_COLOR , b.SER_NO , a.PRO_NO, a.PRO_NAME , a.PRO_IMG , a.PRO_PRICE from product a join series b on a.SER_NO = b.SER_NO where b.PRO_CLASS = 0 and a.SER_NO = $i and PRO_COLOR is not null";
                                     $MAKEUP_colors = $pdo->query($sql_ser_ind_color);  //撈取後端全部資料
                                     while ($color = $MAKEUP_colors->fetch()) {
                                         $val_of_color_counter++;  //動態新增ID
-                                        echo "<div class=\"M_pcColor\" style=\"background-color:$color[0];\" id=\"color$val_of_color_counter\" data-color=\"$color[0]\" data-series=\"$color[1]\"></div>";
+                                        // echo "<div class=\"M_pcColor\" style=\"background-color:$color[0];\" id=\"color$val_of_color_counter\" data-color=\"$color[0]\" data-series=\"$color[1]\"></div>";
+                                        echo "<div class=\"M_pcColor\" style=\"background-color:$color[0];\" id=\"color$val_of_color_counter\" data-color=\"$color[0]\" data-series=\"$ser_name[0]\" data-proNumber=\"$color[2]\" data-proName=\"$color[3]\" data-images=\"$color[4]\" data-proPrice=\"$color[5]\"></div>";
                                     }
                                     echo '<div class="M_pcnone" ><i class="fas fa-ban fa-4x"></i></div>';
                                     echo '</li>';
@@ -256,22 +257,22 @@
     </script>
 
     <script>
-    // window.addEventListener('load', function(){
-    //     let arr = localStorage.getItem('shoppingcart');
-        
-    //     let all = JSON.parse(arr);
-    //     let total = 0;
-    //     // console.log(all);
-    //     for (let i = 0; i < all.length; i++) {
-    //         total += all[i].comNum;
-    //     }
-    //     console.log(total);
+        // window.addEventListener('load', function(){
+        //     let arr = localStorage.getItem('shoppingcart');
 
-    //     let shoppingcart = document.getElementById("shoppingcart");
-    //     // shoppingcart.innerText = "CART(" + total + ")";
-    //     shoppingcart.innerHTML = "CART(" + total + ")";
-    // });
-        
+        //     let all = JSON.parse(arr);
+        //     let total = 0;
+        //     // console.log(all);
+        //     for (let i = 0; i < all.length; i++) {
+        //         total += all[i].comNum;
+        //     }
+        //     console.log(total);
+
+        //     let shoppingcart = document.getElementById("shoppingcart");
+        //     // shoppingcart.innerText = "CART(" + total + ")";
+        //     shoppingcart.innerHTML = "CART(" + total + ")";
+        // });
+
 
         // window.addEventListener("load", function() {
         //     let circles = document.querySelectorAll(".M_pcColor");
@@ -331,13 +332,14 @@
         // });
 
         // // 重寫事件
+
         // const oldSetItem = window.localStorage.setItem;
-        // window.localStorage.setItem = function(key, newValue) {
-        //     var setItemEvent = new Event("setItemEvent");
-        //     setItemEvent.key = "shoppingcart";
+        // window.localStorage.setItem = function (key, newValue) {
+        //     var setItemEvent = new Event("setItemEvent");  //給新標籤 搭配dispatchEvent() 
+        //     setItemEvent.key = key; 
         //     setItemEvent.newValue = newValue;
-        //     window.dispatchEvent(setItemEvent);
-        //     oldSetItem.apply(this, arguments);
+        //     window.dispatchEvent(setItemEvent);  //觸發執行添加監聽事件
+        //     oldSetItem.apply(this, arguments);   //原有的localStorage
         // };
         // // 添加監聽
         // window.addEventListener(
