@@ -352,7 +352,7 @@ Object.defineProperty(window.localStorage, "shoppingcart", {
         for (let i = 0; i < cart.length; i++) {
             total += cart[i].comNum;
         }
-        console.log("物件總數:", total);
+        // console.log("物件總數:", total);
         let shoppingcart = document.getElementById("shoppingcart");
         shoppingcart.innerText = "CART(" + total + ")";
     },
@@ -376,7 +376,7 @@ window.addEventListener(
         for (let i = 0; i < cart.length; i++) {
             total += cart[i].comNum;
         }
-        console.log("函數總數:", total);
+        // console.log("函數總數:", total);
         let shoppingcart = document.getElementById("shoppingcart");
         shoppingcart.innerText = "CART(" + total + ")";
     },
