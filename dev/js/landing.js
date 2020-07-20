@@ -50,13 +50,6 @@ window.addEventListener('load', function () {
 
     function addClick(adno){
         let xhr = new XMLHttpRequest();
-        xhr.onload = function(){
-            if(xhr.status == 200) {
-                console.log('okok');
-            }else{
-                alert(xhr.status);
-            }
-        }
         xhr.open("post", "./php/landAdClick.php", true);
         xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
         xhr.send(`adno=${adno}`);
@@ -260,20 +253,8 @@ window.addEventListener('load', function () {
             $('.pg4ColorBox1 span').removeClass('stickClick');
             $('.pg4ColorBox2 span').removeClass('stickClick');
             $(`.pg4ColorBox1 span:nth-child(${i})`).toggleClass('stickClick');
-
-            if (i == 1) {
-                $('.pg4LeftOutsdie img').attr('src', 'image/lipModel1.png');
-                $('.pg4colorGuide img').attr('src', 'image/stick01.png');
-            } else if (i == 2) {
-                $('.pg4LeftOutsdie img').attr('src', 'image/lipModel2.png');
-                $('.pg4colorGuide img').attr('src', 'image/stick02.png');
-            } else if (i == 3) {
-                $('.pg4LeftOutsdie img').attr('src', 'image/lipModel3.png');
-                $('.pg4colorGuide img').attr('src', 'image/stick03.png');
-            } else if (i == 4) {
-                $('.pg4LeftOutsdie img').attr('src', 'image/lipModel4.png');
-                $('.pg4colorGuide img').attr('src', 'image/stick04.png');
-            }
+            $('.pg4LeftOutsdie img').attr('src', `image/lipModel${i}.png`);
+            $('.pg4colorGuide img').attr('src', `image/stick0${i}.png`);
         }
     }
 
@@ -283,20 +264,8 @@ window.addEventListener('load', function () {
             $('.pg4ColorBox1 span').removeClass('stickClick');
             $('.pg4ColorBox2 span').removeClass('stickClick');
             $(`.pg4ColorBox2 span:nth-child(${i})`).toggleClass('stickClick');
-
-            if (i == 1) {
-                $('.pg4LeftOutsdie img').attr('src', 'image/lipModel1.png');
-                $('.pg4colorGuide img').attr('src', 'image/stick05.png');
-            } else if (i == 2) {
-                $('.pg4LeftOutsdie img').attr('src', 'image/lipModel2.png');
-                $('.pg4colorGuide img').attr('src', 'image/stick06.png');
-            } else if (i == 3) {
-                $('.pg4LeftOutsdie img').attr('src', 'image/lipModel3.png');
-                $('.pg4colorGuide img').attr('src', 'image/stick07.png');
-            } else if (i == 4) {
-                $('.pg4LeftOutsdie img').attr('src', 'image/lipModel4.png');
-                $('.pg4colorGuide img').attr('src', 'image/stick08.png');
-            }
+            $('.pg4LeftOutsdie img').attr('src', `image/lipModel${i+4}.png`);
+            $('.pg4colorGuide img').attr('src', `image/stick0${i+4}.png`);
         }
     }
 

@@ -1,5 +1,16 @@
 <?php
 //把這個月的之前投票關掉關掉
+require_once("connect.php");
+
+$sufeMon="SET SQL_SAFE_UPDATES=0";
+$pdo->query($sufeMon);
+
+$sql = "UPDATE `rouge`.`card` SET `CARD_VOTE` = '1' WHERE (MONTH(CURDATE()) > MONTH(CARD_VOTEDATE))";
+$showcards = $pdo->query($sql);
+
+$sufeMoff="SET SQL_SAFE_UPDATES=1";
+$pdo->query($sufeMoff);
+
 
 //show出這個月的參加明信片
 

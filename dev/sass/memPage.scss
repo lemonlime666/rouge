@@ -617,6 +617,10 @@ body {
         border: 2px solid #e1d0a167;
         width: 400px;
         height: 500px;
+        @include m-pad() {
+            width: 350px;
+            height: 380px;
+        }
         @include s-pad() {
             width: 350px;
             height: 450px;
@@ -640,6 +644,31 @@ body {
         p.mem_text {
             margin: 0.5rem;
             padding: 0 1rem;
+        }
+        button{
+            border: 0;
+            outline: 0;
+            background-color: $lightGold;
+            border-radius: 3px;
+            padding: 5px 15px;
+            margin-left: 72%;
+            cursor: pointer;
+            &:hover{
+                background-color: $darkGold;
+            }
+            @include font-style(){
+                font-size: 12px;
+                color: $wood;
+            }
+            @include m-pad() {
+                margin-left: 68%;
+            }
+            @include l-phone() {
+                margin-left: 56%;
+            }
+            @include s-phone() {
+                margin-left: 44%;
+            }
         }
     }
 }
