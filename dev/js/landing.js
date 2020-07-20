@@ -50,13 +50,6 @@ window.addEventListener('load', function () {
 
     function addClick(adno){
         let xhr = new XMLHttpRequest();
-        xhr.onload = function(){
-            if(xhr.status == 200) {
-                console.log('okok');
-            }else{
-                alert(xhr.status);
-            }
-        }
         xhr.open("post", "./php/landAdClick.php", true);
         xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
         xhr.send(`adno=${adno}`);

@@ -12,22 +12,50 @@ $(document).ready(function () {
     }
 
     let c = document.querySelectorAll('.M_pcColor');
-    let arr = JSON.parse(localStorage.getItem('shoppingcart')) || []; //取得購物車裡的東西 如果沒有就是空陣列
+    // let arr = JSON.parse(localStorage.getItem('shoppingcart')) || []; //取得購物車裡的東西 如果沒有就是空陣列
     // let arr = JSON.parse(localStorage.getItem('shoppingcart')); //取得購物車裡的東西 如果沒有就是空陣列
     var addIntoCart = document.getElementById('goBack');
 
-    addIntoCart.addEventListener('click', function (e) {
-        let num = localStorage.getItem('lipsname', e.target.dataset.series); //點擊到的系列編號
-        alert(num);
-        // for (i = 0; i < arr.length; i++) {
-        //     if(arr[i].cumNo == num){
-        //         alert(arr);
-        //     }else{
-        //         alert('111')
-        //     }
+    // addIntoCart.addEventListener('click', function (e) {
+    //     let num = localStorage.getItem('lipsname', e.target.dataset.series); //點擊到的系列編號
+    //     // alert(num);
+    //     for (i = 0; i < arr.length; i++) {
+    //         if (arr[i].cumNo == num) {
+    //             // console.log(arr)
+    //             if (parseInt(arr[i].cumNum) == 9) {
+    //                 alert('數量9')
+    //             } else {
+    //                 parseInt(arr[i].cumNum)++;
+    //                 var obj = arr;
+    //                 arr = [];
+    //             }
+    //         } else {
+    //             // console.log(num)
+    //             var obj = {
+    //                 comNO: num,
+    //             }
+    //         }
+    //     }
+    //     arr.push(obj);
+    //     localStorage.setItem('shoppingcart', JSON.stringify(arr));
+    //     console.log(localStorage.getItem('shoppingcart', JSON.stringify(arr)));
+    // })
 
-        // }
-    })
+
+
+    // addIntoCart.addEventListener('click', function (e) {
+    //     let num = localStorage.getItem('lipsname', e.target.dataset.series); //點擊到的系列編號
+    //     alert(num);
+    //     // for (i = 0; i < arr.length; i++) {
+    //     //     if(arr[i].cumNo == num){
+    //     //         alert(arr);
+    //     //     }else{
+    //     //         alert('111')
+    //     //     }
+
+    //     // }
+    // })
+    
 
 
 

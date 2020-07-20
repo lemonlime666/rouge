@@ -327,7 +327,7 @@ new Vue({
 //---------------購物車數量計算----------------
 
 //初始化
-document.addEventListener("DOMContentLoaded", function () {
+$(document).ready(function(){
     let cart = JSON.parse(window.localStorage.shoppingcart) || [];
     let total = 0;
     if(cart.length > 0 ){
@@ -352,7 +352,7 @@ Object.defineProperty(window.localStorage, "shoppingcart", {
         for (let i = 0; i < cart.length; i++) {
             total += cart[i].comNum;
         }
-        console.log("物件總數:", total);
+        // console.log("物件總數:", total);
         let shoppingcart = document.getElementById("shoppingcart");
         shoppingcart.innerText = "CART(" + total + ")";
     },
@@ -376,7 +376,7 @@ window.addEventListener(
         for (let i = 0; i < cart.length; i++) {
             total += cart[i].comNum;
         }
-        console.log("函數總數:", total);
+        // console.log("函數總數:", total);
         let shoppingcart = document.getElementById("shoppingcart");
         shoppingcart.innerText = "CART(" + total + ")";
     },
