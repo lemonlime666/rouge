@@ -228,7 +228,7 @@
                                </div>
                            </div>
                     </div>
-                    <div class="word">
+                    <div class="word" id="word">
                         <form action="POST" id="form2">
                             <input name="Mhidden_data" id='Mhidden_data' type="hidden"/>
                             <textarea name="McardText" id="McardText"></textarea>
@@ -261,6 +261,7 @@
             <h2 id="inVote" onclick="saveImg()">儲存明信片</h2>
             <div class="C_social">
                  <button class="M_social"><i class="fab fa-facebook fa-4x"></i></button>
+                 <iframe src="https://www.facebook.com/plugins/share_button.php?href=http%3A%2F%2F140.115.236.71%2Fdemo-projects%2FED101%2FED101G3%2FED101G3-02%2Fdest%2Fimage%2FsaveCard%2F20200717-07-53-35.png&layout=button&size=large&appId=702838283834799&width=70&height=28" width="70" height="28" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
                 <button class="M_social"><i class="fab fa-line fa-4x"></i></button>
                 <div id="saveCard" style="color: #292929;background-color: transparent;" ><i class="fas fa-file-download fa-4x"></i></div>
             </div>
@@ -279,11 +280,18 @@
                 xhr.onload=function (){
                     if( xhr.status == 200 ){
                         //modify here
-                        
-                        // let backJSON = JSON.parse(xhr.responseText);
-                        console.log(xhr.responseText);
+                        if(xhr.responseText.replace(/\r\n|\n/g,"")=="未登入"){
+                            alert("請先登入會員");
+                        }else if(xhr.responseText.replace(/\r\n|\n/g,"")=="查無資料"){
+                            alert("查無試妝資料 請先去製作~~!")
+                            location.href='./makeUp.html';
+                        }else{
                         makeupImg =xhr.responseText;
                         setcanvasimg(makeupImg)
+                        }
+                        // let backJSON = JSON.parse(xhr.responseText);
+                    
+                       
                       
                     }else{
                         alert( xhr.status );
@@ -536,7 +544,7 @@ function saveImg(){
 
  
  ///*下載圖片
-$(saveCard).click(function(){
+$("#saveCard").click(function(){
     var canvas = document.getElementById("canvas");
     // var dataURL = canvas.toDataURL('image/jpeg');
     // console.log(dataURL);
@@ -707,6 +715,20 @@ $(".listTitle").click(function(e){
 
     $(window).resize(function() {
         var wdth=$(window).width();
+       if(wdth >=1356){
+            $(".listSticky").css('display','none')
+            $(".listFlower").css('display','none')
+            $(".paint").css('display','none')
+            $(".word").css('display','none')
+             s= 1;
+             f= 1;
+             p= 1;
+             im=1;
+        }else if(wdth >= 768){
+            im=1;
+            $(".word").css('display','none')
+        };
+
 
         let pas =wdth/618
         let rwd = 0

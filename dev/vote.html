@@ -284,7 +284,7 @@
                 if( xhr.status == 200 ){ //連線成功
 
                     if(xhr.responseText.replace(/\r\n|\n/g,"") == "查無資料"){
-                        alert("查無資料");
+                        // alert("查無資料");
                         document.getElementById('id03').style.display='block';
                     }else{
                         app.$data.showCards = JSON.parse(xhr.responseText); //將導出的物件存入data中
@@ -313,7 +313,7 @@
                    app.$data.member_img= strarr[0].replace(/\r\n|\n/g,"") ;
                    if(strarr[1].replace(/\r\n|\n/g,"") == "查無資料" ){
 
-                        alert("查無資料");
+                        // alert("查無資料");
                         document.getElementById('id03').style.display='block';
                     }else{
                         
