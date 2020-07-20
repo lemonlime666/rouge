@@ -375,7 +375,6 @@ window.addEventListener("setItemEvent",function (e) {
         for (let i = 0; i < cart.length; i++) {
             total += cart[i].comNum;
         }
-        // console.log("函數總數:", total);
         let shoppingcart = document.getElementById("shoppingcart");
         shoppingcart.innerText = "CART(" + total + ")";
     }
