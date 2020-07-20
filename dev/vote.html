@@ -2,13 +2,14 @@
 <html lang="zh">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
     <title>投票</title>
     <link rel="stylesheet" href="./css/vote.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" ></script>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./css/dingli.css">
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.js"></script>
 </head>
 <body >
@@ -49,6 +50,23 @@
         </form>
       </div>
     <div style="background-color: #292929; height: 100px;width: 100%;"></div>
+
+    <div id="id03" class="modal3">
+        <form class="modal-content3 animate" >
+          <div class="container">
+              <p>本次投票 參加人數不足~~!</p>
+
+              <p>歡迎踴躍參加~~!</p>
+
+              <p>將前往會員頁面確認明信片資料~~!</p>
+              <div>
+                  <button type="button" onclick="window.location='./memPage.html'"  class="btn3-1">前往會員頁面</button>
+              </div>
+          </div>
+        </form>
+      </div>
+    <div style="background-color: #292929; height: 100px;width: 100%;"></div>
+
     <body >
 <div id="content"> 
 
@@ -98,6 +116,8 @@
 
 
         <div class="showCards">
+            <!-- 背景動態 CANVAS -->
+            <canvas id="canv" width="1903" height="513" style="position: absolute; left: 0px; top: 0px;"></canvas>
             <div class="showCard">
             <!-- <div class="showCard" id="content"> -->
                 <!-- <img src="./image/top.jpg" alt=""> -->
@@ -140,8 +160,10 @@
 
         </div>
     </div>
-   <script>
 
+   
+
+   <script>
     // Get the modal
     var modal = document.getElementById('id01');
 
@@ -153,11 +175,11 @@
         }
         function sendVote(){
                 let getCardNo= localStorage.getItem('cardNo');
-                alert(getCardNo);
+                // alert(getCardNo);
                 let xhr = new XMLHttpRequest();
                 xhr.onload = function (){
                     if( xhr.status == 200 ){ //連線成功
-                        if(xhr.responseText ==0 || xhr.responseText=="↵0"){
+                        if(xhr.responseText.replace(/\r\n|\n/g,"") =="未登入"){
                             alert("請先登入會員");
                         }else{
                             alert(xhr.responseText);
@@ -230,9 +252,9 @@
                 },
                 joinVote(){
                       
-                    if(this.member_img=="未登入會員" || this.member_img=="&#32未登入會員"){
+                    if(this.member_img.replace(/\r\n|\n/g,"")=="未登入會員"){
                         alert("請先登入會員");
-                    }else if(this.member_img=="尚未有明信片資料" || this.member_img=="&#32尚未有明信片資料" ){
+                    }else if(this.member_img.replace(/\r\n|\n/g,"")=="尚未有明信片資料"){
                         alert("尚未有明信片資料,請前往試妝!");
                         location.href='./makeUp.html';
                     }else{
@@ -261,8 +283,9 @@
             xhr.onload = function (){
                 if( xhr.status == 200 ){ //連線成功
 
-                    if(xhr.responseText == "查無資料" || xhr.responseText == "↵查無資料" ){
+                    if(xhr.responseText.replace(/\r\n|\n/g,"") == "查無資料"){
                         alert("查無資料");
+                        document.getElementById('id03').style.display='block';
                     }else{
                         app.$data.showCards = JSON.parse(xhr.responseText); //將導出的物件存入data中
                    console.log(app.$data.showCards);
@@ -289,7 +312,9 @@
                     let strarr = xhr2.responseText.split("|");
                    app.$data.member_img= strarr[0].replace(/\r\n|\n/g,"") ;
                    if(strarr[1].replace(/\r\n|\n/g,"") == "查無資料" ){
+
                         alert("查無資料");
+                        document.getElementById('id03').style.display='block';
                     }else{
                         
                    app.$data.topThree=JSON.parse(strarr[1]);
@@ -315,6 +340,111 @@
 
  
    </script>
+
+<script>
+    $(".showCards").ready(function(){
+
+        
+    })
+    window.onload = function() {
+        
+    window.requestAnimFrame = (function() {
+      return window.requestAnimationFrame ||
+        window.webkitRequestAnimationFrame ||
+        window.mozRequestAnimationFrame ||
+        window.oRequestAnimationFrame ||
+        window.msRequestAnimationFrame ||
+        function(callback) {
+          window.setTimeout(callback, 1000 / 60);
+          
+        };
+      
+    })();
+    var c = document.getElementById('canv');
+    var $ = c.getContext('2d');
+    var w = c.width = window.innerWidth;
+    var h = c.height = document.getElementsByClassName("showCards")[0].offsetHeight;
+    var _w = w * 0.5;
+    var _h = h * 0.5;
+     var arr = [];
+    var cnt = 0;
+    
+    window.addEventListener('load', resize);
+    window.addEventListener('resize', resize, false);
+    
+    function resize() {
+      c.width = w = window.innerWidth;
+      c.height = h = document.getElementsByClassName("showCards")[0].offsetHeight;
+      c.style.position = 'absolute';
+      c.style.left = (window.innerWidth - w) *
+        .01 + 'px';
+      c.style.top = (document.getElementsByClassName("showCards")[0].offsetHeight - h) *
+        .01 + 'px';
+    }
+    
+    function anim() {
+      cnt++;
+      if (cnt % 6) draw();
+      window.requestAnimFrame(anim);
+     
+    }
+    anim();
+    
+    function draw() {
+    
+      var splot = {
+        x: rng(_w - 900, _w + 900),
+        y: rng(_h - 900, _h + 900),
+        r: rng(20, 80),
+        spX: rng(-1, 1),
+        spY: rng(-1, 1)
+      };
+    
+      arr.push(splot);
+      while (arr.length > 100) {
+        arr.shift();
+      }
+      $.clearRect(0, 0, w, h);
+    
+      for (var i = 0; i < arr.length; i++) {
+    
+        splot = arr[i];;
+        $.fillStyle = rndCol();
+        $.beginPath();
+        $.arc(splot.x, splot.y, splot.r, 0, Math.PI * 2, true);
+        $.shadowBlur = 80;
+        $.shadowOffsetX = 2;
+        $.shadowOffsetY = 2;
+        $.shadowColor = rndCol();
+        $.globalCompositeOperation = 'lighter';
+        $.fill();
+    
+        splot.x = splot.x + splot.spX;
+        splot.y = splot.y + splot.spY;
+        splot.r = splot.r * 0.96;
+      }
+    }
+    
+    function rndCol() {
+      var r = Math.floor(Math.random() * 180);
+      var g = Math.floor(Math.random() * 60);
+      var b = Math.floor(Math.random() * 100);
+      return "rgb(" + r + "," + g + "," + b + ")";
+    }
+    
+    function rng(min, max) {
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+    }
+  
+
+
+    </script>
+
+
     <script src="./js/header.js"></script>
+    
+        
 </body>
 </html>
