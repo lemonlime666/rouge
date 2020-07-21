@@ -38,7 +38,6 @@ $(document).ready(function () {
 
     window.addEventListener("setItemCart", function (e) {
         // console.log(e.key);
-        // let arr = JSON.parse(localStorage.getItem('shoppingcart')) || []; //取得購物車裡的東西 如果沒有就是空陣列
         let num = (localStorage.getItem('shoppingcart')) || []; 
 
         for (i = 0; i < num.length; i++) {

@@ -123,8 +123,8 @@
                     <button class="M_contentbtn" onclick="document.getElementById('id01').style.display='block'">製作明信片</button>
                 </div>
                 <div class="M_group">
-                    <button class="M_social"><i class="fab fa-facebook fa-4x"></i></button>
-                    <button class="M_social"><i class="fab fa-line fa-4x"></i></button>
+                    <!-- <button class="M_social"><i class="fab fa-facebook fa-4x"></i></button> -->
+                    <!-- <button class="M_social"><i class="fab fa-line fa-4x"></i></button> -->
                     <button class="M_social" id="M_download" onclick="M_saveImage()"><i class="fas fa-file-download fa-4x"></i></button>
                     <!-- <button class="M_social" id="M_Modeldownload"><i class="fas fa-file-download fa-4x"></i></button> -->
                 </div>
