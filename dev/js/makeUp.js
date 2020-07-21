@@ -21,41 +21,58 @@ $(document).ready(function () {
         SetItem.apply(this, arguments);   //原有的localStorage
     };
 
+    const tempStore = Object; //建立空物件
+    Object.defineProperty(tempStore, 'lipInfo', {
+        get() {
+            return this.value; //拿到tempStore.Info的樣子
+        },
+        set(arr) {
+            this.value = arr; //設定tempStore.Info的樣子
+        }
+    })
 
-    let arr = JSON.parse(localStorage.getItem('shoppingcart')) || []; //取得購物車裡的東西 如果沒有就是空陣列
+
+
     var addIntoCart = document.getElementById('goBack');
     let c = document.querySelectorAll('.M_pcColor');
 
-    window.addEventListener("setItemCart", function(){
-        for (i = 0; i < c.length; i++) {
-            c[i].addEventListener("click", function (e) {     //抓取前端data-set放入陣列中
+    window.addEventListener("setItemCart", function (e) {
+        // console.log(e.key);
+        let num = (localStorage.getItem('shoppingcart')) || []; 
 
-                let proArr = [{
-                    comNo: '',
-                    comName: '',
-                    comImg: '',
-                    comNum: '',
-                    comPrice: ''
-                }]
-                
-                proArr.comNo = e.target.dataset.pronumber;
-                proArr.comImg = e.target.dataset.images;
-                proArr.comName = e.target.dataset.proname;
-                proArr.comNum = 1;         //試妝頁面限制購買數量1
-                proArr.comPrice = e.target.dataset.proprice;
-                console.log(proArr);
-
-                localStorage.setItem(JSON.stringify(proArr));
-
-                // localStorage.setItem('lipscolor', e.target.dataset.color);
-                // localStorage.setItem('comNo', e.target.dataset.pronumber);
-                // localStorage.setItem('comImg', e.target.dataset.images);
-                // localStorage.setItem('comName', e.target.dataset.proname);
-                // localStorage.setItem('comPrice', e.target.dataset.proprice);
-            })
-            
+        for (i = 0; i < num.length; i++) {
+            if(num[i].comNo == num[i].comNo){
+                num[i].comNum++;
+            }
         }
+
+
     })
+
+    for (let i = 0; i < c.length; i++) {
+        c[i].addEventListener("click", function (e) {
+            let bb = e.target.dataset.pronumber;
+            let cc = e.target.dataset.images;
+            let dd = e.target.dataset.proname;
+            let ee = e.target.dataset.proprice;
+
+            let obj = [{
+                comNo: bb,
+                comName: dd,
+                comImg: cc,
+                comNum: 1,
+                comPrice: ee
+            }]
+            tempStore.lipInfo = obj;
+            console.log(tempStore.lipInfo);
+        })
+    }
+    addIntoCart.addEventListener('click', function () {
+        console.log(tempStore.lipInfo);
+        localStorage.setItem('shoppingcart', JSON.stringify(tempStore.lipInfo));
+
+    })
+
 
 
 
