@@ -362,29 +362,21 @@ Object.defineProperty(window.localStorage, "shoppingcart", {
 const oldSetItem = window.localStorage.setItem;
 window.localStorage.setItem = function (key, newValue) {
     var setItemEvent = new Event("setItemEvent");
-    setItemEvent.key = key; 
+    setItemEvent.key = key;
     setItemEvent.newValue = newValue;
     window.dispatchEvent(setItemEvent);
     oldSetItem.apply(this, arguments);
 };
 // 添加監聽
-window.addEventListener(
-    "setItemEvent",
-    function (e) {
-        if(e.key == 'shoppingcart'){
-            let cart = JSON.parse(e.newValue);
-            let total = 0;
-            for (let i = 0; i < cart.length; i++) {
-                total += cart[i].comNum;
-            }
-            console.log("函數總數:", total);
-            let shoppingcart = document.getElementById("shoppingcart");
-            shoppingcart.innerText = "CART(" + total + ")";
+window.addEventListener("setItemEvent",function (e) {
+    if(e.key == 'shoppingcart'){
+        let cart = JSON.parse(e.newValue);
+        let total = 0;
+        for (let i = 0; i < cart.length; i++) {
+            total += cart[i].comNum;
         }
-        // console.log("函數總數:", total);
         let shoppingcart = document.getElementById("shoppingcart");
         shoppingcart.innerText = "CART(" + total + ")";
-    },
-    false
-);
+    }
+},false);
 
