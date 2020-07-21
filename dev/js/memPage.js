@@ -411,6 +411,7 @@ Vue.component('mypostcard', {
     `,
     methods:{
             toVote(){
+                
                 window.location='./vote.html'
             },
             getData(){
