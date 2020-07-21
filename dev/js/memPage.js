@@ -411,6 +411,7 @@ Vue.component('mypostcard', {
     `,
     methods:{
             toVote(){
+                
                 window.location='./vote.html'
             },
             getData(){
@@ -420,6 +421,9 @@ Vue.component('mypostcard', {
                     if(xhr.status == 200){
                         if(xhr.responseText=="請先登入會員"){
                             alert(xhr.responseText+"!!!")
+                        }else if(xhr.responseText == "查無資料"){
+                                alert("請先前往試妝~~!");
+                                window.location='./makeUpPage.php';
                         }else{
                             a.memCard = JSON.parse(xhr.responseText);
                             a.src = a.memCard.CARD_URL

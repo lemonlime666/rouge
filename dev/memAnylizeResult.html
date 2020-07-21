@@ -28,46 +28,64 @@
                     {{item.MTI_TEXT}}    
                 </p>
             </div>
-            <div class="sun">
+            <div class="sun totalproduct">
                 <div class="word">
                     <h3>日間保養步驟</h3>
                     <div class="line"></div>
-                    <div class="product" v-for="(item,index) in sun" v-if="index < 3">
-                        <div class="detail">
-                            <p class="resultStep">步驟 {{index+1}} : 使用{{item.PRO_NAME}}</p>
+                    <div class="everyitem">
+                        <div class="itemdetail">
+                            <div class="product" v-for="(item,index) in sun" v-if="index < 3">
+                                <div class="detail">
+                                    <p class="resultStep">步驟 {{index+1}} : 使用{{item.PRO_NAME}}</p>
 
-                            <div class="memcart">
-                                <div class="addToCart"  @click="addChart(item)">
-                                    <p>ADD TO CART</p>
+                                    <div class="memcart">
+                                        <!-- <div class="addToCart"  @click="addChart(item)">
+                                            <p>ADD TO CART</p>
+                                        </div> -->
+                                        <div class="productbtn" @click="sunchangeitem(item)"><p>商品詳情</p></div>
+                                    </div>
                                 </div>
-                                <a href=""><p>商品詳情</p></a>
                             </div>
                         </div>
                         <div class="pic">
-                            <img src="">
+                            <img :src="sunImg">
+                            <div>
+                                <p>{{sunName}}</p>
+                                <p>價格:{{sunprice}}</p>
+                                <p>適合膚質:{{sunType}}</p>
+                                <button class="goProduct">前往商品頁面</button>
+                            </div>
                         </div>
                     </div>
-
                 </div>
 
             </div>
-            <div class="night">
+            <div class="night totalproduct">
                 <div class="word">
                     <h3>夜間保養步驟</h3>
                     <div class="line"></div>
-                    <div class="product" v-for="(item,index) in night" v-if="index < 3">
-                        <div class="detail">
-                            <p class="resultStep">步驟 {{index+1}} : 使用{{item.PRO_NAME}}</p>
-
-                            <div class="memcart">
-                                <div class="addToCart" @click="addChart(item)">
-                                    <p>ADD TO CART</p>
+                    <div class="everyitem">
+                        <div class="itemdetail">
+                            <div class="product" v-for="(item,index) in night" v-if="index < 3">
+                                <div class="detail">
+                                    <p class="resultStep">步驟 {{index+1}} : 使用{{item.PRO_NAME}}</p>
+                                    <div class="memcart">
+                                        <!-- <div class="addToCart" @click="addChart(item)">
+                                            <p>ADD TO CART</p>
+                                        </div> -->
+                                        <div class="productbtn" @click="nightchangeitem(item)"><p>商品資訊</p></div>
+                                    </div>
                                 </div>
-                                <a href=""><p>商品詳情</p></a>
                             </div>
                         </div>
-                        <div class="pic">
-                            <img src="">
+                        <div class="pic nightpic1">
+                            <img :src='nightImg'>
+                            <div>
+                                <p>{{nightName}}</p>
+                                <p>價格:{{nightprice}}</p>
+                                <p>適合膚質:{{nightType}}</p>
+                                <button class="goProduct">前往商品頁面</button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -106,8 +124,19 @@
                 sun:[],
                 night:[],
 
+                sunImg:'',
+                sunName:'',
+                sunType:'',
+                sunprice:'',
+
+                nightImg:'',
+                nightName:'',
+                nightType:'',
+                nightprice:'',
+                
+
                 proPrice: [], //商品單價
-                proNum: '1', //商品數量
+                proNum: 1, //商品數量
                 proImgs: '', //圖片編號
                 proNO: '', //商品編號
                 proName:'',
@@ -152,7 +181,20 @@
                                 localStorage['shoppingcart'] = JSON.stringify(this.getItems);
                             };
                         };     
-                    }
+                    },
+                sunchangeitem(item){
+                    this.sunImg = item.PRO_IMG;
+                    this.sunName = item.PRO_NAME;
+                    this.sunType = item.MTC_TYPE;
+                    this.sunprice = item.PRO_PRICE;                    
+                },
+                
+                nightchangeitem(item){
+                    this.nightImg = item.PRO_IMG;                    
+                    this.nightName = item.PRO_NAME;
+                    this.nightType = item.MTC_TYPE;
+                    this.nightprice = item.PRO_PRICE;   
+                },
             },
             mounted() {
                 var xhr = new XMLHttpRequest();
@@ -164,17 +206,22 @@
                         this.night = 'IN';
                         for(let i = 0 ; i < totalItem.length; i++){
                             if(totalItem[i].PRO_USETIME == 0){
-                                console.log(totalItem[i]);
                                 app.$data.sun.push(totalItem[i]);
+                                app.$data.sunImg = app.$data.sun[0].PRO_IMG;
+                                app.$data.sunName = app.$data.sun[0].PRO_NAME;
+                                app.$data.sunprice = app.$data.sun[0].PRO_PRICE;
+                                app.$data.sunType = app.$data.sun[0].MTC_TYPE;
                             }else if(totalItem[i].PRO_USETIME == 1){
                                 app.$data.night.push(totalItem[i]);
+                                app.$data.nightImg= app.$data.night[0].PRO_IMG;
+                                app.$data.nightName= app.$data.night[0].PRO_NAME;
+                                app.$data.nightprice= app.$data.night[0].PRO_PRICE;
+                                app.$data.nightType= app.$data.night[0].MTC_TYPE;
                             }
                         }
                     }else{
-                        // alert( xhr.status );
                     }
                 }
-                // let data_info = 'answer='+3;
                 var url = `./php/memAnylizeResult.php`;
                 xhr.open("post", url, true);
                 xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
