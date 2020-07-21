@@ -433,8 +433,8 @@ Vue.component('mypostcard', {
                                 a.voteSum = "未參賽";
                             }else{
                                 a.design = a.memCard.CARD_INF;
-                                a.joinDate = a.memCard.CARD_VOTESUM;
-                                a.voteSum = a.memCard.CARD_VOTEDATE;
+                                a.joinDate = a.memCard.CARD_VOTEDATE;
+                                a.voteSum = a.memCard.CARD_VOTESUM;
                             }
                             console.log(a.memCard.CARD_URL+"----"+ a.src);
                         }

@@ -329,11 +329,11 @@
         //RWD可能要用JS重劃高度
     function setcanvasimg(makeupImg){
         wdth=$(window).width()
-        let pas =wdth/400;
+        let pas =wdth/500;
         let rwd = 0;
-        let rw =400;
-        let rh =600;
-        if(wdth<450){
+        let rw =500;
+        let rh =580;
+        if(wdth<500){
             
             rwd = 89*pas
             rw= rw*pas
@@ -343,8 +343,8 @@
             // document.getElementById("rwdHead").style.height=`${100-rwd}VH`
         }else{
             // alert('msg');
-            rw =400;
-            rh =600;
+            rw =500;
+            rh =580;
             rwd=89
         
             // document.getElementById("rwdHead").style.height=`${100-rwd}VH`
@@ -374,27 +374,7 @@
 
 
 
-//         card.setDimensions({
-            
-//             width: '452px',
-//             height: '680px'
-//             },{
-//             cssOnly: true
-//             });
 
-//         fabric.Image.fromURL(makeupImg, (img) => {
-//             img.set({
-//    // 通过scale来设置图片大小，这里设置和画布一样大
-            
-//                 scaleX: card.width / img.width,
-//                 scaleY: card.height / img.height,
-              
-//             });
-//         // 设置背景
-//         card.setBackgroundColor('#efefef');
-//         card.setBackgroundImage(img, card.renderAll.bind(card));   
-//         card.renderAll();
-//     });
     document.getElementsByClassName("upper-canvas")[0].style.border="1px solid gray"
     
     }
@@ -426,9 +406,9 @@
     $(".drawEraser").click(function(){
         card.clear();
         var wdth=$(window).width();
-        let pas =wdth/618
+        let pas =wdth/500
         let rwd = 0
-        if(wdth<400){
+        if(wdth<500){
             rwd = 89*pas
             document.getElementById("rwdHead").style.height=`${100-rwd}VH`
         }else{
@@ -437,8 +417,8 @@
         }
 
         card.setDimensions({
-            width: '400px',
-             height: `600px`
+            width: '500px',
+             height: `580px`
             // height: `${rwd}VH`
             },{
             cssOnly: true
@@ -584,6 +564,7 @@ function saveImg(){
                 }else{
                 alert('成功上傳圖片');  
                 let imgurl=xhr.responseText.split("|");
+                console.log(imgurl[0]);
                  let url= imgurl[1].replace(/\r\n|\n/g,"");
                 // console.log(url);
                 fbShare(url);
@@ -597,8 +578,6 @@ function saveImg(){
   }
   
   xhr.open('POST', './php/saveCard.php', true);
-
-
   xhr.send(formData);
 
 
@@ -807,50 +786,6 @@ $(".listTitle").click(function(e){
         };
         setcanvasimg(makeupImg);
 
-        // let pas =wdth/618;
-        // let rwd = 0;
-        // let rw =450;
-        // let rh =680;
-        // if(wdth<450){
-        //     rwd = 89*pas
-        //     rw= rw*pas
-        //     rh= rh*pas
-        //     document.getElementsByClassName("upper-canvas")[0].style.transform="translateX(9%)";
-        //     document.getElementsByClassName("lower-canvas")[0].style.transform="translateX(9%)";
-        //     document.getElementsByClassName("canvas-container")[0].style.transform="translateX(9%)";
-        //     // document.getElementById("rwdHead").style.height=`${100-rwd}VH`
-        // }else{
-        //     // alert('msg');
-        //     rwd=89
-        //     document.getElementsByClassName("upper-canvas")[0].style.transform="";
-        //     document.getElementsByClassName("lower-canvas")[0].style.transform="";
-        //     document.getElementsByClassName("canvas-container")[0].style.transform="";
-        //     // document.getElementById("rwdHead").style.height=`${100-rwd}VH`
-        // }
-        // card.clear();
-        //     card.setDimensions({
-        //         // width: '100%',
-        //         // height: `${rwd}vh`
-        //         width: `${rw}px`,
-        //         height: `${rh}px`
-        //         },{
-        //         cssOnly: true
-        //         });
-
-        //     fabric.Image.fromURL(makeupImg, (img) => {
-        //         img.set({
-        //     // 通过scale来设置图片大小，这里设置和画布一样大
-                
-        //             scaleX: card.width / img.width,
-        //             scaleY: card.height / img.height,
-        //         });
-        //     // 设置背景
-        //     card.setBackgroundColor('#efefef');
-        //     card.setBackgroundImage(img, card.renderAll.bind(card));
-        //     card.renderAll();
-        //     });
-
-   
     
     });
 

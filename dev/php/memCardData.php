@@ -11,11 +11,12 @@ try{
         on members.MEM_NO = makeup.MEM_NO
         where members.MEM_NO ='{$_SESSION["memNo"]}';";
         $info = $pdo->query($sql);
-        $info -> execute();
-        $cardInfo = $info->fetch(PDO::FETCH_ASSOC);
-        if($cardInfo->rowCount() == 0){ //無此會員資料
+        
+   
+        if($info->rowCount() == 0){ //無此會員資料
             echo "查無資料";
           }else{
+            $cardInfo = $info->fetch(PDO::FETCH_ASSOC);
             echo json_encode($cardInfo);
         }
     
