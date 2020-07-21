@@ -230,8 +230,8 @@
                     </div>
                     <div class="word" id="word">
                         <form action="POST" id="form2">
-                            <input name="Mhidden_data" id='Mhidden_data' type="hidden"/>
-                            <textarea name="McardText" id="McardText"></textarea>
+                            <input name="hidden_data" id='Mhidden_data' type="hidden"/>
+                            <textarea name="cardText" id="McardText"></textarea>
                         </form>
                         <div>
                             <button class="btn3-1" onclick="saveImg()">儲存明信片</button>
@@ -508,10 +508,13 @@ function saveImg(){
    
     var canvas = document.getElementById("canvas");
   var dataURL = canvas.toDataURL("image/png");
-  if(window.width >= 768){
+  if($(window).width() >= 768){
+    //   alert("pc")
     document.getElementById('hidden_data').value = dataURL;
     var formData = new FormData(document.getElementById("form1"));
   }else{
+    // alert($(window).width() )
+    // console.log($(window).width());
     document.getElementById('Mhidden_data').value = dataURL;
     var formData = new FormData(document.getElementById("form2"));
   }
@@ -542,16 +545,16 @@ function saveImg(){
   }
   
   xhr.open('POST', './php/saveCard.php', true);
-//   console.log(dataURL);
-  // xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
-  // let data_info = `IMGURL=${document.getElementById('hidden_data').value}&text=${document.getElementById("myWord").value}`
-  // console.log(data_info);
-  // xhr.send(data_info);
+
 
   xhr.send(formData);
 
 
-    
+    //   console.log(dataURL);
+  // xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
+  // let data_info = `IMGURL=${document.getElementById('hidden_data').value}&text=${document.getElementById("myWord").value}`
+  // console.log(data_info);
+  // xhr.send(data_info);
 }
 
 /*儲存圖片end*/
