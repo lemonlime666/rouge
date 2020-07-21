@@ -121,7 +121,7 @@ body {
                                 flex-wrap: wrap;
                                 .resultStep{
                                     text-align: left;
-                                    width: 400px;
+                                    width: 370px;
                                     @include font-style(18px, $notoSerif, $white, $default-fweight) {}
                                     @media screen and (max-width:450px){
                                         @include font-style(14px, $notoSerif, $white, $default-fweight) {}
@@ -248,8 +248,13 @@ body {
                             .goProduct{
                                 @include font-style(14px, $notoSerif) {}
                                 cursor: pointer;
+                                @media screen and(max-width:991px){
                                 height: 30px;
-                                margin-left: 40px;
+                                margin-left: 40px;   
+                                }
+                                height: 30px;
+                                width: 180px;
+                                margin: 10px auto;
                                 text-align: center;
                                 color: white;
                                 background-color: $tomato;
