@@ -320,7 +320,7 @@ document.addEventListener('DOMContentLoaded', function() {
       for(let i=0; i< cart.length; i++){       
           total += cart[i].comNum 
       }
-      console.log('物件總數:', total)
+    //  console.log('物件總數:', total)
       let shoppingcart = document.getElementById('shoppingcart')
       shoppingcart.innerText ="CART("+total+")";
 })
@@ -347,8 +347,8 @@ Object.defineProperty(window.localStorage, 'shoppingcart', {
           total += cart[i].comNum 
       }
       console.log('物件總數:', total)
-      let shoppingcart = document.getElementById('shoppingcart')
-      shoppingcart.innerText ="CART("+total+")";
+    //   let shoppingcart = document.getElementById('shoppingcart')
+    //   shoppingcart.innerText ="CART("+total+")";
       
     }
   })
@@ -374,6 +374,12 @@ Object.defineProperty(window.localStorage, 'shoppingcart', {
       console.log('函數總數:', total)
       let shoppingcart = document.getElementById('shoppingcart')
       shoppingcart.innerText ="CART("+total+")";
+
+      //動畫
+      shoppingcart.classList.remove("num-ani")
+        setTimeout(() => {
+            shoppingcart.classList.add("num-ani")
+        },0)
     
     
   },false)
