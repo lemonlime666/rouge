@@ -223,8 +223,8 @@
                 xhr3.setRequestHeader("content-type", "application/x-www-form-urlencoded");
                 let procom = `sendText=`+str; //將JSON格式字串儲存進陣列中
                 xhr3.send(procom); //傳遞JSON至PHP
-                
-                document.URL=location.href
+
+              window.location.assign(window.location.href);
                 
         };
 
