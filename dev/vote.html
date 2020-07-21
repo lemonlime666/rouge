@@ -209,10 +209,11 @@
                     if( xhr3.status == 200 ){ //連線成功
                 
                     alert(xhr3.responseText);
-                      
+                    document.getElementById('id01').style.display='none'
                     
                     }else{ 
                         alert( xhr3.status );
+                        document.getElementById('id01').style.display='none'
                     }
                     
                 }
@@ -223,7 +224,8 @@
                 let procom = `sendText=`+str; //將JSON格式字串儲存進陣列中
                 xhr3.send(procom); //傳遞JSON至PHP
 
-
+              window.location.assign(window.location.href);
+                
         };
 
    

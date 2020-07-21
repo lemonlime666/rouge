@@ -22,12 +22,14 @@ $(document).ready(function () {
     };
 
 
+    let arr = JSON.parse(localStorage.getItem('shoppingcart')) || []; //取得購物車裡的東西 如果沒有就是空陣列
+    var addIntoCart = document.getElementById('goBack');
     let c = document.querySelectorAll('.M_pcColor');
 
     window.addEventListener("setItemCart", function(){
         for (i = 0; i < c.length; i++) {
-            c[i].addEventListener("click", function (e) {
-                //抓取前端data-set放入localstorage陣列中
+            c[i].addEventListener("click", function (e) {     //抓取前端data-set放入陣列中
+
                 let proArr = [{
                     comNo: '',
                     comName: '',
@@ -35,6 +37,7 @@ $(document).ready(function () {
                     comNum: '',
                     comPrice: ''
                 }]
+                
                 proArr.comNo = e.target.dataset.pronumber;
                 proArr.comImg = e.target.dataset.images;
                 proArr.comName = e.target.dataset.proname;
@@ -54,8 +57,7 @@ $(document).ready(function () {
         }
     })
 
-    // let arr = JSON.parse(localStorage.getItem('shoppingcart')) || []; //取得購物車裡的東西 如果沒有就是空陣列
-    // var addIntoCart = document.getElementById('goBack');
+
 
     // addIntoCart.addEventListener('click', function (e) {
     //     let num = JSON.stringify(proArr); //點擊到的系列編號

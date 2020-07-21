@@ -4,10 +4,10 @@ try{
     if( isset($_SESSION['mail']) ){
         require_once("connectWade.php");
         $sql ="SELECT card.* 
-        FROM rouge.card 
-        join rouge.makeup 
+        FROM card 
+        join makeup 
         on card.MAKEUP_NO = makeup.MAKEUP_NO
-        join rouge.members 
+        join members 
         on members.MEM_NO = makeup.MEM_NO
         where members.MEM_NO ='{$_SESSION["memNo"]}';";
         $info = $pdo->query($sql);

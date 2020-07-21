@@ -6,10 +6,10 @@ if( isset($_SESSION["mail"])){ //已登入
         //echo  date("Ym");
         require_once("connect.php");
         $voteday= date("Ymd");
-        $sql2="UPDATE `rouge`.`members` SET `VOTE_DATE` = '$voteday' WHERE (`MEM_NO` = '{$_SESSION["memNo"]}');";
+        $sql2="UPDATE `members` SET `VOTE_DATE` = '$voteday' WHERE (`MEM_NO` = '{$_SESSION["memNo"]}');";
         // echo $sql2;
         $affectedMemRows =$pdo ->exec($sql2);
-        $sql="UPDATE `rouge`.`card` SET `CARD_VOTESUM` = `CARD_VOTESUM` + '1' WHERE (`CARD_NO` = '{$_GET["cardNo"]}');";
+        $sql="UPDATE `card` SET `CARD_VOTESUM` = `CARD_VOTESUM` + '1' WHERE (`CARD_NO` = '{$_GET["cardNo"]}');";
         //echo $sql;
         $affectedRows =$pdo ->exec($sql);
         //echo "成功的異動了 {$affectedRows} 筆資料<br>";
