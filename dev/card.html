@@ -37,7 +37,7 @@
     @@include("./app/header_black.html")
     <div class="bg">
         <div id="first">
-            <div class="fabocHead " style="height: 11VH;"></div>
+            <div class="fabocHead " style="height: 11vh;"></div>
             <h1 class="f1H">貼圖圖庫</h1>
             <div class="imgBase">
                 <div class="stick">
@@ -145,7 +145,7 @@
         </div>
         <div >
             
-            <div class="fabocHead" id="rwdHead" style="height: 11VH;"></div>
+            <div class="fabocHead" id="rwdHead" style="height: 115px;"></div>
             <!-- <div class="test"></div> -->
             <!-- <img class="ca" src="./img/model/model02-hei-res-non.png" alt=""> -->
             <!-- <div style="background-color: aqua;  width: 618px; height: 89VH;"></div> -->
@@ -329,10 +329,10 @@
         //RWD可能要用JS重劃高度
     function setcanvasimg(makeupImg){
         wdth=$(window).width()
-        let pas =wdth/450;
+        let pas =wdth/400;
         let rwd = 0;
-        let rw =450;
-        let rh =680;
+        let rw =400;
+        let rh =600;
         if(wdth<450){
             
             rwd = 89*pas
@@ -343,8 +343,8 @@
             // document.getElementById("rwdHead").style.height=`${100-rwd}VH`
         }else{
             // alert('msg');
-            rw =450;
-            rh =680;
+            rw =400;
+            rh =600;
             rwd=89
         
             // document.getElementById("rwdHead").style.height=`${100-rwd}VH`
@@ -428,7 +428,7 @@
         var wdth=$(window).width();
         let pas =wdth/618
         let rwd = 0
-        if(wdth<618){
+        if(wdth<400){
             rwd = 89*pas
             document.getElementById("rwdHead").style.height=`${100-rwd}VH`
         }else{
@@ -437,8 +437,8 @@
         }
 
         card.setDimensions({
-            width: '452px',
-             height: `680px`
+            width: '400px',
+             height: `600px`
             // height: `${rwd}VH`
             },{
             cssOnly: true

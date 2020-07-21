@@ -13,7 +13,12 @@ try{
         $info = $pdo->query($sql);
         $info -> execute();
         $cardInfo = $info->fetch(PDO::FETCH_ASSOC);
-        echo json_encode($cardInfo);
+        if($cardInfo->rowCount() == 0){ //無此會員資料
+            echo "查無資料";
+          }else{
+            echo json_encode($cardInfo);
+        }
+    
     }else{
         echo "請先登入會員";
     }
