@@ -19,10 +19,12 @@
           <div class="container">
               <h1>明信片儲存成功</h1>
               <p>趕快參加投票讓大家知道你的美感~~!</p>
+              <iframe src="" width="78" height="50" style="border:none;overflow:hidden;display: none;" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
               <div>
                   <button type="button" onclick="document.getElementById('id01').style.display='none'" class="btn2-1">放棄參加</button>
                   <!-- <button type="button" onclick="window.location='./vote.html'"class="btn3-1">馬上參加</button> -->
-                  <button type="button" onclick="window.location='./vote.html'"class="btn3-1">馬上參加</button>
+                
+                  <button type="button" onclick="window.location='./vote.html'"class="btn3-1">馬上參加</button>          
               </div>
           </div>
         </form>
@@ -235,6 +237,7 @@
                         </form>
                         <div>
                             <button class="btn3-1" onclick="saveImg()">儲存明信片</button>
+
                             <button class="btn3-1" id="MsaveCard">下載圖片</button>
                         </div>
 
@@ -261,7 +264,6 @@
             <h2 id="inVote" onclick="saveImg()">儲存明信片</h2>
             <div class="C_social">
                 <!-- https://www.facebook.com/plugins/share_button.php?href=http%3A%2F%2F140.115.236.71%2Fdemo-projects%2FED101%2FED101G3%2FED101G3-02%2Fdest%2Fimage%2FsaveCard%2F20200717-07-53-05.png&layout=button&size=large&appId=702838283834799&width=50&height=50  -->
-                 <iframe src="" width="78" height="50" style="border:none;overflow:hidden;display: none;" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
                
                 <div id="saveCard" style="color: #292929;background-color: transparent;" ><i class="fas fa-file-download fa-4x"></i></div>
             </div>
@@ -271,6 +273,7 @@
    
 
     <script>
+          var wdth=$(window).width();
         var makeupImg='';
         const card = new fabric.Canvas('canvas')   
          //AJAX拿試妝資料
@@ -325,27 +328,75 @@
 
         //RWD可能要用JS重劃高度
     function setcanvasimg(makeupImg){
-      
-        card.setDimensions({
+        wdth=$(window).width()
+        let pas =wdth/450;
+        let rwd = 0;
+        let rw =450;
+        let rh =680;
+        if(wdth<450){
             
-            width: '100%',
-            height: '89VH'
-            },{
-            cssOnly: true
+            rwd = 89*pas
+            rw= rw*pas
+            rh= rh*pas
+            console.log(`pas=  ${pas}  rw= ${rw} rh= ${rh}`);
+        
+            // document.getElementById("rwdHead").style.height=`${100-rwd}VH`
+        }else{
+            // alert('msg');
+            rw =450;
+            rh =680;
+            rwd=89
+        
+            // document.getElementById("rwdHead").style.height=`${100-rwd}VH`
+        }
+        card.clear();
+            card.setDimensions({
+                // width: '100%',
+                // height: `${rwd}vh`
+                width: `${rw}px`,
+                height: `${rh}px`
+                },{
+                cssOnly: true
+                });
+
+            fabric.Image.fromURL(makeupImg, (img) => {
+                img.set({
+            // 通过scale来设置图片大小，这里设置和画布一样大
+                
+                    scaleX: card.width / img.width,
+                    scaleY: card.height / img.height,
+                });
+            // 设置背景
+            card.setBackgroundColor('#efefef');
+            card.setBackgroundImage(img, card.renderAll.bind(card));
+            card.renderAll();
             });
 
-        fabric.Image.fromURL(makeupImg, (img) => {
-            img.set({
-   // 通过scale来设置图片大小，这里设置和画布一样大
+
+
+//         card.setDimensions({
             
-                scaleX: card.width / img.width,
-                scaleY: card.height / img.height,
-            });
-        // 设置背景
-        card.setBackgroundColor('#efefef');
-        card.setBackgroundImage(img, card.renderAll.bind(card));   
-        card.renderAll();
-    });
+//             width: '452px',
+//             height: '680px'
+//             },{
+//             cssOnly: true
+//             });
+
+//         fabric.Image.fromURL(makeupImg, (img) => {
+//             img.set({
+//    // 通过scale来设置图片大小，这里设置和画布一样大
+            
+//                 scaleX: card.width / img.width,
+//                 scaleY: card.height / img.height,
+              
+//             });
+//         // 设置背景
+//         card.setBackgroundColor('#efefef');
+//         card.setBackgroundImage(img, card.renderAll.bind(card));   
+//         card.renderAll();
+//     });
+    document.getElementsByClassName("upper-canvas")[0].style.border="1px solid gray"
+    
     }
       
        
@@ -386,8 +437,9 @@
         }
 
         card.setDimensions({
-            width: '100%',
-            height: `${rwd}VH`
+            width: '452px',
+             height: `680px`
+            // height: `${rwd}VH`
             },{
             cssOnly: true
             });
@@ -740,7 +792,6 @@ $(".listTitle").click(function(e){
 //JSRWD
 
     $(window).resize(function() {
-        var wdth=$(window).width();
        if(wdth >=1356){
             $(".listSticky").css('display','none')
             $(".listFlower").css('display','none')
@@ -754,38 +805,50 @@ $(".listTitle").click(function(e){
             im=1;
             $(".word").css('display','none')
         };
+        setcanvasimg(makeupImg);
 
+        // let pas =wdth/618;
+        // let rwd = 0;
+        // let rw =450;
+        // let rh =680;
+        // if(wdth<450){
+        //     rwd = 89*pas
+        //     rw= rw*pas
+        //     rh= rh*pas
+        //     document.getElementsByClassName("upper-canvas")[0].style.transform="translateX(9%)";
+        //     document.getElementsByClassName("lower-canvas")[0].style.transform="translateX(9%)";
+        //     document.getElementsByClassName("canvas-container")[0].style.transform="translateX(9%)";
+        //     // document.getElementById("rwdHead").style.height=`${100-rwd}VH`
+        // }else{
+        //     // alert('msg');
+        //     rwd=89
+        //     document.getElementsByClassName("upper-canvas")[0].style.transform="";
+        //     document.getElementsByClassName("lower-canvas")[0].style.transform="";
+        //     document.getElementsByClassName("canvas-container")[0].style.transform="";
+        //     // document.getElementById("rwdHead").style.height=`${100-rwd}VH`
+        // }
+        // card.clear();
+        //     card.setDimensions({
+        //         // width: '100%',
+        //         // height: `${rwd}vh`
+        //         width: `${rw}px`,
+        //         height: `${rh}px`
+        //         },{
+        //         cssOnly: true
+        //         });
 
-        let pas =wdth/618
-        let rwd = 0
-        if(wdth<618){
-            rwd = 89*pas
-            document.getElementById("rwdHead").style.height=`${100-rwd}VH`
-        }else{
-            // alert('msg');
-            rwd=89
-            document.getElementById("rwdHead").style.height=`${100-rwd}VH`
-        }
-        card.clear();
-            card.setDimensions({
-                width: '100%',
-                height: `${rwd}vh`
-                },{
-                cssOnly: true
-                });
-
-            fabric.Image.fromURL(makeupImg, (img) => {
-                img.set({
-            // 通过scale来设置图片大小，这里设置和画布一样大
+        //     fabric.Image.fromURL(makeupImg, (img) => {
+        //         img.set({
+        //     // 通过scale来设置图片大小，这里设置和画布一样大
                 
-                    scaleX: card.width / img.width,
-                    scaleY: card.height / img.height,
-                });
-            // 设置背景
-            card.setBackgroundColor('#efefef');
-            card.setBackgroundImage(img, card.renderAll.bind(card));
-            card.renderAll();
-            });
+        //             scaleX: card.width / img.width,
+        //             scaleY: card.height / img.height,
+        //         });
+        //     // 设置背景
+        //     card.setBackgroundColor('#efefef');
+        //     card.setBackgroundImage(img, card.renderAll.bind(card));
+        //     card.renderAll();
+        //     });
 
    
     

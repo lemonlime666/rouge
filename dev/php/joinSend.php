@@ -1,5 +1,7 @@
 <?php
 
+
+
 echo "傳送成功",$_POST["sendText"];
 $today=date("Y-m-d");
 session_start();
@@ -8,7 +10,7 @@ if( isset($_SESSION["mail"])){ //已登入
     require_once("connect.php");
 
     //判斷是修改資料還是新增資料
-    $searchSql = "SELECT CARD_VOTESUM FROM rouge.card WHERE MAKEUP_NO = (SELECT MAKEUP_NO FROM makeup where mem_no = '{$_SESSION["memNo"]}')";
+    $searchSql = "SELECT CARD_VOTESUM FROM card WHERE MAKEUP_NO = (SELECT MAKEUP_NO FROM makeup where mem_no = '{$_SESSION["memNo"]}')";
     $searchs = $pdo ->query($searchSql);
     $searchrow = $searchs->fetch(PDO::FETCH_ASSOC);
 
