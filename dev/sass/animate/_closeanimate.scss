@@ -108,8 +108,9 @@ html,body{
   }
 }
 
-@media all and(max-width){
+@media all and(max-width: 525px){
   .clo-main{
     flex-direction: column;
   }
 }
+
