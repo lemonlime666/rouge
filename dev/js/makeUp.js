@@ -38,13 +38,13 @@ $(document).ready(function () {
 
     window.addEventListener("setItemCart", function (e) {
         // console.log(e.key);
-        let num = (localStorage.getItem('shoppingcart')) || []; 
+        // let num = (localStorage.getItem('shoppingcart')) || []; 
 
-        for (i = 0; i < num.length; i++) {
-            if(num[i].comNo == num[i].comNo){
-                num[i].comNum++;
-            }
-        }
+        // for (let i = 0; i < num.length; i++) {
+        //     if(num[i].comNo == num[i].comNo){
+        //         num[i].comNum++;
+        //     }
+        // }
 
 
     })
@@ -70,6 +70,15 @@ $(document).ready(function () {
     addIntoCart.addEventListener('click', function () {
         console.log(tempStore.lipInfo);
         localStorage.setItem('shoppingcart', JSON.stringify(tempStore.lipInfo));
+
+        
+        let num = (localStorage.getItem('shoppingcart')) || []; 
+
+        for (let i = 0; i < num.length; i++) {
+            if(num[i].comNo == num[i].comNo){
+                num[i].comNum++;
+            }
+        }
 
     })
 

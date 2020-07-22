@@ -119,7 +119,7 @@
                     <p class="M_detail">描述描述描述</p>
                 </div>
                 <div class="M_group">
-                    <button class="M_contentbtn" id="goBack">返回商品頁面</button>
+                    <button class="M_contentbtn" id="goBack">加入購物車</button>
                     <button class="M_contentbtn" onclick="document.getElementById('id01').style.display='block'">製作明信片</button>
                 </div>
                 <div class="M_group">
