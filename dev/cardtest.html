@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Card</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" ></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/4.0.0-beta.12/fabric.min.js"></script>
+    <script src="./js/fabric.min.js"></script>
     <link rel="stylesheet" href="./css/dingli.css">
     <link rel="stylesheet" href="./css/card.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
@@ -37,7 +37,7 @@
     @@include("./app/header_black.html")
     <div class="bg">
         <div id="first">
-            <div class="fabocHead " style="height: 11vh;"></div>
+            <div class="fabocHead " style="height: 11VH;"></div>
             <h1 class="f1H">貼圖圖庫</h1>
             <div class="imgBase">
                 <div class="stick">
@@ -145,7 +145,7 @@
         </div>
         <div >
             
-            <div class="fabocHead" id="rwdHead" style="height: 115px;"></div>
+            <div class="fabocHead" id="rwdHead" style="height: 11VH;"></div>
             <!-- <div class="test"></div> -->
             <!-- <img class="ca" src="./img/model/model02-hei-res-non.png" alt=""> -->
             <!-- <div style="background-color: aqua;  width: 618px; height: 89VH;"></div> -->
@@ -274,7 +274,8 @@
    
 
     <script>
-          var wdth=$(window).width();
+        
+        var wdth=$(window).width();
         var makeupImg='';
         const card = new fabric.Canvas('canvas')   
          //AJAX拿試妝資料
@@ -334,7 +335,7 @@
         let rwd = 0;
         let rw =500;
         let rh =580;
-        if(wdth<500){
+        if(wdth<450){
             
             rwd = 89*pas
             rw= rw*pas
@@ -375,7 +376,6 @@
 
 
 
-
     document.getElementsByClassName("upper-canvas")[0].style.border="1px solid gray"
     
     }
@@ -405,39 +405,38 @@
 
     //橡皮擦
     $(".drawEraser").click(function(){
-        setcanvasimg(makeupImg)
-//         card.clear();
-//         var wdth=$(window).width();
-//         let pas =wdth/500
-//         let rwd = 0
-//         if(wdth<500){
-//             rwd = 89*pas
-//             document.getElementById("rwdHead").style.height=`${100-rwd}VH`
-//         }else{
-//             rwd=89
-//             document.getElementById("rwdHead").style.height=`${100-rwd}VH`
-//         }
+        card.clear();
+        var wdth=$(window).width();
+        let pas =wdth/618
+        let rwd = 0
+        if(wdth<618){
+            rwd = 89*pas
+            document.getElementById("rwdHead").style.height=`${100-rwd}VH`
+        }else{
+            rwd=89
+            document.getElementById("rwdHead").style.height=`${100-rwd}VH`
+        }
 
-//         card.setDimensions({
-//             width: '500px',
-//              height: `580px`
-//             // height: `${rwd}VH`
-//             },{
-//             cssOnly: true
-//             });
+        card.setDimensions({
+            width: '452px',
+             height: `680px`
+            // height: `${rwd}VH`
+            },{
+            cssOnly: true
+            });
 
-//         fabric.Image.fromURL(makeupImg, (img) => {
-//             img.set({
-//    // 通过scale来设置图片大小，这里设置和画布一样大
+        fabric.Image.fromURL(makeupImg, (img) => {
+            img.set({
+   // 通过scale来设置图片大小，这里设置和画布一样大
             
-//                 scaleX: card.width / img.width,
-//                 scaleY: card.height / img.height,
-//             });
-//         // 设置背景
-//         card.setBackgroundColor('#efefef');
-//         card.setBackgroundImage(img, card.renderAll.bind(card));
-//         card.renderAll();
-//     });
+                scaleX: card.width / img.width,
+                scaleY: card.height / img.height,
+            });
+        // 设置背景
+        card.setBackgroundColor('#efefef');
+        card.setBackgroundImage(img, card.renderAll.bind(card));
+        card.renderAll();
+    });
         
     });
 
@@ -526,8 +525,8 @@
         //測試添加圖片物件
         fabric.Image.fromURL(src, (img) => {
             img.set({
-                scaleX: 0.5, 
-                scaleY: 0.5,
+                scaleX: 0.2, 
+                scaleY: 0.2,
                 top:0,
                 hasControls: true, // 是否开启图层的控件
                 borderColor: 'orange', // 图层控件边框的颜色
@@ -537,7 +536,9 @@
         });
  };
 
+ 
 /*儲存圖片*/
+
 function saveImg(){
    
     var canvas = document.getElementById("canvas");
@@ -547,8 +548,7 @@ function saveImg(){
     document.getElementById('hidden_data').value = dataURL;
     var formData = new FormData(document.getElementById("form1"));
   }else{
-    // alert($(window).width() )
-    // console.log($(window).width());
+
     document.getElementById('Mhidden_data').value = dataURL;
     var formData = new FormData(document.getElementById("form2"));
   }
@@ -566,7 +566,6 @@ function saveImg(){
                 }else{
                 alert('成功上傳圖片');  
                 let imgurl=xhr.responseText.split("|");
-                console.log(imgurl[0]);
                  let url= imgurl[1].replace(/\r\n|\n/g,"");
                 // console.log(url);
                 fbShare(url);
@@ -580,17 +579,16 @@ function saveImg(){
   }
   
   xhr.open('POST', './php/saveCard.php', true);
+
+
   xhr.send(formData);
 
 
-    //   console.log(dataURL);
-  // xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
-  // let data_info = `IMGURL=${document.getElementById('hidden_data').value}&text=${document.getElementById("myWord").value}`
-  // console.log(data_info);
-  // xhr.send(data_info);
+
 }
 
 /*儲存圖片end*/
+
 
 
 function fbShare(url){
@@ -659,10 +657,12 @@ var dataURLtoBlob = function(dataurl) {
         return new Blob([raw], {type: mime})
     }
 }
+
  //下載圖片*/
 
  
  //按DEL刪除
+ 
  $('html').keyup(function(e){
         if(e.keyCode == 46) {
             deleteSelectedObjectsFromCanvas();
@@ -788,6 +788,8 @@ $(".listTitle").click(function(e){
         };
         setcanvasimg(makeupImg);
 
+
+   
     
     });
 
