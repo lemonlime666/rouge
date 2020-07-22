@@ -100,6 +100,13 @@ $(document).ready(function () {
                 } else {
                     alert("請先登入會員");
                     document.getElementById("login").style.display = "flex";
+                    if ($("#menu").css("left") == `${0}px`) {
+                        $("#ham").removeClass("open");
+                        $("#menu").animate({
+                                left: `${-100}%`,
+                        },250);
+                        $("#menu").fadeOut(250);
+                    }
                 }
             }
         };
