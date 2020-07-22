@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Make UP</title>
+    <link rel="stylesheet" href="./css/makeUp.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&family=Noto+Serif+TC:wght@200;300;400;500;600;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Nunito+Sans:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="./js/filesaver.js"></script>
+    <link rel="stylesheet" href="./css/dingli.css">
+
+</head>
+
+<body>
+    @@include("./app/header_black.html")
+    <section class="M_background">
+        <p class="M_bgf">ROUGE</p>
+        <div class="M_line"></div>
+        <!-- 燈箱 -->
+        <div id="id01" class="modal">
+            <form class="modal-content animate" method="post">
+                <div class="container">
+                    <h1>前往明信片製作頁面</h1>
+                    <p>點選下方確定鈕，幫照片裝飾得更美麗！</p>
+                    <div>
+                        <button type="button" onclick="document.getElementById('id01').style.display='none'" class="btn2-1">返回</button>
+                        <!-- <button type="button" onclick="location.href='card.html'" class="btn3-1">確定</button> -->
+                        <button type="button" class="btn3-1" onclick="savingImage()">確定</button>
+
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!-- 燈箱 -->
+        <main class="M_makeup">
+            <div class="M_left">
+                <!-- option button tab -->
+                <div class="M_catalog">
+                    <button class="M_opt" data-list="M_first">MODEL</button>
+                    <button class="M_opt" data-list="M_second">LIP STICKS</button>
+                </div>
+                <div class="M_option" id="M_mainOption">
+                    <!-- model tab start -->
+                    <div class="M_optionGroup M_first">
+                        <button class="M_btn"><img src="./image/model/model01-hei-res-non.png" alt="" style="width: 60%;" id="M_chooseModel1" onclick="loadImage1()"></button>
+                        <button class="M_btn"><img src="./image/model/model02-hei-res-non.png" alt="" style="width: 60%;" id="M_chooseModel2" onclick="loadImage2()"></button>
+                        <button class="M_btn"><img src="./image/model/model03-hei-res-non.png" alt="" style="width: 60%;" id="M_chooseModel3" onclick="loadImage3()"></button>
+                        <button class="M_btn"><img src="./image/model/model04-hei-res-non.png" alt="" style="width: 60%;" id="M_chooseModel4" onclick="loadImage4()"></button>
+                        <button class="M_btn"><img src="./image/model/model05-hei-res-non.png" alt="" style="width: 60%;" id="M_chooseModel5" onclick="loadImage5()"></button>
+                    </div>
+                    <!-- model tab end -->
+
+                    <!-- products & color tab start -->
+                    <div class="M_optionGroup M_second">
+                        <ul class="M_lipsticksSer" id="M_menu-app">
+                            <?php
+                            $pro_name = 0;
+                            try {
+                                require_once("./php/connect.php");
+                                //抓取兩個表格資料 撈出口紅資料共4筆
+                                $sql1 = "SELECT count(distinct SER_NAME) FROM product, series where product.SER_NO=series.SER_NO AND PRO_COLOR LIKE '%'";
+                                $series_name = $pdo->prepare($sql1);
+                                $series_name->execute();
+                                $no_of_ser = $series_name->fetch();
+                                $val_of_color_counter = 0;  //動態新增ID
+                                $pro_name++;
+                                for ($i = 1; $i <= $no_of_ser[0]; $i++) {
+                                    //最外層li
+                                    echo '<li class="M_menu" data-name="$pro_name[0]">';
+                                    echo '<button class="M_control"  >';
+                                    $sql_ser_name = "SELECT distinct SER_NAME FROM product, series where product.SER_NO=series.SER_NO AND PRO_COLOR LIKE '%' and series.SER_NO = $i";
+                                    $MAKEUP_URL_1 = $pdo->prepare($sql_ser_name);
+                                    $MAKEUP_URL_1->execute();
+                                    $ser_name = $MAKEUP_URL_1->fetch();
+                                    echo "$ser_name[0] </button>  <div class=\"M_seriesPanel\">";  //內層顏色div開始
+                                    //撈取資料庫顏色指令
+                                    // $sql_ser_ind_color = "SELECT a.PRO_COLOR , b.SER_NO FROM product a join series b on a.SER_NO = b.SER_NO where b.PRO_CLASS = 0 and a.SER_NO = $i";
+                                    $sql_ser_ind_color = "SELECT a.PRO_COLOR , b.SER_NO , a.PRO_NO, a.PRO_NAME , a.PRO_IMG , a.PRO_PRICE from product a join series b on a.SER_NO = b.SER_NO where b.PRO_CLASS = 0 and a.SER_NO = $i and PRO_COLOR is not null";
+                                    $MAKEUP_colors = $pdo->query($sql_ser_ind_color);  //撈取後端全部資料
+                                    while ($color = $MAKEUP_colors->fetch()) {
+                                        $val_of_color_counter++;  //動態新增ID
+                                        // echo "<div class=\"M_pcColor\" style=\"background-color:$color[0];\" id=\"color$val_of_color_counter\" data-color=\"$color[0]\" data-series=\"$color[1]\"></div>";
+                                        echo "<div class=\"M_pcColor\" style=\"background-color:$color[0];\" id=\"color$val_of_color_counter\" data-color=\"$color[0]\" data-series=\"$ser_name[0]\" data-proNumber=\"$color[2]\" data-proName=\"$color[3]\" data-images=\"$color[4]\" data-proPrice=\"$color[5]\"></div>";
+                                    }
+                                    echo '<div class="M_pcnone" ><i class="fas fa-ban fa-4x"></i></div>';
+                                    echo '</li>';
+                                }
+                            } catch (PDOException $e) {
+                                echo $e->getMessage();
+                            }
+                            ?>
+                        </ul>
+                    </div>
+                    <!-- products & color tab end -->
+                </div>
+            </div>
+            <!-- middle content model & customize pic -->
+            <div class="M_middle">
+                <!-- <img class="M_img M_mimg" src="./image/model/model02-hei-res-non.png" alt="" id="M_bigModel"> -->
+                <div class="M_imggrop">
+                    <form class="M_imagecus" id="M_imageGroup" method="POST" style="width: 60%;height: 77vh;">
+                        <input type="hidden" name="myImage" id="hidden_data">
+                        <div id="ggroup">
+                            <canvas class="M_canvas computer" id="painter" ></canvas>
+                        </div>
+                        <!-- <canvas class="M_canvas phone" id="painter" width="315" height="350" hidden></canvas> -->
+                        <p class="M_text">點選MODEL照片</br>or</br>選擇檔案上傳照片</p>
+                    </form>
+                    <input id="M_uploadimg" type="file" hidden>
+                    <button id="M_customBtn">選擇檔案</button>
+                </div>
+            </div>
+            <div class="M_right">
+                <h1 class="M_title">系列名稱</h1>
+                <img src="./image/product.gif" alt="" style="width: 45%;" class="M_productImg" />
+                <div class="M_content">
+                    <!-- <h3 class="M_titleSec">完美持色飽和</h3> -->
+                    <p class="M_detail">描述描述描述</p>
+                </div>
+                <div class="M_group">
+                    <button class="M_contentbtn" id="goBack">加入購物車</button>
+                    <button class="M_contentbtn" onclick="document.getElementById('id01').style.display='block'">製作明信片</button>
+                </div>
+                <div class="M_group">
+                    <!-- <button class="M_social"><i class="fab fa-facebook fa-4x"></i></button> -->
+                    <!-- <button class="M_social"><i class="fab fa-line fa-4x"></i></button> -->
+                    <button class="M_social" id="M_download" onclick="M_saveImage()"><i class="fas fa-file-download fa-4x"></i></button>
+                    <!-- <button class="M_social" id="M_Modeldownload"><i class="fas fa-file-download fa-4x"></i></button> -->
+                </div>
+            </div>
+        </main>
+    </section>
+
+
+    <!-- PHONE -->
+
+
+    <div class="M_rightgroup">
+        <button class="M_shoppingBag"><i class="fas fa-shopping-bag fa-3x"></i></button>
+        <button class="M_shoppingBag btn3-1" type="button" onclick="savingImage()"><i class="far fa-address-card fa-3x"></i></button>
+    </div>
+
+
+    <script src="./js/makeUp.js"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.js'></script>
+
+    <script>
+        let pas =0
+        let rw =0;
+        let rh =0;
+        rw =document.getElementById("M_imageGroup").offsetWidth;
+        rh =document.getElementById("M_imageGroup").offsetHeight;
+            console.log(document.getElementById("M_imageGroup").offsetHeight);
+            console.log(document.getElementById("M_imageGroup").offsetWidth);
+
+          //  
+        document.getElementById("painter").setAttribute("width",rw);
+        document.getElementById("painter").setAttribute("height",rh);
+        
+        window.addEventListener('resize',function(){
+            let nrw=document.getElementById("M_imageGroup").offsetWidth;
+            pas =nrw/rw
+            document.getElementById("M_imageGroup").style.height=(77*pas)+"vh";
+            console.log(`orw=  ${rw} nrw= ${nrw} pas=`);
+        })
+    
+        //下載自製圖
+        function M_saveImage() {
+            const canvasImg = document.querySelector('#painter');
+            canvasImg.toBlob(function(blob) {
+                saveAs(blob, 'test.png')
+            })
+        }
+
+        //model & 自製圖
+
+        let modelSrc = "";
+        // window.addEventListener("load", function() {
+        //         modelSrc = "upload";
+        // })
+
+
+        function loadImage1() {
+            var canvas = document.getElementById("painter");
+            var ctx = canvas.getContext("2d");
+            var img = new Image();
+            img.onload = function() {
+                ctx.clearRect(0, 0, 700, 700);
+                ctx.drawImage(img, 0, 0, rw, rh); //drawImage(img,x,y,width,height)
+            }
+            modelSrc = img.src = document.getElementById("M_chooseModel1").src;
+
+        }
+
+        function loadImage2() {
+            var canvas = document.getElementById("painter");
+            var ctx = canvas.getContext("2d");
+            var img = new Image();
+            img.onload = function() {
+                ctx.clearRect(0, 0, 700, 700);
+                ctx.drawImage(img, 0, 0, 500, 600); //drawImage(img,x,y,width,height)
+            }
+            modelSrc = img.src = document.getElementById("M_chooseModel2").src;
+
+        }
+
+        function loadImage3() {
+            var canvas = document.getElementById("painter");
+            var ctx = canvas.getContext("2d");
+            var img = new Image();
+            img.onload = function() {
+                ctx.clearRect(0, 0, 700, 700);
+                ctx.drawImage(img, 0, 0, 500, 600); //drawImage(img,x,y,width,height)
+            }
+            modelSrc = img.src = document.getElementById("M_chooseModel3").src;
+
+        }
+
+        function loadImage4() {
+            var canvas = document.getElementById("painter");
+            var ctx = canvas.getContext("2d");
+            var img = new Image();
+            img.onload = function() {
+                ctx.clearRect(0, 0, 700, 700);
+                ctx.drawImage(img, 0, 0, 500, 600); //drawImage(img,x,y,width,height)
+            }
+            modelSrc = img.src = document.getElementById("M_chooseModel4").src;
+
+
+        }
+
+        function loadImage5() {
+            var canvas = document.getElementById("painter");
+            var ctx = canvas.getContext("2d");
+            var img = new Image();
+            img.onload = function() {
+                ctx.clearRect(0, 0, 700, 700);
+                ctx.drawImage(img, 0, 0, 500, 600); //drawImage(img,x,y,width,height)
+            }
+            modelSrc = img.src = document.getElementById("M_chooseModel5").src;
+
+        }
+
+        //存圖到資料庫
+        function savingImage() {
+            document.getElementById('id01').style.display = 'block';
+            var M_canvas = document.getElementById("painter");
+            var dataURL = M_canvas.toDataURL("image/png");
+            document.getElementById('hidden_data').value = dataURL;
+            var formData = new FormData(document.getElementById("M_imageGroup"));
+
+            var xhr = new XMLHttpRequest();
+            xhr.onload = function() {
+                if (xhr.status == 200) {
+                    // console.log(xhr.responseText);
+                    if (xhr.responseText == 1) {
+                        alert('請先登入');
+                        document.getElementById('id01').style.display = 'none';
+                        document.getElementById('login').style.display = 'flex';
+                        // $('#loginSubmit') .click(function(event) {
+                        //     event.preventDefault();
+                        // });
+                    } else {
+                        alert('新增成功');
+                        document.location.href = "./card.html";
+                    }
+                } else {
+                    alert(xhr.status);
+                }
+            }
+
+            xhr.open('POST', './php/makeUp.php', true);
+            xhr.send(formData);
+        }
+    </script>
+
+    <script>
+        // window.addEventListener('load', function(){
+        //     let arr = localStorage.getItem('shoppingcart');
+
+        //     let all = JSON.parse(arr);
+        //     let total = 0;
+        //     // console.log(all);
+        //     for (let i = 0; i < all.length; i++) {
+        //         total += all[i].comNum;
+        //     }
+        //     console.log(total);
+
+        //     let shoppingcart = document.getElementById("shoppingcart");
+        //     // shoppingcart.innerText = "CART(" + total + ")";
+        //     shoppingcart.innerHTML = "CART(" + total + ")";
+        // });
+
+
+        // window.addEventListener("load", function() {
+        //     let circles = document.querySelectorAll(".M_pcColor");
+        //     for (let i = 0; i < circles.length; i++) {
+        //         circles[i].onclick = function(e) {
+
+        //             modelSrc = img.src = document.getElementById("M_chooseModel1").src;
+        //             modelSrc.attr("src", "./image/model/model0" + changeModel + "-hei-res-" + changeLipColor + ".png")
+
+        //             function changeImg() {
+        //                 var canvas = document.getElementById("painter");
+        //                 var ctx = canvas.getContext("2d");
+        //                 var img = new Image();
+        //                 img.onload = function() {
+        //                     ctx.clearRect(0, 0, 700, 700);
+        //                     ctx.drawImage(img, 0, 0, 500, 600); //drawImage(img,x,y,width,height)
+        //                 }
+        //                 modelSrc = img.src = document.getElementById("color01").src;
+
+        //             }
+        //         }
+
+        //     }
+        // })
+
+        // //抓購物車數量初始化
+
+        // window.addEventListener("load", function() {
+        //     let cart = JSON.parse(window.localStorage.shoppingcart) || [];
+        //     let total = 0;
+        //     if (cart.length > 0) {
+        //         for (let i = 0; i < cart.length; i++) {
+        //             total += cart[i].comNum;
+        //         }
+        //     }
+        //     let shoppingcart = document.getElementById("shoppingcart");
+        //     shoppingcart.innerText = "CART(" + total + ")";
+        // });
+
+        // //監測物件變化
+        // Object.defineProperty(window.localStorage, "shoppingcart", {
+        //     get: function() {
+        //         return localStorage.getItem("shoppingcart");
+        //     },
+        //     set: function(newValue) {
+        //         localStorage.setItem("shoppingcart", newValue);
+        //         let cart = JSON.parse(newValue);
+        //         console.log(cart);
+        //         let total = 0;
+        //         for (let i = 0; i < cart.length; i++) {
+        //             total += cart[i].comNum;
+        //         }
+        //         console.log("物件總數:", total);
+        //         let shoppingcart = document.getElementById("shoppingcart");
+        //         shoppingcart.innerText = "CART(" + total + ")";
+        //     },
+        // });
+
+        // // 重寫事件
+
+        // const oldSetItem = window.localStorage.setItem;
+        // window.localStorage.setItem = function (key, newValue) {
+        //     var setItemEvent = new Event("setItemEvent");  //給新標籤 搭配dispatchEvent() 
+        //     setItemEvent.key = key; 
+        //     setItemEvent.newValue = newValue;
+        //     window.dispatchEvent(setItemEvent);  //觸發執行添加監聽事件
+        //     oldSetItem.apply(this, arguments);   //原有的localStorage
+        // };
+        // // 添加監聽
+        // window.addEventListener(
+        //     "setItemEvent",
+        //     function(e) {
+        //         let cart = JSON.parse(e.newValue);
+        //         let total = 0;
+        //         for (let i = 0; i < cart.length; i++) {
+        //             total += cart[i].comNum;
+        //         }
+        //         console.log("函數總數:", total);
+        //         let shoppingcart = document.getElementById("shoppingcart");
+        //         shoppingcart.innerText = "CART(" + total + ")";
+        //     },
+        //     false
+        // );
+    </script>
+
+    <script src="./js/header.js"></script>
+</body>
+
+</html>

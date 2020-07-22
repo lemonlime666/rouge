@@ -103,7 +103,7 @@
                 <div class="M_imggrop">
                     <form class="M_imagecus" id="M_imageGroup" method="POST">
                         <input type="hidden" name="myImage" id="hidden_data">
-                        <canvas class="M_canvas computer" id="painter" width="500" height="580"></canvas>
+                        <canvas class="M_canvas computer" id="painter" width="500" height="600"></canvas>
                         <!-- <canvas class="M_canvas phone" id="painter" width="315" height="350" hidden></canvas> -->
                         <p class="M_text">點選MODEL照片</br>or</br>選擇檔案上傳照片</p>
                     </form>
@@ -154,74 +154,279 @@
             })
         }
 
-        //model & 自製圖
+        //model & 重設canvas
 
         let modelSrc = "";
-        // window.addEventListener("load", function() {
-        //         modelSrc = "upload";
-        // })
+
+        //resize設定時間 不然會有bug
+        $(window).resize(function() {
+            let ww = window.innerWidth;
+            setTimeout(function() {
+                reimg(ww)
+            }, 550)
+        })
+
+        //修改canvas寬高
+        function reimg(ww) {
+            var canvas = document.getElementById("painter");
+            var ctx = canvas.getContext("2d");
+            //    alert(window.innerWidth);
+            if (ww < 500) {
+                document.getElementById("painter").setAttribute("width", 300);
+                document.getElementById("painter").setAttribute("height", 380);
+                var img = new Image();
+                img.onload = function() {
+                    ctx.clearRect(0, 0, 700, 700);
+                    ctx.drawImage(img, 0, 0, 300, 380); //drawImage(img,x,y,width,height)
+                }
+                img.src = modelSrc;
+            }else if (ww < 900) {
+                document.getElementById("painter").setAttribute("width", 320);
+                document.getElementById("painter").setAttribute("height", 420);
+                var img = new Image();
+                img.onload = function() {
+                    ctx.clearRect(0, 0, 700, 700);
+                    ctx.drawImage(img, 0, 0, 320, 420); //drawImage(img,x,y,width,height)
+                }
+                img.src = modelSrc;
+            }else if (ww < 1537) {
+                document.getElementById("painter").setAttribute("width", 500);
+                document.getElementById("painter").setAttribute("height", 580);
+                var img = new Image();
+                img.onload = function() {
+                    ctx.clearRect(0, 0, 700, 700);
+                    ctx.drawImage(img, 0, 0, 500, 580); //drawImage(img,x,y,width,height)
+                }
+                img.src = modelSrc;
+            } else {
+                document.getElementById("painter").setAttribute("width", 600);
+                document.getElementById("painter").setAttribute("height", 700);
+                var img = new Image();
+                img.onload = function() {
+                    ctx.clearRect(0, 0, 700, 700);
+                    ctx.drawImage(img, 0, 0, 600, 700); //drawImage(img,x,y,width,height)
+                }
+                img.src = modelSrc;
+            }
+        }
 
 
+        //設定model圖適應不同大小螢幕
         function loadImage1() {
             var canvas = document.getElementById("painter");
             var ctx = canvas.getContext("2d");
-            var img = new Image();
-            img.onload = function() {
-                ctx.clearRect(0, 0, 700, 700);
-                ctx.drawImage(img, 0, 0, 500, 600); //drawImage(img,x,y,width,height)
+            if (window.innerWidth < 500) {
+                document.getElementById("painter").setAttribute("width", 300);
+                document.getElementById("painter").setAttribute("height", 380);
+                var img = new Image();
+                img.onload = function() {
+                    ctx.clearRect(0, 0, 700, 700);
+                    ctx.drawImage(img, 0, 0, 300, 380); //drawImage(img,x,y,width,height)
+                }
+                modelSrc = img.src = document.getElementById("M_chooseModel1").src;
+            }else if (window.innerWidth < 900) {
+                document.getElementById("painter").setAttribute("width", 320);
+                document.getElementById("painter").setAttribute("height", 420);
+                var img = new Image();
+                img.onload = function() {
+                    ctx.clearRect(0, 0, 700, 700);
+                    ctx.drawImage(img, 0, 0, 320, 420); //drawImage(img,x,y,width,height)
+                }
+                modelSrc = img.src = document.getElementById("M_chooseModel1").src;
+            }else if (window.innerWidth < 1537) {
+                document.getElementById("painter").setAttribute("width", 500);
+                document.getElementById("painter").setAttribute("height", 580);
+                var img = new Image();
+                img.onload = function() {
+                    ctx.clearRect(0, 0, 700, 700);
+                    ctx.drawImage(img, 0, 0, 500, 580); //drawImage(img,x,y,width,height)
+                }
+                modelSrc = img.src = document.getElementById("M_chooseModel1").src;
+            } else {
+                document.getElementById("painter").setAttribute("width", 600);
+                document.getElementById("painter").setAttribute("height", 700);
+                var img = new Image();
+                img.onload = function() {
+                    ctx.clearRect(0, 0, 700, 700);
+                    ctx.drawImage(img, 0, 0, 600, 700); //drawImage(img,x,y,width,height)
+                }
+                modelSrc = img.src = document.getElementById("M_chooseModel1").src;
             }
-            modelSrc = img.src = document.getElementById("M_chooseModel1").src;
-
         }
+
 
         function loadImage2() {
             var canvas = document.getElementById("painter");
             var ctx = canvas.getContext("2d");
-            var img = new Image();
-            img.onload = function() {
-                ctx.clearRect(0, 0, 700, 700);
-                ctx.drawImage(img, 0, 0, 500, 600); //drawImage(img,x,y,width,height)
+            if (window.innerWidth < 500) {
+                document.getElementById("painter").setAttribute("width", 300);
+                document.getElementById("painter").setAttribute("height", 380);
+                var img = new Image();
+                img.onload = function() {
+                    ctx.clearRect(0, 0, 700, 700);
+                    ctx.drawImage(img, 0, 0, 300, 380); //drawImage(img,x,y,width,height)
+                }
+                modelSrc = img.src = document.getElementById("M_chooseModel2").src;
+            }else if (window.innerWidth < 900) {
+                document.getElementById("painter").setAttribute("width", 320);
+                document.getElementById("painter").setAttribute("height", 420);
+                var img = new Image();
+                img.onload = function() {
+                    ctx.clearRect(0, 0, 700, 700);
+                    ctx.drawImage(img, 0, 0, 320, 420); //drawImage(img,x,y,width,height)
+                }
+                modelSrc = img.src = document.getElementById("M_chooseModel2").src;
+            }else if (window.innerWidth < 1537) {
+                document.getElementById("painter").setAttribute("width", 500);
+                document.getElementById("painter").setAttribute("height", 580);
+                var img = new Image();
+                img.onload = function() {
+                    ctx.clearRect(0, 0, 700, 700);
+                    ctx.drawImage(img, 0, 0, 500, 580); //drawImage(img,x,y,width,height)
+                }
+                modelSrc = img.src = document.getElementById("M_chooseModel2").src;
+            } else {
+                document.getElementById("painter").setAttribute("width", 600);
+                document.getElementById("painter").setAttribute("height", 700);
+                var img = new Image();
+                img.onload = function() {
+                    ctx.clearRect(0, 0, 700, 700);
+                    ctx.drawImage(img, 0, 0, 600, 700); //drawImage(img,x,y,width,height)
+                }
+                modelSrc = img.src = document.getElementById("M_chooseModel2").src;
             }
-            modelSrc = img.src = document.getElementById("M_chooseModel2").src;
-
         }
+
 
         function loadImage3() {
             var canvas = document.getElementById("painter");
             var ctx = canvas.getContext("2d");
-            var img = new Image();
-            img.onload = function() {
-                ctx.clearRect(0, 0, 700, 700);
-                ctx.drawImage(img, 0, 0, 500, 600); //drawImage(img,x,y,width,height)
+            if (window.innerWidth < 500) {
+                document.getElementById("painter").setAttribute("width", 300);
+                document.getElementById("painter").setAttribute("height", 380);
+                var img = new Image();
+                img.onload = function() {
+                    ctx.clearRect(0, 0, 700, 700);
+                    ctx.drawImage(img, 0, 0, 300, 380); //drawImage(img,x,y,width,height)
+                }
+                modelSrc = img.src = document.getElementById("M_chooseModel3").src;
+            }else if (window.innerWidth < 900) {
+                document.getElementById("painter").setAttribute("width", 320);
+                document.getElementById("painter").setAttribute("height", 420);
+                var img = new Image();
+                img.onload = function() {
+                    ctx.clearRect(0, 0, 700, 700);
+                    ctx.drawImage(img, 0, 0, 320, 420); //drawImage(img,x,y,width,height)
+                }
+                modelSrc = img.src = document.getElementById("M_chooseModel3").src;
+            }else if (window.innerWidth < 1537) {
+                document.getElementById("painter").setAttribute("width", 500);
+                document.getElementById("painter").setAttribute("height", 580);
+                var img = new Image();
+                img.onload = function() {
+                    ctx.clearRect(0, 0, 700, 700);
+                    ctx.drawImage(img, 0, 0, 500, 580); //drawImage(img,x,y,width,height)
+                }
+                modelSrc = img.src = document.getElementById("M_chooseModel3").src;
+            } else {
+                document.getElementById("painter").setAttribute("width", 600);
+                document.getElementById("painter").setAttribute("height", 700);
+                var img = new Image();
+                img.onload = function() {
+                    ctx.clearRect(0, 0, 700, 700);
+                    ctx.drawImage(img, 0, 0, 600, 700); //drawImage(img,x,y,width,height)
+                }
+                modelSrc = img.src = document.getElementById("M_chooseModel3").src;
             }
-            modelSrc = img.src = document.getElementById("M_chooseModel3").src;
-
         }
+
+
 
         function loadImage4() {
             var canvas = document.getElementById("painter");
             var ctx = canvas.getContext("2d");
-            var img = new Image();
-            img.onload = function() {
-                ctx.clearRect(0, 0, 700, 700);
-                ctx.drawImage(img, 0, 0, 500, 600); //drawImage(img,x,y,width,height)
+            if (window.innerWidth < 500) {
+                document.getElementById("painter").setAttribute("width", 300);
+                document.getElementById("painter").setAttribute("height", 380);
+                var img = new Image();
+                img.onload = function() {
+                    ctx.clearRect(0, 0, 700, 700);
+                    ctx.drawImage(img, 0, 0, 300, 380); //drawImage(img,x,y,width,height)
+                }
+                modelSrc = img.src = document.getElementById("M_chooseModel4").src;
+            }else if (window.innerWidth < 900) {
+                document.getElementById("painter").setAttribute("width", 320);
+                document.getElementById("painter").setAttribute("height", 420);
+                var img = new Image();
+                img.onload = function() {
+                    ctx.clearRect(0, 0, 700, 700);
+                    ctx.drawImage(img, 0, 0, 320, 420); //drawImage(img,x,y,width,height)
+                }
+                modelSrc = img.src = document.getElementById("M_chooseModel4").src;
+            }else if (window.innerWidth < 1537) {
+                document.getElementById("painter").setAttribute("width", 500);
+                document.getElementById("painter").setAttribute("height", 580);
+                var img = new Image();
+                img.onload = function() {
+                    ctx.clearRect(0, 0, 700, 700);
+                    ctx.drawImage(img, 0, 0, 500, 580); //drawImage(img,x,y,width,height)
+                }
+                modelSrc = img.src = document.getElementById("M_chooseModel4").src;
+            } else {
+                document.getElementById("painter").setAttribute("width", 600);
+                document.getElementById("painter").setAttribute("height", 700);
+                var img = new Image();
+                img.onload = function() {
+                    ctx.clearRect(0, 0, 700, 700);
+                    ctx.drawImage(img, 0, 0, 600, 700); //drawImage(img,x,y,width,height)
+                }
+                modelSrc = img.src = document.getElementById("M_chooseModel4").src;
             }
-            modelSrc = img.src = document.getElementById("M_chooseModel4").src;
-
-
         }
+
 
         function loadImage5() {
             var canvas = document.getElementById("painter");
             var ctx = canvas.getContext("2d");
-            var img = new Image();
-            img.onload = function() {
-                ctx.clearRect(0, 0, 700, 700);
-                ctx.drawImage(img, 0, 0, 500, 600); //drawImage(img,x,y,width,height)
+            if (window.innerWidth < 500) {
+                document.getElementById("painter").setAttribute("width", 300);
+                document.getElementById("painter").setAttribute("height", 380);
+                var img = new Image();
+                img.onload = function() {
+                    ctx.clearRect(0, 0, 700, 700);
+                    ctx.drawImage(img, 0, 0, 300, 380); //drawImage(img,x,y,width,height)
+                }
+                modelSrc = img.src = document.getElementById("M_chooseModel5").src;
+            }else if (window.innerWidth < 900) {
+                document.getElementById("painter").setAttribute("width", 320);
+                document.getElementById("painter").setAttribute("height", 420);
+                var img = new Image();
+                img.onload = function() {
+                    ctx.clearRect(0, 0, 700, 700);
+                    ctx.drawImage(img, 0, 0, 320, 420); //drawImage(img,x,y,width,height)
+                }
+                modelSrc = img.src = document.getElementById("M_chooseModel5").src;
+            }else if (window.innerWidth < 1537) {
+                document.getElementById("painter").setAttribute("width", 500);
+                document.getElementById("painter").setAttribute("height", 580);
+                var img = new Image();
+                img.onload = function() {
+                    ctx.clearRect(0, 0, 700, 700);
+                    ctx.drawImage(img, 0, 0, 500, 580); //drawImage(img,x,y,width,height)
+                }
+                modelSrc = img.src = document.getElementById("M_chooseModel5").src;
+            } else {
+                document.getElementById("painter").setAttribute("width", 600);
+                document.getElementById("painter").setAttribute("height", 700);
+                var img = new Image();
+                img.onload = function() {
+                    ctx.clearRect(0, 0, 700, 700);
+                    ctx.drawImage(img, 0, 0, 600, 700); //drawImage(img,x,y,width,height)
+                }
+                modelSrc = img.src = document.getElementById("M_chooseModel5").src;
             }
-            modelSrc = img.src = document.getElementById("M_chooseModel5").src;
-
         }
+
 
         //存圖到資料庫
         function savingImage() {
@@ -256,107 +461,6 @@
         }
     </script>
 
-    <script>
-        // window.addEventListener('load', function(){
-        //     let arr = localStorage.getItem('shoppingcart');
-
-        //     let all = JSON.parse(arr);
-        //     let total = 0;
-        //     // console.log(all);
-        //     for (let i = 0; i < all.length; i++) {
-        //         total += all[i].comNum;
-        //     }
-        //     console.log(total);
-
-        //     let shoppingcart = document.getElementById("shoppingcart");
-        //     // shoppingcart.innerText = "CART(" + total + ")";
-        //     shoppingcart.innerHTML = "CART(" + total + ")";
-        // });
-
-
-        // window.addEventListener("load", function() {
-        //     let circles = document.querySelectorAll(".M_pcColor");
-        //     for (let i = 0; i < circles.length; i++) {
-        //         circles[i].onclick = function(e) {
-
-        //             modelSrc = img.src = document.getElementById("M_chooseModel1").src;
-        //             modelSrc.attr("src", "./image/model/model0" + changeModel + "-hei-res-" + changeLipColor + ".png")
-
-        //             function changeImg() {
-        //                 var canvas = document.getElementById("painter");
-        //                 var ctx = canvas.getContext("2d");
-        //                 var img = new Image();
-        //                 img.onload = function() {
-        //                     ctx.clearRect(0, 0, 700, 700);
-        //                     ctx.drawImage(img, 0, 0, 500, 600); //drawImage(img,x,y,width,height)
-        //                 }
-        //                 modelSrc = img.src = document.getElementById("color01").src;
-
-        //             }
-        //         }
-
-        //     }
-        // })
-
-        // //抓購物車數量初始化
-
-        // window.addEventListener("load", function() {
-        //     let cart = JSON.parse(window.localStorage.shoppingcart) || [];
-        //     let total = 0;
-        //     if (cart.length > 0) {
-        //         for (let i = 0; i < cart.length; i++) {
-        //             total += cart[i].comNum;
-        //         }
-        //     }
-        //     let shoppingcart = document.getElementById("shoppingcart");
-        //     shoppingcart.innerText = "CART(" + total + ")";
-        // });
-
-        // //監測物件變化
-        // Object.defineProperty(window.localStorage, "shoppingcart", {
-        //     get: function() {
-        //         return localStorage.getItem("shoppingcart");
-        //     },
-        //     set: function(newValue) {
-        //         localStorage.setItem("shoppingcart", newValue);
-        //         let cart = JSON.parse(newValue);
-        //         console.log(cart);
-        //         let total = 0;
-        //         for (let i = 0; i < cart.length; i++) {
-        //             total += cart[i].comNum;
-        //         }
-        //         console.log("物件總數:", total);
-        //         let shoppingcart = document.getElementById("shoppingcart");
-        //         shoppingcart.innerText = "CART(" + total + ")";
-        //     },
-        // });
-
-        // // 重寫事件
-
-        // const oldSetItem = window.localStorage.setItem;
-        // window.localStorage.setItem = function (key, newValue) {
-        //     var setItemEvent = new Event("setItemEvent");  //給新標籤 搭配dispatchEvent() 
-        //     setItemEvent.key = key; 
-        //     setItemEvent.newValue = newValue;
-        //     window.dispatchEvent(setItemEvent);  //觸發執行添加監聽事件
-        //     oldSetItem.apply(this, arguments);   //原有的localStorage
-        // };
-        // // 添加監聽
-        // window.addEventListener(
-        //     "setItemEvent",
-        //     function(e) {
-        //         let cart = JSON.parse(e.newValue);
-        //         let total = 0;
-        //         for (let i = 0; i < cart.length; i++) {
-        //             total += cart[i].comNum;
-        //         }
-        //         console.log("函數總數:", total);
-        //         let shoppingcart = document.getElementById("shoppingcart");
-        //         shoppingcart.innerText = "CART(" + total + ")";
-        //     },
-        //     false
-        // );
-    </script>
 
     <script src="./js/header.js"></script>
 </body>
