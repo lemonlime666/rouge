@@ -120,19 +120,22 @@
       
       <!--結帳-->
       <div class="check">
-        <button @click="commitForm">立即結帳</button>
+        <button @click="openBox">立即結帳</button>
         <button><a href="./light-lips.html">繼續購物</a></button>
 
       </div>
     </div>
     <h2 v-else>購物車為空</h2>
-  </div>
-  <!-- 填選地址燈箱 -->
-  <div class="addressBoxBack">
-    <div class="addressBox">
-      
+    <!-- 填選地址燈箱 -->
+    <div class="address-box-back" id="address-box-back" @click="closeBox">
+      <div class="address-box" @click="innerStop">
+        <h2>Address : </h2>
+        <input class="adress-input" type="text" name="address" v-model="address">
+        <button class="address-confirm" @click="commitForm">確認結帳</button>
+      </div>
     </div>
   </div>
+  
   <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.js'></script>
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
@@ -143,7 +146,8 @@
         products: '',
         gifts:'',
         max: '',
-        min: ''
+        min: '',
+        address: '',
         
         
       },
@@ -166,14 +170,26 @@
         //   this.gogift = app.gifts.filter(item => item.GIF_CONDI > app.totalprice)
         // }
         commitForm (){
-          let dataif ="sendData="+JSON.stringify(this.products) +"|"+ JSON.stringify(this.max)+"|"+this.totalprice;
+
+          let gift = this.max
+          
+          if(gift == ""){
+            gift = {GIF_NO : "null"}
+          }
+
+          // console.log(gift)
+
+          let dataif ="sendData="+JSON.stringify(this.products) +"|"+ JSON.stringify(gift) +"|"+this.totalprice + "|" + JSON.stringify(this.address);
+          
           var xhr1 = new XMLHttpRequest();
                 xhr1.onload = function (){
                     if( xhr1.status == 200 ){ //連線成功
+                        console.log(xhr1.responseText)
                        alert(xhr1.responseText);
                        if(xhr1.responseText=="購買成功"){
-                        localStorage['shoppingcart']=""
-                        window.location.href()
+                        // localStorage['shoppingcart']=""
+                        window.localStorage.removeItem('shoppingcart')
+                        window.location.href = "./memPage.html"
                       }
                        
                     }else{
@@ -187,16 +203,52 @@
                 xhr1.send( dataif);
 
 
-          // axios.post('./php/sendOrder.php', {
-            
-          //   products:a
+        },
+        openBox() {
+
+         if(localStorage['shoppingcart'] == null){
+           alert('請購買商品')
+         }else{
+           //傳入會員地址資料
+          var xhr2 = new XMLHttpRequest(); //建立ajax物件
+          xhr2.onload = function() {
+            if(xhr2.status == 200){ //連線成功
+              // console.log(JSON.parse(xhr2.responseText))
+              if(xhr2.responseText == '未登入'){
+                alert('未登入')
+                
+              }else{
+                let box = document.getElementById('address-box-back')
+                box.style.display = 'flex'
+                let address = JSON.parse(xhr2.responseText)
+                app.$data.address = address[0].MEM_ADRS //將資料放入vuedata內
+
+              }
+              
+
+            }else{
+              alert(xhr2.status) //alert失敗資訊
+            }
+          }
+          var url2 = "./php/memberAddress.php"; //獲取後端url地址
+          xhr2.open("get",url2,true);
+          xhr2.send(null);
+
+         }
+          
+          
+        },
+        closeBox() {
+          let box = document.getElementById('address-box-back')
+          
+          box.style.display = 'none'
+          let inner = document.getElementById('address-box')
+          // inner.addEventListener('click',function(e){
+          // e.stopPropagation();
           // })
-          // .then(res => {
-          //   console.log(res.config.data)
-            
-          // }).catch(rej => {
-          //   console.log('發送失敗')
-          // })
+        },
+        innerStop(e) {
+          e.stopPropagation();
         }
 
       },
@@ -257,7 +309,7 @@
         for(item of this.products){
             totalprice += item.comPrice*item.comNum;
           }
-      
+        //第一次取得資料
         var xhr = new XMLHttpRequest();
         xhr.onload = function (){
           if( xhr.status == 200){
@@ -278,6 +330,8 @@
         var url = "./php/shoppingcart.php";
         xhr.open("get", url, true);
         xhr.send(null);
+        
+        
         
 
       },

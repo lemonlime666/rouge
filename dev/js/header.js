@@ -100,6 +100,13 @@ $(document).ready(function () {
                 } else {
                     alert("請先登入會員");
                     document.getElementById("login").style.display = "flex";
+                    if ($("#menu").css("left") == `${0}px`) {
+                        $("#ham").removeClass("open");
+                        $("#menu").animate({
+                                left: `${-100}%`,
+                        },250);
+                        $("#menu").fadeOut(250);
+                    }
                 }
             }
         };
@@ -354,7 +361,7 @@ Object.defineProperty(window.localStorage, "shoppingcart", {
         }
         // console.log("物件總數:", total);
         let shoppingcart = document.getElementById("shoppingcart");
-        shoppingcart.innerText = "CART(" + total + ")";
+        // shoppingcart.innerText = "CART(" + total + ")";
     },
 });
 
@@ -377,6 +384,13 @@ window.addEventListener("setItemEvent",function (e) {
         }
         let shoppingcart = document.getElementById("shoppingcart");
         shoppingcart.innerText = "CART(" + total + ")";
+
+        
+      //動畫
+      shoppingcart.classList.remove("num-ani")
+      setTimeout(() => {
+          shoppingcart.classList.add("num-ani")
+      },0)
     }
 },false);
 

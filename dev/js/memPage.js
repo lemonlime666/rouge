@@ -201,7 +201,7 @@ Vue.component('tab1',{
                     alert(xhr.status);
                 }
             }
-            xhr.open("post", "../php/memPageOrder.php", true);
+            xhr.open("post", "./php/memPageOrder.php", true);
             xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
             let status = this.ord;
             xhr.send(`status=${status}`);
@@ -222,7 +222,7 @@ Vue.component('tab1',{
                     alert(xhr.status);
                 }
             }
-            xhr.open("post", "../php/checkOrderList.php", true);
+            xhr.open("post", "./php/checkOrderList.php", true);
             xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
             let str={
                 ordNo:num,
@@ -289,7 +289,7 @@ Vue.component('tab2',{
                     alert(xhr.status);
                 }
             }
-            xhr.open("post", "../php/memPageOrder.php", true);
+            xhr.open("post", "./php/memPageOrder.php", true);
             xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
             let status = this.ord;
             xhr.send(`status=${status}`);
@@ -310,7 +310,7 @@ Vue.component('tab2',{
                     alert(xhr.status);
                 }
             }
-            xhr.open("post", "../php/checkOrderList.php", true);
+            xhr.open("post", "./php/checkOrderList.php", true);
             xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
             let str={
                 ordNo:num,

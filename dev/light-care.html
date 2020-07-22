@@ -111,11 +111,11 @@
                                         </div>
                                         <!--滑鼠-->
                                         <div class="mouse-block">
-                                            <div id="mouse" class="mouse" :id="item.SER_NO" @click="cardClick">
-                                                <div class="mouse-in">
+                                            <div id="mouse" class="mouse" :data-id="item.SER_NO" @click="cardClick">
+                                                <div class="mouse-in" :data-id="item.SER_NO" @click="cardClick">
                                                     
                                                 </div>
-                                                <div class="bigAni">
+                                                <div class="bigAni" :data-id="item.SER_NO" @click="cardClick">
 
                                                 </div>
                                             </div>
@@ -169,7 +169,7 @@
             methods: {
                 cardClick(e) {
                     
-                    localStorage['carename'] = e.target.id
+                    localStorage['carename'] = e.target.dataset.id
                 },
                 
                 

@@ -38,13 +38,13 @@ $(document).ready(function () {
 
     window.addEventListener("setItemCart", function (e) {
         // console.log(e.key);
-        let num = (localStorage.getItem('shoppingcart')) || []; 
+        // let num = (localStorage.getItem('shoppingcart')) || []; 
 
-        for (i = 0; i < num.length; i++) {
-            if(num[i].comNo == num[i].comNo){
-                num[i].comNum++;
-            }
-        }
+        // for (let i = 0; i < num.length; i++) {
+        //     if(num[i].comNo == num[i].comNo){
+        //         num[i].comNum++;
+        //     }
+        // }
 
 
     })
@@ -69,10 +69,27 @@ $(document).ready(function () {
     }
     addIntoCart.addEventListener('click', function () {
         console.log(tempStore.lipInfo);
-        localStorage.setItem('shoppingcart', JSON.stringify(tempStore.lipInfo));
+        // localStorage.setItem('shoppingcart', JSON.stringify(tempStore.lipInfo));
+        localStorage.setItem('shoppingcart', tempStore.lipInfo);
 
+        let num = (localStorage.getItem('shoppingcart')) || [];
+
+        for (let i = 0; i < num.length; i++) {
+            if (num[i].comNo == num[i].comNo) {
+                num[i].comNum++;
+
+                if(num == 'shoppingcart'|| []){
+
+                }
+
+            }if (num[i].cumNum == 9) {
+                alert('購買數量已達限制');
+            }else{
+                alert('成功加入購物車');
+            }
+
+        }
     })
-
 
 
 
@@ -384,17 +401,9 @@ $(document).ready(function () {
         document.getElementById('painter').style.width = "315px";
         document.getElementById('painter').style.height = "350px";
     } else {
-        document.getElementById('painter').style.width = "500px";
-        document.getElementById('painter').style.height = "580px";
+        document.getElementById('painter').style.width = "65%";
+        document.getElementById('painter').style.height = "80vh";
     }
-    // if(screen<768){
-    //     // alert(screen)
-    //     document.querySelector('.computer').style.display="hidden";
-    //     document.querySelector('.phone').style.display="block";
-    // }else{
-    //     document.querySelector('.computer').style.display="block";
-    //     document.querySelector('.phone').style.display="hidden";
-    // }
 
 
 
