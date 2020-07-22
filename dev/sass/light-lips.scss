@@ -390,13 +390,12 @@ footer{
 
     .cardouter:nth-child(2n){
         .card{
-            bottom:5%;
+        margin-bottom:12%;
         position: relative;
 
         }
         
     }
-
     
 
 }
@@ -445,6 +444,7 @@ footer{
             position: fixed;
             height:150px;
             margin-top: 90px;
+            z-index: 11;
             
             
             .intro-text{

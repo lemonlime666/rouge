@@ -275,3 +275,60 @@ body .shop-main {
     
 }
 }
+
+// 輸入地址燈箱
+
+.address-box-back{
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: none;
+  
+}
+.address-box{
+  border: 1px solid rgba(225, 208, 161, 0.5);
+  min-width: 350px;
+  min-height: 150px;
+  width: 30vw;
+  height: 15vw;
+  background-color: #fff;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #1c1c1c;
+  
+
+}
+.address-box h2{
+  color: #efefef;
+  margin-bottom: 15px;
+}
+.adress-input{
+  width: 80%;
+  height: 30px;
+  margin-bottom: 15px;
+  font-size: 20px;
+  padding: 15px;
+}
+.address-confirm{
+  width: 150px;
+  height: 50px;
+  border: 1px solid #E1D0A1;
+  background-color: transparent;
+  color: #E1D0A1;
+  
+  outline: none;
+}
+.turn-off-box{
+  position: absolute;
+  top:0;
+  right: 0;
+}

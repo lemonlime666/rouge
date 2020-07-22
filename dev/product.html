@@ -25,7 +25,7 @@
             <ol class="breadcrumb_list xsfont">
               <li><a href="./door.html">SHOP</a></li>
               <li><a href="./light-lips.html">LIPSTICK</a></li>
-              <li>水潤光澤系列</li>
+              <li>{{seriename}}</li>
             </ol>
         </div>
         <div class="pro-block">
@@ -220,6 +220,7 @@
 
                             if(this.proCommit.comNum > 9){
                                 this.proCommit.comNum = 9
+                                alert("此商品數量已達上限")
 
                             }
 
@@ -292,30 +293,14 @@
                 totalPrice(){
                     return this.proPrice*this.proNum;
                 },
-                // proImgs() {
-                    
-                //     return this.products[0].PRO_IMGS.split("|")
-                // }
-                
-                
                 
             },
-            // computed: {
-            //     proPrice (){
-            //         return this.products[0].PRO_PRICE
-            //     }
-            // },
+            
             
             
                 
-            mounted() { //在VUE未渲染時執行函數  
-            //     if(localStorage['username'] == null){
-            //     let name = prompt('What is your name?');
-            //     localStorage['username'] = name;
-            // }else{
-            //     alert(localStorage['username']);
-            // }
-              if(localStorage['shoppingcart'] == null){ //假如localstorage為空值
+            mounted() { 
+              if(localStorage['shoppingcart'] == null || ""){ //假如localstorage為空值
                 this.totalCommit =[]
               }else{
                 this.totalCommit = JSON.parse(localStorage.getItem('shoppingcart')) //抓取localstorage中的購物車字串並轉為物件
@@ -328,6 +313,7 @@
               var xhr = new XMLHttpRequest();
             xhr.onload = function (){
                 if( xhr.status == 200 ){ //連線成功
+                    
                     app.$data.products = JSON.parse(xhr.responseText); //將導出的物件存入data中
                     app.$data.proPrice = app.$data.products[0].PRO_PRICE //給預設第一項商品單價
                     app.$data.proNum = 1 //給預設第一項商品數量
@@ -345,9 +331,7 @@
                 xhr.open("get", url, true);
                 xhr.send( null );  
 
-                // fetch(url).then(rs => rs.json).then((res)=>{
-                    
-                // })
+                
                 var xhr1 = new XMLHttpRequest();
                 xhr1.onload = function (){
                     if( xhr1.status == 200 ){ //連線成功
