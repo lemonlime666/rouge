@@ -22,6 +22,7 @@ input {
     width: 100%;
     display: flex;
     justify-content: space-between;
+    height: 100VH;
     /* flex-wrap: wrap; */
     div {
         h1 {
@@ -42,10 +43,10 @@ input {
 
 .bg > div:nth-child(2) {
     // border: 1px solid royalblue;
-    width: 452px;
+    width: 500px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
     background-color: #efefef;
 }
 
@@ -603,6 +604,14 @@ form {
 }
 
 @media screen and (max-width: 1356px) {
+    .bg > div:nth-child(2) {
+        // border: 1px solid royalblue;
+        width: 500px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        background-color: #efefef;
+    }
     #first {
         display: none;
     }
@@ -641,13 +650,10 @@ form {
     #Minput{
         display: block;
     }
-    .bg > div:nth-child(2) {
-        width: 452px;
-        
-        margin: 0 auto;
-    }
+
 }
 @media screen and (max-width: 420px) {
+
     .cv{
         div{
             .imglist{
