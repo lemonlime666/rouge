@@ -2,7 +2,7 @@
 try{
 	require_once("connect.php");
 	// echo "連線成功~<br>";
-  $sql = "SELECT * FROM rouge.gift";
+  $sql = "SELECT * FROM gift";
   $series = $pdo->query($sql);
 
 
