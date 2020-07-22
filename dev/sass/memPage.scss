@@ -318,7 +318,6 @@ body {
     flex-flow: row nowrap;
     justify-content: center;
     background-color: rgb(129, 129, 129);
-    border-bottom: 4.5px solid #292929;
     // border: 1px solid red !important;
     @include pc() {
         transform: translateX(20px);
@@ -331,14 +330,13 @@ body {
         @include font-style() {
         }
         font-size: 16px;
-        color: $grey5;
+        color: rgba($white,.4);
         width: 50%;
         height: 60px;
         border: 0;
         outline: 0;
-        background-color: transparent;
+        background-color: rgba($grey5,.8);
         transition: 0.2s;
-        border-bottom: 4.5px solid #292929;
         cursor: pointer;
         @include l-phone() {
             font-size: 14px;
@@ -351,8 +349,11 @@ body {
         }
     }
     .mem_buyactive {
-        background-color: $wood;
-        color: #c2b48f;
+        color: $wood;
+        background-color: transparent;
+        border-bottom: 2px solid rgba($lightGold, .8);
+        box-shadow: 0px 5px 5px rgba($lightGold, 0.3);
+        font-weight: 600;
     }
 }
 
