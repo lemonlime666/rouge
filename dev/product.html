@@ -68,7 +68,11 @@
                     <!-- 商品號 -->
                     <form class="pro_color">
                         <select name="" v-model="selected" @change="colorChange">
-                            <option v-for="(item, index) in products" v-if="item != ''" :value="item.PRO_COLOR" :data-color="index">{{item.PRO_COLOR}}</option>
+                            
+                            <option v-for="(item, index) in products" v-if="item != ''" :value="item.PRO_COLOR" :data-color="index">
+                                
+                                <span>{{item.PRO_COLOR}}</span>
+                            </option>
                             
                         </select>
                     </form>
