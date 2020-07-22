@@ -153,7 +153,7 @@ body {
                 line-height: 20px;
                 display: inline-block;
                 color: $grey5;
-                width: 120px;
+                width: 140px;
             }
             [type="radio"]:checked+label:before,
             [type="radio"]:not(:checked)+label:before {
@@ -190,34 +190,6 @@ body {
                 -webkit-transform: scale(1);
                 transform: scale(1);
             }
-            // .memAnyl-btn {
-            //     position: relative;
-            //     border: 0px solid transparent;
-            //     font-size: 25px;
-            //     color: $navy;
-            //     width: 150px;
-            //     height: 70px;
-            //     margin: 30px 80px 30px auto;
-            //     box-shadow: 5px 10px 15px rgb(59, 59, 59);
-            //     border-radius: 15px;
-            //     cursor: pointer;
-            //     transition: box-shadow 0.3s, color 0.3s, background-color 0.3s;
-            //     &:hover {
-            //         box-shadow: 15px 15px 15px rgb(59, 59, 59);
-            //         transition: box-shadow 0.3s, color 0.3s, background-color 0.3s;
-            //         border: 0px solid $darkGold;
-            //         color: $white;
-            //         background-color: $tomato;
-            //     }
-            //     &:active {
-            //         outline: none;
-            //         transition: box-shadow 0.3s;
-            //         box-shadow: none;
-            //     }
-            //     &:focus {
-            //         outline: none;
-            //     }
-            // }
             .memAnyl-endBox {
                 height: 200px;
                 width: 150px;
@@ -277,6 +249,31 @@ body {
     }
 }
 
+.Q1img{
+    @media screen and(max-width:450px){   
+    display: none;
+    }
+}
+.Q2img{
+    @media screen and(max-width:450px){   
+    display: none;
+    }
+}
+.Q3img{
+    @media screen and(max-width:450px){   
+    display: none;
+    }
+}
+.Q4img{
+    @media screen and(max-width:450px){   
+    display: none;
+    }
+}
+.Q5img{
+    @media screen and(max-width:450px){   
+        display: none;
+        }
+}
 .memAnylQ2 {
     display: none;
 }

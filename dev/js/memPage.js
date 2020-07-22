@@ -142,7 +142,7 @@ Vue.component('orderlist', {
                                 <th>明細</th>
                             </tr>
                         </thead>
-                        <component :is="list"><component>
+                        <component :is="list"></component>
                     </table>
                 </div>
     </div>
@@ -399,7 +399,7 @@ Vue.component('mypostcard', {
         <div class="mem_createcard">
             <div class="mem_card">
                 <div class="mem_img" >
-                         <img :src="src">
+                        <img :src="src">
                 </div>
                 <p class="mem_text" v-cloak>設計理念:{{design}}</p>
                 <p class="mem_text"v-cloak>參賽日期：{{joinDate}}</p>
@@ -411,6 +411,7 @@ Vue.component('mypostcard', {
     `,
     methods:{
             toVote(){
+                
                 window.location='./vote.html'
             },
             getData(){
@@ -420,6 +421,9 @@ Vue.component('mypostcard', {
                     if(xhr.status == 200){
                         if(xhr.responseText=="請先登入會員"){
                             alert(xhr.responseText+"!!!")
+                        }else if(xhr.responseText == "查無資料"){
+                                alert("請先前往試妝~~!");
+                                window.location='./makeUpPage.php';
                         }else{
                             a.memCard = JSON.parse(xhr.responseText);
                             a.src = a.memCard.CARD_URL
@@ -429,18 +433,16 @@ Vue.component('mypostcard', {
                                 a.voteSum = "未參賽";
                             }else{
                                 a.design = a.memCard.CARD_INF;
-                                a.joinDate = a.memCard.CARD_VOTESUM;
-                                a.voteSum = a.memCard.CARD_VOTEDATE;
+                                a.joinDate = a.memCard.CARD_VOTEDATE;
+                                a.voteSum = a.memCard.CARD_VOTESUM;
                             }
                             console.log(a.memCard.CARD_URL+"----"+ a.src);
                         }
-                      
                     }else{
                         alert(xhr.status);
                     }
                 }
                 xhr.open("get", "./php/memCardData.php", true);
-                
                 xhr.send(null);
             },
 

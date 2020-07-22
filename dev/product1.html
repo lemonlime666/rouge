@@ -230,6 +230,8 @@
                     localStorage['shoppingcart'] = JSON.stringify(this.totalCommit)
                 },
                 passcomment(e){
+                    let talkContent = $("#procomment").val();
+                    var obj = document.getElementById("LoginSignup");
                     e.preventDefault();
                     //將資料放入物件中
                     let commentInfo = {
@@ -242,7 +244,14 @@
 
                     let str = JSON.stringify(commentInfo); //commentInfo轉成JSON格式字串
                     // console.log(str);
-
+                    if (obj.innerHTML !== "LOGOUT") {
+                        alert("請先登入會員!");
+                        return;
+                    }
+                    if (talkContent == "") {
+                        alert("請輸入留言內容!");
+                        return;
+                    }
                    
                     let xhr2 =new XMLHttpRequest();
                     xhr2.onload = function () {

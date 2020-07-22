@@ -57,7 +57,7 @@
                     <div class="M_optionGroup M_second">
                         <ul class="M_lipsticksSer" id="M_menu-app">
                             <?php
-                            $pro_name = 0;                            
+                            $pro_name = 0;
                             try {
                                 require_once("./php/connect.php");
                                 //抓取兩個表格資料 撈出口紅資料共4筆
@@ -66,7 +66,7 @@
                                 $series_name->execute();
                                 $no_of_ser = $series_name->fetch();
                                 $val_of_color_counter = 0;  //動態新增ID
-                                $pro_name++;                                
+                                $pro_name++;
                                 for ($i = 1; $i <= $no_of_ser[0]; $i++) {
                                     //最外層li
                                     echo '<li class="M_menu" data-name="$pro_name[0]">';
@@ -77,11 +77,13 @@
                                     $ser_name = $MAKEUP_URL_1->fetch();
                                     echo "$ser_name[0] </button>  <div class=\"M_seriesPanel\">";  //內層顏色div開始
                                     //撈取資料庫顏色指令
-                                    $sql_ser_ind_color = "SELECT a.PRO_COLOR , b.SER_NO FROM product a join series b on a.SER_NO = b.SER_NO where b.PRO_CLASS = 0 and a.SER_NO = $i";
+                                    // $sql_ser_ind_color = "SELECT a.PRO_COLOR , b.SER_NO FROM product a join series b on a.SER_NO = b.SER_NO where b.PRO_CLASS = 0 and a.SER_NO = $i";
+                                    $sql_ser_ind_color = "SELECT a.PRO_COLOR , b.SER_NO , a.PRO_NO, a.PRO_NAME , a.PRO_IMG , a.PRO_PRICE from product a join series b on a.SER_NO = b.SER_NO where b.PRO_CLASS = 0 and a.SER_NO = $i and PRO_COLOR is not null";
                                     $MAKEUP_colors = $pdo->query($sql_ser_ind_color);  //撈取後端全部資料
                                     while ($color = $MAKEUP_colors->fetch()) {
                                         $val_of_color_counter++;  //動態新增ID
-                                        echo "<div class=\"M_pcColor\" style=\"background-color:$color[0];\" id=\"color$val_of_color_counter\" data-color=\"$color[0]\" data-series=\"$color[1]\"></div>";
+                                        // echo "<div class=\"M_pcColor\" style=\"background-color:$color[0];\" id=\"color$val_of_color_counter\" data-color=\"$color[0]\" data-series=\"$color[1]\"></div>";
+                                        echo "<div class=\"M_pcColor\" style=\"background-color:$color[0];\" id=\"color$val_of_color_counter\" data-color=\"$color[0]\" data-series=\"$ser_name[0]\" data-proNumber=\"$color[2]\" data-proName=\"$color[3]\" data-images=\"$color[4]\" data-proPrice=\"$color[5]\"></div>";
                                     }
                                     echo '<div class="M_pcnone" ><i class="fas fa-ban fa-4x"></i></div>';
                                     echo '</li>';
@@ -121,8 +123,8 @@
                     <button class="M_contentbtn" onclick="document.getElementById('id01').style.display='block'">製作明信片</button>
                 </div>
                 <div class="M_group">
-                    <button class="M_social"><i class="fab fa-facebook fa-4x"></i></button>
-                    <button class="M_social"><i class="fab fa-line fa-4x"></i></button>
+                    <!-- <button class="M_social"><i class="fab fa-facebook fa-4x"></i></button> -->
+                    <!-- <button class="M_social"><i class="fab fa-line fa-4x"></i></button> -->
                     <button class="M_social" id="M_download" onclick="M_saveImage()"><i class="fas fa-file-download fa-4x"></i></button>
                     <!-- <button class="M_social" id="M_Modeldownload"><i class="fas fa-file-download fa-4x"></i></button> -->
                 </div>
@@ -255,6 +257,23 @@
     </script>
 
     <script>
+        // window.addEventListener('load', function(){
+        //     let arr = localStorage.getItem('shoppingcart');
+
+        //     let all = JSON.parse(arr);
+        //     let total = 0;
+        //     // console.log(all);
+        //     for (let i = 0; i < all.length; i++) {
+        //         total += all[i].comNum;
+        //     }
+        //     console.log(total);
+
+        //     let shoppingcart = document.getElementById("shoppingcart");
+        //     // shoppingcart.innerText = "CART(" + total + ")";
+        //     shoppingcart.innerHTML = "CART(" + total + ")";
+        // });
+
+
         // window.addEventListener("load", function() {
         //     let circles = document.querySelectorAll(".M_pcColor");
         //     for (let i = 0; i < circles.length; i++) {
@@ -278,6 +297,65 @@
 
         //     }
         // })
+
+        // //抓購物車數量初始化
+
+        // window.addEventListener("load", function() {
+        //     let cart = JSON.parse(window.localStorage.shoppingcart) || [];
+        //     let total = 0;
+        //     if (cart.length > 0) {
+        //         for (let i = 0; i < cart.length; i++) {
+        //             total += cart[i].comNum;
+        //         }
+        //     }
+        //     let shoppingcart = document.getElementById("shoppingcart");
+        //     shoppingcart.innerText = "CART(" + total + ")";
+        // });
+
+        // //監測物件變化
+        // Object.defineProperty(window.localStorage, "shoppingcart", {
+        //     get: function() {
+        //         return localStorage.getItem("shoppingcart");
+        //     },
+        //     set: function(newValue) {
+        //         localStorage.setItem("shoppingcart", newValue);
+        //         let cart = JSON.parse(newValue);
+        //         console.log(cart);
+        //         let total = 0;
+        //         for (let i = 0; i < cart.length; i++) {
+        //             total += cart[i].comNum;
+        //         }
+        //         console.log("物件總數:", total);
+        //         let shoppingcart = document.getElementById("shoppingcart");
+        //         shoppingcart.innerText = "CART(" + total + ")";
+        //     },
+        // });
+
+        // // 重寫事件
+
+        // const oldSetItem = window.localStorage.setItem;
+        // window.localStorage.setItem = function (key, newValue) {
+        //     var setItemEvent = new Event("setItemEvent");  //給新標籤 搭配dispatchEvent() 
+        //     setItemEvent.key = key; 
+        //     setItemEvent.newValue = newValue;
+        //     window.dispatchEvent(setItemEvent);  //觸發執行添加監聽事件
+        //     oldSetItem.apply(this, arguments);   //原有的localStorage
+        // };
+        // // 添加監聽
+        // window.addEventListener(
+        //     "setItemEvent",
+        //     function(e) {
+        //         let cart = JSON.parse(e.newValue);
+        //         let total = 0;
+        //         for (let i = 0; i < cart.length; i++) {
+        //             total += cart[i].comNum;
+        //         }
+        //         console.log("函數總數:", total);
+        //         let shoppingcart = document.getElementById("shoppingcart");
+        //         shoppingcart.innerText = "CART(" + total + ")";
+        //     },
+        //     false
+        // );
     </script>
 
     <script src="./js/header.js"></script>

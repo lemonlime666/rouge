@@ -39,7 +39,7 @@ input {
 
 .bg > div:nth-child(2) {
     // border: 1px solid royalblue;
-    width: 618px;
+    width: 452px;
 
     background-color: #efefef;
 }
@@ -345,7 +345,7 @@ form {
     p.M_bgf {
         position: absolute;
         right: 7%;
-        top: 15%;
+        top: 16px;
         writing-mode: vertical-rl;
         transform: rotate(-180deg);
         font-family: "Noto Sans TC", sans-serif;
@@ -558,6 +558,12 @@ form {
     width: 350px; /* Could be more or less, depending on screen size */
 }
 
+
+._2tga._8j9w {
+  
+    height: 50px;
+   
+}
 /* Add Zoom Animation */
 .animate {
     -webkit-animation: animatezoom 0.6s;
@@ -609,6 +615,19 @@ form {
     #Minput{
         display: none;
     }
+    // .cv{
+    //     div{
+    //         .scroll{
+    //             .word{
+    //                 display: none;
+    //             }
+
+    //         }
+    //     }
+    // }
+    #word{
+        display: none;
+    }
 }
 @media screen and (max-width: 768px) {
     #third {
@@ -618,7 +637,7 @@ form {
         display: block;
     }
     .bg > div:nth-child(2) {
-        width: 618px;
+        width: 452px;
 
         margin: 0 auto;
     }

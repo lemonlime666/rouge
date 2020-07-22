@@ -19,10 +19,12 @@
           <div class="container">
               <h1>明信片儲存成功</h1>
               <p>趕快參加投票讓大家知道你的美感~~!</p>
+              <iframe src="" width="78" height="50" style="border:none;overflow:hidden;display: none;" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
               <div>
                   <button type="button" onclick="document.getElementById('id01').style.display='none'" class="btn2-1">放棄參加</button>
                   <!-- <button type="button" onclick="window.location='./vote.html'"class="btn3-1">馬上參加</button> -->
-                  <button type="button" onclick="window.location='./vote.html'"class="btn3-1">馬上參加</button>
+                
+                  <button type="button" onclick="window.location='./vote.html'"class="btn3-1">馬上參加</button>          
               </div>
           </div>
         </form>
@@ -35,7 +37,7 @@
     @@include("./app/header_black.html")
     <div class="bg">
         <div id="first">
-            <div class="fabocHead " style="height: 11VH;"></div>
+            <div class="fabocHead " style="height: 11vh;"></div>
             <h1 class="f1H">貼圖圖庫</h1>
             <div class="imgBase">
                 <div class="stick">
@@ -143,7 +145,7 @@
         </div>
         <div >
             
-            <div class="fabocHead" id="rwdHead" style="height: 11VH;"></div>
+            <div class="fabocHead" id="rwdHead" style="height: 115px;"></div>
             <!-- <div class="test"></div> -->
             <!-- <img class="ca" src="./img/model/model02-hei-res-non.png" alt=""> -->
             <!-- <div style="background-color: aqua;  width: 618px; height: 89VH;"></div> -->
@@ -228,13 +230,14 @@
                                </div>
                            </div>
                     </div>
-                    <div class="word">
+                    <div class="word" id="word">
                         <form action="POST" id="form2">
-                            <input name="Mhidden_data" id='Mhidden_data' type="hidden"/>
-                            <textarea name="McardText" id="McardText"></textarea>
+                            <input name="hidden_data" id='Mhidden_data' type="hidden"/>
+                            <textarea name="cardText" id="McardText"></textarea>
                         </form>
                         <div>
                             <button class="btn3-1" onclick="saveImg()">儲存明信片</button>
+
                             <button class="btn3-1" id="MsaveCard">下載圖片</button>
                         </div>
 
@@ -260,8 +263,8 @@
             <!-- <h2 id="inVote" onclick="document.getElementById('id01').style.display='block'">儲存明信片</h2> -->
             <h2 id="inVote" onclick="saveImg()">儲存明信片</h2>
             <div class="C_social">
-                 <button class="M_social"><i class="fab fa-facebook fa-4x"></i></button>
-                <button class="M_social"><i class="fab fa-line fa-4x"></i></button>
+                <!-- https://www.facebook.com/plugins/share_button.php?href=http%3A%2F%2F140.115.236.71%2Fdemo-projects%2FED101%2FED101G3%2FED101G3-02%2Fdest%2Fimage%2FsaveCard%2F20200717-07-53-05.png&layout=button&size=large&appId=702838283834799&width=50&height=50  -->
+               
                 <div id="saveCard" style="color: #292929;background-color: transparent;" ><i class="fas fa-file-download fa-4x"></i></div>
             </div>
   
@@ -270,6 +273,7 @@
    
 
     <script>
+          var wdth=$(window).width();
         var makeupImg='';
         const card = new fabric.Canvas('canvas')   
          //AJAX拿試妝資料
@@ -279,11 +283,23 @@
                 xhr.onload=function (){
                     if( xhr.status == 200 ){
                         //modify here
-                        
+                        if(xhr.responseText.replace(/\r\n|\n/g,"")=="未登入"){
+                            alert("請先登入會員");
+                            makeupImg ="./image/saveCard//unFindImg.png";
+                            setcanvasimg(makeupImg)
+                   
+                        }else if(xhr.responseText.replace(/\r\n|\n/g,"")=="查無資料"){
+                            makeupImg ="./image/saveCard//unFindImg.png";
+                            setcanvasimg(makeupImg)
+                            alert("查無試妝資料 請先去製作~~!")
+                            location.href='./makeUp.html';
+                        }else{
+                            makeupImg =xhr.responseText;
+                            setcanvasimg(makeupImg)
+                        }
                         // let backJSON = JSON.parse(xhr.responseText);
-                        console.log(xhr.responseText);
-                        makeupImg =xhr.responseText;
-                        setcanvasimg(makeupImg)
+                    
+                       
                       
                     }else{
                         alert( xhr.status );
@@ -312,27 +328,55 @@
 
         //RWD可能要用JS重劃高度
     function setcanvasimg(makeupImg){
-
-        card.setDimensions({
+        wdth=$(window).width()
+        let pas =wdth/500;
+        let rwd = 0;
+        let rw =500;
+        let rh =580;
+        if(wdth<500){
             
-            width: '100%',
-            height: '89VH'
-            },{
-            cssOnly: true
+            rwd = 89*pas
+            rw= rw*pas
+            rh= rh*pas
+            console.log(`pas=  ${pas}  rw= ${rw} rh= ${rh}`);
+        
+            // document.getElementById("rwdHead").style.height=`${100-rwd}VH`
+        }else{
+            // alert('msg');
+            rw =500;
+            rh =580;
+            rwd=89
+        
+            // document.getElementById("rwdHead").style.height=`${100-rwd}VH`
+        }
+        card.clear();
+            card.setDimensions({
+                // width: '100%',
+                // height: `${rwd}vh`
+                width: `${rw}px`,
+                height: `${rh}px`
+                },{
+                cssOnly: true
+                });
+
+            fabric.Image.fromURL(makeupImg, (img) => {
+                img.set({
+            // 通过scale来设置图片大小，这里设置和画布一样大
+                
+                    scaleX: card.width / img.width,
+                    scaleY: card.height / img.height,
+                });
+            // 设置背景
+            card.setBackgroundColor('#efefef');
+            card.setBackgroundImage(img, card.renderAll.bind(card));
+            card.renderAll();
             });
 
-        fabric.Image.fromURL(makeupImg, (img) => {
-            img.set({
-   // 通过scale来设置图片大小，这里设置和画布一样大
-            
-                scaleX: card.width / img.width,
-                scaleY: card.height / img.height,
-            });
-        // 设置背景
-        card.setBackgroundColor('#efefef');
-        card.setBackgroundImage(img, card.renderAll.bind(card));   
-        card.renderAll();
-    });
+
+
+
+    document.getElementsByClassName("upper-canvas")[0].style.border="1px solid gray"
+    
     }
       
        
@@ -362,9 +406,9 @@
     $(".drawEraser").click(function(){
         card.clear();
         var wdth=$(window).width();
-        let pas =wdth/618
+        let pas =wdth/500
         let rwd = 0
-        if(wdth<618){
+        if(wdth<500){
             rwd = 89*pas
             document.getElementById("rwdHead").style.height=`${100-rwd}VH`
         }else{
@@ -373,8 +417,9 @@
         }
 
         card.setDimensions({
-            width: '100%',
-            height: `${rwd}VH`
+            width: '500px',
+             height: `580px`
+            // height: `${rwd}VH`
             },{
             cssOnly: true
             });
@@ -492,13 +537,16 @@
 
 /*儲存圖片*/
 function saveImg(){
-    document.getElementById('id01').style.display='block';
+   
     var canvas = document.getElementById("canvas");
   var dataURL = canvas.toDataURL("image/png");
-  if(window.width >= 768){
+  if($(window).width() >= 768){
+    //   alert("pc")
     document.getElementById('hidden_data').value = dataURL;
     var formData = new FormData(document.getElementById("form1"));
   }else{
+    // alert($(window).width() )
+    // console.log($(window).width());
     document.getElementById('Mhidden_data').value = dataURL;
     var formData = new FormData(document.getElementById("form2"));
   }
@@ -507,36 +555,53 @@ function saveImg(){
   var xhr = new XMLHttpRequest();
   xhr.onload = function(){
     if( xhr.status == 200){
-        console.log(xhr.responseText);
-      if(xhr.responseText == "error"){
-        alert("Error");
-      }else{
-        alert('成功上傳圖片');  
+        if(xhr.responseText.replace(/\r\n|\n/g,"")=="未登入"){
+            alert("請先登入會員");
 
+        }else{
+                if(xhr.responseText == "error"){
+                alert("圖片上傳失敗");
+                }else{
+                alert('成功上傳圖片');  
+                let imgurl=xhr.responseText.split("|");
+                console.log(imgurl[0]);
+                 let url= imgurl[1].replace(/\r\n|\n/g,"");
+                // console.log(url);
+                fbShare(url);
+                document.getElementById('id01').style.display='block';
       }
+        }
+
     }else{
       alert(xhr.status)
     }
   }
   
   xhr.open('POST', './php/saveCard.php', true);
-//   console.log(dataURL);
+  xhr.send(formData);
+
+
+    //   console.log(dataURL);
   // xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
   // let data_info = `IMGURL=${document.getElementById('hidden_data').value}&text=${document.getElementById("myWord").value}`
   // console.log(data_info);
   // xhr.send(data_info);
-  xhr.send(formData);
-
-
-    
 }
-
 
 /*儲存圖片end*/
 
+
+function fbShare(url){
+           
+            let baseurl = `https://www.facebook.com/plugins/share_button.php?href=http%3A%2F%2F140.115.236.71%2Fdemo-projects%2FED101%2FED101G3%2FED101G3-02%2Fdest%2Fimage%2FsaveCard%2F${url}&layout=button&size=large&appId=702838283834799&width=78&height=30`
+        
+            $("iframe").attr('src',baseurl);
+            $("iframe").css('display','block');
+           
+        };
  
  ///*下載圖片
-$(saveCard).click(function(){
+$("#saveCard").click(function(){
     var canvas = document.getElementById("canvas");
     // var dataURL = canvas.toDataURL('image/jpeg');
     // console.log(dataURL);
@@ -706,40 +771,21 @@ $(".listTitle").click(function(e){
 //JSRWD
 
     $(window).resize(function() {
-        var wdth=$(window).width();
+       if(wdth >=1356){
+            $(".listSticky").css('display','none')
+            $(".listFlower").css('display','none')
+            $(".paint").css('display','none')
+            $(".word").css('display','none')
+             s= 1;
+             f= 1;
+             p= 1;
+             im=1;
+        }else if(wdth >= 768){
+            im=1;
+            $(".word").css('display','none')
+        };
+        setcanvasimg(makeupImg);
 
-        let pas =wdth/618
-        let rwd = 0
-        if(wdth<618){
-            rwd = 89*pas
-            document.getElementById("rwdHead").style.height=`${100-rwd}VH`
-        }else{
-            // alert('msg');
-            rwd=89
-            document.getElementById("rwdHead").style.height=`${100-rwd}VH`
-        }
-        card.clear();
-            card.setDimensions({
-                width: '100%',
-                height: `${rwd}vh`
-                },{
-                cssOnly: true
-                });
-
-            fabric.Image.fromURL(makeupImg, (img) => {
-                img.set({
-            // 通过scale来设置图片大小，这里设置和画布一样大
-                
-                    scaleX: card.width / img.width,
-                    scaleY: card.height / img.height,
-                });
-            // 设置背景
-            card.setBackgroundColor('#efefef');
-            card.setBackgroundImage(img, card.renderAll.bind(card));
-            card.renderAll();
-            });
-
-   
     
     });
 

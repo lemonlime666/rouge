@@ -36,13 +36,16 @@ body {
             z-index: -1;
         }
         width: 60%;
-        @media screen and(max-width:991px) {
+        @media screen and(max-width:1400px) {
             width: 80%;
+        }
+        @media screen and(max-width:991px) {
+            width: 90%;
         }
         display: flex;
         flex-direction: column;
         align-items: flex-start;
-        margin: 55px auto;
+        margin: 55px auto 70px;
         text-align: center;
         position: relative;
         top: 60px;
@@ -77,15 +80,12 @@ body {
                 }
             }
         }
-        .sun {
+        .totalproduct {
             color: $wordColor;
             display: flex;
             margin: 30px auto 0;
             width: 100%;
             .word {
-                .allDetail{
-                    display: flex;
-                }
                 width: 100%;
                 h3 {
                     text-align: start;
@@ -95,288 +95,187 @@ body {
                 .line {
                     border: 1px solid white;
                 }
-                // p {
-                //     margin-right: 10px;
-                //     text-align: left;
-                //     @include font-style(18px, $notoSerif, $white, $default-fweight) {}
-                //     @media screen and(min-width:768px){
-                //         width: 400px;
-                        
-                //     }
-                // }
-                .product {
+                .everyitem{
                     display: flex;
-                    margin: 20px;
-                    align-items:center;
-                    @media screen and(max-width: 767px) {
+                    flex-direction: row;
+                    justify-content: space-between;
+                    @media screen and (max-width:991px){
                         flex-direction: column;
-                        align-items: flex-start;   
                     }
-                    .detail{
+                    .itemdetail{
                         display: flex;
                         flex-direction: column;
-                        .resultStep{
-                            text-align: left;
-                            width: 400px;
-                            @include font-style(18px, $notoSerif, $white, $default-fweight) {}
-                        }
-                        .memcart{
-                            @media screen and(max-width: 450px) {
-                                height: 17px;
-                                width: 115px;
-                            }
+                        justify-content: center;
+                        .product {
                             display: flex;
+                            margin: 20px;
+                            align-items:center;
+                            @media screen and(max-width: 767px) {
+                                flex-direction: column;
+                                align-items: flex-start;   
+                            }
+                            .detail{
+                                display: flex;
+                                flex-direction: row;
                                 align-items: center;
-                                
-                                width: 100%;
-                                height: 40px;
-                                text-align: center;
-                                margin-top: 10px;
-                                border: none;
-                                outline: none;
-                                justify-content: space-evenly;
-                                transition: background-color 0.5s,color .5;
-                                .addToCart{
-                                    cursor: pointer;
-                                    font-size: 16px;
-                                    width: 100px;
-                                    height: 60px;
-                                    text-align: center;
-                                    color: white;
-                                    background-color: $tomato;
-                                    border:none;
-                                    transition: background-color 0.5s;
-                                    width: 120px;
-                                    height: 100%;
-                                    &:hover {
-                                        background-color: #AE5F5F;
-                                        border: none;
-                                        transition: background-color 0.5s, border 0.5s;
+                                flex-wrap: wrap;
+                                .resultStep{
+                                    text-align: left;
+                                    width: 370px;
+                                    @include font-style(18px, $notoSerif, $white, $default-fweight) {}
+                                    @media screen and (max-width:450px){
+                                        @include font-style(14px, $notoSerif, $white, $default-fweight) {}
+                                        width: 280px;
                                     }
-                                        p{  
-                                            margin-top: 7px;
-                                            color:$white;
-                                            @media screen and(max-width: 450px) {
-                                                @include font-style(12px, $notoSerif, $grey5) {}
-                                                margin-top: 0px;
-                    
+                                }
+                                .memcart{
+                                    @media screen and(max-width: 450px) {
+                                        height: 17px;
+                                        width: 115px;
+                                    }
+                                        margin: 20px;
+                                        display: flex;
+                                        align-items: center;                                
+                                        height: 40px;
+                                        text-align: center;
+                                        border: none;
+                                        outline: none;
+                                        justify-content: space-evenly;
+                                        transition: background-color 0.5s,color .5;
+                                        .addToCart{
+                                            cursor: pointer;
+                                            font-size: 16px;
+                                            width: 100px;
+                                            height: 60px;
+                                            text-align: center;
+                                            color: white;
+                                            background-color: $tomato;
+                                            border:none;
+                                            transition: background-color 0.5s;
+                                            width: 120px;
+                                            height: 100%;
+                                            &:hover {
+                                                background-color: #AE5F5F;
+                                                border: none;
+                                                transition: background-color 0.5s, border 0.5s;
+                                            }
+                                            p{  
+                                                margin-top: 7px;
+                                                color:$white;
+                                                @media screen and(max-width: 450px) {
+                                                    @include font-style(12px, $notoSerif, $grey5) {}
+                                                    margin-top: 0px;
+                                                }
                                             }
                                         }
-                                    
-                                }
-                                a{
-                                    height: 100%;
-                                    width: 100px;
-                                    p{
-                                        margin-top: 7px;
-                                        @include font-style(18px, $notoSerif, $grey5) {}
-                                        width: 100% ;
+                                        .productbtn{
+                                        height: 100%;
+                                        width: 100px;
                                         @media screen and(max-width: 450px) {
-                                            font-size: 12px;
-                                            margin-top: 0;
-                
+                                            height: 30px;
                                         }
-                                    }
-                                    cursor: pointer;
-                                    font-size: 16px;
-                                    width: 100px;
-                                    height: 60px;
-                                    text-align: center;
-                                    color: white;
-                                    background-color: $tomato;
-                                    border:none;
-                                    transition: background-color 0.5s;
-                                    width: 120px;
-                                    height: 100%;
-                                    &:hover {
-                                        background-color: #AE5F5F;
-                                        border: none;
-                                        transition: background-color 0.5s, border 0.5s;
-                                    }
-                                    p{
-                                        color:$white;
+                                        p{
+                                            margin-top: 7px;
+                                            @include font-style(18px, $notoSerif, $grey5) {}
+                                            width: 100% ;
+                                            @media screen and(max-width: 450px) {
+                                                font-size: 12px;
+                                                margin-top: 6px;                    
+                                            }
                                         }
-                
-                                                  
-                                }
-                                a:link{
-                                    text-decoration: none;
-                                    color:$grey5;
-                                    
-                                }
-                                
-                                a:active{
-                                    text-decoration: none;
-                                    color:$grey5;
-                                }
-                                
-                                a:visited{
-                                    text-decoration: none;
-                                    color:$grey5;
+                                        cursor: pointer;
+                                        text-align: center;
+                                        color: white;
+                                        background-color: $tomato;
+                                        border:none;
+                                        transition: background-color 0.5s;
+                                        &:hover {
+                                            background-color: #AE5F5F;
+                                            border: none;
+                                            transition: background-color 0.5s, border 0.5s;
+                                        }
+                                        p{
+                                            color:$white;
+                                        }                            
+                                    }
+                                    // a:link{
+                                    //     text-decoration: none;
+                                    //     color:$grey5;   
+                                    //     }                
+                                    // a:active{
+                                    //     text-decoration: none;
+                                    // color:$grey5;
+                                    // }                        
+                                    // a:visited{
+                                    //     text-decoration: none;
+                                    //     color:$grey5;
+                                    // }
                                 }
                             }
+                            
+                        }
                     }
                     .pic {
                         border: 1px solid white;
-                        width: 150px;
-                        height: 150px;
+                        width: 250px;
+                        height: 300px;
                         margin: 15px;
-                        @media screen and(max-width:767px){
-                            width: 100px;
-                            height: 100px;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: space-between;
+                        @include font-style(16px, $notoSerif) {}                                            
+                        @media screen and(max-width:991px){
+                            width: 400px;
+                            height: 210px;
+                            margin: 0 auto;
+                            flex-direction: row-reverse;
+                        }
+                        @media screen and (max-width:450px){
+                            width: 290px;
                         }
                         img {
                             width: 100%;
-                            height: 100%;
-                        }
-                    }
-                }
-            }
-        }
-        .night {
-            color: $wordColor;
-            display: flex;
-            margin: 30px auto 0;
-            width: 100%;
-            .word {
-                .allDetail{
-                    display: flex;
-                }
-                width: 100%;
-                h3 {
-                    text-align: start;
-                    @include font-style(25px, $notoSerif, $white, $default-fweight) {}
-                    margin: 10px;
-                }
-                .line {
-                    border: 1px solid white;
-                }
-                
-                .product {  
-                    display: flex;
-                    margin: 20px;
-                    align-items:center;
-                    @media screen and(max-width: 767px) {
-                        flex-direction: column;
-                        align-items: flex-start;   
-                        
-                    }
-                    .detail{
-                        display: flex;
-                        flex-direction: column;
-                        .resultStep{
-                            text-align: left;
-                            width: 400px;
-                            @include font-style(18px, $notoSerif, $white, $default-fweight) {}
-                        }
-                        .memcart{
-                            @media screen and(max-width: 450px) {
-                                height: 17px;
-                                width: 115px;
+                            height: 65%;
+                            @media screen and(max-width:991px){
+                                width: 50%;
+                                height: 100%;
                             }
+                        }
+                        div{
                             display: flex;
-                                align-items: center;
+                            flex-direction: column;
+                            justify-content: center;
+                            .goProduct{
+                                @include font-style(14px, $notoSerif) {}
                                 cursor: pointer;
-                                width: 100%;
-                                height: 40px;
+                                @media screen and(max-width:991px){
+                                height: 30px;
+                                margin-left: 40px;   
+                                }
+                                height: 30px;
+                                width: 180px;
+                                margin: 10px auto;
                                 text-align: center;
-                                margin-top: 10px;
-                                border: none;
-                                outline: none;
-                                justify-content: space-evenly;
-                                transition: background-color 0.5s,color .5;
-                                .addToCart{
-                                    cursor: pointer;
-                                    font-size: 16px;
-                                    width: 100px;
-                                    height: 60px;
-                                    text-align: center;
-                                    color: white;
-                                    background-color: $tomato;
-                                    border:none;
-                                    transition: background-color 0.5s;
-                                    width: 120px;
-                                    height: 100%;
-                                    &:hover {
-                                        background-color: #AE5F5F;
-                                        border: none;
-                                        transition: background-color 0.5s, border 0.5s;
-                                    }
-                                        p{  
-                                            margin-top: 7px;
-                                            color:$white;
-                                            @media screen and(max-width: 450px) {
-                                                @include font-style(12px, $notoSerif, $grey5) {}
-                                                margin-top: 0px;
-                    
-                                            }
-                                        }
-                                    
-                                }
-                                a{
-                                    height: 100%;
-                                    width: 100px;
-                                    p{
-                                        margin-top: 7px;
-                                        @include font-style(18px, $notoSerif, $grey5) {}
-                                        width: 100%;
-                                        @media screen and(max-width: 450px) {
-                                            font-size: 12px;
-                                            margin-top: 0;
-                
-                                        }
-                                    }
-                                    cursor: pointer;
-                                    font-size: 16px;
-                                    width: 100px;
-                                    height: 60px;
-                                    text-align: center;
-                                    color: white;
-                                    background-color: $tomato;
-                                    border:none;
-                                    transition: background-color 0.5s;
-                                    width: 120px;
-                                    height: 100%;
-                                    &:hover {
-                                        background-color: #AE5F5F;
-                                        border: none;
-                                        transition: background-color 0.5s, border 0.5s;
-                                    }
-                                    p{
-                                        color:$white;
-                                        }
-                
-                                                  
-                                }
-                                a:link{
-                                    text-decoration: none;
-                                    color:$grey5;
-                                    
-                                }
-                                
-                                a:active{
-                                    text-decoration: none;
-                                    color:$grey5;
-                                }
-                                
-                                a:visited{
-                                    text-decoration: none;
-                                    color:$grey5;
+                                color: white;
+                                background-color: $tomato;
+                                border:none;
+                                transition: background-color 0.5s;
+                                &:hover {
+                                    background-color: #AE5F5F;
+                                    border: none;
+                                    transition: background-color 0.5s, border 0.5s;
                                 }
                             }
-                    }
-                    .pic {
-                        border: 1px solid white;
-                        width: 150px;
-                        height: 150px;
-                        margin: 15px;
-                        @media screen and(max-width:767px){
-                            width: 100px;
-                            height: 100px;
                         }
-                        img {
-                            width: 100%;
-                            height: 100%;
+                        p{
+                            text-align: left;
+                            margin-left: 12px;
+                            @media screen and(max-width:991px){
+                                margin-bottom: 20px;
+                            }
+                            @media screen and (max-width:450px){
+                                @include font-style(14px, $notoSerif) {}  
+                            }
                         }
                     }
                 }

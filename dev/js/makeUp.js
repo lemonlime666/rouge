@@ -11,8 +11,97 @@ $(document).ready(function () {
         });
     }
 
+
+    const SetItem = window.localStorage.setItem;
+    window.localStorage.setItem = function (key, newValue) {
+        var setItemCart = new Event("setItemCart");  //給新標籤 搭配dispatchEvent() 
+        setItemCart.key = key;
+        setItemCart.newValue = newValue;
+        window.dispatchEvent(setItemCart);  //觸發執行添加監聽事件
+        SetItem.apply(this, arguments);   //原有的localStorage
+    };
+
+    const tempStore = Object; //建立空物件
+    Object.defineProperty(tempStore, 'lipInfo', {
+        get() {
+            return this.value; //拿到tempStore.Info的樣子
+        },
+        set(arr) {
+            this.value = arr; //設定tempStore.Info的樣子
+        }
+    })
+
+
+
+    var addIntoCart = document.getElementById('goBack');
     let c = document.querySelectorAll('.M_pcColor');
-    let arr = JSON.parse(localStorage.getItem('shoppingcart')) || []; //取得購物車裡的東西 如果沒有就是空陣列
+
+    window.addEventListener("setItemCart", function (e) {
+        // console.log(e.key);
+        let num = (localStorage.getItem('shoppingcart')) || []; 
+
+        for (i = 0; i < num.length; i++) {
+            if(num[i].comNo == num[i].comNo){
+                num[i].comNum++;
+            }
+        }
+
+
+    })
+
+    for (let i = 0; i < c.length; i++) {
+        c[i].addEventListener("click", function (e) {
+            let bb = e.target.dataset.pronumber;
+            let cc = e.target.dataset.images;
+            let dd = e.target.dataset.proname;
+            let ee = e.target.dataset.proprice;
+
+            let obj = [{
+                comNo: bb,
+                comName: dd,
+                comImg: cc,
+                comNum: 1,
+                comPrice: ee
+            }]
+            tempStore.lipInfo = obj;
+            console.log(tempStore.lipInfo);
+        })
+    }
+    addIntoCart.addEventListener('click', function () {
+        console.log(tempStore.lipInfo);
+        localStorage.setItem('shoppingcart', JSON.stringify(tempStore.lipInfo));
+
+    })
+
+
+
+
+    // addIntoCart.addEventListener('click', function (e) {
+    //     let num = JSON.stringify(proArr); //點擊到的系列編號
+    //     alert(num);
+    // for (i = 0; i < arr.length; i++) {
+    //     if (arr[i].cumNo == num) {
+    //         // console.log(arr)
+    //         if (parseInt(arr[i].cumNum) == 9) {
+    //             alert('購買數量已達限制')
+    //         } else {
+    //             parseInt(arr[i].cumNum)++;
+    //             var obj = arr;
+    //             arr = [];
+    //         }
+    //     } else {
+    //         // console.log(num)
+    //         var obj = {
+    //             comNO: num,
+    //         }
+    //     }
+    // }
+
+    // arr.push(obj);
+    // localStorage.setItem('shoppingcart', JSON.stringify(arr));
+    // console.log(localStorage.getItem('shoppingcart', JSON.stringify(arr)));
+    // })
+
     // btn(加入購物車).addEventListener('click', function (e) {
     //     let num = e.target.dataset.商品編號
     //     for (i = 0; i < arr.length; i++) { //跑原本購物車裡的商品數量
@@ -36,22 +125,39 @@ $(document).ready(function () {
     //     localStorage.setItem('shoppingcart', JSON.stringify(arr));
     // })
 
-    for (i = 0; i < c.length; i++) {
-        c[i].addEventListener("click", function (e) {
-            // alert(e.target.dataset.color);
-            //抓取前端data-color放入localstorage
-            localStorage.setItem('lipscolor', e.target.dataset.color);
-            localStorage.setItem('lipsname', e.target.dataset.series);
-        })
-    }
+    // for (i = 0; i < c.length; i++) {
+    //     c[i].addEventListener("click", function (e) {
+    //         //抓取前端data-set放入localstorage陣列中
+    //         proArr = [{
+    //             comNo: '',
+    //             comName: '',
+    //             comImg: '',
+    //             comNum:'',
+    //             comPrice:''
+    //         }]
+    //         proArr.comNo = e.target.dataset.pronumber;
+    //         proArr.comImg = e.target.dataset.images;
+    //         proArr.comName = e.target.dataset.proname;
+    //         proArr.comNum = 1;  //試妝頁面限制購買數量1
+    //         proArr.comPrice = e.target.dataset.proprice;
+    //         // console.log(proArr);
 
-    // var p = localStorage.getItem('lipsname');
-    // // var url = ".poduct.html";
+    //         // localStorage.setItem('lipscolor', e.target.dataset.color);
+    //         // localStorage.setItem('comNo', e.target.dataset.pronumber);
+    //         // localStorage.setItem('comImg', e.target.dataset.images);
+    //         // localStorage.setItem('comName', e.target.dataset.proname);
+    //         // localStorage.setItem('comPrice', e.target.dataset.proprice);
+
+    //     })
+    // }
+
+    //返回前頁start
     // var switchPage = document.getElementById('goBack');
 
     // switchPage.addEventListener('click', function () {
-
+    //     window.history.go(-1);
     // })
+    //返回前頁end
 
 
 
@@ -271,30 +377,32 @@ $(document).ready(function () {
     // $(window).resize(function() {
     //     var screen=$(window).width();
     // })        
-        
+
     let screen = document.body.clientWidth;
-        if(screen<768){
-            // alert(screen)
-            document.getElementById('painter').style.width="315px";
-            document.getElementById('painter').style.height="350px";
-        }else{
-            document.getElementById('painter').style.width="500px";
-            document.getElementById('painter').style.height="580px";
-        }
-        // if(screen<768){
-        //     // alert(screen)
-        //     document.querySelector('.computer').style.display="hidden";
-        //     document.querySelector('.phone').style.display="block";
-        // }else{
-        //     document.querySelector('.computer').style.display="block";
-        //     document.querySelector('.phone').style.display="hidden";
-        // }
+    if (screen < 768) {
+        // alert(screen)
+        document.getElementById('painter').style.width = "315px";
+        document.getElementById('painter').style.height = "350px";
+    } else {
+        document.getElementById('painter').style.width = "500px";
+        document.getElementById('painter').style.height = "580px";
+    }
+    // if(screen<768){
+    //     // alert(screen)
+    //     document.querySelector('.computer').style.display="hidden";
+    //     document.querySelector('.phone').style.display="block";
+    // }else{
+    //     document.querySelector('.computer').style.display="block";
+    //     document.querySelector('.phone').style.display="hidden";
+    // }
 
 
 
 
 
 });
+
+
 
 
 function name(aaa) {

@@ -15,6 +15,7 @@ window.addEventListener('load', function () {
                 adimg.setAttribute('src', `${data[i].AD_IMGURL}`);
                 adimg.setAttribute('data-class', `${data[i].PRO_CLASS}`);
                 adimg.setAttribute('data-series', `${data[i].SER_NO}`);
+                adimg.setAttribute('data-adno', `${data[i].AD_NO}`);
                 ahref.appendChild(adimg);
                 div.appendChild(ahref);
                 document.querySelector('.swiperimgBox').appendChild(div);
@@ -35,14 +36,24 @@ window.addEventListener('load', function () {
                 if(e.target.dataset.class == 0){
                     // alert('口紅商品頁');
                     localStorage.setItem('lipsname', e.target.dataset.series);
+                    addClick(e.target.dataset.adno);
                     document.location.href = "./product.html"; //這邊改成口紅商品頁面連結
                 }else if (e.target.dataset.class == 1){
                     // alert('保養品商品頁');
                     localStorage.setItem('carename', e.target.dataset.series);
+                    addClick(e.target.dataset.adno);
                     document.location.href = "./product1.html"; //這邊改成保養品商品頁面連結
                 } 
             })
         }
+    }
+
+    function addClick(adno){
+        let xhr = new XMLHttpRequest();
+        xhr.open("post", "./php/landAdClick.php", true);
+        xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
+        xhr.send(`adno=${adno}`);
+        // ALTER TABLE ADSCHEDULE add CLICK int NOT null DEFAULT 0
     }
 
     //for swiper
@@ -242,20 +253,8 @@ window.addEventListener('load', function () {
             $('.pg4ColorBox1 span').removeClass('stickClick');
             $('.pg4ColorBox2 span').removeClass('stickClick');
             $(`.pg4ColorBox1 span:nth-child(${i})`).toggleClass('stickClick');
-
-            if (i == 1) {
-                $('.pg4LeftOutsdie img').attr('src', 'image/lipModel1.png');
-                $('.pg4colorGuide img').attr('src', 'image/stick05.png');
-            } else if (i == 2) {
-                $('.pg4LeftOutsdie img').attr('src', 'image/lipModel2.png');
-                $('.pg4colorGuide img').attr('src', 'image/stick06.png');
-            } else if (i == 3) {
-                $('.pg4LeftOutsdie img').attr('src', 'image/lipModel3.png');
-                $('.pg4colorGuide img').attr('src', 'image/stick07.png');
-            } else if (i == 4) {
-                $('.pg4LeftOutsdie img').attr('src', 'image/lipModel4.png');
-                $('.pg4colorGuide img').attr('src', 'image/stick08.png');
-            }
+            $('.pg4LeftOutsdie img').attr('src', `image/lipModel${i}.png`);
+            $('.pg4colorGuide img').attr('src', `image/stick0${i}.png`);
         }
     }
 
@@ -265,20 +264,8 @@ window.addEventListener('load', function () {
             $('.pg4ColorBox1 span').removeClass('stickClick');
             $('.pg4ColorBox2 span').removeClass('stickClick');
             $(`.pg4ColorBox2 span:nth-child(${i})`).toggleClass('stickClick');
-
-            if (i == 1) {
-                $('.pg4LeftOutsdie img').attr('src', 'image/lipModel1.png');
-                $('.pg4colorGuide img').attr('src', 'image/stick01.png');
-            } else if (i == 2) {
-                $('.pg4LeftOutsdie img').attr('src', 'image/lipModel2.png');
-                $('.pg4colorGuide img').attr('src', 'image/stick02.png');
-            } else if (i == 3) {
-                $('.pg4LeftOutsdie img').attr('src', 'image/lipModel3.png');
-                $('.pg4colorGuide img').attr('src', 'image/stick03.png');
-            } else if (i == 4) {
-                $('.pg4LeftOutsdie img').attr('src', 'image/lipModel4.png');
-                $('.pg4colorGuide img').attr('src', 'image/stick04.png');
-            }
+            $('.pg4LeftOutsdie img').attr('src', `image/lipModel${i+4}.png`);
+            $('.pg4colorGuide img').attr('src', `image/stick0${i+4}.png`);
         }
     }
 
