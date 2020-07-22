@@ -501,11 +501,11 @@ body {
             }
         }
     }
-    @media screen and (max-width: 400px) {
+    @media screen and (max-width: 450px) {
         width: 60px;
         height: 150px;
         font-size: 15px;
-    
+        // @include font-style(20px, $notoSerif, black, $default-fweight) {}
     }
 }
 #anyl-background1{

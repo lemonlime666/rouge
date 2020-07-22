@@ -234,8 +234,9 @@ body {
                             width: 290px;
                         }
                         img {
-                            width: 100%;
+                            width: 70%;
                             height: 65%;
+                            margin: 0 auto;
                             @media screen and(max-width:991px){
                                 width: 50%;
                                 height: 100%;
