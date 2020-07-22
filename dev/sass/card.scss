@@ -35,12 +35,17 @@ input {
     // border: 1px solid royalblue;
     width: 25%;
     height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .bg > div:nth-child(2) {
     // border: 1px solid royalblue;
     width: 452px;
-
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     background-color: #efefef;
 }
 
@@ -351,7 +356,7 @@ form {
         font-family: "Noto Sans TC", sans-serif;
         font-weight: 800;
         letter-spacing: 0.25rem;
-        font-size: 12rem;
+        font-size: 11.5rem;
         -webkit-text-stroke: 2px #dadada;
         color: transparent;
         z-index: -1;
@@ -638,7 +643,7 @@ form {
     }
     .bg > div:nth-child(2) {
         width: 452px;
-
+        
         margin: 0 auto;
     }
 }
