@@ -56,7 +56,8 @@
                             <div class="memcart" @click="addChart(lateyear)">
                                 <p>加入購物車</p>
                             </div>
-                                <a href=""><p>商品詳情</p></a>
+                            <a href="product1.html"><p @click="goProduct(lateyear.SER_NO)">商品詳情</p></a>
+                            <!-- product1.html -->
                         </div>
                     </div>
                 </div>
@@ -193,7 +194,10 @@
                                 localStorage['shoppingcart'] = JSON.stringify(this.getItems);
                             };
                         };     
-                    }
+                    },
+                    goProduct(serno){
+                        localStorage['carename'] = serno;
+                    },
                 },
             created() {
                 let today = new Date();

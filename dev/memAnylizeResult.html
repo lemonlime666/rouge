@@ -53,7 +53,7 @@
                                 <p>{{sunName}}</p>
                                 <p>價格:{{sunprice}}</p>
                                 <p>適合膚質:{{sunType}}</p>
-                                <button class="goProduct">前往商品頁面</button>
+                                <button @click="gosunProduct()" onclick="location.href='product1.html'" class="goProduct">前往商品頁面</button>
                             </div>
                         </div>
                     </div>
@@ -84,7 +84,7 @@
                                 <p>{{nightName}}</p>
                                 <p>價格:{{nightprice}}</p>
                                 <p>適合膚質:{{nightType}}</p>
-                                <button class="goProduct">前往商品頁面</button>
+                                <button @click="gonightProduct()" class="goProduct" onclick="location.href='product1.html'">前往商品頁面</button>
                             </div>
                         </div>
                     </div>
@@ -98,8 +98,8 @@
                     <p>在次檢測</p>
                 </div>
             </a>
-            <a href="">
-                <div id="btnCheckId" class="btnStyle">
+            <a href="anylize.html">
+                <div  id="btnCheckId" class="btnStyle" >
                     <p>儲存檢測結果</p>
                 </div>
             </a>
@@ -128,11 +128,13 @@
                 sunName:'',
                 sunType:'',
                 sunprice:'',
+                sunserno:'',
 
                 nightImg:'',
                 nightName:'',
                 nightType:'',
                 nightprice:'',
+                nightserno:'',
                 
 
                 proPrice: [], //商品單價
@@ -186,7 +188,8 @@
                     this.sunImg = item.PRO_IMG;
                     this.sunName = item.PRO_NAME;
                     this.sunType = item.MTC_TYPE;
-                    this.sunprice = item.PRO_PRICE;                    
+                    this.sunprice = item.PRO_PRICE;   
+                    this.sunserno = item.SER_NO;
                 },
                 
                 nightchangeitem(item){
@@ -194,6 +197,13 @@
                     this.nightName = item.PRO_NAME;
                     this.nightType = item.MTC_TYPE;
                     this.nightprice = item.PRO_PRICE;   
+                    this.nightserno = item.SER_NO;
+                },
+                gosunProduct(){
+                    localStorage['carename'] = this.sunserno;
+                },
+                gonightProduct(){
+                    localStorage['carename'] = this.nightserno;
                 },
             },
             mounted() {
@@ -211,12 +221,15 @@
                                 app.$data.sunName = app.$data.sun[0].PRO_NAME;
                                 app.$data.sunprice = app.$data.sun[0].PRO_PRICE;
                                 app.$data.sunType = app.$data.sun[0].MTC_TYPE;
+                                app.$data.sunserno= app.$data.sun[0].SER_NO;
+
                             }else if(totalItem[i].PRO_USETIME == 1){
                                 app.$data.night.push(totalItem[i]);
                                 app.$data.nightImg= app.$data.night[0].PRO_IMG;
                                 app.$data.nightName= app.$data.night[0].PRO_NAME;
                                 app.$data.nightprice= app.$data.night[0].PRO_PRICE;
                                 app.$data.nightType= app.$data.night[0].MTC_TYPE;
+                                app.$data.nightserno= app.$data.night[0].SER_NO;
                             }
                         }
                     }else{
@@ -269,6 +282,7 @@
                 let data_info = `today=${todayTime}&&class=${localStorage.type}`;
                 xhr.send(data_info);
 
+                // window.location.href='anylize.html';
             });
     </script>
 </body>
