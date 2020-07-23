@@ -103,7 +103,15 @@
           </div>
 
         </div>
-       
+       <!-- 贈品說明 -->
+       <div class="gift-des">
+          <div v-for="item in gifts" class="gift-details">
+            滿  {{item.GIF_CONDI}}  送  {{item.GIF_NAME}}
+          </div>
+          <div v-if="lastgift != '0'" class="gift-gap">
+            距離獲得{{lastgift.GIF_NAME}}，您還差${{lastgift.GIF_CONDI - totalprice}}
+          </div>
+       </div>
         <!--總價-->
         <div class="cart-total-price">
           <div class="cart-total-tit">
@@ -148,6 +156,7 @@
         max: '',
         min: '',
         address: '',
+        
         
         
       },
@@ -273,7 +282,26 @@
           //console.log(this.gifts.filter(item =>  item.GIF_CONDI < this.totalprice));
           // console.log(this.gifts);
           return app.$data.max;
-        }
+        },
+        lastgift() { //找出距離下一個禮物的金額
+        
+          // let lastgift;
+          
+          // if(this.totalprice > this.gift.slice(end)){
+          //   lastgift = this.gifts.filter(item => item.GIF_CONDI > this.totalprice)
+          // }else{
+          //   lastgift = [0]
+          // }
+            let last = this.gifts.slice(-1) //取出最後一個商品
+
+            if(this.totalprice < last[0].GIF_CONDI){
+              lastgift = this.gifts.filter(item => item.GIF_CONDI > this.totalprice)
+            }else{
+              lastgift = ["0"]
+            }
+
+          return lastgift[0]
+        },
         
         // lastgift() {
         //   for(let i=0; i<this.gifts.length;i++){
