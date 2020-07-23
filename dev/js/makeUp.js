@@ -12,14 +12,14 @@ $(document).ready(function () {
     }
 
 
-    const SetItem = window.localStorage.setItem;
-    window.localStorage.setItem = function (key, newValue) {
-        var setItemCart = new Event("setItemCart");  //給新標籤 搭配dispatchEvent() 
-        setItemCart.key = key;
-        setItemCart.newValue = newValue;
-        window.dispatchEvent(setItemCart);  //觸發執行添加監聽事件
-        SetItem.apply(this, arguments);   //原有的localStorage
-    };
+    // const SetItem = window.localStorage.setItem;
+    // window.localStorage.setItem = function (key, newValue) {
+    //     var setItemCart = new Event("setItemCart");  //給新標籤 搭配dispatchEvent() 
+    //     setItemCart.key = key;
+    //     setItemCart.newValue = newValue;
+    //     window.dispatchEvent(setItemCart);  //觸發執行添加監聽事件
+    //     SetItem.apply(this, arguments);   //原有的localStorage
+    // };
 
     const tempStore = Object; //建立空物件
     Object.defineProperty(tempStore, 'lipInfo', {
@@ -36,18 +36,18 @@ $(document).ready(function () {
     var addIntoCart = document.getElementById('goBack');
     let c = document.querySelectorAll('.M_pcColor');
 
-    window.addEventListener("setItemCart", function (e) {
-        // console.log(e.key);
-        // let num = (localStorage.getItem('shoppingcart')) || []; 
+    // window.addEventListener("setItemCart", function (e) {
+    //     // console.log(e.key);
+    //     // let num = (localStorage.getItem('shoppingcart')) || []; 
 
-        // for (let i = 0; i < num.length; i++) {
-        //     if(num[i].comNo == num[i].comNo){
-        //         num[i].comNum++;
-        //     }
-        // }
+    //     // for (let i = 0; i < num.length; i++) {
+    //     //     if(num[i].comNo == num[i].comNo){
+    //     //         num[i].comNum++;
+    //     //     }
+    //     // }
 
 
-    })
+    // })
 
     for (let i = 0; i < c.length; i++) {
         c[i].addEventListener("click", function (e) {
@@ -56,40 +56,56 @@ $(document).ready(function () {
             let dd = e.target.dataset.proname;
             let ee = e.target.dataset.proprice;
 
-            let obj = [{
+            let obj = {
                 comNo: bb,
                 comName: dd,
                 comImg: cc,
                 comNum: 1,
                 comPrice: ee
-            }]
+            }
             tempStore.lipInfo = obj;
-            console.log(tempStore.lipInfo);
+            // console.log(tempStore.lipInfo);
         })
     }
     addIntoCart.addEventListener('click', function () {
-        console.log(tempStore.lipInfo);
-        // localStorage.setItem('shoppingcart', JSON.stringify(tempStore.lipInfo));
-        localStorage.setItem('shoppingcart', tempStore.lipInfo);
+        let num = JSON.parse(localStorage.getItem('shoppingcart')) || [];
+        let total = 0;  //觀察>=9
+        let quan = 0;
 
-        let num = (localStorage.getItem('shoppingcart')) || [];
-
-        for (let i = 0; i < num.length; i++) {
-            if (num[i].comNo == num[i].comNo) {
-                num[i].comNum++;
-
-                if(num == 'shoppingcart'|| []){
-
-                }
-
-            }if (num[i].cumNum == 9) {
-                alert('購買數量已達限制');
-            }else{
-                alert('成功加入購物車');
+        if (num.length > 0) {
+            for (let i = 0; i < num.length; i++) {
+                total += num[i].comNum;
             }
-
+            if (total >= 9) {
+                alert("已達購物車數量上限");
+            } else {
+                checkAdd(num);
+            }
+        } else {
+            num.push(tempStore.lipInfo);
+            localStorage.setItem('shoppingcart', JSON.stringify(num));
         }
     })
+    function checkAdd(num) {
+        let check = 0;
+        for(let i=0; i<num.length; i++){
+            if (num[i].comNo == tempStore.lipInfo.comNo) {
+                num[i].comNum++;
+                localStorage.setItem('shoppingcart', JSON.stringify(num));
+            } else if(num[i].comNo != tempStore.lipInfo.comNo) {
+                check++;
+                goAdd(num, check);
+            }
+        }
+    }
+
+    function goAdd(num, check) {
+        if (check == num.length) {
+            num.push(tempStore.lipInfo);
+            localStorage.setItem('shoppingcart', JSON.stringify(num));
+        }
+    }
+
 
 
 
