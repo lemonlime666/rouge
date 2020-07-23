@@ -80,7 +80,7 @@
                         </select>
                     </form> -->
                         <!-- 商品號 -->
-                        <div class="select-box">
+                        <div class="select-box" @click="selectClose">
                             <div class="select-title" @click="selectOpen">
                                 <span>
                                     <span :style="{backgroundColor : selected}"></span> {{selected}}
@@ -90,8 +90,8 @@
 
                             <ul id="select-list" style="display: none;">
                                 <li class="select-option" v-for="(item, index) in products" v-if="item != ''"
-                                    :data-color="item.PRO_COLOR">
-                                    <span :data-color="item.PRO_COLOR" :data-index="index" @click="colorSelect">
+                                    :data-color="item.PRO_COLOR" :data-index="index" @click="colorSelect">
+                                    <span :data-color="item.PRO_COLOR">
                                         <span :style="{backgroundColor : item.PRO_COLOR}"></span>{{item.PRO_COLOR}}
                                     </span>
                                 </li>
@@ -156,6 +156,7 @@
             <!-- <button class="lag-type-btn"  @click="passcomment">留言</button> -->
         </div>
 
+        
 
     </div>
 
@@ -213,6 +214,26 @@
                         list.style.display = 'block'
                     }
                 },
+                selectClose() {
+                    //點擊自身之外
+                    document.onmouseup = function (e) {
+                        var e = e || window.event;
+                        let list = document.getElementById('select-list')
+                        var target = e.target || e.srcElement;
+                        console.log("target : ",target)
+                        var _tar = document.querySelector('.select-box')//獲取目標元素
+                        console.log("_tar : ",_tar)
+                        if(!(target == _tar) && ! _tar.contains(target) ){
+                            //目標元素之外
+                            
+                            list.style.display = 'none'
+                        }
+                        
+                        
+                    }
+
+                },
+
                 // colorChange(e) {
 
                 //     // console.log(e.target.childNodes)
@@ -227,9 +248,9 @@
                 // },
 
                 colorSelect(e) {
-                    // console.log(e.target)
-                    this.selected = e.target.dataset.color
-                    let i = e.target.dataset.index
+                    // console.log(e.target.closest('li'))
+                    this.selected = e.target.closest('li').dataset.color
+                    let i = e.target.closest('li').dataset.index
                     this.proPrice = this.products[i].PRO_PRICE
                     this.proI = i.toString()
                     this.proImgs = this.products[i].PRO_IMGS.split("|")
@@ -239,7 +260,9 @@
                     } else {
                         list.style.display = 'block'
                     }
+                    
                 },
+
                 goPic(e) { //圖片輪換
                     let boxImg = document.getElementById('box_img')
                     // console.log(boxImg.src)

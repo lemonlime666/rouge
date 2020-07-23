@@ -348,6 +348,9 @@ body{
     background-color: #fff;
     z-index: 99;
     position: relative;
+    font-size: 0;
+    box-sizing: border-box;
+    cursor: pointer;
   }
   
   #select-list{
@@ -391,7 +394,7 @@ body{
     align-items: center;
     height: 40px;
     padding: 5px;
-    cursor: pointer;
+    
     font-size: 18px;
     border: 1px solid black;
     span{
