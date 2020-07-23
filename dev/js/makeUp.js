@@ -344,9 +344,9 @@ $(document).ready(function () {
     })
 
     ctx.strokeStyle = '#9d3333';
-    ctx.lineJoin = 'round';
-    ctx.lineCap = 'round';
-    ctx.lineWidth = 100;
+    // ctx.lineJoin = 'round';
+    // ctx.lineCap = 'round';
+    // ctx.lineWidth = 1000;
 
     let isDrawing = false;
     let lastX = 0;
@@ -370,6 +370,9 @@ $(document).ready(function () {
         if (!isDrawing) return;
         console.log(e)
         ctx.strokeStyle = varM_Color;
+        ctx.lineJoin = 'round';
+        ctx.lineCap = 'round';
+        ctx.lineWidth = 10;
         // ctx.strokeStyle = `hsl(${hue}, 100%, 50%)`;
         ctx.beginPath();
         ctx.moveTo(lastX, lastY);
@@ -382,7 +385,6 @@ $(document).ready(function () {
 
     canvas.addEventListener('mousedown', (e) => {
         isDrawing = true;
-
         [lastX, lastY] = [e.offsetX, e.offsetY];
     });
     canvas.addEventListener('mousemove', draw);
