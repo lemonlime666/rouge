@@ -45,7 +45,7 @@ body {
         display: flex;
         flex-direction: column;
         align-items: flex-start;
-        margin: 55px auto 70px;
+        margin: 55px auto 100px;
         text-align: center;
         position: relative;
         top: 60px;
@@ -234,8 +234,8 @@ body {
                             width: 290px;
                         }
                         img {
-                            width: 70%;
-                            height: auto;
+                            width: auto;
+                            height: 65%;
                             margin: 0 auto;
                             @media screen and(max-width:991px){
                                 width: 50%;
@@ -255,7 +255,7 @@ body {
                                 }
                                 height: 30px;
                                 width: 180px;
-                                margin: 10px auto;
+                                margin: 20px auto 5px;
                                 text-align: center;
                                 color: white;
                                 background-color: $tomato;
