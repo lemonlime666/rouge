@@ -406,14 +406,19 @@ Vue.component('mypostcard', {
                 <p class="mem_text" v-cloak>設計理念:{{design}}</p>
                 <p class="mem_text"v-cloak>參賽日期：{{joinDate}}</p>
                 <p class="mem_text" v-cloak>票數：{{voteSum}}</p>
-                <button @click="toVote">前往參加投票</button>    
+                <button id="going" @click="toVote"></button>    
             </div>
         </div>
     </div>
     `,
     methods:{
             toVote(){
-                window.location='./vote.html'
+                if(document.getElementById("going").innerText=="前往試妝"){
+                    window.location='./makeUpPage.php'
+                }else{
+                    window.location='./vote.html'
+                }
+                
             },
             getData(){
                 let xhr = new XMLHttpRequest();
@@ -423,8 +428,10 @@ Vue.component('mypostcard', {
                         if(xhr.responseText=="請先登入會員"){
                             alert(xhr.responseText+"!!!")
                         }else if(xhr.responseText == "查無資料"){
-                                document.querySelector('.mem_img').innerHTML = "尚未製作您的明信片";
+                            document.getElementById("going").innerText="前往試妝"
+                            document.querySelector('.mem_img').innerHTML = "尚未製作您的明信片";
                         }else{
+                            document.getElementById("going").innerText="前往參加投票";
                             a.memCard = JSON.parse(xhr.responseText);
                             a.src = a.memCard.CARD_URL
                             if(a.memCard.CARD_VOTE==1){
@@ -432,7 +439,11 @@ Vue.component('mypostcard', {
                                 a.joinDate = "未參賽";
                                 a.voteSum = "未參賽";
                             }else{
-                                a.design = a.memCard.CARD_INF;
+                                if(a.memCard.CARD_INF.length>10){
+                                    a.design=a.memCard.CARD_INF.substr(0,10);
+                                }else{
+                                    a.design = a.memCard.CARD_INF;
+                                }
                                 a.joinDate = a.memCard.CARD_VOTEDATE;
                                 a.voteSum = a.memCard.CARD_VOTESUM;
                             }
