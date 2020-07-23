@@ -159,7 +159,13 @@
             <!-- <button class="lag-type-btn"  @click="passcomment">留言</button> -->
         </div>
 
+        <!-- 贈品燈箱 -->
+        <div class="ad-light-box" @click="adClose">
+            <div class="ad-light-content">
+              <img src="./image/ad_1.png" alt="">
+            </div>
         
+        </div>
 
     </div>
 
@@ -174,6 +180,7 @@
         const app = new Vue({
             el: '#content',
             data: {
+                giftsee: '',
                 products: [],
                 series: '',
                 proPrice: '', //商品單價
@@ -196,6 +203,12 @@
                 // n:1,
             },
             methods: {
+                adClose() {
+                    let box = document.querySelector('.ad-light-box')
+                    box.style.display = 'none'
+                    // console.log('111111111')
+
+                },
                 proClick(e) {
                     let i = e.target.dataset.num
                     // console.log(this.products[i].PRO_PRICE)
@@ -355,6 +368,7 @@
                     document.getElementById('procomment').value = '';
                     this.proMessage.push(commentInfo);
 
+
                 }
 
 
@@ -425,6 +439,20 @@
                 var url1 = "./php/message.php?ser=" + localStorage.getItem('lipsname');
                 xhr1.open("get", url1, true);
                 xhr1.send(null);
+
+                //傳入贈品資料
+                // var xhr3 = new XMLHttpRequest();
+                // xhr3.onload = function() {
+                //     if( xhr3.status == 200 ){
+                //         app.$data.giftsee = JSON.parse(xhr3.responseText);
+                //     }else{
+                //         alert( xhr3. status);
+                //         }
+                //     }
+                // var url3 = "./php/shoppingcart.php";
+                // xhr3.open("get", url, true);
+                // xhr3.send(null);
+                
             }
         });
 
