@@ -97,7 +97,7 @@ $(document).ready(function () {
                 goAdd(num, check);
             }
         }
-    }
+    } 
 
     function goAdd(num, check) {
         if (check == num.length) {
