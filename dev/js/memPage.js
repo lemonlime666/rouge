@@ -201,7 +201,7 @@ Vue.component('tab1',{
                     alert(xhr.status);
                 }
             }
-            xhr.open("post", "../php/memPageOrder.php", true);
+            xhr.open("post", "./php/memPageOrder.php", true);
             xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
             let status = this.ord;
             xhr.send(`status=${status}`);
@@ -222,7 +222,7 @@ Vue.component('tab1',{
                     alert(xhr.status);
                 }
             }
-            xhr.open("post", "../php/checkOrderList.php", true);
+            xhr.open("post", "./php/checkOrderList.php", true);
             xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
             let str={
                 ordNo:num,
@@ -289,7 +289,7 @@ Vue.component('tab2',{
                     alert(xhr.status);
                 }
             }
-            xhr.open("post", "../php/memPageOrder.php", true);
+            xhr.open("post", "./php/memPageOrder.php", true);
             xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
             let status = this.ord;
             xhr.send(`status=${status}`);
@@ -310,7 +310,7 @@ Vue.component('tab2',{
                     alert(xhr.status);
                 }
             }
-            xhr.open("post", "../php/checkOrderList.php", true);
+            xhr.open("post", "./php/checkOrderList.php", true);
             xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
             let str={
                 ordNo:num,
@@ -342,7 +342,9 @@ Vue.component('analinfo', {
             <div class="mem_title">
                 <p class="mem_date" v-cloak>測驗日期：{{date}}</p>
                 <h1 class="mem_maintitle" v-cloak>膚質類型：{{title}}</h1>
-                <div class="memPageImgBox" v-cloak>{{src}}</div>
+                <div class="memPageImgBox" v-cloak>
+                    <img :src="src">
+                </div>
                 <p class="mem_exp" v-cloak>{{txt}}</p>
             </div>
             <button class="mem_skincarePd" @click="gotoResult">建議保養步驟與商品</button>
@@ -399,7 +401,7 @@ Vue.component('mypostcard', {
         <div class="mem_createcard">
             <div class="mem_card">
                 <div class="mem_img" >
-                        <img :src="src">
+                        <img :src="src" v-if="this.src!=''">
                 </div>
                 <p class="mem_text" v-cloak>設計理念:{{design}}</p>
                 <p class="mem_text"v-cloak>參賽日期：{{joinDate}}</p>
@@ -411,7 +413,6 @@ Vue.component('mypostcard', {
     `,
     methods:{
             toVote(){
-                
                 window.location='./vote.html'
             },
             getData(){
@@ -422,8 +423,7 @@ Vue.component('mypostcard', {
                         if(xhr.responseText=="請先登入會員"){
                             alert(xhr.responseText+"!!!")
                         }else if(xhr.responseText == "查無資料"){
-                                alert("請先前往試妝~~!");
-                                window.location='./makeUpPage.php';
+                                document.querySelector('.mem_img').innerHTML = "尚未製作您的明信片";
                         }else{
                             a.memCard = JSON.parse(xhr.responseText);
                             a.src = a.memCard.CARD_URL
@@ -436,7 +436,6 @@ Vue.component('mypostcard', {
                                 a.joinDate = a.memCard.CARD_VOTEDATE;
                                 a.voteSum = a.memCard.CARD_VOTESUM;
                             }
-                            console.log(a.memCard.CARD_URL+"----"+ a.src);
                         }
                     }else{
                         alert(xhr.status);

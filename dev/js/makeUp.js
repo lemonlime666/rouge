@@ -38,13 +38,13 @@ $(document).ready(function () {
 
     window.addEventListener("setItemCart", function (e) {
         // console.log(e.key);
-        let num = (localStorage.getItem('shoppingcart')) || []; 
+        // let num = (localStorage.getItem('shoppingcart')) || []; 
 
-        for (i = 0; i < num.length; i++) {
-            if(num[i].comNo == num[i].comNo){
-                num[i].comNum++;
-            }
-        }
+        // for (let i = 0; i < num.length; i++) {
+        //     if(num[i].comNo == num[i].comNo){
+        //         num[i].comNum++;
+        //     }
+        // }
 
 
     })
@@ -69,10 +69,27 @@ $(document).ready(function () {
     }
     addIntoCart.addEventListener('click', function () {
         console.log(tempStore.lipInfo);
-        localStorage.setItem('shoppingcart', JSON.stringify(tempStore.lipInfo));
+        // localStorage.setItem('shoppingcart', JSON.stringify(tempStore.lipInfo));
+        localStorage.setItem('shoppingcart', tempStore.lipInfo);
 
+        let num = (localStorage.getItem('shoppingcart')) || [];
+
+        for (let i = 0; i < num.length; i++) {
+            if (num[i].comNo == num[i].comNo) {
+                num[i].comNum++;
+
+                if(num == 'shoppingcart'|| []){
+
+                }
+
+            }if (num[i].cumNum == 9) {
+                alert('購買數量已達限制');
+            }else{
+                alert('成功加入購物車');
+            }
+
+        }
     })
-
 
 
 
@@ -327,14 +344,13 @@ $(document).ready(function () {
     })
 
     ctx.strokeStyle = '#9d3333';
-    ctx.lineJoin = 'round';
-    ctx.lineCap = 'round';
-    ctx.lineWidth = 6;
+    // ctx.lineJoin = 'round';
+    // ctx.lineCap = 'round';
+    // ctx.lineWidth = 1000;
 
     let isDrawing = false;
     let lastX = 0;
     let lastY = 0;
-    let hue = 100;  // 0;
     let direction = true;
 
     let picker = document.querySelectorAll('.M_pcColor');
@@ -354,6 +370,9 @@ $(document).ready(function () {
         if (!isDrawing) return;
         console.log(e)
         ctx.strokeStyle = varM_Color;
+        ctx.lineJoin = 'round';
+        ctx.lineCap = 'round';
+        ctx.lineWidth = 10;
         // ctx.strokeStyle = `hsl(${hue}, 100%, 50%)`;
         ctx.beginPath();
         ctx.moveTo(lastX, lastY);
@@ -366,38 +385,12 @@ $(document).ready(function () {
 
     canvas.addEventListener('mousedown', (e) => {
         isDrawing = true;
-
         [lastX, lastY] = [e.offsetX, e.offsetY];
     });
     canvas.addEventListener('mousemove', draw);
     canvas.addEventListener('mouseup', () => isDrawing = false);
     canvas.addEventListener('mouseout', () => isDrawing = false);
     // draw end
-
-    // $(window).resize(function() {
-    //     var screen=$(window).width();
-    // })        
-
-    let screen = document.body.clientWidth;
-    if (screen < 768) {
-        // alert(screen)
-        document.getElementById('painter').style.width = "315px";
-        document.getElementById('painter').style.height = "350px";
-    } else {
-        document.getElementById('painter').style.width = "500px";
-        document.getElementById('painter').style.height = "580px";
-    }
-    // if(screen<768){
-    //     // alert(screen)
-    //     document.querySelector('.computer').style.display="hidden";
-    //     document.querySelector('.phone').style.display="block";
-    // }else{
-    //     document.querySelector('.computer').style.display="block";
-    //     document.querySelector('.phone').style.display="hidden";
-    // }
-
-
-
 
 
 });

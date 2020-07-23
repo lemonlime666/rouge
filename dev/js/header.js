@@ -100,6 +100,13 @@ $(document).ready(function () {
                 } else {
                     alert("請先登入會員");
                     document.getElementById("login").style.display = "flex";
+                    if ($("#menu").css("left") == `${0}px`) {
+                        $("#ham").removeClass("open");
+                        $("#menu").animate({
+                                left: `${-100}%`,
+                        },250);
+                        $("#menu").fadeOut(250);
+                    }
                 }
             }
         };
@@ -112,25 +119,23 @@ $(document).ready(function () {
     //側邊選單位置RWD
 
     function sideNavPlace() {
-        let sideNav = $("#sidenav").clone(true);
+        let sideNav = document.getElementById('sidenav');
         let winWidth = window.innerWidth;
         if (winWidth <= 1024) {
             $("#menu .menuMid").append(sideNav);
-            sideNav.removeClass("inCorner");
-            sideNav.addClass("inMenu");
+            sideNav.classList.remove('inCorner');
+            sideNav.setAttribute('class','inMenu');
+        }else if(winWidth >1024){
+            $("#header").append(sideNav);
+            sideNav.classList.remove('inMenu');
+            sideNav.setAttribute('class','inCorner');
         }
     }
     sideNavPlace();
 
     window.addEventListener("resize", () => {
         let winWidth = window.innerWidth;
-        let resizeTimer = setTimeout(() => {
-            if ($("#menu .menuMid #sidenav") && winWidth > 1024) {
-                $("#menu .menuMid #sidenav").remove();
-            } else if ($("#menu .menuMid #sidenav") && winWidth <= 1024) {
-                sideNavPlace();
-            }
-        }, 100);
+        sideNavPlace();
     });
 
     window.addEventListener("resize", () => {

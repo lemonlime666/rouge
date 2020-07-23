@@ -46,7 +46,7 @@ body {
     .timeBlock {
         position: relative;
         display: flex;
-        margin: 5px auto 20px;
+        margin: 5px auto 0px;
         flex-direction: column;
         justify-self: start;
         text-align: center;
@@ -111,7 +111,7 @@ body {
                     width: 50%;
                     margin-right: 10px;
                     margin-left: 10px;
-                    padding: 15px 0px 30px 10px;
+                    padding: 15px 0px 10px 10px;
                 }
                 @media screen and (max-width: 500px) {
                  margin: 20px;
@@ -191,23 +191,23 @@ body {
                 width: 40%;
                 height: 30%;
                 position: relative;
-                @include font-style(26px, $notoSerif,) {}
-                ;
+                @include font-style(26px, $notoSerif,grey) {};
                 @media screen and (max-width: 1199px) {
                     width: 40%;
                     margin-right: 30px;
                 }
                 @media screen and (max-width: 500px) {
                     margin-right: 10px;
-                    @include font-style(25px, $notoSerif, $white) {}
+                    @include font-style(25px, $notoSerif) {}
 
                    }
                    @media screen and (max-width: 450px) {
-                    @include font-style(20px, $notoSerif, $white) {}
+                    @include font-style(20px, $notoSerif) {}
                    }
                 height: 50px;
                 text-transform: uppercase;
-                background: $gold;
+                color:rgba(239,239,239,.6);
+                background: grey;
                 border: none;
                 transform-style: preserve-3d;
                 transition: transform 150ms linear;
@@ -219,19 +219,18 @@ body {
                     position: absolute;
                     content: '';
                     width: 91%;
-                    height: 82%;
-                    top: 0;
+                    height: 73%;
                     left: 0;
                     right: 0;
-                    bottom: 0;
-                    background: $grey5;
+                    bottom: 13px;
+                    background: #444444;
                     border-radius: 0.75em;
-                    box-shadow: 10px 10px 10px $grey5;
+                    box-shadow: 10px 10px 10px #525252;
                     transform: translate3d(0.5em, 0.5em, -1em);
                     transition: transform 150ms cubic-bezier(0, 0, 0.58, 1), box-shadow 150ms cubic-bezier(0, 0, 0.58, 1);
                 }
                 &:hover {
-                    background: $gold;
+                    background: grey;
                     transform: translate(0, 0.25em);
                     &::before {
                         box-shadow: 10px 10px 10px $grey5;
@@ -239,7 +238,7 @@ body {
                     }
                 }
                 &:active {
-                    background: $milkt;
+                    background: grey;
                     transform: translate(0em, 0.75em);
                     &::before {
                         box-shadow: 10px 10px 10px $grey5;
@@ -297,7 +296,7 @@ body {
             }
             img {
                 width: 100px;
-                height: 100px;
+                height: 115px;
                 position: relative;
                 @media screen and(max-width: 450px) {
                     width: 60px;
@@ -360,29 +359,29 @@ body {
                         width: 115px;
                     }
                     p{
-                        margin-top: 10px;
-                        @include font-style(12px, $notoSerif, $grey5) {}
+                        margin-top: 6px;
+                        @include font-style(16px, $notoSerif, $grey5) {}
                         @media screen and(max-width: 450px) {
                                 margin-top: 0px;
-    
+                                font-size: 14px;
                             }
                     }
                         align-items: center;
                         cursor: pointer;
                         width: 140px;
-                        height: 40px;
+                        height: 35px;
                         text-align: center;
                         margin-top: 10px;
                         background-color: rgba(239,239,239,.8);
                         border: none;
                         outline: none;
+                        @include font-style(16px, $notoSerif, $grey5) {}
                         transition: background-color 0.5s,color .5;
                         &:hover {
                         background-color: #AE5F5F;
                         transition: background-color 0.5s,color .5s;
                         p{
                             color: $white;
-
                                 // @media screen and(max-width: 450px) {
                                 //     @include font-style(12px, $notoSerif, $grey5) {}
                                 //     margin-top: 0px;
@@ -393,12 +392,11 @@ body {
                     }
                 a{
                     p{
-                        @include font-style(15px, $notoSerif, $grey5) {}
-                        margin-top: 10px;
+                        @include font-style(16px, $notoSerif, $grey5) {}
+                        margin-top: 6px;
                         @media screen and(max-width: 450px) {
-                            font-size: 12px;
+                            font-size: 14px;
                             margin-top: 0;
-
                         }
                     }
                     
@@ -501,11 +499,11 @@ body {
             }
         }
     }
-    @media screen and (max-width: 400px) {
+    @media screen and (max-width: 450px) {
         width: 60px;
         height: 150px;
         font-size: 15px;
-    
+        // @include font-style(20px, $notoSerif, black, $default-fweight) {}
     }
 }
 #anyl-background1{
