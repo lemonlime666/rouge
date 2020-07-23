@@ -48,19 +48,20 @@ $(document).ready(function () {
         let num = JSON.parse(localStorage.getItem('shoppingcart')) || [];
         let total = 0;  //觀察>=9
         let quan = 0;
-
-        if (num.length > 0) {
-            for (let i = 0; i < num.length; i++) {
-                total += num[i].comNum;
-            }
-            if (total >= 9) {
-                alert("已達購物車數量上限");
+        if(tempStore.lipInfo){
+            if (num.length > 0) {
+                for (let i = 0; i < num.length; i++) {
+                    total += num[i].comNum;
+                }
+                if (total >= 9) {
+                    alert("已達購物車數量上限");
+                } else {
+                    checkAdd(num);
+                }
             } else {
-                checkAdd(num);
+                num.push(tempStore.lipInfo);
+                localStorage.setItem('shoppingcart', JSON.stringify(num));
             }
-        } else {
-            num.push(tempStore.lipInfo);
-            localStorage.setItem('shoppingcart', JSON.stringify(num));
         }
     })
     function checkAdd(num) {
