@@ -41,7 +41,6 @@ $(document).ready(function () {
                 comPrice: ee
             }
             tempStore.lipInfo = obj;
-            console.log(tempStore.lipInfo);
         })
     }
     addIntoCart.addEventListener('click', function () {
