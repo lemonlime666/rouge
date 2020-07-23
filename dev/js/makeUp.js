@@ -346,12 +346,11 @@ $(document).ready(function () {
     ctx.strokeStyle = '#9d3333';
     ctx.lineJoin = 'round';
     ctx.lineCap = 'round';
-    ctx.lineWidth = 6;
+    ctx.lineWidth = 100;
 
     let isDrawing = false;
     let lastX = 0;
     let lastY = 0;
-    let hue = 100;  // 0;
     let direction = true;
 
     let picker = document.querySelectorAll('.M_pcColor');
@@ -390,23 +389,6 @@ $(document).ready(function () {
     canvas.addEventListener('mouseup', () => isDrawing = false);
     canvas.addEventListener('mouseout', () => isDrawing = false);
     // draw end
-
-    // $(window).resize(function() {
-    //     var screen=$(window).width();
-    // })        
-
-    let screen = document.body.clientWidth;
-    if (screen < 768) {
-        // alert(screen)
-        document.getElementById('painter').style.width = "315px";
-        document.getElementById('painter').style.height = "350px";
-    } else {
-        document.getElementById('painter').style.width = "65%";
-        document.getElementById('painter').style.height = "80vh";
-    }
-
-
-
 
 
 });
