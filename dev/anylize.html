@@ -90,7 +90,7 @@
         </div>
             <div class="anyl-button" onclick="getmember()">
                 <p>專業保養分析</p>
-                <p>ANYLIZE</p>
+                <p>ANALYZE</p>
             </div>
     </main>
 
@@ -178,7 +178,7 @@
                     if(this.getItems.length == 0){
                         this.getItems.push(copy);
                         localStorage['shoppingcart'] = JSON.stringify(this.getItems);    
-                        }else {
+                        }else if(this.getItems.length < 9){
                             let x = 0;
                             for( let i=0 ; i < this.getItems.length;i++){
                                 if(this.proCommit.comNo ==  this.getItems[i].comNo){
@@ -193,6 +193,8 @@
                             }else{
                                 localStorage['shoppingcart'] = JSON.stringify(this.getItems);
                             };
+                        }else{
+                            alert('商品數量已達上限')
                         };     
                     },
                     goProduct(serno){
@@ -335,15 +337,15 @@
 
             if (uploadHour >= 18 | uploadHour <= 6) {
                 // transform: translate(0em, 0.5em);
-                document.getElementById('anylNight').style.cssText = "background-color: #C0A57C;"
+                document.getElementById('anylNight').style.cssText = "background-color: #C0A57C;color:rgba(239,239,238,.9)"
             } else {
-                document.getElementById('anylSun').style.cssText = "background-color: #C0A57C;"
+                document.getElementById('anylSun').style.cssText = "background-color: #C0A57C;color:rgba(239,239,238,.9)"
             }
             
             if (todatMonth <= 7) {
-                document.getElementById('anyl_1to6').style.cssText = "background-color: #C0A57C;"
+                document.getElementById('anyl_1to6').style.cssText = "background-color: #C0A57C;color:rgba(239,239,238,.9)"
             } else {
-                document.getElementById('anyl_7to12').style.cssText = "background-color: #C0A57C;"
+                document.getElementById('anyl_7to12').style.cssText = "background-color: #C0A57C;color:rgba(239,239,238,.9)"
 
             }
 
@@ -353,25 +355,25 @@
             var anyl_7to12 = document.getElementById('anyl_7to12');
             anylSun.addEventListener('click', function() {
 
-                this.style.cssText = "background-color: #C0A57C;";
-                document.getElementById('anylNight').style.cssText = "background-color: $darkGold;";
+                this.style.cssText = "background-color: #C0A57C;color:rgba(239,239,238,.9)";
+                document.getElementById('anylNight').style.cssText = "background-color: $gold;";
 
             });
             anylNight.addEventListener('click', function() {
-                this.style.cssText = "background-color: #C0A57C;";
-                document.getElementById('anylSun').style.cssText = "background-color: $darkGold";
+                this.style.cssText = "background-color: #C0A57C;color:rgba(239,239,238,.9)";
+                document.getElementById('anylSun').style.cssText = "background-color: $gold";
 
 
             });
             anyl_1to6.addEventListener('click', function() {
-                this.style.cssText = "background-color: #C0A57C;";
-                document.getElementById('anyl_7to12').style.cssText = "background-color: $darkGold";
+                this.style.cssText = "background-color: #C0A57C;color:rgba(239,239,238,.9)";
+                document.getElementById('anyl_7to12').style.cssText = "background-color: $gold";
 
             });
             anyl_7to12.addEventListener('click', function() {
                 // transform: translate(0em, 0.5em);
-                this.style.cssText = "background-color: #C0A57C;";
-                document.getElementById('anyl_1to6').style.cssText = "background-color: $darkGold";
+                this.style.cssText = "background-color: #C0A57C;color:rgba(239,239,238,.9)";
+                document.getElementById('anyl_1to6').style.cssText = "background-color: $gold";
 
             });
 
