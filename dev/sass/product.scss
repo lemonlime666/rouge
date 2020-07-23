@@ -144,7 +144,7 @@ body{
                             left: 0;
                             width:100%;
                             height: 100%;
-                            
+                            cursor: pointer;
                             object-fit: cover;
                         }
                     }
@@ -199,6 +199,12 @@ body{
                         select{
                             width: 100%;
                             height: 40px;
+                            font-size: 16px;
+                            .color-name{
+                                height: 20px;
+                                width: 20px;
+                                border-radius: 9px;
+                            }
                         }
                     }
                     .pro_number{
@@ -208,6 +214,7 @@ body{
                         select{
                             width: 100%;
                             height: 40px;
+                            font-size: 16px;
                         }
                     }
                     .por_price{
@@ -215,9 +222,17 @@ body{
                         width: 20%;
                         height: 40px;
                         color: #EFEFEF;
+                        position: relative;
                         h3{
                             text-align: center;
                             white-space:nowrap;
+                        }
+                        .origin-price{
+                            position: absolute;
+                            top: -100%;
+                            right: -5%;
+                            text-decoration: line-through;
+                            color: #b4b4b46c;
                         }
                     }
                 }
@@ -334,3 +349,71 @@ body{
 
 
 
+/*select*/
+.select-box{
+    
+    width: 300px;
+    background-color: #fff;
+    z-index: 99;
+    position: relative;
+    font-size: 0;
+    box-sizing: border-box;
+    cursor: pointer;
+  }
+  
+  #select-list{
+    width: 100%;
+    position: absolute;
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+    border-bottom: 1px solid black;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+
+
+  }
+  .select-option{
+    width: 100%;
+    height: 40px;
+    // border: 1px solid green;
+    line-height: 30px;
+    padding: 5px;
+    &:hover{
+        background-color: rgb(68, 68, 245);
+        color: #fff;
+    }
+    
+  }
+  .select-option span{
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+  }
+  .select-option span span{
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    
+    display: inline-flex;
+  }
+  .select-title{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 40px;
+    padding: 5px;
+    
+    font-size: 18px;
+    border: 1px solid black;
+    span{
+        display: flex;
+        align-items: center;
+        span{
+            width: 20px;
+            height: 20px;
+            border-radius: 10px;
+            display: inline-flex;
+            margin-right: 10px;
+        }
+    }
+  }

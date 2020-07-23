@@ -42,6 +42,8 @@ html {
             
             color: black;
             border-bottom: 1px solid black;
+            font-family:Noto Serif TC;
+            
         }
         
 
@@ -57,7 +59,7 @@ html {
         h4{
             margin-bottom: 30%;
             color: black;
-            
+            font-family:Noto Serif TC;
             border-bottom: 1px solid black;
         }
 
@@ -74,7 +76,7 @@ html {
         h4{
             margin-bottom: 30%;
             color: black;
-            
+            font-family:Noto Serif TC;
             border-bottom: 1px solid black;
         }
     }
@@ -117,11 +119,14 @@ html {
                 span{
                     white-space: nowrap;
                     position: absolute;
-                    top:-5%;
+                    top:1%;
                     left: -5%;
-                    z-index: 1;
+                    z-index: 3;
                     h2{
                         color: #EFEFEF;
+                        font-family:Noto Serif TC;
+                        opacity: .4;
+                        z-index: 2;
                     }
 
 
@@ -175,9 +180,12 @@ html {
                     bottom: -5%;
                     right: -5%;
                     text-align: end;
-                    z-index: 1;
+                    z-index: 2;
                     h2{
                         color: #EFEFEF;
+                        font-family:Noto Serif TC;
+                        opacity: .4;
+                        z-index: 2;
                     }
 
 

@@ -129,12 +129,14 @@ button{
             height: 100%;
             // background-color: rgb(241, 193, 176);
             display: flex;
-              align-items: center;
-              justify-content: center;
-              input{
-                width: 60%;
-                max-width: 80px;
-                height: 25px;
+            align-items: center;
+            justify-content: center;
+              button{
+                width: 22px;
+                height: 22px;
+              }
+              div{
+                padding: 5px;
               }
   
           }
@@ -294,7 +296,7 @@ body .shop-main {
 .address-box{
   border: 1px solid rgba(225, 208, 161, 0.5);
   min-width: 350px;
-  min-height: 150px;
+  min-height: 225px;
   width: 30vw;
   height: 15vw;
   background-color: #fff;
@@ -332,3 +334,6 @@ body .shop-main {
   top:0;
   right: 0;
 }
+
+
+//贈品細項

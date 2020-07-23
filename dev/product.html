@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,14 +9,15 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.js"></script>
 </head>
+
 <body>
     @@include("./app/header.html")
-    
+
     <!--動畫-->
     <div class="pro-out">
-        
+
         <div class="pro-back pro-back-animate">
-        
+
         </div>
 
     </div>
@@ -23,78 +25,106 @@
     <div class="content" id="content">
         <div class="breadcrumb">
             <ol class="breadcrumb_list xsfont">
-              <li><a href="./door.html">SHOP</a></li>
-              <li><a href="./light-lips.html">LIPSTICK</a></li>
-              <li>{{seriename}}</li>
+                <li><a href="./door.html">SHOP</a></li>
+                <li><a href="./light-lips.html">LIPSTICK</a></li>
+                <li>{{seriename}}</li>
             </ol>
         </div>
         <div class="pro-block">
 
-        
-        <section class="pro1">
-            <div class="pro1_content">
-                <div class="pro_text">
-                    <h2 class="lfont">{{seriename}}</h2>
-                    <p class="xsfont">{{serietext}}</p>
-                </div>
-                <div class="pro_pic" id="pro_pic">
-                    <!--商品欄位-->
-                    <div class="pro_img" v-for="(item, index) in products">
-                        <img :src="item.PRO_IMG" alt="" :id="[`pro` + item.PRO_NO]" @click="proClick" :data-num="index">
+
+            <section class="pro1">
+                <div class="pro1_content">
+                    <div class="pro_text">
+                        <h2 class="lfont">{{seriename}}</h2>
+                        <p class="xsfont">{{serietext}}</p>
                     </div>
-                    
-                   
-                </div>
-            </div>
-            
-        </section>
-        <section class="pro2">
-            <div class="pro2_content">
-                <!-- 商品輪播圖 -->
-                <div class="box">
-                    <div class="box_img">
-                        <img :src="proImgs[0]" alt="" id="box_img">
-                    </div>
-                    <div class="pro_btn">
-                        <div class="pro_btn_top pro_btn_c" data-control="last" @click="goPic">
-                            <img :src="proImgs[0]" alt="">
+                    <div class="pro_pic" id="pro_pic">
+                        <!--商品欄位-->
+                        <div class="pro_img" v-for="(item, index) in products">
+                            <img :src="item.PRO_IMG" alt="" :id="[`pro` + item.PRO_NO]" @click="proClick"
+                                :data-num="index">
                         </div>
-                        <div class="pro_btn_down pro_btn_c" data-control="next" @click="goPic">
-                            <img :src="proImgs[1]" alt="">
-                        </div>
+
+
                     </div>
                 </div>
-                <div class="pro_top">
-                    <!-- 商品號 -->
-                    <form class="pro_color">
+
+            </section>
+            <section class="pro2">
+                <div class="pro2_content">
+                    <!-- 商品輪播圖 -->
+                    <div class="box">
+                        <div class="box_img">
+                            <img :src="proImgs[0]" alt="" id="box_img">
+                        </div>
+                        <div class="pro_btn">
+                            <div class="pro_btn_top pro_btn_c" data-control="last" @click="goPic">
+                                <img :src="proImgs[0]" alt="">
+                            </div>
+                            <div class="pro_btn_down pro_btn_c" data-control="next" @click="goPic">
+                                <img :src="proImgs[1]" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pro_top">
+                        <!-- 商品號 -->
+                        <!-- <form class="pro_color">
                         <select name="" v-model="selected" @change="colorChange">
-                            <option v-for="(item, index) in products" v-if="item != ''" :value="item.PRO_COLOR" :data-color="index">{{item.PRO_COLOR}}</option>
+                            
+                            <option v-for="(item, index) in products" v-if="item != ''" :value="item.PRO_COLOR" :data-color="index">
+                                
+                                <span>{{item.PRO_COLOR}}</span>
+                            </option>
                             
                         </select>
-                    </form>
-                    <!-- 商品數量 -->
-                    <form class="pro_number">
-                        <select name="" id="" v-model="proNum">
-                            <option v-for="n in 9" :data-num="n">{{n}}</option>
-                            
-                        </select>
-                    </form>
-                    
-                    <div class="por_price">
-                        <h3 class="lfont">$ {{totalPrice}}</h3>
+                    </form> -->
+                        <!-- 商品號 -->
+                        <div class="select-box" @click="selectClose">
+                            <div class="select-title" @click="selectOpen">
+                                <span>
+                                    <span :style="{backgroundColor : selected}"></span> {{selected}}
+                                </span>
+                                <span class="select-btn">按鈕</span>
+                            </div>
+
+                            <ul id="select-list" style="display: none;">
+                                <li class="select-option" v-for="(item, index) in products" v-if="item != ''"
+                                    :data-color="item.PRO_COLOR" :data-index="index" @click="colorSelect">
+                                    <span :data-color="item.PRO_COLOR">
+                                        <span :style="{backgroundColor : item.PRO_COLOR}"></span>{{item.PRO_COLOR}}
+                                    </span>
+                                </li>
+
+
+                            </ul>
+                        </div>
+                        <!-- 商品數量 -->
+                        <form class="pro_number">
+                            <select name="" id="" v-model="proNum">
+                                <option v-for="n in 9" :data-num="n">{{n}}</option>
+
+                            </select>
+                        </form>
+
+                        <div class="por_price">
+                            <!-- 時價 -->
+                            <h3 class="lfont">$ {{totalPrice}}</h3>
+                            <!-- 原價 -->
+                            <h3 class="lfont origin-price">$ {{originTotalPrice}}</h3>
+                        </div>
+                    </div>
+                    <div class="pro_down">
+                        <!-- 加入購物車 -->
+                        <button class="addcart" @click="addChart">ADD TO CART</button>
+                        <div class="test_color">
+                            <a class="mfont" href="./makeUpPage.php">口紅試色</a>
+                        </div>
                     </div>
                 </div>
-                <div class="pro_down">
-                    <!-- 加入購物車 -->
-                    <button class="addcart" @click="addChart">ADD TO CART</button>
-                    <div class="test_color">
-                        <a class="mfont" href="./makeUpPage.php">口紅試色</a>
-                    </div>
-                </div>
-            </div>
-                
-            
-        </section>
+
+
+            </section>
         </div>
         <!-- 商品留言 -->
         <div class="lag-content" v-for="(item, index) in proMessage">
@@ -104,41 +134,42 @@
                         <img src="./image/menu1.jpg">
                     </span>
                 </div>
-    
+
             </div>
             <div class="lag-val">
                 <div class="lag-id">{{item.MEM_NAME}}</div>
                 <div class="lag-time">{{item.MES_DATE}}</div>
-    
+
             </div>
             <div class="lag-ent">
                 <div class="ent-content">
                     {{item.MES_TEXT}}
                 </div>
-                
+
             </div>
-            
+
         </div>
-        
+
         <div class="lag-type">
-            <form >
+            <form>
                 <textarea class="lag-type-content" id="procomment"></textarea>
                 <!-- <input type="text" class="lag-type-content" placeholder="商品留言"> -->
-                <button class="lag-type-btn"  @click="passcomment">留言</button>
+                <button class="lag-type-btn" @click="passcomment">留言</button>
             </form>
             <!-- <button class="lag-type-btn"  @click="passcomment">留言</button> -->
-        </div>    
+        </div>
+
         
-        
+
     </div>
- 
+
     <script>
 
         let proBack = document.querySelector(".pro-out");
-        setTimeout(function(){
+        setTimeout(function () {
             proBack.style.display = "none";
 
-        },2000);
+        }, 2000);
 
         const app = new Vue({
             el: '#content',
@@ -146,20 +177,21 @@
                 products: [],
                 series: '',
                 proPrice: '', //商品單價
+                proOrigin: '',//商品原價
                 selected: '', //商品色票
                 proNum: '', //商品數量
                 proImgs: '', //圖片編號
                 proI: '', //商品編號
-                proMessage:'', //商品留言
-                seriename:'', //系列名稱
-                serietext:'', //系列介紹
-                proCommit:{   
-                        comNo:'', //商品編號
-                        comName:'', //商品名稱
-                        comImg: '', //小圖片路徑
-                        comNum: '', //商品數量
-                        comPrice: '', //商品單價  
-                    },
+                proMessage: '', //商品留言
+                seriename: '', //系列名稱
+                serietext: '', //系列介紹
+                proCommit: {
+                    comNo: '', //商品編號
+                    comName: '', //商品名稱
+                    comImg: '', //小圖片路徑
+                    comNum: '', //商品數量
+                    comPrice: '', //商品單價  
+                },
                 totalCommit: [],
                 // n:1,
             },
@@ -171,27 +203,72 @@
                     this.proI = i
                     //改變商品價格
                     this.proPrice = this.products[i].PRO_PRICE
+                    //改變商品原價
+                    this.proOrigin = this.products[i].ORIGIN_PRICE
                     //改變色票編號
                     this.selected = this.products[i].PRO_COLOR
                     //改變圖片編號
-                    
                     this.proImgs = this.products[i].PRO_IMGS.split("|")
 
                 },
-                colorChange(e) {
-                    
-                    // console.log(e.target.childNodes)
-                    for(let i=0; i<e.target.childNodes.length; i++){
-                        if(e.target.childNodes[i].selected == true){
-                            this.proPrice = this.products[i].PRO_PRICE
-                            this.proI = i
-                        }
+                selectOpen() {
+                    let list = document.getElementById('select-list')
+                    if (list.style.display == 'block') {
+                        list.style.display = 'none'
+                    } else {
+                        list.style.display = 'block'
                     }
-                    // let i = e.target.dataset.color;
-                    // console.log('111111')
-                    // this.proPrice = this.products[i].PRO_PRICE
+                },
+                selectClose() {
+                    //點擊自身之外
+                    document.onmouseup = function (e) {
+                        var e = e || window.event;
+                        let list = document.getElementById('select-list')
+                        var target = e.target || e.srcElement;
+                        console.log("target : ",target)
+                        var _tar = document.querySelector('.select-box')//獲取目標元素
+                        console.log("_tar : ",_tar)
+                        if(!(target == _tar) && ! _tar.contains(target) ){
+                            //目標元素之外
+                            
+                            list.style.display = 'none'
+                        }
+                        
+                        
+                    }
 
                 },
+
+                // colorChange(e) {
+
+                //     // console.log(e.target.childNodes)
+                //     for(let i=0; i<e.target.childNodes.length; i++){
+                //         if(e.target.childNodes[i].selected == true){
+                //             this.proPrice = this.products[i].PRO_PRICE
+                //             this.proI = i.toString()
+                //             this.proImgs = this.products[i].PRO_IMGS.split("|")
+                //         }
+                //     }
+
+                // },
+
+                colorSelect(e) {
+                    // console.log(e.target.closest('li'))
+                    this.selected = e.target.closest('li').dataset.color
+                    let i = e.target.closest('li').dataset.index
+                    this.proPrice = this.products[i].PRO_PRICE //價格
+                    this.proOrigin = this.products[i].ORIGIN_PRICE //原價
+                    this.proI = i.toString() //編號
+                    this.proImgs = this.products[i].PRO_IMGS.split("|") //圖片
+                    let list = document.getElementById('select-list')
+                    if (list.style.display == 'block') {
+                        list.style.display = 'none'
+                    } else {
+                        list.style.display = 'block'
+                    }
+                    
+                },
+
                 goPic(e) { //圖片輪換
                     let boxImg = document.getElementById('box_img')
                     // console.log(boxImg.src)
@@ -208,36 +285,36 @@
                     this.proCommit.comImg = this.products[i].PRO_IMG
                     this.proCommit.comPrice = this.products[i].PRO_PRICE
                     this.proCommit.comNum = parseInt(this.proNum)
-                    
+
                     //判斷條件
                     //如果購物車內有相同的系列編號
 
-                    for(let i=0; i<this.totalCommit.length; i++){
-                        if(this.totalCommit[i].comNo === this.proCommit.comNo){
-                            
+                    for (let i = 0; i < this.totalCommit.length; i++) {
+                        if (this.totalCommit[i].comNo === this.proCommit.comNo) {
+
                             this.proCommit.comNum = this.totalCommit[i].comNum + this.proCommit.comNum //將數量放到初始值
                             //判斷商品數量<9
 
-                            if(this.proCommit.comNum > 9){
+                            if (this.proCommit.comNum > 9) {
                                 this.proCommit.comNum = 9
                                 alert("此商品數量已達上限")
 
                             }
 
-                            var theDoubleOneIndex=this.totalCommit.indexOf(this.totalCommit[i]);//找到某物件的位置
-                            this.totalCommit.splice(theDoubleOneIndex,1);//刪除陣列本身的相同物件
+                            var theDoubleOneIndex = this.totalCommit.indexOf(this.totalCommit[i]);//找到某物件的位置
+                            this.totalCommit.splice(theDoubleOneIndex, 1);//刪除陣列本身的相同物件
 
                         }
                     }
-                    
-                        
+
+
                     // console.log(this.proCommit)
                     const copy = Object.assign({}, this.proCommit) //複製物件
                     this.totalCommit.push(copy)
                     console.log(this.totalCommit)
                     localStorage['shoppingcart'] = JSON.stringify(this.totalCommit)
                 },
-                passcomment(e){
+                passcomment(e) {
                     let talkContent = $("#procomment").val();
                     var obj = document.getElementById("LoginSignup");
                     e.preventDefault();
@@ -249,7 +326,7 @@
                         MES_TEXT: document.getElementById('procomment').value,
 
                     };
-                    
+
 
                     let str = JSON.stringify(commentInfo); //commentInfo轉成JSON格式字串
                     if (obj.innerHTML !== "LOGOUT") {
@@ -261,93 +338,98 @@
                         return;
                     }
 
-                   
-                    let xhr2 =new XMLHttpRequest();
+
+                    let xhr2 = new XMLHttpRequest();
                     xhr2.onload = function () {
                         if (xhr2.status == 200) {
-                          alert(xhr2.responseText);
-                        }else{
-                            
+                            alert(xhr2.responseText);
+                        } else {
+
                         }
                     }
                     xhr2.open("post", "./php/comment.php", true);
                     xhr2.setRequestHeader("content-type", "application/x-www-form-urlencoded");
-                    let procom = `commentInfo=`+str; //將JSON格式字串儲存進陣列中
+                    let procom = `commentInfo=` + str; //將JSON格式字串儲存進陣列中
                     xhr2.send(procom); //傳遞JSON至PHP
                     //將登入表單上的資料清空
                     document.getElementById('procomment').value = '';
-                    this.proMessage.push(commentInfo);                  
-                
+                    this.proMessage.push(commentInfo);
+
                 }
 
-                
+
             },
             beforeUpdate() {
-                while(this.products.length < 8){
+                while (this.products.length < 8) {
                     this.products.push('');
-                    }
-    
+                }
+
 
             },
             computed: {
-                totalPrice(){
-                    return this.proPrice*this.proNum;
+                totalPrice() {
+                    return this.proPrice * this.proNum;
                 },
-                
-            },
-            
-            
-            
-                
-            mounted() { 
-              if(localStorage['shoppingcart'] == null || ""){ //假如localstorage為空值
-                this.totalCommit =[]
-              }else{
-                this.totalCommit = JSON.parse(localStorage.getItem('shoppingcart')) //抓取localstorage中的購物車字串並轉為物件
-              }
-              
-              
-              let ser = localStorage.getItem('lipsname')
-              console.log(ser)
-              
-              var xhr = new XMLHttpRequest();
-            xhr.onload = function (){
-                if( xhr.status == 200 ){ //連線成功
-                    
-                    app.$data.products = JSON.parse(xhr.responseText); //將導出的物件存入data中
-                    app.$data.proPrice = app.$data.products[0].PRO_PRICE //給預設第一項商品單價
-                    app.$data.proNum = 1 //給預設第一項商品數量
-                    app.$data.selected = app.$data.products[0].PRO_COLOR //給預設第一項商品色票
-                    app.$data.proImgs = app.$data.products[0].PRO_IMGS.split("|")
-                    app.$data.seriename = app.$data.products[0].SER_NAME //給預設的系列名稱
-                    app.$data.serietext = app.$data.products[0].SER_TEXT //給預設的系列介紹
-                    app.$data.proI = app.$data.products[0].SER_NO - 1 //給預設的系列編號
-                }else{ 
-                    alert( xhr.status );
+                originTotalPrice() {
+                    return this.proOrigin * this.proNum;
                 }
-                
-              }
-              var url = "./php/poduct.php?SER_NO="+ser; //設定PHP位置
-                xhr.open("get", url, true);
-                xhr.send( null );  
 
-                
-                var xhr1 = new XMLHttpRequest();
-                xhr1.onload = function (){
-                    if( xhr1.status == 200 ){ //連線成功
-                        app.$data.proMessage = JSON.parse(xhr1.responseText);
-                    }else{
-                        alert( xhr1.status );
-                    }
-                
+            },
+
+
+
+
+            mounted() {
+                if (localStorage['shoppingcart'] == null || "") { //假如localstorage為空值
+                    this.totalCommit = []
+                } else {
+                    this.totalCommit = JSON.parse(localStorage.getItem('shoppingcart')) //抓取localstorage中的購物車字串並轉為物件
                 }
-                var url1 = "./php/message.php?ser="+localStorage.getItem('lipsname');
+
+
+                let ser = localStorage.getItem('lipsname')
+                console.log(ser)
+
+                var xhr = new XMLHttpRequest();
+                xhr.onload = function () {
+                    if (xhr.status == 200) { //連線成功
+
+                        app.$data.products = JSON.parse(xhr.responseText); //將導出的物件存入data中
+                        app.$data.proPrice = app.$data.products[0].PRO_PRICE //給預設第一項商品單價
+                        app.$data.proOrigin = app.$data.products[0].ORIGIN_PRICE //給預設第一項商品原價
+                        app.$data.proNum = 1 //給預設第一項商品數量
+                        app.$data.selected = app.$data.products[0].PRO_COLOR //給預設第一項商品色票
+                        app.$data.proImgs = app.$data.products[0].PRO_IMGS.split("|")
+                        app.$data.seriename = app.$data.products[0].SER_NAME //給預設的系列名稱
+                        app.$data.serietext = app.$data.products[0].SER_TEXT //給預設的系列介紹
+                        app.$data.proI = app.$data.products[0].SER_NO - 1 //給預設的系列編號
+                    } else {
+                        alert(xhr.status);
+                    }
+
+                }
+                var url = "./php/poduct.php?SER_NO=" + ser; //設定PHP位置
+                xhr.open("get", url, true);
+                xhr.send(null);
+
+
+                var xhr1 = new XMLHttpRequest();
+                xhr1.onload = function () {
+                    if (xhr1.status == 200) { //連線成功
+                        app.$data.proMessage = JSON.parse(xhr1.responseText);
+                    } else {
+                        alert(xhr1.status);
+                    }
+
+                }
+                var url1 = "./php/message.php?ser=" + localStorage.getItem('lipsname');
                 xhr1.open("get", url1, true);
-                xhr1.send( null );
+                xhr1.send(null);
             }
         });
-        
+
     </script>
     <script src="./js/header.js"></script>
 </body>
+
 </html>
