@@ -215,9 +215,18 @@ body{
                         width: 20%;
                         height: 40px;
                         color: #EFEFEF;
+                        position: relative;
                         h3{
                             text-align: center;
                             white-space:nowrap;
+                        }
+                        .origin-price{
+                            position: absolute;
+                            top: -90%;
+                            right: -5%;
+                            text-decoration: line-through;
+                            color: #b4b4b4d3;
+                            font-size: 35px;
                         }
                     }
                 }

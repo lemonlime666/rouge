@@ -105,11 +105,12 @@
         </div>
        <!-- 贈品說明 -->
        <div class="gift-des">
-          <div v-for="item in gifts" class="gift-details">
+          <div v-for="item in gifts" class="gift-details" v-if="item.GIF_CONDI > totalprice">
             滿  {{item.GIF_CONDI}}  送  {{item.GIF_NAME}}
           </div>
           <div v-if="lastgift != '0'" class="gift-gap">
-            距離獲得{{lastgift.GIF_NAME}}，您還差${{lastgift.GIF_CONDI - totalprice}}
+
+            距離獲得 <span>{{lastgift.GIF_NAME}}</span>，您還差 <span>${{lastgift.GIF_CONDI - totalprice}}</span>
           </div>
        </div>
         <!--總價-->
@@ -133,7 +134,12 @@
 
       </div>
     </div>
-    <h2 v-else>請加入商品</h2>
+    <!-- 購物車為空 -->
+    <div v-else class="go-shop">
+      <h2>請加入商品</h2>
+      <button><a href="./door.html">購物頁面</a></button>
+    </div>
+    
     <!-- 填選地址燈箱 -->
     <div class="address-box-back" id="address-box-back" @click="closeBox">
       <div class="address-box" @click="innerStop">

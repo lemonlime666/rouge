@@ -85,7 +85,7 @@
                                 <span>
                                     <span :style="{backgroundColor : selected}"></span> {{selected}}
                                 </span>
-                                <span class="select-btn">按鈕</span>
+                                <span class="select-btn"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAAMCAYAAABvEu28AAAABHNCSVQICAgIfAhkiAAAAIdJREFUKFON090NgCAMBOBjMkdRJhM2cTTT2CNNoVJfjMB9/BQLvucCcACo+p19NQAPgFYUuTUpHVlMxp6aqwLZBmnPYD7TBWKY+g6bENkVoSy2RCRsoR0WIisowlhZVrNrkUZ1/YrY4We312FCohX9YUtkB/lthkgGIubPaLr50Rllf5Ex7gVPECANGbomzAAAAABJRU5ErkJggg==" alt=""></span>
                             </div>
 
                             <ul id="select-list" style="display: none;">
@@ -111,7 +111,7 @@
                             <!-- 時價 -->
                             <h3 class="lfont">$ {{totalPrice}}</h3>
                             <!-- 原價 -->
-                            <h3 class="lfont origin-price">$ {{originTotalPrice}}</h3>
+                            <h3 class="lfont origin-price" v-if="totalPrice != originTotalPrice">$ {{originTotalPrice}}</h3>
                         </div>
                     </div>
                     <div class="pro_down">

@@ -19,11 +19,11 @@
 
     </div>
     <!--內容-->
-    <div class="content" id="content">
+    <div class="content" id="content" v-cloak>
         <div class="breadcrumb">
             <ol class="breadcrumb_list xsfont">
               <li><a href="./door.html">SHOP</a></li>
-              <li><a href="./light-care.html">LIPSTICK</a></li>
+              <li><a href="./light-care.html">SKINCARE</a></li>
               <li>{{seriename}}</li>
             </ol>
         </div>
@@ -80,7 +80,10 @@
                     </form>
 
                     <div class="por_price">
+                        <!-- 時價 -->
                         <h3 class="lfont">$ {{totalPrice}}</h3>
+                        <!-- 原價 -->
+                        <h3 class="lfont origin-price" v-if="totalPrice != originTotalPrice">$ {{originTotalPrice}}</h3>
                     </div>
                 </div>
                 <div class="pro_down">
@@ -139,6 +142,7 @@
                 products: [],
                 series: '',
                 proPrice: '', //商品單價
+                proOrigin: '',//商品原價
                 selected: '', //商品名稱
                 proNum: '', //商品數量
                 proImgs: '', //圖片編號
@@ -164,6 +168,8 @@
                     this.proI = i
                     //改變商品價格
                     this.proPrice = this.products[i].PRO_PRICE
+                    //改變商品原價
+                    this.proOrigin = this.products[i].ORIGIN_PRICE
                     //改變色票編號
                     this.selected = this.products[i].PRO_NAME
                     //改變圖片編號
@@ -178,6 +184,8 @@
                         if(e.target.childNodes[i].selected == true){
                             this.proPrice = this.products[i].PRO_PRICE
                             this.proI = i
+                            this.proOrigin = this.products[i].ORIGIN_PRICE //原價
+                            this.proImgs = this.products[i].PRO_IMGS.split("|")
                         }
                     }
                     // let i = e.target.dataset.color;
@@ -283,6 +291,9 @@
                 totalPrice(){
                     return this.proPrice*this.proNum;
                 },
+                originTotalPrice() {
+                    return this.proOrigin * this.proNum;
+                }
                 // proImgs() {
                     
                 //     return this.products[0].PRO_IMGS.split("|")
@@ -313,6 +324,7 @@
                 if( xhr.status == 200 ){ //連線成功
                     app.$data.products = JSON.parse(xhr.responseText); //將導出的物件存入data中
                     app.$data.proPrice = app.$data.products[0].PRO_PRICE //給預設第一項商品單價
+                    app.$data.proOrigin = app.$data.products[0].ORIGIN_PRICE //給預設第一項商品原價
                     app.$data.proNum = 1 //給預設第一項商品數量
                     app.$data.selected = app.$data.products[0].PRO_NAME //給預設第一項商品色票
                     app.$data.proImgs = app.$data.products[0].PRO_IMGS.split("|")
