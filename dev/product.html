@@ -162,7 +162,15 @@
         <!-- 贈品燈箱 -->
         <div class="ad-light-box" @click="adClose">
             <div class="ad-light-content">
-              <img src="./image/ad_1.png" alt="">
+                <div class="ad-gift-block">
+                    <div class="ad-gift-img">
+
+                    </div>
+                    <div class="ad-gift-text">
+                      <div v-for="item in gifts" class="lfont">滿  {{item.GIF_CONDI}}  送  {{item.GIF_NAME}}</div> 
+                    </div>
+                </div>
+              
             </div>
         
         </div>
@@ -180,7 +188,7 @@
         const app = new Vue({
             el: '#content',
             data: {
-                giftsee: '',
+                gifts: '',
                 products: [],
                 series: '',
                 proPrice: '', //商品單價
@@ -441,17 +449,17 @@
                 xhr1.send(null);
 
                 //傳入贈品資料
-                // var xhr3 = new XMLHttpRequest();
-                // xhr3.onload = function() {
-                //     if( xhr3.status == 200 ){
-                //         app.$data.giftsee = JSON.parse(xhr3.responseText);
-                //     }else{
-                //         alert( xhr3. status);
-                //         }
-                //     }
-                // var url3 = "./php/shoppingcart.php";
-                // xhr3.open("get", url, true);
-                // xhr3.send(null);
+                var xhr3 = new XMLHttpRequest();
+                xhr3.onload = function() {
+                    if( xhr3.status == 200 ){
+                        app.$data.gifts = JSON.parse(xhr3.responseText);
+                    }else{
+                        alert( xhr3. status);
+                        }
+                    }
+                var url3 = "./php/shoppingcart.php";
+                xhr3.open("get", url3, true);
+                xhr3.send(null);
                 
             }
         });

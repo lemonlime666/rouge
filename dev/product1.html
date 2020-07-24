@@ -134,7 +134,14 @@
         <!-- 贈品燈箱 -->
         <div class="ad-light-box" @click="adClose">
             <div class="ad-light-content">
-                <img src="./image/ad_1.png" alt="">
+                <div class="ad-gift-block">
+                    <div class="ad-gift-img">
+                        <img src="./image/ad_1.png" alt="">
+                    </div>
+                    <div class="ad-gift-text">
+                      <div v-for="item in gifts" class="mfont">滿  {{item.GIF_CONDI}}  送  {{item.GIF_NAME}}</div> 
+                    </div>
+                </div>
             </div>
 
         </div>
@@ -152,7 +159,7 @@
         const app = new Vue({
             el: '#content',
             data: {
-                giftsee: '', //贈品資料
+                gifts: '', //贈品資料
                 products: [],
                 series: '',
                 proPrice: '', //商品單價
@@ -337,10 +344,11 @@
 
                 let ser = localStorage.getItem('carename')
                 console.log(ser)
-                //傳入商品資料
+                // 傳入商品資料
                 var xhr = new XMLHttpRequest();
                 xhr.onload = function () {
                     if (xhr.status == 200) { //連線成功
+                        console.log(JSON.parse(xhr.responseText))
                         app.$data.products = JSON.parse(xhr.responseText); //將導出的物件存入data中
                         app.$data.proPrice = app.$data.products[0].PRO_PRICE //給預設第一項商品單價
                         app.$data.proOrigin = app.$data.products[0].ORIGIN_PRICE //給預設第一項商品原價
@@ -364,6 +372,7 @@
                 var xhr1 = new XMLHttpRequest();
                 xhr1.onload = function () {
                     if (xhr1.status == 200) { //連線成功
+                        
                         app.$data.proMessage = JSON.parse(xhr1.responseText);
                     } else {
                         alert(xhr1.status);
@@ -379,15 +388,15 @@
                 xhr4.onload = function () {
                     if (xhr4.status == 200) {
                         //給預設的系列名稱   
-                        app.$data.giftsee = JSON.parse(xhr.responseText);
-                        
+                        // console.log(JSON.parse(xhr4.responseText))
+                        app.$data.gifts = JSON.parse(xhr4.responseText)
 
                     } else {
                         alert(xhr4.status)
                     }
                 }
                 var url4 = "./php/shoppingcart.php";
-                xhr4.open("get", url, true);
+                xhr4.open("get", url4, true);
                 xhr4.send(null);
             }
         });
