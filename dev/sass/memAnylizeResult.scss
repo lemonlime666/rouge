@@ -241,8 +241,13 @@ body {
                                 width: 50%;
                                 height: 100%;
                             }
+                            @media screen and(max-width:450px){
+                                width: 50%;
+                                height: auto;
+                            }
                         }
                         div{
+                            width: 50%;
                             display: flex;
                             flex-direction: column;
                             justify-content: center;
@@ -253,8 +258,12 @@ body {
                                 height: 30px;
                                 margin-left: 40px;   
                                 }
+                                @media screen and(max-width:450px){
+                                    height: 30px;
+                                    margin: 0 auto;   
+                                    }
                                 height: 30px;
-                                width: 180px;
+                                width: 80%;
                                 margin: 20px auto 5px;
                                 text-align: center;
                                 color: white;
