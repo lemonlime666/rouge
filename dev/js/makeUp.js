@@ -41,22 +41,24 @@ $(document).ready(function () {
                 comPrice: ee
             }
             tempStore.lipInfo = obj;
-            console.log(tempStore.lipInfo);
         })
     }
     addIntoCart.addEventListener('click', function () {
         let num = JSON.parse(localStorage.getItem('shoppingcart')) || [];
-        let total = 0;  //觀察>=9
-        let quan = 0;
+        let len = num.length;
+        let check = 0;
         if(tempStore.lipInfo){
-            if (num.length > 0) {
-                for (let i = 0; i < num.length; i++) {
-                    total += num[i].comNum;
-                }
-                if (total >= 9) {
-                    alert("已達購物車數量上限");
-                } else {
-                    checkAdd(num);
+            if (len > 0) {
+                for (let i = 0; i < len; i++) {
+                    if(num[i].comNo == tempStore.lipInfo.comNo && num[i].comNum>=9){
+                        alert("此商品已達數量上限");
+                    }else if(num[i].comNo == tempStore.lipInfo.comNo && num[i].comNum<9){
+                        num[i].comNum++;
+                        localStorage.setItem('shoppingcart', JSON.stringify(num));
+                    }else{
+                        check++;
+                        goAdd(check);
+                    }
                 }
             } else {
                 num.push(tempStore.lipInfo);
@@ -64,21 +66,9 @@ $(document).ready(function () {
             }
         }
     })
-    function checkAdd(num) {
-        let check = 0;
-        let a = num.length;
-        for(let i=0; i<a; i++){
-            if (num[i].comNo == tempStore.lipInfo.comNo) {
-                num[i].comNum++;
-                localStorage.setItem('shoppingcart', JSON.stringify(num));
-            } else if(num[i].comNo != tempStore.lipInfo.comNo) {
-                check++;
-                goAdd(num, check);
-            }
-        }
-    } 
 
-    function goAdd(num, check) {
+    function goAdd(check) {
+        let num = JSON.parse(localStorage.getItem('shoppingcart'));
         if (check == num.length) {
             num.push(tempStore.lipInfo);
             localStorage.setItem('shoppingcart', JSON.stringify(num));
