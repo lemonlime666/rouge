@@ -2,7 +2,7 @@
 session_start();
 try{
     if( isset($_SESSION['mail']) ){
-        require_once("connectWade.php");
+        require_once("connect.php");
         $sql ="SELECT card.* 
         FROM card 
         join makeup 

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
     <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
     <link rel="shortcut icon" href="./image/R.ico" />
-    <title>ROUGE</title>
+    <title>ROUGE - 投票活動</title>
     <link rel="stylesheet" href="./css/vote.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" ></script>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
@@ -85,20 +85,20 @@
                             <div class="no2">
                                     <img :src="topThree[1].CARD_URL" alt="">
                                     <div class="no">第二名</div>
-                                    <div class="tno">{{topThree[1].CARD_VOTESUM}}票</div>
+                                    <div class="tno" v-clock>{{topThree[1].CARD_VOTESUM}}票</div>
                                 </div>
     
-                                <div class="no1">
+                                <div class="no1" >
                                     <img :src="topThree[0].CARD_URL" alt="">
                                     <div class="sno1">第一名</div>
-                                    <div class="tno1">{{topThree[0].CARD_VOTESUM}}票</div>
+                                    <div class="tno1" v-clock>{{topThree[0].CARD_VOTESUM}}票</div>
                                 </div>
        
                        
                                 <div class="no3">
                                     <img :src="topThree[2].CARD_URL" alt="">
                                     <div class="no">第三名</div>
-                                    <div class="tno">{{topThree[2].CARD_VOTESUM}}票</div>
+                                    <div class="tno"  v-clock>{{topThree[2].CARD_VOTESUM}}票</div>
                                  </div>
                  
                             <div class="invote">
@@ -123,17 +123,17 @@
             <!-- <div class="showCard" id="content"> -->
                 <!-- <img src="./image/top.jpg" alt=""> -->
                  <!-- 翻轉 -->
-                <div class="postCardShow"  v-for="(item, index) in showCards">
+                <div class="postCardShow"  v-for="(item, index) in showCards" v-clock>
                     <div class="flip-card">
                         <div class="flip-card-inner">
                         <div class="flip-card-front">
-                            <img :src="item.CARD_URL">
+                            <img :src="item.CARD_URL" v-clock>
                         </div>
-                        <div class="flip-card-back">
+                        <div class="flip-card-back" v-clock>
                             <h1>設計理念</h1> 
                             <p>{{item.CARD_INF}}</p> 
                             <h3>目前票數:{{item.CARD_VOTESUM}} 票</h3>
-                            <button class="margincenter btn3-1" :id="item.CARD_NO" @click="vote">點我投票</button>
+                            <button class="margincenter btn3-1" :id="item.CARD_NO" @click="vote" v-clock>點我投票</button>
                         </div>
                         </div>
                     </div>
