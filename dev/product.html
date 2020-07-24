@@ -86,7 +86,7 @@
                                 <span>
                                     <span :style="{backgroundColor : selected}"></span> {{selected}}
                                 </span>
-                                <span class="select-btn">按鈕</span>
+                                <span class="select-btn"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAAMCAYAAABvEu28AAAABHNCSVQICAgIfAhkiAAAAIdJREFUKFON090NgCAMBOBjMkdRJhM2cTTT2CNNoVJfjMB9/BQLvucCcACo+p19NQAPgFYUuTUpHVlMxp6aqwLZBmnPYD7TBWKY+g6bENkVoSy2RCRsoR0WIisowlhZVrNrkUZ1/YrY4We312FCohX9YUtkB/lthkgGIubPaLr50Rllf5Ex7gVPECANGbomzAAAAABJRU5ErkJggg==" alt=""></span>
                             </div>
 
                             <ul id="select-list" style="display: none;">
@@ -112,7 +112,7 @@
                             <!-- 時價 -->
                             <h3 class="lfont">$ {{totalPrice}}</h3>
                             <!-- 原價 -->
-                            <h3 class="lfont origin-price">$ {{originTotalPrice}}</h3>
+                            <h3 class="lfont origin-price" v-if="totalPrice != originTotalPrice">$ {{originTotalPrice}}</h3>
                         </div>
                     </div>
                     <div class="pro_down">
@@ -160,7 +160,21 @@
             <!-- <button class="lag-type-btn"  @click="passcomment">留言</button> -->
         </div>
 
+        <!-- 贈品燈箱 -->
+        <div class="ad-light-box" @click="adClose">
+            <div class="ad-light-content">
+                <div class="ad-gift-block">
+                    <div class="ad-gift-img">
+
+                    </div>
+                    <div class="ad-gift-text">
+                      <div v-for="item in gifts" class="lfont">滿  {{item.GIF_CONDI}}  送  {{item.GIF_NAME}}</div> 
+                    </div>
+                </div>
+              
+            </div>
         
+        </div>
 
     </div>
 
@@ -175,6 +189,7 @@
         const app = new Vue({
             el: '#content',
             data: {
+                gifts: '',
                 products: [],
                 series: '',
                 proPrice: '', //商品單價
@@ -197,6 +212,12 @@
                 // n:1,
             },
             methods: {
+                adClose() {
+                    let box = document.querySelector('.ad-light-box')
+                    box.style.display = 'none'
+                    // console.log('111111111')
+
+                },
                 proClick(e) {
                     let i = e.target.dataset.num
                     // console.log(this.products[i].PRO_PRICE)
@@ -356,6 +377,7 @@
                     document.getElementById('procomment').value = '';
                     this.proMessage.push(commentInfo);
 
+
                 }
 
 
@@ -426,6 +448,20 @@
                 var url1 = "./php/message.php?ser=" + localStorage.getItem('lipsname');
                 xhr1.open("get", url1, true);
                 xhr1.send(null);
+
+                //傳入贈品資料
+                var xhr3 = new XMLHttpRequest();
+                xhr3.onload = function() {
+                    if( xhr3.status == 200 ){
+                        app.$data.gifts = JSON.parse(xhr3.responseText);
+                    }else{
+                        alert( xhr3. status);
+                        }
+                    }
+                var url3 = "./php/shoppingcart.php";
+                xhr3.open("get", url3, true);
+                xhr3.send(null);
+                
             }
         });
 

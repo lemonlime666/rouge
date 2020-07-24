@@ -337,3 +337,65 @@ body .shop-main {
 
 
 //贈品細項
+.gift-des{
+  padding-top: 5px;
+  letter-spacing: 1px;
+  .gift-details{
+    margin-bottom: 5px;
+  }
+  .gift-gap{
+    span{
+      color: red;
+    }
+  }
+}
+
+//購物車為空時返回按鈕
+.go-shop{
+  width: 300px;
+  height: 300px;
+  //border: 1px solid green;
+  display: flex;
+  padding-left: 15px;
+  
+  flex-direction: column;
+  h2{
+    font-size: 35px;
+    margin-bottom: 15px;
+  }
+  button{
+    font-size: 25px;
+    width: 75%;
+    height: 20%;
+    margin-bottom: 30px;
+    
+    a{
+      outline: none;
+      border: none;
+      text-decoration:none;
+      color: white;
+      display: block;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+
+      
+    }
+    &:last-child{
+      background-color: #883030;
+      border: none;
+      color: white;
+      transition: 0.5s;
+      outline: none;
+      border: none;
+    }
+    &:last-child:hover{
+      background-color: #C2AA6C;
+      
+    }
+    
+  }
+}
