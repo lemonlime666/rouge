@@ -210,7 +210,7 @@
                     for (let i = 0; i < e.target.childNodes.length; i++) {
                         if (e.target.childNodes[i].selected == true) {
                             this.proPrice = this.products[i].PRO_PRICE
-                            this.proI = i
+                            this.proI = i.toString()
                             this.proOrigin = this.products[i].ORIGIN_PRICE //原價
                             this.proImgs = this.products[i].PRO_IMGS.split("|")
                         }
@@ -235,7 +235,7 @@
                     this.proCommit.comName = this.products[i].PRO_NAME
                     this.proCommit.comImg = this.products[i].PRO_IMG
                     this.proCommit.comPrice = this.products[i].PRO_PRICE
-                    this.proCommit.comNum = this.proNum
+                    this.proCommit.comNum = parseInt(this.proNum)
 
                     //判斷條件
                     //如果購物車內有相同的系列編號
