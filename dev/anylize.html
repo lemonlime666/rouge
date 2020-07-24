@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="./image/R.ico" />
     <title>ROUGE</title>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&family=Noto+Serif+TC:wght@200;300;400;500;600;700;900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Nunito+Sans:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap"
@@ -57,7 +58,6 @@
                                 <p>加入購物車</p>
                             </div>
                             <a href="product1.html"><p @click="goProduct(lateyear.SER_NO)">商品詳情</p></a>
-                            <!-- product1.html -->
                         </div>
                     </div>
                 </div>
@@ -70,9 +70,11 @@
         <div class="timeBlock">
             <div class="anylTime">
                 <div id="dayTimeBlock">
-
                 </div>
-                <img src="./image/bee.jpg" alt="">
+                <img class="skinCare_icon-1" src="./image/skinCare_icon-1.png" alt="">
+                <img class="skinCare_icon-2" src="./image/skinCare_icon-2.png" alt="">
+                <img class="skinCare_icon-3" src="./image/skinCare_icon-3.png" alt="">
+                <img class="skinCare_icon-4" src="./image/skinCare_icon-4.png" alt="">
             </div>
             <div class="anyl-timeChoose">
 
@@ -130,9 +132,16 @@
                        if(this.season == 0){
                     $('#anyl-background2').fadeOut(1000);
                     $('#anyl-background1').fadeIn(1000);
+
+                    $('.skinCare_icon-2').fadeOut(500);
+                    $('.skinCare_icon-1').delay(500).fadeIn(500);
+
                 }else{
                     $('#anyl-background4').fadeOut(1000);
                     $('#anyl-background3').fadeIn(1000);
+
+                    $('.skinCare_icon-4').fadeOut(500);
+                    $('.skinCare_icon-3').delay(500).fadeIn(500);
                 } 
                     },
                     night: function (event) {
@@ -140,9 +149,15 @@
                        if(this.season == 0){
                     $('#anyl-background1').fadeOut(1000);
                     $('#anyl-background2').fadeIn(1000);
+                    
+                    $('.skinCare_icon-1').fadeOut(500);
+                    $('.skinCare_icon-2').delay(500).fadeIn(500);
                 }else{
                     $('#anyl-background3').fadeOut(1000);
                     $('#anyl-background4').fadeIn(1000);
+                    
+                    $('.skinCare_icon-3').fadeOut(500);
+                    $('.skinCare_icon-4').delay(500).fadeIn(500);
                 }
                     },
                     earlyear: function (event) {
@@ -150,9 +165,15 @@
                        if(this.usetime == 0){
                     $('#anyl-background3').fadeOut(1000);
                     $('#anyl-background1').fadeIn(1000);
+
+                    $('.skinCare_icon-3').fadeOut(500);
+                    $('.skinCare_icon-1').delay(500).fadeIn(500);
                 }else{
                     $('#anyl-background4').fadeOut(1000);
                     $('#anyl-background2').fadeIn(1000);
+
+                    $('.skinCare_icon-4').fadeOut(500);
+                    $('.skinCare_icon-2').delay(500).fadeIn(500);
                 }
                     },
                     lateyear: function (event) {
@@ -160,9 +181,15 @@
                        if(this.usetime == 0){
                     $('#anyl-background1').fadeOut(1000);
                     $('#anyl-background3').fadeIn(1000);
+                    
+                    $('.skinCare_icon-1').fadeOut(500);
+                    $('.skinCare_icon-3').delay(500).fadeIn(500);
                 }else{
                     $('#anyl-background2').fadeOut(1000);
                     $('#anyl-background4').fadeIn(1000);
+                    
+                    $('.skinCare_icon-2').fadeOut(500);
+                    $('.skinCare_icon-4').delay(500).fadeIn(500);
                 }
                     },
                     addChart(lateyear) { //加入購物車
@@ -324,14 +351,18 @@
             if(uploadHour >= 18 | uploadHour <= 6){
                 if(todatMonth <= 7){
                     $('#anyl-background2').fadeIn(1000);
+                    $('skinCare_icon-2').fadeIn(1000);
                 }else{
                     $('#anyl-background4').fadeIn(1000);
+                    $('.skinCare_icon-4').fadeIn(1000);
                 }
             }else{
                 if(todatMonth <= 7){
                     $('#anyl-background1').fadeIn(1000);
+                    $('.skinCare_icon-1').fadeIn(1000);
                 }else{
                     $('#anyl-background3').fadeIn(1000);
+                    $('.skinCare_icon-3').fadeIn(1000);
                 }
             };
 
@@ -354,7 +385,6 @@
             var anyl_1to6 = document.getElementById('anyl_1to6');
             var anyl_7to12 = document.getElementById('anyl_7to12');
             anylSun.addEventListener('click', function() {
-
                 this.style.cssText = "background-color: #C6B26E;color:rgba(239,239,238,.9)";
                 document.getElementById('anylNight').style.cssText = "background-color: grey;";
 
