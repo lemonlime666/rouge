@@ -1,0 +1,138 @@
+@import '../base/_var.scss';
+@import 'breakpoint';
+
+
+//responsive font-size mixin
+@mixin rwd-font($desk, $pc, $lpad, $mpad, $spad, $lphone, $sphone) {
+
+    
+    @include desk{
+        font-size: $desk !important;
+    }
+
+    //電腦版
+    @include pc{
+        font-size: $pc !important;
+    }
+
+    //平板
+    @include l-pad{
+        font-size: $lpad !important;
+    }
+    @include m-pad{
+        font-size: $mpad !important;
+    }
+    @include s-pad{
+        font-size: $spad !important;
+    }
+
+    //手機
+    @include l-phone{
+        font-size: $lphone !important;
+    }
+    @include s-phone{
+        font-size: $sphone !important;
+    }
+}
+
+//rwd font class
+
+.hugefont{
+    //裝飾性大標題
+    @include rwd-font(60px, 55px,  50px, 45px, 40px, 35px, 30px);
+}
+.z-hugefont{
+    //裝飾性大標題
+    @include rwd-font(60px, 55px,  55px, 55px, 55px, 55px, 55px);
+}
+.xxlfont{
+    //大標
+    //＠include rwd-font(1200以上, 1200, 1024, 996, 768, 576, 400)   帶入6個font的值
+    @include rwd-font(40px, 35px,  35px, 28px, 26px, 26px, 24px);
+}
+
+.xlfont{
+    //中標
+    //＠include rwd-font(1200以上, 1200, 1024, 996, 768, 576, 400)   帶入6個font的值
+    @include rwd-font(35px, 35px, 30px, 28px, 26px, 26px, 24px);
+}
+
+.lfont{
+    //小標
+    //＠include rwd-font(1200以上, 1200, 1024, 996, 768, 576, 400)   帶入6個font的值
+    @include rwd-font(30px, 30px, 28px, 25px, 20px, 20px, 20px);
+}
+.z-lfont{
+    //小標
+    //＠include rwd-font(1200以上, 1200, 1024, 996, 768, 576, 400)   帶入6個font的值
+    @include rwd-font(30px, 30px, 28px, 25px, 25px, 25px, 25px);
+}
+
+
+.mfont{
+    //大內文
+    //＠include rwd-font(1200以上, 1200, 1024, 996, 768, 576, 400)   帶入6個font的值
+    @include rwd-font(24px, 20px, 20px, 18px, 16px, 16px, 16px);
+}
+.z-mfont{
+    //大內文
+    //＠include rwd-font(1200以上, 1200, 1024, 996, 768, 576, 400)   帶入6個font的值
+    @include rwd-font(24px, 20px, 20px, 18px, 16px, 16px, 16px);
+}
+
+.sfont{
+    //中內文
+    //＠include rwd-font(1200以上, 1200, 1024, 996, 768, 576, 400)   帶入6個font的值
+    @include rwd-font(18px, 18px, 16px, 16px, 16px, 16px, 16px);
+}
+.z-sfont{
+    //中內文
+    //＠include rwd-font(1200以上, 1200, 1024, 996, 768, 576, 400)   帶入6個font的值
+    @include rwd-font(18px, 18px, 16px, 16px, 16px, 16px, 16px);
+}
+.z-sfont{
+    //中內文
+    //＠include rwd-font(1200以上, 1200, 1024, 996, 768, 576, 400)   帶入6個font的值
+    @include rwd-font(18px, 18px, 16px, 16px, 16px, 16px, 16px);
+}
+
+.xsfont{
+    //小內文
+    //＠include rwd-font(1200以上, 1200, 1024, 996, 768, 576, 400)   帶入6個font的值
+    @include rwd-font(16px, 16px, 16px, 16px, 16px, 14px, 14px);
+}
+
+.xxsfont{
+    //小內文
+    //＠include rwd-font(1200以上, 1200, 1024, 996, 768, 576, 400)   帶入6個font的值
+    @include rwd-font(14px, 14px, 12px, 12px, 10px, 8px, 8px);
+}
+
+.xxlfont,
+.xlfont,
+.lfont,
+.mfont,
+.sfont,
+.xsfont
+.xxsfont{
+    letter-spacing: 1px;
+    word-spacing: 3px;
+}
+
+
+//font-style mixin
+// $notoSerif: 'Noto Serif TC', serif;
+// $notoSans: 'Noto Sans TC', sans-serif;
+// $CG:'Cormorant Garamond', serif;
+// $default-color:$white;
+// $default-fweight:400;
+
+@mixin font-style($fs:20px, $ff:$notoSerif, $color:$default-color, $fw:$default-fweight){
+    font-size: $fs;
+    font-family: $ff;
+    color:$color;
+    font-weight: $fw;
+    letter-spacing: 1px;
+    word-spacing: 3px;
+    @content;
+}

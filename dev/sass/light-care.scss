@@ -1,4 +1,4 @@
-@import "./mixin/fontStyle";
+@import "./mixin/fontStyle2";
 @import "./app/header";
 @import "./animate/closeanimate";
 body,
@@ -445,7 +445,7 @@ footer{
             width:100%;
             position: fixed;
             height:150px;
-            margin-top: 90px;
+            margin-top: 115px;
             z-index: 11;
             
             
@@ -485,7 +485,7 @@ footer{
     
 
     .main .cardouter .card{
-        left:25%;
+        left:18%;
         
     }
 }
