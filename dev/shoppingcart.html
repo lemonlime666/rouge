@@ -163,6 +163,7 @@
         max: '',
         min: '',
         address: '',
+        last: [],
         
         
         
@@ -200,7 +201,7 @@
           var xhr1 = new XMLHttpRequest();
                 xhr1.onload = function (){
                     if( xhr1.status == 200 ){ //連線成功
-                        console.log(xhr1.responseText)
+                        // console.log(xhr1.responseText)
                        alert(xhr1.responseText);
                        if(xhr1.responseText=="購買成功"){
                         // localStorage['shoppingcart']=""
@@ -299,10 +300,11 @@
           // }else{
           //   lastgift = [0]
           // }
-            let last = this.gifts.slice(-1) //取出最後一個商品
-
-            if(this.totalprice < last[0].GIF_CONDI){
+            
+            
+            if(this.totalprice < this.last[0].GIF_CONDI){
               lastgift = this.gifts.filter(item => item.GIF_CONDI > this.totalprice)
+              
             }else{
               lastgift = ["0"]
             }
@@ -351,7 +353,8 @@
           //給預設的系列名稱   
             app.$data.gifts = JSON.parse(xhr.responseText);
             app.$data.min =app.$data.gifts[0]
-            console.log(app.$data.max); 
+            app.$data.last = app.$data.gifts.slice(-1) //最後一個贈品
+            // console.log(app.$data.max); 
                 for(let i=0; i<app.$data.gifts.length;i++){
                         if(totalprice>app.$data.gifts[i].GIF_CONDI){
                           app.$data.max=app.$data.gifts[i];

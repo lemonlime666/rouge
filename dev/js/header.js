@@ -352,13 +352,13 @@ Object.defineProperty(window.localStorage, "shoppingcart", {
     set: function (newValue) {
         localStorage.setItem("shoppingcart", newValue);
         let cart = JSON.parse(newValue);
-        console.log(cart);
+        // console.log(cart);
         let total = 0;
         for (let i = 0; i < cart.length; i++) {
             total += cart[i].comNum;
         }
         // console.log("物件總數:", total);
-        let shoppingcart = document.getElementById("shoppingcart");
+        // let shoppingcart = document.getElementById("shoppingcart");
         // shoppingcart.innerText = "CART(" + total + ")";
     },
 });
