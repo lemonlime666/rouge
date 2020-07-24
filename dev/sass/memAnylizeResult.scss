@@ -198,18 +198,6 @@ body {
                                             color:$white;
                                         }                            
                                     }
-                                    // a:link{
-                                    //     text-decoration: none;
-                                    //     color:$grey5;   
-                                    //     }                
-                                    // a:active{
-                                    //     text-decoration: none;
-                                    // color:$grey5;
-                                    // }                        
-                                    // a:visited{
-                                    //     text-decoration: none;
-                                    //     color:$grey5;
-                                    // }
                                 }
                             }
                             
@@ -247,10 +235,14 @@ body {
                             }
                         }
                         div{
-                            width: 50%;
+                            width: 100%;
+                            margin-top: 5px;
                             display: flex;
                             flex-direction: column;
                             justify-content: center;
+                            @media screen and(max-width:450px){
+                                width: 50%;
+                                }
                             .goProduct{
                                 @include font-style(14px, $notoSerif) {}
                                 cursor: pointer;
