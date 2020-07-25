@@ -4,7 +4,8 @@ try{
   
   $sql = "  SELECT product.PRO_NO, product.PRO_NAME, series.PRO_CLASS, product.PRO_UAL, product.PRO_IMGS, product.PRO_IMG,product.MTC_CLASS, product.SER_NO, series.SER_NAME, series.SER_ENGNAME, series.SER_IMGURL, series.SER_TEXT, product.PRO_COLOR, product.PRO_SEASON, product.PRO_USETIME ,
   round(product.PRO_PRICE*ifnull(promo_program.SP_DISCOUNT,1 )) AS 'PRO_PRICE',
-  product.PRO_PRICE AS 'ORIGIN_PRICE'
+  product.PRO_PRICE AS 'ORIGIN_PRICE',
+  promo_program.SP_END
    FROM product
    left JOIN promo_program 
    ON (select promo_program.SER_NO where now()>SP_START
