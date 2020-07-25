@@ -2,6 +2,7 @@
 
 * {
     box-sizing: border-box;
+    font-family: sans-serif;
 }
 body {
     margin: 0;
@@ -494,7 +495,7 @@ form {
     display: none;
     form{
         textarea{
-            width: 80%;
+            width: 240px;
             font-size: 20px;
             height: 200px;
             z-index: 20;
@@ -565,6 +566,61 @@ form {
 }
 
 
+.bthree{
+    outline:none;
+	border:none;
+    padding:20px;
+    left: 50%;
+    transform: translate(0%, 0%);
+	font-size:16px;
+	background-color:transparent;
+	border:2px solid #883030;
+    margin: 50px;
+	color:#883030;
+	border-color:transparent;
+    transition: all 0.5s ease;
+	&:before {
+        width:0;
+		height:3px;
+		content:"";
+		background-color:#883030;
+		position:absolute;
+		top:0;
+		left:50%;
+
+		transition: all 0.3s ease;
+	}
+
+	&:after {
+		@extend .bthree:before;
+        top:100%;
+        
+	}
+
+	&:hover {
+        
+		letter-spacing:8px;
+		color:#883030;
+
+		&:before {
+			width:100%;
+            left:0;
+            transition: all 0.5s ease ;
+		}
+		&:after {
+			width:100%;
+			left:0;
+		}
+	}
+}
+
+
+.fas{
+    &:hover{
+        cursor: pointer;
+    }
+}
+
 ._2tga._8j9w {
   
     height: 50px;
@@ -613,12 +669,12 @@ form {
         background-color: #efefef;
     }
 
-    #canvas {
-        >div{
+
+        #seclist{
             position: absolute;
             bottom: -70px;
         }
-    }
+  
 
 
     #first {
