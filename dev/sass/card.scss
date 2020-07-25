@@ -609,9 +609,18 @@ form {
         width: 500px;
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
+        justify-content: center;
         background-color: #efefef;
     }
+
+    #canvas {
+        >div{
+            position: absolute;
+            bottom: -70px;
+        }
+    }
+
+
     #first {
         display: none;
     }
