@@ -6,7 +6,7 @@ try{
   $sqlresult = "INSERT INTO `maintenance` (`MEM_NO`, `MTC_CLASS`, `MTC_DATE`) VALUES (:mem_no, :class, :today);";
   $pdoresult = $pdo->prepare($sqlresult);
   $pdoresult->bindValue(":today", $_POST['today']);
-  $pdoresult->bindValue(":mem_no", $_SESSION['MEM_NO']);
+  $pdoresult->bindValue(":mem_no", $_SESSION['memNo']);
   $pdoresult->bindValue(":class", $_POST["class"]);
   $pdoresult->execute();
 
