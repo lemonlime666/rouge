@@ -3,7 +3,7 @@
 try{
   session_start();
   require_once("connect.php"); 
-  $sqlresult = "INSERT INTO `maintenance` (`MEM_NO`, `MTC_CLASS`, `MTC_DATE`) VALUES (:mem_no, :class, :today);";
+  $sqlresult = "UPDATE `maintenance` SET `MTC_CLASS` = :class, `MTC_DATE` = :today WHERE `maintenance`.`MEM_NO` = :mem_no";
   $pdoresult = $pdo->prepare($sqlresult);
   $pdoresult->bindValue(":today", $_POST['today']);
   $pdoresult->bindValue(":mem_no", $_SESSION['memNo']);
