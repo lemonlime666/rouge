@@ -189,11 +189,12 @@
             methods: {
                 goTime() {
                     let godate = this.proEnd
-                    if (godate != '') {
+                    console.log(godate)
+                    if (godate != null) {
                         let nowdate = new Date()
 
                         let discountdate = new Date(godate + 'T23:59')
-                        console.log(discountdate - nowdate)
+                        // console.log(discountdate - nowdate)
                         let myTime = discountdate - nowdate;
 
                         if (myTime >= 0) {
@@ -215,6 +216,7 @@
                             }, 1000)
 
                         } else {
+                            
                             window.location.reload();
                         }
 
@@ -407,7 +409,7 @@
                 var xhr = new XMLHttpRequest();
                 xhr.onload = () => {
                     if (xhr.status == 200) { //連線成功
-                        console.log(JSON.parse(xhr.responseText))
+                        // console.log(JSON.parse(xhr.responseText))
                         app.$data.products = JSON.parse(xhr.responseText); //將導出的物件存入data中
                         app.$data.proPrice = app.$data.products[0].PRO_PRICE //給預設第一項商品單價
                         app.$data.proOrigin = app.$data.products[0].ORIGIN_PRICE //給預設第一項商品原價

@@ -221,11 +221,12 @@
             methods: {
                 goTime() {
                     let godate = this.proEnd
-                    if (godate != '') {
+                    console.log(godate)
+                    if (godate != null) {
                         let nowdate = new Date()
 
                         let discountdate = new Date(godate + 'T23:59')
-                        console.log(discountdate - nowdate)
+                        // console.log(discountdate - nowdate)
                         let myTime = discountdate - nowdate;
 
                         if (myTime >= 0) {
@@ -309,9 +310,9 @@
                         var e = e || window.event;
                         let list = document.getElementById('select-list')
                         var target = e.target || e.srcElement;
-                        console.log("target : ", target)
+                        // console.log("target : ", target)
                         var _tar = document.querySelector('.select-box')//獲取目標元素
-                        console.log("_tar : ", _tar)
+                        // console.log("_tar : ", _tar)
                         if (!(target == _tar) && !_tar.contains(target)) {
                             //目標元素之外
 
