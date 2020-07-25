@@ -67,6 +67,8 @@
                             </div>
                         </div>
                     </div>
+                    <!-- 計時器 -->
+                    <div class="pro-end" id="time"></div>
                     <div class="pro_top">
                         <!-- 商品號 -->
                         <form class="pro_color">
@@ -172,6 +174,8 @@
                 proMessage: '', //商品留言
                 seriename: '', //系列名稱
                 serietext: '', //系列介紹
+                proEnd: '', //商品折扣結束日期
+
                 proCommit: {
                     comNo: '', //商品編號
                     comName: '', //商品名稱
@@ -183,6 +187,63 @@
                 // n:1,
             },
             methods: {
+                goTime() {
+                    let godate = this.proEnd
+                    console.log(godate)
+                    if (godate != null) {
+                        let nowdate = new Date()
+
+                        let discountdate = new Date(godate + 'T23:59')
+                        // console.log(discountdate - nowdate)
+                        let myTime = discountdate - nowdate;
+
+                        if (myTime >= 0) {
+                            getDuration(myTime)
+
+
+                            setInterval(() => {
+
+                                let nowdate = new Date()
+
+                                let discountdate = new Date(godate + 'T23:59')
+                                // console.log(discountdate - nowdate)
+                                let myTime = discountdate - nowdate;
+                                // console.log(myTime)
+                                // console.log(getDuration(myTime)) 
+                                getDuration(myTime)
+                                
+
+                            }, 1000)
+
+                        } else {
+                            
+                            window.location.reload();
+                        }
+
+
+
+                        function getDuration(myTime) {
+                            let days = myTime / 1000 / 60 / 60 / 24;  //將毫秒換算為天數
+                            let daysRound = Math.floor(days); //取其最大整數
+                            // console.log(daysRound + '天')
+                            let hours = myTime / 1000 / 60 / 60 - (24 * daysRound) //將毫秒換算為小時並減去(天數)
+                            let hoursRound = Math.floor(hours);
+                            // console.log(hoursRound + '時')
+                            let minutes = myTime / 1000 / 60 - (60 * hoursRound) - (60 * 24 * daysRound) //將毫秒換算為分鐘並減去(小時和天數)
+                            let minutesRound = Math.floor(minutes)
+                            // console.log(minutesRound + '分')
+                            let seconds = myTime / 1000 - (60 * minutesRound) - (60 * 60 * hoursRound) - (60 * 60 * 24 * daysRound) //將毫秒換算為秒數並減去(分鐘、小時和天數)
+                            let secondsRound = Math.floor(seconds)
+                            // console.log(secondsRound + '秒')
+                            let ans = '折扣剩餘' + daysRound + '天' + hoursRound + '時' + minutesRound + '分' + secondsRound + '秒'
+                            let timeText = document.getElementById('time')
+                            timeText.innerText = ans
+                            // console.log(ans)
+                            
+                        }
+                        
+                    }
+                },
                 adClose() {
                     let box = document.querySelector('.ad-light-box')
                     box.style.display = 'none'
@@ -346,9 +407,9 @@
                 console.log(ser)
                 // 傳入商品資料
                 var xhr = new XMLHttpRequest();
-                xhr.onload = function () {
+                xhr.onload = () => {
                     if (xhr.status == 200) { //連線成功
-                        console.log(JSON.parse(xhr.responseText))
+                        // console.log(JSON.parse(xhr.responseText))
                         app.$data.products = JSON.parse(xhr.responseText); //將導出的物件存入data中
                         app.$data.proPrice = app.$data.products[0].PRO_PRICE //給預設第一項商品單價
                         app.$data.proOrigin = app.$data.products[0].ORIGIN_PRICE //給預設第一項商品原價
@@ -358,6 +419,8 @@
                         app.$data.seriename = app.$data.products[0].SER_NAME //給預設的系列名稱
                         app.$data.serietext = app.$data.products[0].SER_TEXT //給預設的系列介紹
                         app.$data.proI = app.$data.products[0].SER_NO - 1 //給預設的系列編號
+                        app.$data.proEnd = app.$data.products[0].SP_END //給預設的到期日
+                        this.goTime()
                     } else {
                         alert(xhr.status);
                     }

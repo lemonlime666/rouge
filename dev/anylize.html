@@ -368,15 +368,15 @@
 
             if (uploadHour >= 18 | uploadHour <= 6) {
                 // transform: translate(0em, 0.5em);
-                document.getElementById('anylNight').style.cssText = "background-color: #C6B26E;color:rgba(239,239,238,.9)"
+                document.getElementById('anylNight').style.cssText = "background-color: #C6B26E;color:rgba(239,239,238,.9);transform: translate(0, 0.3em);"
             } else {
-                document.getElementById('anylSun').style.cssText = "background-color: #C6B26E;color:rgba(239,239,238,.9)"
+                document.getElementById('anylSun').style.cssText = "background-color: #C6B26E;color:rgba(239,239,238,.9);transform: translate(0, 0.3em);"
             }
             
             if (todatMonth <= 7) {
-                document.getElementById('anyl_1to6').style.cssText = "background-color: #C6B26E;color:rgba(239,239,238,.9)"
+                document.getElementById('anyl_1to6').style.cssText = "background-color: #C6B26E;color:rgba(239,239,238,.9);transform: translate(0, 0.3em);"
             } else {
-                document.getElementById('anyl_7to12').style.cssText = "background-color: #C6B26E;color:rgba(239,239,238,.9)"
+                document.getElementById('anyl_7to12').style.cssText = "background-color: #C6B26E;color:rgba(239,239,238,.9);transform: translate(0, 0.3em);"
 
             }
 
@@ -385,24 +385,24 @@
             var anyl_1to6 = document.getElementById('anyl_1to6');
             var anyl_7to12 = document.getElementById('anyl_7to12');
             anylSun.addEventListener('click', function() {
-                this.style.cssText = "background-color: #C6B26E;color:rgba(239,239,238,.9)";
+                this.style.cssText = "background-color: #C6B26E;color:rgba(239,239,238,.9);transform: translate(0, 0.3em);";
                 document.getElementById('anylNight').style.cssText = "background-color: grey;";
 
             });
             anylNight.addEventListener('click', function() {
-                this.style.cssText = "background-color: #C6B26E;color:rgba(239,239,238,.9)";
+                this.style.cssText = "background-color: #C6B26E;color:rgba(239,239,238,.9);transform: translate(0, 0.3em);";
                 document.getElementById('anylSun').style.cssText = "background-color: grey";
 
 
             });
             anyl_1to6.addEventListener('click', function() {
-                this.style.cssText = "background-color: #C6B26E;color:rgba(239,239,238,.9)";
+                this.style.cssText = "background-color: #C6B26E;color:rgba(239,239,238,.9);transform: translate(0, 0.3em);";
                 document.getElementById('anyl_7to12').style.cssText = "background-color: grey";
 
             });
             anyl_7to12.addEventListener('click', function() {
                 // transform: translate(0em, 0.5em);
-                this.style.cssText = "background-color: #C6B26E;color:rgba(239,239,238,.9)";
+                this.style.cssText = "background-color: #C6B26E;color:rgba(239,239,238,.9);transform: translate(0, 0.3em);";
                 document.getElementById('anyl_1to6').style.cssText = "background-color: grey";
 
             });
