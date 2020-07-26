@@ -153,7 +153,7 @@
             <div  class="cv" style="display: block;"> 
                 <!-- <canvas id="canvas"width="2203" height="2945"></canvas> -->
                 <canvas id="canvas"width="500" height="580"></canvas>
-                <div>
+                <div id="seclist">
                     <div class="imglist">
                         <div class="listTitle" data-imglist="1">普普風</div>
                         <div class="listTitle" data-imglist="2">花系列</div>
@@ -263,11 +263,11 @@
                 <textarea name="cardText" id="cardText"></textarea>
             </form>
             <!-- <h2 id="inVote" onclick="document.getElementById('id01').style.display='block'">儲存明信片</h2> -->
-            <h2 id="inVote" onclick="saveImg()">儲存明信片</h2>
+            <h2 id="inVote" onclick="saveImg()"  class="bthree">儲存明信片</h2>
             <div class="C_social">
                 <!-- https://www.facebook.com/plugins/share_button.php?href=http%3A%2F%2F140.115.236.71%2Fdemo-projects%2FED101%2FED101G3%2FED101G3-02%2Fdest%2Fimage%2FsaveCard%2F20200717-07-53-05.png&layout=button&size=large&appId=702838283834799&width=50&height=50  -->
                
-                <div id="saveCard" style="color: #292929;background-color: transparent;" ><i class="fas fa-file-download fa-4x"></i></div>
+                <div id="saveCard" style="color: #292929;background-color: transparent;margin: 0 auto;" ><i class="fas fa-file-download fa-4x"></i></div>
             </div>
   
         </div>
@@ -294,7 +294,7 @@
                             makeupImg ="./image/saveCard//unFindImg.png";
                             setcanvasimg(makeupImg)
                             alert("查無試妝資料 請先去製作~~!")
-                            location.href='./makeUp.html';
+                            location.href='./makeUpPage.php';
                         }else{
                             makeupImg =xhr.responseText;
                             setcanvasimg(makeupImg)

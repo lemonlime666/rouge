@@ -79,7 +79,7 @@
                                     echo "$ser_name[0] </button>  <div class=\"M_seriesPanel\">";  //內層顏色div開始
                                     //撈取資料庫顏色指令
                                     // $sql_ser_ind_color = "SELECT a.PRO_COLOR , b.SER_NO FROM product a join series b on a.SER_NO = b.SER_NO where b.PRO_CLASS = 0 and a.SER_NO = $i";
-                                    $sql_ser_ind_color = "SELECT a.PRO_COLOR , b.SER_NO , a.PRO_NO, a.PRO_NAME , a.PRO_IMG , a.PRO_PRICE from product a join series b on a.SER_NO = b.SER_NO where b.PRO_CLASS = 0 and a.SER_NO = $i and PRO_COLOR is not null";
+                                    $sql_ser_ind_color = "SELECT a.PRO_COLOR , b.SER_NO , a.PRO_NO, a.PRO_NAME , a.PRO_IMG , a.PRO_PRICE , a.PRO_UAL from product a join series b on a.SER_NO = b.SER_NO where b.PRO_CLASS = 0 and a.PRO_UAL = 0 and a.SER_NO = $i and PRO_COLOR is not null;";
                                     $MAKEUP_colors = $pdo->query($sql_ser_ind_color);  //撈取後端全部資料
                                     while ($color = $MAKEUP_colors->fetch()) {
                                         $val_of_color_counter++;  //動態新增ID
