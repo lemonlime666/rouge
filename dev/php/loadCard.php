@@ -7,7 +7,7 @@ if( isset($_SESSION["mail"])){ //已登入
       require_once("connect.php");
       // echo "連線成功~<br>";
       
-    $sql = "SELECT MAKEUP_URL FROM makeup where MAKEUP_NO ='{$_SESSION["memNo"]}'";
+    $sql = "SELECT MAKEUP_URL FROM makeup where MEM_NO  = (select MEM_NO from members where MEM_NO='{$_SESSION["memNo"]}')";
       $cardURL = $pdo->query($sql);
       if($cardURL->rowCount() == 0){ //無此會員資料
         echo "查無資料";
