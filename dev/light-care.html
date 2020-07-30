@@ -221,8 +221,8 @@
 
         })
         window.addEventListener("load",function(){
-
-            //以下為滑鼠動畫
+            setTimeout(() => {
+                //以下為滑鼠動畫
             let block = document.querySelectorAll(".card");
 
             
@@ -273,6 +273,9 @@
 
 
             }
+
+            },20)
+            
 
             //以下為偵測滑動事件
             function isMobile() {

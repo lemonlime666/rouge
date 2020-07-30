@@ -14,7 +14,7 @@
         rel="stylesheet">
     <link rel="stylesheet" href="./css/light-lips.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  
+
 
 
 
@@ -55,7 +55,7 @@
             @@include("./app/header.html")
             <div class="main-out" id="js-slideContainer">
                 <div class="main">
-                    
+
 
                     <div class="content">
 
@@ -85,7 +85,7 @@
                                     </div>
 
                                 </span>
-                                
+
 
                             </div>
 
@@ -114,7 +114,7 @@
                                         <div class="mouse-block">
                                             <div id="mouse" class="mouse" :data-id="item.SER_NO" @click="cardClick">
                                                 <div class="mouse-in" :data-id="item.SER_NO" @click="cardClick">
-                                                    
+
                                                 </div>
                                                 <div class="bigAni" :data-id="item.SER_NO" @click="cardClick">
 
@@ -135,7 +135,7 @@
                                     </div>
 
                                 </div>
-                                
+
                             </div>
                         </div>
 
@@ -161,42 +161,42 @@
         const app = new Vue({
             el: '#contain',
             data: {
-                series:'',
-                
-                
+                series: '',
+
+
 
 
             },
             methods: {
                 cardClick(e) {
-                    
+
                     localStorage['lipsname'] = e.target.dataset.id
                 },
-                
-                
+
+
             },
             mounted() {
-               
+
                 var xhr = new XMLHttpRequest();
-                xhr.onload=function (){
-                    if( xhr.status == 200 ){
+                xhr.onload = function () {
+                    if (xhr.status == 200) {
                         //modify here
-                        
+
                         app.$data.series = JSON.parse(xhr.responseText);
 
-                        
-                      
-                    }else{
-                        alert( xhr.status );
+
+
+                    } else {
+                        alert(xhr.status);
                     }
                 }
-                
+
                 var url = "./php/light-lips.php";
                 xhr.open("get", url, true);
                 xhr.send();
             }
         })
-        
+
         window.addEventListener('load', function () {
 
             setTimeout(function () {
@@ -205,88 +205,91 @@
 
             }, 2200);
 
-            window.onwheel = function(event){
-            //event.preventDefault();
-            let step = 50;
-            if (event.deltaY > 0) {
+            window.onwheel = function (event) {
+                //event.preventDefault();
+                let step = 50;
+                if (event.deltaY > 0) {
                     document.documentElement.scrollLeft += step
                 } else {
 
-                  document.documentElement.scrollLeft -= step
+                    document.documentElement.scrollLeft -= step
                 }
-      }
+            }
 
 
-            
+
 
         })
-        window.addEventListener("load",function(){
+        window.addEventListener("load", function () {
 
-            //以下為滑鼠動畫
-            let block = document.querySelectorAll(".card");
-
-            
-            for (let i = 0; i < block.length; i++) {
-                let mouseDiv = block[i].querySelector(".mouse");
-                block[i].addEventListener('mouseover', function () {
+            setTimeout(() => {
+                //以下為滑鼠動畫
+                let block = document.querySelectorAll(".card");
 
 
-                    mouseDiv.style.display = 'block';
+                for (let i = 0; i < block.length; i++) {
+                    let mouseDiv = block[i].querySelector(".mouse");
+                    block[i].addEventListener('mouseover', function () {
 
 
-                });
-                block[i].addEventListener('mouseout', function () {
-                    mouseDiv.style.display = 'none';
-                });
-
-                block[i].addEventListener('mousemove', function (e) {
-                    var x = e.pageX - this.offsetLeft;
-                    var y = e.pageY - this.offsetTop;
-                    mouseDiv.style.left = x + 'px';
-                    mouseDiv.style.top = y + 'px';
+                        mouseDiv.style.display = 'block';
 
 
-                });
-                block[i].addEventListener('click', function () {
-                    setTimeout(function () {
-                        window.location.href = "product.html";
+                    });
+                    block[i].addEventListener('mouseout', function () {
+                        mouseDiv.style.display = 'none';
+                    });
 
-                    }, 1500)
-                    let over = block[i].querySelector(".mouse-block");
-                    let big = block[i].querySelector(".bigAni");
-                    over.style.overflow = "visible";
-                    this.style.zIndex = "9999"
-                    over.style.zIndex = "9999";
-                    big.style.display = "block";
-
-                    document.body.style.overflow = "hidden";
+                    block[i].addEventListener('mousemove', function (e) {
+                        var x = e.pageX - this.offsetLeft;
+                        var y = e.pageY - this.offsetTop;
+                        mouseDiv.style.left = x + 'px';
+                        mouseDiv.style.top = y + 'px';
 
 
+                    });
+                    block[i].addEventListener('click', function () {
+                        setTimeout(function () {
+                            window.location.href = "product.html";
 
+                        }, 1500)
+                        let over = block[i].querySelector(".mouse-block");
+                        let big = block[i].querySelector(".bigAni");
+                        over.style.overflow = "visible";
+                        this.style.zIndex = "9999"
+                        over.style.zIndex = "9999";
+                        big.style.display = "block";
+
+                        document.body.style.overflow = "hidden";
 
 
 
 
-                });
+
+
+
+                    });
 
 
 
 
-            }
+                }
+            },20)
+
 
             //以下為偵測滑動事件
             function isMobile() {
 
-            try{ document.createEvent("TouchEvent"); return true; }
+                try { document.createEvent("TouchEvent"); return true; }
 
-            catch(e){ return false;}
+                catch (e) { return false; }
 
             }
-            if(isMobile()){
+            if (isMobile()) {
                 let out = document.querySelector(".out");
                 out.style.overflowY = "auto"
 
-            }else{
+            } else {
                 out.style.overflowY = "visible"
             }
         })
