@@ -75,6 +75,10 @@ window.addEventListener('load', function () {
         swipe();
     }
 
+    //autoSwipe
+    let direction = 0;
+    let autoSwipe = setInterval(autoSwipeCount, 6000);
+
     //changeSwiper
     function swipe() {
         //var counter
@@ -128,10 +132,6 @@ window.addEventListener('load', function () {
             clearInterval(autoSwipe);
             autoSwipe = setInterval(autoSwipeCount, 6000);
         })
-
-        //autoSwipe
-        let direction = 0;
-        let autoSwipe = setInterval(autoSwipeCount, 6000);
 
         function autoSwipeCount() {
             if (direction == 0) { //正走
